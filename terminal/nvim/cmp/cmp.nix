@@ -8,7 +8,7 @@
     host.nvim.enable-completions =
       (lib.mkEnableOption "basic completion in nvim")
       // {
-        default = config.nvim.enable-treesitter || config.nvim.enable-lsp;
+        default = config.host.nvim.enable-treesitter || config.host.nvim.enable-lsp;
       };
   };
   config =
