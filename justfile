@@ -1,6 +1,9 @@
 default:
     just --list
 
+nixos target:
+    sudo nixos-rebuild --flake .#{{target}} switch
+
 home-manager target:
     home-manager --flake .#{{target}} switch
 

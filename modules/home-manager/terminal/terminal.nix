@@ -4,8 +4,6 @@
   lib,
   ...
 }: {
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
   home.packages = with pkgs; [
     sshfs
     just
@@ -24,8 +22,6 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;
   };
@@ -47,8 +43,8 @@
     ./zsh.nix
     ./git.nix
     ./starship.nix
-    ./nvim/nvim.nix
     ./voice.nix
+    ./nvim/nvim.nix
   ];
 
   programs = {
@@ -66,17 +62,4 @@
   };
 
   services.ssh-agent.enable = true;
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # enable flakes
-  nix =
-    lib.mkIf config.targets.genericLinux.enable
-    {
-      package = pkgs.nix;
-      settings.experimental-features = ["nix-command" "flakes"];
-      settings.max-jobs = "auto";
-      gc.automatic = true;
-    };
 }

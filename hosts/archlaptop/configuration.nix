@@ -90,6 +90,7 @@
   users.users.gabe = {
     isNormalUser = true;
     description = "Gabe Venberg";
+    shell = pkgs.nushell;
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox

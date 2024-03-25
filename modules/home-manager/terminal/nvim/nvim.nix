@@ -17,6 +17,10 @@
 
     clipboard.providers.xsel.enable = true;
   };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
   imports = [
     ./keybinds.nix
     ./options.nix

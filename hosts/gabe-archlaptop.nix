@@ -16,5 +16,6 @@
   home.homeDirectory = "/home/gabe";
   imports = [
     ../terminal/terminal.nix
+    ../../modules/home-manager/home-manager.nix
   ];
 }
