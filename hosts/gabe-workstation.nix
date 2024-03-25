@@ -4,8 +4,8 @@
   lib,
   ...
 }: {
+  # machine specific options
   host = {
-    # machine specific options
     enable-speech = true;
     nvim = {
       enable-lsp = true;

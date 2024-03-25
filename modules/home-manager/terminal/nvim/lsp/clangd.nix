@@ -28,7 +28,7 @@
       BreakBeforeBinaryOperators: NonAssignment
       ...
     '';
-    "work/.clang-format" = lib.mkIf config.host.git.workProfile.enable{
+    "work/.clang-format" = lib.mkIf config.host.git.workProfile.enable {
       text = ''
         ---
         #this syncronizes with settings used by neovims treesitters so that the lsp formatting and treesitter formatting do not fight eatch other.
