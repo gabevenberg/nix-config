@@ -45,6 +45,7 @@
     ./starship.nix
     ./voice.nix
     ./nvim/nvim.nix
+    ./zellij/zellij.nix
   ];
 
   programs = {
