@@ -4,8 +4,8 @@
   lib,
   ...
 }: {
-  # machine specific options
   host = {
+    # machine specific options
     enable-speech = true;
     nvim = {
       enable-lsp = true;
@@ -16,7 +16,10 @@
         name = "Gabe Venberg";
         email = "gabevenberg@gmail.com";
       };
-      workProfile.enable = false;
+      workProfile = {
+        enable = true;
+        email = "venberggabe@johndeere.com";
+      };
     };
   };
 

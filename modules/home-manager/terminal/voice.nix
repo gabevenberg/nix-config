@@ -5,13 +5,7 @@
   ...
 }: {
   options = {
-    host.enable-speech = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = ''
-        install a text to speech engine
-      '';
-    };
+    host.enable-speech = lib.mkEnableOption "espeak";
   };
 
   config =
