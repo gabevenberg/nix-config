@@ -15,6 +15,6 @@
   home.username = "gabe";
   home.homeDirectory = "/home/gabe";
   imports = [
-    ../terminal/home.nix
+    ../terminal/terminal.nix
   ];
 }

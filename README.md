@@ -1,3 +1,3 @@
 # nix-config
 
-My configs for both nixos and home manager only machines0
+My configs for both nixos and home manager only machines

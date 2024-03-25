@@ -1,5 +1,5 @@
 {
-inputs,
+  inputs,
   config,
   pkgs,
   lib,
@@ -9,13 +9,13 @@ inputs,
   # manage.
   # machine specific options
   host.enable-speech = true;
-  #host.nvim.enable-lsp = true;
-  #host.nvim.enable-treesitter = true;
+  host.nvim.enable-lsp = true;
+  host.nvim.enable-treesitter = true;
 
   home.username = "gabe";
   home.homeDirectory = "/home/gabe";
   imports = [
-    ../../terminal/home.nix
-inputs.nixvim.homeManagerModules.nixvim
+    ../../terminal/terminal.nix
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 }

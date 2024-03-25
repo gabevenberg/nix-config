@@ -32,23 +32,23 @@
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-     nixosConfigurations = {
-       archlaptop = nixpkgs.lib.nixosSystem {
-system="x86_64-linux";
-         specialArgs = {inherit inputs outputs;};
-         # > Our main nixos configuration file <
-         modules = [
-		./hosts/archlaptop/configuration.nix
-		home-manager.nixosModules.home-manager
-		{
-			home-manager.useGlobalPkgs=true;
-			home-manager.useUserPackages=true;
-			home-manager.users.gabe = import ./hosts/archlaptop/home.nix;
-        home-manager.extraSpecialArgs = {inherit inputs outputs;};
-		}
-	];
-       };
-     };
+    nixosConfigurations = {
+      archlaptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        # > Our main nixos configuration file <
+        modules = [
+          ./hosts/archlaptop/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.gabe = import ./hosts/archlaptop/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs outputs;};
+          }
+        ];
+      };
+    };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
