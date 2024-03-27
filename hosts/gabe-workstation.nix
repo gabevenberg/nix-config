@@ -27,7 +27,7 @@
   home.username = "gabe";
   home.homeDirectory = "/home/gabe";
   imports = [
-    ../modules/home-manager/terminal/terminal.nix
-    ../modules/home-manager/home-manager.nix
+    ../modules/home-manager/terminal
+    ../modules/home-manager
   ];
 }

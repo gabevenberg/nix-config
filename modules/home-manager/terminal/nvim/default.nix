@@ -31,8 +31,8 @@
     ./gitsigns.nix
     ./which-key.nix
     ./telescope.nix
-    ./treesitter/treesitter.nix
-    ./cmp/cmp.nix
-    ./lsp/lsp.nix
+    ./treesitter
+    ./cmp
+    ./lsp
   ];
 }

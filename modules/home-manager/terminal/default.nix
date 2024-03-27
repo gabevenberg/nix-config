@@ -39,13 +39,13 @@
   };
 
   imports = [
-    ./nushell/nushell.nix
+    ./nushell
     ./zsh.nix
     ./git.nix
     ./starship.nix
     ./voice.nix
-    ./nvim/nvim.nix
-    ./zellij/zellij.nix
+    ./nvim
+    ./zellij
   ];
 
   programs = {

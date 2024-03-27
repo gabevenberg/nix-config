@@ -24,9 +24,9 @@
   home.username = "gabe";
   home.homeDirectory = "/home/gabe";
   imports = [
-    ../../modules/home-manager/terminal/terminal.nix
-    ../../modules/home-manager/home-manager.nix
-    ../../modules/home-manager/kittty/kitty.nix
+    ../../modules/home-manager/terminal
+    ../../modules/home-manager
+    ../../modules/home-manager/kittty
     inputs.nixvim.homeManagerModules.nixvim
   ];
 }
