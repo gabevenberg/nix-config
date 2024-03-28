@@ -68,7 +68,7 @@
         if config.host.git.workProfile.enable
         then [
           {
-            condition = "gitdir:~/work/";
+            condition = "gitdir:~/work/**";
             contents.user.email = config.host.git.workProfile.email;
           }
         ]
