@@ -32,7 +32,13 @@
         graph = "log --graph --topo-order --all --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
         recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
       };
-      delta.enable = true;
+      delta = {
+        enable = true;
+        options = {
+          side-by-side = true;
+          line-numbers = true;
+        };
+      };
       # difftastic.enable=true;
       # difftastic.background="dark";
       userEmail = config.host.git.profile.email;
