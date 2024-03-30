@@ -8,6 +8,8 @@
       enable = true;
       direction = "horizontal";
       insertMappings = false;
+      openMapping = ''<c-\>'';
+      terminalMappings = false;
     };
     keymaps = [
       {
