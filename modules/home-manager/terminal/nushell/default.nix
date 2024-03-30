@@ -11,7 +11,7 @@
   };
 
   home.file = {
-    ".config/nushell/scripts".source = ./scripts;
+    ".config/nushell/completions".source = ./completions;
   };
 
   programs.yazi.enableNushellIntegration = true;

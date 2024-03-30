@@ -35,5 +35,6 @@
   imports = [
     ./rainbow-delimiters.nix
     ./arial.nix
+    ./tree-sitter-nu.nix
   ];
 }
