@@ -25,9 +25,10 @@
 
   targets.genericLinux.enable = true;
   home.username = "gabe";
-  home.homeDirectory = "/home/gabe";
+  home.homeDirectory = /home/gabe;
   imports = [
     ../modules/home-manager/terminal
+    ../modules/home-manager/nvim
     ../modules/home-manager
   ];
 }

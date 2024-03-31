@@ -44,7 +44,6 @@
     ./git.nix
     ./starship.nix
     ./voice.nix
-    ./nvim
     ./zellij
     ./tiny-irc.nix
     ./pass.nix
@@ -64,6 +63,4 @@
       nix-direnv.enable = true;
     };
   };
-
-  services.syncthing.enable = true;
 }

@@ -6,6 +6,9 @@
 }: {
   programs.password-store = {
     enable = true;
+    settings={
+      PASSWORD_STORE_DIR = "$HOME/keys/password-store";
+    };
   };
 
   home.packages = with pkgs; [
@@ -13,6 +16,6 @@
   ];
 
   programs.nushell.extraEnv = ''
-    $env.PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "password-store")
+    $env.PASSWORD_STORE_DIR = ($env.HOME | path join "keys" "password-store")
   '';
 }
