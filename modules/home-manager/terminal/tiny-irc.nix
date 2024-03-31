@@ -17,14 +17,14 @@
           join = [
             "#libera"
             "#linux"
-            "#lobsters"
+            "##programming"
+            "##rust"
             "#nixos"
-            "#rust"
             "#git"
-            "#programming"
-            "#hardware"
             "#neovim"
             "#kernel"
+            "#hardware"
+            "#lobsters"
             "#gamingonlinux"
           ];
           sasl = {
