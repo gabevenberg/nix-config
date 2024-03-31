@@ -19,11 +19,18 @@
             "#linux"
             "#lobsters"
             "#nixos"
+            "#rust"
+            "#git"
+            "#programming"
+            "#hardware"
+            "#neovim"
+            "#kernel"
+            "#gamingonlinux"
           ];
           sasl = {
-            username="toric";
-            password={
-              command= "pass show libera";
+            username = "toric";
+            password = {
+              command = "pass show libera";
             };
           };
         }

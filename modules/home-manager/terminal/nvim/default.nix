@@ -21,6 +21,12 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+
+  programs.nushell.extraEnv = ''
+    $env.EDITOR = nvim
+    $env.VISUAL = nvim
+  '';
+
   imports = [
     ./keybinds.nix
     ./options.nix
