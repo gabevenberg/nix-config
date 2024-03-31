@@ -21,7 +21,8 @@ $env.EDITOR = nvim
 $env.VISUAL = nvim
 $env.PIPENV_VENV_IN_PROJECT = 1
 $env.POETRY_VIRTUALENVS_IN_PROJECT = 1
-$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent"
+$env.XDG_DATA_HOME = ( $env.HOME | path join ".local" "share" )
+$env.PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "password-store")
 
 $env.NU_LIB_DIRS = [
     ...

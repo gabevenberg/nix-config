@@ -10,6 +10,7 @@
   programs.carapace.enableZshIntegration = true;
   programs.direnv.enableZshIntegration = true;
   programs.kitty.shellIntegration.enableZshIntegration = true;
+  services.gpg-agent.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;

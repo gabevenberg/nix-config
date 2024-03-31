@@ -46,6 +46,9 @@
     ./voice.nix
     ./nvim
     ./zellij
+    ./tiny-irc.nix
+    ./pass.nix
+    ./gpg.nix
   ];
 
   programs = {
@@ -62,5 +65,5 @@
     };
   };
 
-  services.ssh-agent.enable = true;
+  services.syncthing.enable = true;
 }

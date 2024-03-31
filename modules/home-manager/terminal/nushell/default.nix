@@ -22,6 +22,7 @@
     enableNushellIntegration = true;
   };
   programs.direnv.enableNushellIntegration = true;
+  services.gpg-agent.enableNushellIntegration = true;
 
   services.pueue = {
     enable = true;
