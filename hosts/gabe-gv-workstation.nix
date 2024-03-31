@@ -30,5 +30,6 @@
     ../modules/home-manager/terminal
     ../modules/home-manager/nvim
     ../modules/home-manager
+    ../modules/home-manager/syncthing.nix
   ];
 }

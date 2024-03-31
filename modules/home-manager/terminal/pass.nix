@@ -11,10 +11,6 @@
     };
   };
 
-  home.packages = with pkgs; [
-    ripasso-cursive
-  ];
-
   programs.nushell.extraEnv = ''
     $env.PASSWORD_STORE_DIR = ($env.HOME | path join "keys" "password-store")
   '';
