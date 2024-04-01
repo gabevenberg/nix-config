@@ -9,5 +9,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    pinentryPackage = lib.mkDefault pkgs.pinentry-tty;
   };
 }
