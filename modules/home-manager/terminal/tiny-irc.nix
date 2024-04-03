@@ -29,9 +29,10 @@
           ];
           sasl = {
             username = "toric";
-            password = {
-              command = "pass show libera";
-            };
+            # password = {
+            #   command = "pass show libera";
+            # };
+            pem = "${config.home.homeDirectory}/keys/certs/irc.pem";
           };
         }
       ];

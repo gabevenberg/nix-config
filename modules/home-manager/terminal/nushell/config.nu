@@ -66,4 +66,4 @@ def git-authors [] {
     git-log --all | select name date | histogram name
 }
 
-use completions *
+# use completions *
