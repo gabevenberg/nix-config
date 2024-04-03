@@ -27,6 +27,11 @@
     fsType = "vfat";
   };
 
+  fileSystems."/home/gabe/nix-config-host" = {
+    device = "nix-config-host";
+    fsType = "virtiofs";
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/506f2ef4-c9ee-4fe6-8590-95e0821d5903";}
   ];

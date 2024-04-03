@@ -6,7 +6,7 @@
 }: {
   programs.password-store = {
     enable = true;
-    settings={
+    settings = {
       PASSWORD_STORE_DIR = "$HOME/keys/password-store";
     };
   };
