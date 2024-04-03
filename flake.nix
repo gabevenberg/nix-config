@@ -48,26 +48,12 @@
           }
         ];
       };
-      workstation-vm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
-        modules = [
-          ./hosts/workstation-vm/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.gabe = import ./hosts/workstation-vm/home.nix;
-            home-manager.extraSpecialArgs = {inherit inputs outputs;};
-          }
-        ];
-      };
+      workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs;};
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
+    homeConfiguration = {
       "gabe@archlaptop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};

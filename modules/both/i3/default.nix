@@ -6,10 +6,10 @@
 }: {
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # Let Home Manager install and manage itself on non-nixos systems.
-  programs.home-manager.enable = config.targets.genericLinux.enable;
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-  # enable flakes on non-nixos systems
+  # enable flakes
   nix =
     lib.mkIf config.targets.genericLinux.enable
     {
