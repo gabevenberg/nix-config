@@ -5,7 +5,7 @@
   ...
 }: {
   programs.nixvim = {
-    options = {
+    opts = {
       mouse = "a";
       lazyredraw = true;
       termguicolors = true;

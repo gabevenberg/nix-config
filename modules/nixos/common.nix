@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  inputs,
+  outputs,
   ...
 }: {
   # Bootloader.
@@ -18,6 +20,10 @@
 
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [
-    vi # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {inherit inputs outputs;};
 }

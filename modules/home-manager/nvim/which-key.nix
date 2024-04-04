@@ -4,7 +4,7 @@
   ...
 }: {
   programs.nixvim = {
-    options = {
+    opts = {
       timeout = true;
       timeoutlen = 300;
     };

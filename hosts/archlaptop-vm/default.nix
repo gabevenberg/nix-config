@@ -28,7 +28,7 @@ inputs.nixpkgs.lib.nixosSystem {
         user = "gabe";
         gui.enable = true;
       };
-      networking.hostName = "workstation-vm"; # Define your hostname.
+      networking.hostName = "archlaptop-vm"; # Define your hostname.
       # Set your time zone.
       time.timeZone = "America/Chicago";
 

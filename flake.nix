@@ -33,21 +33,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      archlaptop-vm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
-        modules = [
-          ./hosts/archlaptop-vm/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.gabe = import ./hosts/archlaptop-vm/home.nix;
-            home-manager.extraSpecialArgs = {inherit inputs outputs;};
-          }
-        ];
-      };
+      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs;};
       workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs;};
     };
 

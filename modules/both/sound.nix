@@ -13,4 +13,11 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  home-manager.users.${config.host.user} = {config, ...}: {
+    home.packages = with pkgs; [
+      pwvucontrol
+      helvum
+    ];
+  };
 }

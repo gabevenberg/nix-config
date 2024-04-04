@@ -4,7 +4,7 @@
   ...
 }: {
   programs.nixvim = {
-    plugins.comment-nvim.enable = true;
+    plugins.comment.enable = true;
     plugins.marks.enable = true;
     plugins.surround.enable = true;
     plugins.todo-comments.enable = true;
