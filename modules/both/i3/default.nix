@@ -170,7 +170,6 @@
         };
         gaps = {
           inner = 5;
-          outer = 2;
         };
         fonts = {
           names = ["Fira Code"];
