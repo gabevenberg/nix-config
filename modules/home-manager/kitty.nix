@@ -11,5 +11,8 @@
       name = "Fira Code";
     };
     theme = "Gruvbox Dark";
+    settings={
+      background_opacity="0.8";
+    };
   };
 }

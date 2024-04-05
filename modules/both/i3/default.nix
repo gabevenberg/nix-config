@@ -38,10 +38,21 @@
         modifier = mod;
         terminal = "kitty";
         menu = "rofi -show drun";
+        defaultWorkspace = "workspace ${ws1}";
         keybindings = {
           "${mod}+Return" = "exec ${config.xsession.windowManager.i3.config.terminal}";
           "${mod}+d" = "exec ${config.xsession.windowManager.i3.config.menu}";
           "${mod}+Shift+q" = "kill";
+
+          "${mod}+h" = "focus left";
+          "${mod}+j" = "focus down";
+          "${mod}+k" = "focus up";
+          "${mod}+l" = "focus right";
+
+          "${mod}+Shift+h" = "move left";
+          "${mod}+Shift+j" = "move down";
+          "${mod}+Shift+k" = "move up";
+          "${mod}+Shift+l" = "move right";
 
           "${mod}+Left" = "focus left";
           "${mod}+Down" = "focus down";
@@ -53,8 +64,8 @@
           "${mod}+Shift+Up" = "move up";
           "${mod}+Shift+Right" = "move right";
 
-          "${mod}+h" = "split h";
-          "${mod}+v" = "split v";
+          "${mod}+Shift+semicolon" = "split v";
+          "${mod}+Shift+backslash" = "split h";
           "${mod}+f" = "fullscreen toggle";
 
           "${mod}+e" = "layout stacking";
@@ -170,6 +181,8 @@
         };
         gaps = {
           inner = 5;
+          smartBorders = "on";
+          smartGaps = true;
         };
         fonts = {
           names = ["Fira Code"];
@@ -183,12 +196,20 @@
             {class = "helvum";}
           ];
         };
+        startup = [
+          {
+            command = "~/.fehbg";
+            notification = false;
+          }
+        ];
       };
     };
     imports = [
       ../../home-manager/kitty.nix
       ../../home-manager/rofi.nix
       ../../home-manager/dunst.nix
+      ../../home-manager/feh.nix
+      ../../home-manager/picom.nix
     ];
   };
   imports = [

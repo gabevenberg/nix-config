@@ -23,7 +23,6 @@
       ll = "ls -lh";
       la = "-lha";
       please = "sudo $(fc -ln -1)";
-      slideshow = "feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay";
       pyactivate = "source ./.venv/bin/activate";
     };
     syntaxHighlighting = {

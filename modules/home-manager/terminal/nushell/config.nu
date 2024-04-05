@@ -39,10 +39,6 @@ alias doc2pdf = loffice --convert-to pdf --headless *.docx
 #common options for sshfs
 alias sshmnt = sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15
 
-# display a slideshow of all pics in a directory, recursively
-def slideshow [delay: int = 10] {
-    feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay $delay
-}
 
 #look up something on cheat.sh
 def cheat [query: string] {
