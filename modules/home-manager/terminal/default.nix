@@ -58,6 +58,7 @@
     bat.enable = true;
     tealdeer.enable = true;
     btop.enable = true;
+    man.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
