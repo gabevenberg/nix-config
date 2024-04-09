@@ -18,6 +18,14 @@
         description = "enable GUI";
         default = false;
       };
+      isLaptop=lib.mkEnableOption {
+        description="machine is a laptop";
+        default=false;
+      };
+      isVm=lib.mkEnableOption {
+        description="machine is a virtual machine";
+        default=false;
+      };
     };
   };
 }

@@ -202,6 +202,16 @@
             notification = false;
           }
         ];
+        bars = [
+          {
+            fonts = {
+              names = ["Fira Code"];
+              size = 8.0;
+            };
+            position = "bottom";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          }
+        ];
       };
     };
     imports = [
@@ -214,5 +224,6 @@
   };
   imports = [
     ../sound.nix
+    ./i3status-rust.nix
   ];
 }
