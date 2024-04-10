@@ -4,11 +4,14 @@
   lib,
   ...
 }: {
+  services.accounts-daemon.enable = true;
   services.xserver = {
     enable = true;
     displayManager = {
       defaultSession = "none+i3";
-      lightdm.enable = true;
+      lightdm = {
+        enable = true;
+      };
     };
     windowManager.i3.enable = true;
   };
@@ -117,10 +120,10 @@
           '';
           # change brightness
           "${mod}+control+plus" = ''
-            exec --no-startup-id "brightnessctl s +1%; dunstify -h string:x-dunst-stack-tag:brightness --timeout=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
+            exec --no-startup-id "brightnessctl s +1%; dunstify -h string:x-dunst-stack-tag:brightness --timeout=500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
           '';
           "${mod}+control+minus" = ''
-            exec --no-startup-id "brightnessctl s 1%-; dunstify -h string:x-dunst-stack-tag:brightness --timeout=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
+            exec --no-startup-id "brightnessctl s 1%-; dunstify -h string:x-dunst-stack-tag:brightness --timeout=500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
           '';
 
           #screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
@@ -198,19 +201,9 @@
         };
         startup = [
           {
-            command = "~/.fehbg";
+            command = "feh --no-fehbg --bg-fill ~/.background-image";
             notification = false;
-          }
-        ];
-        bars = [
-          {
-            fonts = {
-              names = ["FiraCode Nerd Font"];
-              style = "Mono";
-              size = 10.0;
-            };
-            position = "bottom";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            always = true;
           }
         ];
       };
@@ -226,5 +219,6 @@
   imports = [
     ../sound.nix
     ./i3status-rust.nix
+    ./lockscreen.nix
   ];
 }
