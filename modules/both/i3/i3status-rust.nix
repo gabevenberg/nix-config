@@ -17,12 +17,12 @@
           blocks = [
             {
               block = "music";
-              format = " $icon {$combo.str(max_w:25,rot_interval:0.5) $play $next $prev $player.str(max_w:5,rot_interval:0.5) [$cur/$avail] |} ";
+              format = "{$icon $combo.str(max_w:25,rot_interval:0.5) $play $prev $next $player.str(max_w:5,rot_interval:0.5) [$cur/$avail] |}";
             }
             {
               block = "memory";
-              format = " $icon $mem_used_percents ";
-              format_alt = " $icon $swap_used_percents (swap)";
+              format = "$icon $mem_used_percents";
+              format_alt = "$icon $swap_used_percents (swap)";
             }
             {
               block = "cpu";
@@ -30,7 +30,7 @@
             }
             {
               block = "load";
-              format = " $icon $1m ";
+              format = "$icon $1m";
               interval = 1;
             }
             (
@@ -49,7 +49,7 @@
             {
               block = "net";
               format = "$icon {$signal_strength $ssid.str(max_w:5,rot_interval:0.5)|}";
-              format_alt = " $icon {$signal_strength $ssid.str(max_w:5,rot_interval:0.5) $frequency|} $ip | $ipv6 via $device";
+              format_alt = "$icon {$signal_strength $ssid.str(max_w:5,rot_interval:0.5) $frequency|} ipv4-$ip ipv6-$ipv6 via $device";
             }
             {
               block = "sound";
@@ -64,7 +64,7 @@
             }
             {
               block = "time";
-              format = " $timestamp.datetime(f:'%F %R') ";
+              format = "$timestamp.datetime(f:'%F %R')";
               interval = 60;
             }
           ];

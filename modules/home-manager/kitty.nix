@@ -8,7 +8,7 @@
     enable = true;
     font = {
       package = pkgs.fira-code-nerdfont;
-      name = "Fira Code";
+      name = "FiraCode Nerd Font";
     };
     theme = "Gruvbox Dark";
     settings={
