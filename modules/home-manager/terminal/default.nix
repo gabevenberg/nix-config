@@ -46,8 +46,7 @@
     ./voice.nix
     ./zellij
     ./tiny-irc.nix
-    ./pass.nix
-    ./gpg.nix
+    ./ssh-agent.nix
   ];
 
   programs = {

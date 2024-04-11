@@ -27,7 +27,7 @@ inputs.nixpkgs.lib.nixosSystem {
       host = {
         user = "gabe";
         gui.enable = true;
-        isVm=true;
+        isVm = true;
       };
       networking.hostName = "archlaptop-vm"; # Define your hostname.
       # Set your time zone.

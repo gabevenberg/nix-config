@@ -9,8 +9,14 @@
     enable = true;
     displayManager = {
       defaultSession = "none+i3";
+      autoLogin = {
+        user = config.host.user;
+        enable = true;
+      };
       lightdm = {
         enable = true;
+        greeters.gtk.enable = false;
+        greeter.enable = false;
       };
     };
     windowManager.i3.enable = true;
@@ -201,10 +207,20 @@
         };
         startup = [
           {
-            command = "feh --no-fehbg --bg-fill ~/.background-image";
+            command = "betterlockscreen --lock blur";
             notification = false;
             always = true;
           }
+          {
+            command = "betterlockscreen --wall";
+            notification = false;
+            always = true;
+          }
+          # {
+          #   command = "~/.fehbg";
+          #   notification = false;
+          #   always = true;
+          # }
         ];
       };
     };

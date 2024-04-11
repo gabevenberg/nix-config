@@ -5,7 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    lightlocker
+    betterlockscreen
   ];
   home-manager.users.${config.host.user} = {
     config,
@@ -18,15 +18,12 @@
         mod = config.xsession.windowManager.i3.config.modifier;
       in {
         "${mod}+x" = ''
-          exec --no-startup-id light-locker-command -l
+          exec --no-startup-id betterlockscreen --lock blur
         '';
       };
-      startup = [
-        {
-          command = "light-locker";
-          notification = false;
-        }
-      ];
     };
+    imports = [
+      ../../home-manager/feh.nix
+    ];
   };
 }

@@ -27,7 +27,7 @@ inputs.nixpkgs.lib.nixosSystem {
       host = {
         user = "gabe";
         gui.enable = true;
-        isVm=true;
+        isVm = true;
       };
       networking.hostName = "workstation-vm"; # Define your hostname.
       # Set your time zone.
@@ -54,6 +54,7 @@ inputs.nixpkgs.lib.nixosSystem {
         xkb.variant = "";
       };
 
+      environment.shells = with pkgs; [nushell zsh];
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
         isNormalUser = true;
