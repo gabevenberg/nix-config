@@ -11,7 +11,7 @@ $env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 # home managers path, shell aliases, and env vars are not applied to nushell.
 use std "path add"
 # $env.PATH = ($env.PATH | split row (char esep))
-path add ($env.HOME | path join ".cargo " "bin")
+path add ($env.HOME | path join ".cargo" "bin")
 path add ($env.HOME | path join ".local" "bin")
 path add ($env.HOME | path join ".nix-profile" "bin")
 path add ('/opt')
