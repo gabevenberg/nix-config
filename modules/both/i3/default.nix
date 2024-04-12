@@ -155,13 +155,13 @@
           '';
 
           "${mod}+mod1+p" = ''
-            exec --no-startup-id "playerctl play-pause"
+            exec --no-startup-id "playerctl play-pause; dunstify -h string:x-dunst-stack-tag:playerstatus --timeout=500 Player $(playerctl status)"
           '';
           "${mod}+mod1+plus" = ''
-            exec --no-startup-id "playerctl volume -- +0.1; dunstify -h string:x-dunst-stack-tag:playervol --timeout=500 Player $(playerctl volume)"
+            exec --no-startup-id "playerctl volume 0.01+; dunstify -h string:x-dunst-stack-tag:volume --timeout=500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
           '';
           "${mod}+mod1+minus" = ''
-            exec --no-startup-id "playerctl volume -- -0.1; dunstify -h string:x-dunst-stack-tag:playervol --timeout=500 Player $(playerctl volume)"
+            exec --no-startup-id "playerctl volume 0.01-; dunstify -h string:x-dunst-stack-tag:volume --timeout=500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
           '';
 
           #open volume control
