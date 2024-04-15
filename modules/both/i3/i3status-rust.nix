@@ -28,7 +28,7 @@
           blocks = [
             {
               block = "music";
-              format = "{$icon $combo.str(max_w:25,rot_interval:0.5) $play $prev $next $player.str(max_w:5,rot_interval:0.5) [$cur/$avail] |}";
+              format = "{$icon $combo.str(max_w:25,rot_interval:0.5) $play $prev $next $player.str(max_w:5,rot_interval:0.5) [$cur/$avail]|}";
             }
             {
               block = "memory";
@@ -57,7 +57,8 @@
               {
                 block = "battery";
                 driver = "upower";
-                format = "$icon $percentage {$time |}";
+                device = "DisplayDevice";
+                format = "$icon $percentage {$time|}";
               }
             )
             {
@@ -67,7 +68,7 @@
             }
             {
               block = "sound";
-              format = "$icon {$volume.bar(v:true) $volume.eng(w:2) |}";
+              format = "$icon {$volume.bar(v:true) $volume.eng(w:2)|}";
               headphones_indicator = true;
               click = [
                 {
