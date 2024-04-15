@@ -47,7 +47,10 @@
             (
               lib.mkIf
               (!osConfig.host.isVm)
-              {block = "backlight";}
+              {
+                block = "backlight";
+                missing_format = "";
+              }
             )
             (
               lib.mkIf (osConfig.host.isLaptop)
