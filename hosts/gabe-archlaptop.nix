@@ -30,5 +30,6 @@
     ../modules/home-manager/syncthing.nix
     ../modules/home-manager/beets.nix
     ../modules/home-manager/mpd/mpd.nix
+    ../modules/home-manager/email.nix
   ];
 }

@@ -31,5 +31,6 @@
     ../modules/home-manager/nvim
     ../modules/home-manager
     ../modules/home-manager/syncthing.nix
+    ../modules/home-manager/email.nix
   ];
 }
