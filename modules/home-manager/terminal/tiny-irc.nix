@@ -17,15 +17,17 @@
           join = [
             "#libera"
             "#linux"
+            "#archlinux"
+            "#nixos"
+            "#neovim"
             "##programming"
             "##rust"
-            "#nixos"
             "#git"
-            "#neovim"
             "#kernel"
             "#hardware"
             "#lobsters"
             "#gamingonlinux"
+            "##chat"
           ];
           sasl = {
             username = "toric";
