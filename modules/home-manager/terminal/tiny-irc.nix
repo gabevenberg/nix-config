@@ -39,6 +39,8 @@
         }
       ];
       defaults = {
+        # ignore join/leave messages
+        ignore = true;
         nicks = ["toric"];
         realname = "Gabe Venberg";
         tls = true;
