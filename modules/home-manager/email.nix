@@ -4,12 +4,26 @@
   lib,
   ...
 }: {
-  programs.himalaya.enable = true;
+  home.packages = with pkgs; [
+    w3m
+  ];
 
   programs.aerc = {
     enable = true;
-    extraConfig.general.unsafe-accounts-conf = true;
+    extraConfig = {
+      general.unsafe-accounts-conf = true;
+      viwer = {
+        pager = "less";
+      };
+      filters = {
+        "text/plain" = "colorize";
+        "text/html" = "html | colorize";
+      };
+    };
   };
+
+  programs.himalaya.enable = true;
+
   accounts.email.accounts.gmail = {
     address = "gabevenberg@gmail.com";
     primary = true;
