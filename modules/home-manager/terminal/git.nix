@@ -28,8 +28,10 @@
     programs.git = {
       enable = true;
       aliases = {
-        hist = "log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'";
-        graph = "log --graph --topo-order --all --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
+        tree = "log-long-line --graph --topo-order --all --simplify-by-decoration";
+        hist = "log-long-line --graph --date-order --date=short ";
+        graph = "log-long-line --graph --topo-order --all";
+        log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
         recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
       };
       delta = {
