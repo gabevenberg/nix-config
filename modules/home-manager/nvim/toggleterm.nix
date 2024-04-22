@@ -6,10 +6,12 @@
   programs.nixvim = {
     plugins.toggleterm = {
       enable = true;
-      direction = "horizontal";
-      insertMappings = false;
-      openMapping = ''<c-\>'';
-      terminalMappings = false;
+      settings = {
+        direction = "horizontal";
+        insert_mappings = false;
+        terminal_mappings = false;
+        open_mapping = ''[[<c-\>]]'';
+      };
     };
     keymaps = [
       {
