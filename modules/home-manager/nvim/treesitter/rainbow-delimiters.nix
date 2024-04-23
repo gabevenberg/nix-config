@@ -5,7 +5,7 @@
   ...
 }: {
   config =
-    lib.mkIf config.host.nvim.enable-treesitter
+    lib.mkIf config.home.nvim.enable-treesitter
     {
       programs.nixvim = {
         plugins.rainbow-delimiters = {

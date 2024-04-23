@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    host.nvim.enable-treesitter = lib.mkOption {
+    home.nvim.enable-treesitter = lib.mkOption {
       default = false;
       type = lib.types.bool;
       description = ''
@@ -14,9 +14,9 @@
     };
   };
   config =
-    lib.mkIf config.host.nvim.enable-treesitter
+    lib.mkIf config.home.nvim.enable-treesitter
     {
-      host.nvim.enable-completions = true;
+      home.nvim.enable-completions = true;
       programs.nixvim = {
         plugins.treesitter = {
           enable = true;

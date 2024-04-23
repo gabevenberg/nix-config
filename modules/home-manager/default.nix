@@ -18,4 +18,7 @@
       settings.max-jobs = "auto";
       gc.automatic = true;
     };
+  imports = [
+    ../hostopts.nix
+  ];
 }

@@ -5,21 +5,25 @@
   ...
 }: {
   options = {
-    host.git.workProfile = {
-      enable = lib.mkEnableOption "git work profile";
-      email = lib.mkOption {
-        type = lib.types.str;
-        description = "email for work profile.";
-      };
-    };
-    host.git.profile = {
-      email = lib.mkOption {
-        type = lib.types.str;
-        description = "email for main profile";
-      };
-      name = lib.mkOption {
-        type = lib.types.str;
-        description = "name for main profile";
+    home = {
+      git = {
+        workProfile = {
+          enable = lib.mkEnableOption "git work profile";
+          email = lib.mkOption {
+            type = lib.types.str;
+            description = "email for work profile.";
+          };
+        };
+        profile = {
+          email = lib.mkOption {
+            type = lib.types.str;
+            description = "email for main profile";
+          };
+          name = lib.mkOption {
+            type = lib.types.str;
+            description = "name for main profile";
+          };
+        };
       };
     };
   };
@@ -43,8 +47,8 @@
       };
       # difftastic.enable=true;
       # difftastic.background="dark";
-      userEmail = config.host.git.profile.email;
-      userName = config.host.git.profile.name;
+      userEmail = config.home.git.profile.email;
+      userName = config.home.git.profile.name;
       extraConfig = {
         init = {
           defaultBranch = "main";
@@ -73,11 +77,11 @@
         };
       };
       includes =
-        if config.host.git.workProfile.enable
+        if config.home.git.workProfile.enable
         then [
           {
             condition = "gitdir:~/work/**";
-            contents.user.email = config.host.git.workProfile.email;
+            contents.user.email = config.home.git.workProfile.email;
           }
         ]
         else [];

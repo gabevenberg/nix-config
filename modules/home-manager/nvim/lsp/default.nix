@@ -5,13 +5,13 @@
   ...
 }: {
   options = {
-    host.nvim.enable-lsp = lib.mkEnableOption "nvim lsp";
+    home.nvim.enable-lsp = lib.mkEnableOption "nvim lsp";
   };
 
   config =
-    lib.mkIf config.host.nvim.enable-lsp
+    lib.mkIf config.home.nvim.enable-lsp
     {
-      host.nvim.enable-completions = true;
+      home.nvim.enable-completions = true;
       programs.nixvim = {
         plugins.lsp = {
           enable = true;

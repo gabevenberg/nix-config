@@ -5,14 +5,14 @@
   ...
 }: {
   options = {
-    host.nvim.enable-completions =
+    home.nvim.enable-completions =
       (lib.mkEnableOption "basic completion in nvim")
       // {
-        default = config.host.nvim.enable-treesitter || config.host.nvim.enable-lsp;
+        default = false;
       };
   };
   config =
-    lib.mkIf config.host.nvim.enable-completions
+    lib.mkIf config.home.nvim.enable-completions
     {
       programs.nixvim = {
         plugins.luasnip.enable = true;

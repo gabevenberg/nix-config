@@ -13,7 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
-    ../../modules/commonopts.nix
+    ../../modules/hostopts.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/printing.nix
     ../../modules/both/sound.nix
@@ -67,8 +67,9 @@ inputs.nixpkgs.lib.nixosSystem {
         ];
       };
 
-      home-manager.users.${config.host.user} = {inputs, ...}: {
-        host = {
+      home-manager.users.${config.host.user} = {inputs, osConfig, ...}: {
+        host=osConfig.host;
+        home = {
           enable-speech = true;
           nvim = {
             enable-lsp = true;

@@ -5,21 +5,21 @@
   ...
 }: {
   services.accounts-daemon.enable = true;
+  services.displayManager = {
+    defaultSession = "none+i3";
+    autoLogin = {
+      user = config.host.user;
+      enable = true;
+    };
+  };
   services.xserver = {
     enable = true;
-    displayManager = {
-      defaultSession = "none+i3";
-      autoLogin = {
-        user = config.host.user;
-        enable = true;
-      };
-      lightdm = {
-        enable = true;
-        greeters.gtk.enable = false;
-        greeter.enable = false;
-      };
-    };
     windowManager.i3.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters.gtk.enable = false;
+      greeter.enable = false;
+    };
   };
   home-manager.users.${config.host.user} = {config, ...}: {
     home.packages = with pkgs; [
