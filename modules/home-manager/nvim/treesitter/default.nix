@@ -29,7 +29,22 @@
         extraPlugins = with pkgs.vimPlugins; [
           treesj
         ];
-        extraConfigLua = ''require("treesj").setup({})'';
+        extraConfigLua = ''
+          require("treesj").setup({
+              use_default_keymaps=false,
+          })
+        '';
+        keymaps = [
+          {
+            action = ":TSJToggle<CR>";
+            key = "<leader>j";
+            mode = "n";
+            options = {
+              silent = true;
+              desc = "tree sitter join toggle";
+            };
+          }
+        ];
       };
     };
   imports = [
