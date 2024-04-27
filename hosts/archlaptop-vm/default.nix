@@ -66,8 +66,12 @@ inputs.nixpkgs.lib.nixosSystem {
         ];
       };
 
-      home-manager.users.${config.host.user} = {inputs, osConfig, ...}: {
-        host=osConfig.host;
+      home-manager.users.${config.host.user} = {
+        inputs,
+        osConfig,
+        ...
+      }: {
+        host = osConfig.host;
         home = {
           enable-speech = true;
           nvim = {
@@ -86,7 +90,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../modules/home-manager/terminal
           ../../modules/home-manager/nvim
           ../../modules/home-manager
-          ../modules/home-manager/email.nix
+          ../../modules/home-manager/email.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };
