@@ -24,11 +24,6 @@
             nushell.enable = true;
             pyright.enable = true;
             ruff-lsp.enable = true;
-            rust-analyzer = {
-              enable = true;
-              installCargo = true;
-              installRustc = true;
-            };
             texlab.enable = true;
             typst-lsp.enable = true;
             taplo.enable = true;

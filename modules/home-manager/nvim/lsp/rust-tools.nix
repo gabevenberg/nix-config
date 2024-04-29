@@ -10,6 +10,10 @@
       programs.nixvim = {
         plugins.rust-tools = {
           enable = true;
+          server = {
+            checkOnSave = true;
+            check.command = "clippy";
+          };
         };
       };
     };
