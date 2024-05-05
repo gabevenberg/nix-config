@@ -53,22 +53,8 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/gabe-archlaptop.nix
-          nixvim.homeManagerModules.nixvim
-        ];
-      };
-      "gabe@gv-workstation" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/gabe-gv-workstation.nix
-          nixvim.homeManagerModules.nixvim
-        ];
-      };
+      "gabe@archlaptop" = import ./hosts/gabe-archlaptop.nix {inherit inputs outputs;};
+      "gabe@gv-workstation" = import ./hosts/gabe-gv-workstation.nix {inherit inputs outputs;};
     };
   };
 }
