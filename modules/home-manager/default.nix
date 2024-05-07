@@ -14,9 +14,15 @@
     lib.mkIf config.targets.genericLinux.enable
     {
       package = pkgs.nix;
-      settings.experimental-features = ["nix-command" "flakes"];
-      settings.max-jobs = "auto";
-      gc.automatic = true;
+      settings = {
+        experimental-features = ["nix-command" "flakes"];
+        max-jobs = "auto";
+      };
+      gc = {
+        automatic = true;
+        frequency = "weekly";
+        options = "--delete-older-than 30d";
+      };
     };
   imports = [
     ../hostopts.nix
