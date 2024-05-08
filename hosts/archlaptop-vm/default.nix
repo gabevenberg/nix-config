@@ -89,7 +89,7 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../modules/home-manager/terminal
           ../../modules/home-manager/nvim
-          ../../modules/home-manager
+          ../../modules/home-manager/common.nix
           ../../modules/home-manager/email.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];

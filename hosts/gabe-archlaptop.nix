@@ -28,6 +28,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
           workProfile.enable = false;
         };
       };
+      host.isLaptop = true;
 
       targets.genericLinux.enable = true;
       home.username = "gabe";
@@ -35,7 +36,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       imports = [
         ../modules/home-manager/terminal
         ../modules/home-manager/nvim
-        ../modules/home-manager
+        ../modules/home-manager/common.nix
         ../modules/home-manager/syncthing.nix
         ../modules/home-manager/beets.nix
         ../modules/home-manager/mpd/mpd.nix

@@ -26,6 +26,10 @@
         description = "machine is a virtual machine";
         default = false;
       };
+      isSever = lib.mkEnableOption {
+        description = "machine is primarily a server";
+        default = false;
+      };
     };
   };
 }

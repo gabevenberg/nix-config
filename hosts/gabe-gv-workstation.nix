@@ -39,7 +39,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       imports = [
         ../modules/home-manager/terminal
         ../modules/home-manager/nvim
-        ../modules/home-manager
+        ../modules/home-manager/common.nix
         ../modules/home-manager/syncthing.nix
         ../modules/home-manager/email.nix
         ../modules/home-manager/beets.nix

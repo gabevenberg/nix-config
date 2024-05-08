@@ -9,7 +9,6 @@
     just
     fd
     sd
-    scc
     tre-command
     diskonaut
     hyperfine
@@ -47,6 +46,7 @@
     ./zellij
     ./tiny-irc.nix
     ./ssh-agent.nix
+    ./direnv
   ];
 
   programs = {
@@ -58,9 +58,5 @@
     tealdeer.enable = true;
     btop.enable = true;
     man.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
   };
 }
