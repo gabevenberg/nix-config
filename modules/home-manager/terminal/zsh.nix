@@ -30,7 +30,7 @@
         #select first item when you press tab the first time.
         setopt MENU_COMPLETE
       ''
-      (lib.mkif (!config.programs.starship.enable) ''
+      (lib.mkIf (!config.programs.starship.enable) ''
         autoload -U promptinit
         promptinit
         autoload -U colors

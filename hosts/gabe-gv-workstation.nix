@@ -37,7 +37,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home.username = "gabe";
       home.homeDirectory = /home/gabe;
       imports = [
-        ../modules/home-manager/terminal
+        ../roles/terminal.nix
         ../modules/home-manager/nvim
         ../modules/home-manager/common.nix
         ../modules/home-manager/syncthing.nix

@@ -87,7 +87,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../modules/home-manager/terminal
+          ../../roles/terminal.nix
           ../../modules/home-manager/nvim
           ../../modules/home-manager/common.nix
           ../../modules/home-manager/email.nix

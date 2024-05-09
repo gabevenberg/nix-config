@@ -4,14 +4,18 @@
   lib,
   ...
 }: {
+  imports = [
+    ../modules/home-manager/terminal/zsh.nix
+    ../modules/home-manager/terminal/git.nix
+    ../modules/home-manager/terminal/zellij
+    ../modules/home-manager/terminal/ssh-agent.nix
+    ../modules/home-manager/terminal/direnv.nix
+  ];
   home.packages = with pkgs; [
     sshfs
     just
     fd
     sd
-    tre-command
-    diskonaut
-    hyperfine
     curl
   ];
 
@@ -37,25 +41,11 @@
     sshmnt = "sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15";
   };
 
-  imports = [
-    ./nushell
-    ./zsh.nix
-    ./git.nix
-    ./starship.nix
-    ./voice.nix
-    ./zellij
-    ./tiny-irc.nix
-    ./ssh-agent.nix
-    ./direnv
-  ];
-
   programs = {
     yazi.enable = true;
-    zoxide.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     bat.enable = true;
-    tealdeer.enable = true;
     btop.enable = true;
     man.enable = true;
   };
