@@ -5,24 +5,22 @@
   ...
 }: {
   options = {
-    home = {
-      git = {
-        workProfile = {
-          enable = lib.mkEnableOption "git work profile";
-          email = lib.mkOption {
-            type = lib.types.str;
-            description = "email for work profile.";
-          };
+    home.git = {
+      workProfile = {
+        enable = lib.mkEnableOption "git work profile";
+        email = lib.mkOption {
+          type = lib.types.str;
+          description = "email for work profile.";
         };
-        profile = {
-          email = lib.mkOption {
-            type = lib.types.str;
-            description = "email for main profile";
-          };
-          name = lib.mkOption {
-            type = lib.types.str;
-            description = "name for main profile";
-          };
+      };
+      profile = {
+        email = lib.mkOption {
+          type = lib.types.str;
+          description = "email for main profile";
+        };
+        name = lib.mkOption {
+          type = lib.types.str;
+          description = "name for main profile";
         };
       };
     };

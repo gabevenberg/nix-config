@@ -13,6 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
+    ../../roles/nixos/graphical-vm.nix
     ../../modules/hostopts.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/printing.nix
@@ -54,11 +55,13 @@ inputs.nixpkgs.lib.nixosSystem {
         xkb.variant = "";
       };
 
+      programs.zsh.enable = true;
+      environment.shells = with pkgs; [zsh];
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
         isNormalUser = true;
         description = "Gabe Venberg";
-        shell = pkgs.nushell;
+        shell = pkgs.zsh;
         extraGroups = ["wheel"];
         packages = with pkgs; [
           firefox
@@ -74,10 +77,6 @@ inputs.nixpkgs.lib.nixosSystem {
         host = osConfig.host;
         home = {
           enable-speech = true;
-          nvim = {
-            enable-lsp = true;
-            enable-treesitter = true;
-          };
           git = {
             profile = {
               name = "Gabe Venberg";
@@ -87,7 +86,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/terminal.nix
+          ../../roles/home-manager/terminal.nix
           ../../modules/home-manager/nvim
           ../../modules/home-manager/common.nix
           ../../modules/home-manager/email.nix

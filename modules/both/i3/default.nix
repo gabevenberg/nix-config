@@ -25,6 +25,8 @@
     home.packages = with pkgs; [
       maim
       brightnessctl
+      arandr
+      dex
     ];
     services.playerctld.enable = true;
     xsession.enable = true;
@@ -209,12 +211,17 @@
           {
             command = "betterlockscreen --lock blur";
             notification = false;
-            always = true;
+            always = false;
           }
           {
             command = "betterlockscreen --wall";
             notification = false;
             always = true;
+          }
+          {
+            command = "dex --autostart";
+            notification = false;
+            always = false;
           }
           # {
           #   command = "~/.fehbg";

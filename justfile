@@ -19,3 +19,6 @@ format:
 home-gc:
     home-manager expire-generations -7days
     nix store gc
+
+nixos-gc:
+    sudo nix-collect-garbage --delete-older-than 7d
