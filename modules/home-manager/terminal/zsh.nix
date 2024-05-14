@@ -64,7 +64,7 @@
     };
     shellAliases = {
       ll = "ls -lh";
-      la = "-lha";
+      la = "ls -lha";
       please = "sudo $(fc -ln -1)";
       pyactivate = "source ./.venv/bin/activate";
     };
