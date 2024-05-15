@@ -29,6 +29,15 @@
         setopt COMPLETE_ALIASES
         #select first item when you press tab the first time.
         setopt MENU_COMPLETE
+        #case insensitive globbing
+        setopt NO_CASE_GLOB
+        #sort globs that expand to numbers by number rather than alphabeticly
+        setopt NUMERIC_GLOB_SORT
+        #allows for some neat globbing.
+        setopt EXTENDED_GLOB
+        #allow backspacing beyond the point you entered insert mode:
+        bindkey -v '^?' backward-delete-char
+        bindkey "^W" backward-kill-word
       ''
       (lib.mkIf (!config.programs.starship.enable) ''
         autoload -U promptinit
@@ -58,6 +67,8 @@
       '')
     ];
     autocd = true;
+    autosuggestion.enable = true;
+    defaultKeymap = "viins";
     history = {
       ignoreAllDups = true;
       extended = true;

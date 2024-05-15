@@ -35,12 +35,12 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home.homeDirectory = /home/gabe;
       imports = [
         ../roles/home-manager/terminal.nix
-        ../modules/home-manager/nvim
         ../modules/home-manager/common.nix
         ../modules/home-manager/syncthing.nix
         ../modules/home-manager/beets.nix
         ../modules/home-manager/mpd/mpd.nix
         ../modules/home-manager/email.nix
+        ../modules/home-manager/terminal/voice.nix
       ];
     })
     inputs.nixvim.homeManagerModules.nixvim

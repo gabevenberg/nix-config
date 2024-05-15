@@ -8,8 +8,8 @@
     ./minimal-terminal.nix
     ../../modules/home-manager/terminal/nushell
     ../../modules/home-manager/terminal/starship.nix
-    ../../modules/home-manager/terminal/voice.nix
     ../../modules/home-manager/terminal/tiny-irc.nix
+    ../../modules/home-manager/nvim
   ];
   home.packages = with pkgs; [
     tre-command

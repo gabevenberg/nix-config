@@ -2,12 +2,15 @@ default:
     just --list
 
 nixos target=`hostname`:
+    git add -AN
     sudo nixos-rebuild --flake .#{{target}} switch
 
 home-manager target=(`whoami`+"@"+`hostname`):
+    git add -AN
     home-manager --flake .#{{target}} switch
 
 check-home-manager target=(`whoami`+"@"+`hostname`):
+    git add -AN
     home-manager build --no-out-link --flake .#{{target}}
 
 bootstrap-home-manager target=(`whoami`+"@"+`hostname`):
