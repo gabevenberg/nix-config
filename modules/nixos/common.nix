@@ -5,9 +5,6 @@
   outputs,
   ...
 }: {
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''

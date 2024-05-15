@@ -83,6 +83,10 @@ inputs.nixpkgs.lib.nixosSystem {
       # Enable the OpenSSH daemon.
       services.openssh.enable = true;
 
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
       # networking.firewall.allowedUDPPorts = [ ... ];

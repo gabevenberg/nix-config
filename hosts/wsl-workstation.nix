@@ -9,22 +9,24 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.nixos-wsl.nixosModules.default
-    ../../modules/hostopts.nix
-    ../../modules/nixos/common.nix
+    ../modules/hostopts.nix
+    ../modules/nixos/common.nix
     ({
       config,
       pkgs,
       ...
     }: {
-      wsl.enable=true;
+      wsl.enable = true;
+      wsl.wslConf.network.generateResolvConf = false;
+      networking.nameservers = ["1.1.1.1" "8.8.8.8"];
       host = {
-        user = "gabe";
+        user = "nixos";
       };
-      networking.hostName = "workstation-vm"; # Define your hostname.
+      networking.hostName = "gv-wsl"; # Define your hostname.
       # Set your time zone.
       time.timeZone = "America/Chicago";
 
-      programs.zsh.enable=true;
+      programs.zsh.enable = true;
       environment.shells = with pkgs; [zsh];
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
@@ -40,7 +42,6 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host = osConfig.host;
         home = {
-          enable-speech = true;
           nvim = {
             enable-lsp = true;
             enable-treesitter = true;
@@ -54,8 +55,8 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
-          ../../modules/home-manager/common.nix
+          ../roles/home-manager/terminal.nix
+          ../modules/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };
