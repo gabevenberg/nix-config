@@ -64,7 +64,6 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host = osConfig.host;
         home = {
-          enable-speech = true;
           nvim = {
             enable-lsp = true;
             enable-treesitter = true;

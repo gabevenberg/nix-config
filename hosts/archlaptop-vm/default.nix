@@ -18,7 +18,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nixos/common.nix
     ../../modules/nixos/printing.nix
     ../../modules/both/sound.nix
-    ../../modules/both/networking.nix
+    ../../modules/nixos/networking.nix
     ../../modules/both/i3
     ({
       config,
@@ -64,7 +64,6 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host = osConfig.host;
         home = {
-          enable-speech = true;
           git = {
             profile = {
               name = "Gabe Venberg";
