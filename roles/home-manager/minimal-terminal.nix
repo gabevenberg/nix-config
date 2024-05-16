@@ -10,6 +10,7 @@
     ../../modules/home-manager/terminal/zellij
     ../../modules/home-manager/terminal/ssh-agent.nix
     ../../modules/home-manager/terminal/direnv.nix
+    ../../modules/home-manager/terminal/btop.nix
   ];
   home.packages = with pkgs; [
     sshfs
@@ -46,7 +47,6 @@
     fzf.enable = true;
     ripgrep.enable = true;
     bat.enable = true;
-    btop.enable = true;
     man.enable = true;
   };
 }
