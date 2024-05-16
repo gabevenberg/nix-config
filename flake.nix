@@ -62,6 +62,7 @@
       "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs outputs;};
       "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs outputs;};
       "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
+      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
     };
   };
 }
