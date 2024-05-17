@@ -20,11 +20,6 @@
     curl
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-  };
-
   home.sessionVariables = {
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;

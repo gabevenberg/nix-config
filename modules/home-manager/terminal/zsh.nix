@@ -12,6 +12,9 @@
   programs.kitty.shellIntegration.enableZshIntegration = true;
   services.gpg-agent.enableZshIntegration = true;
   programs.carapace.enableZshIntegration = false;
+  home.packages = with pkgs; [
+    curl
+  ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -38,6 +41,13 @@
         #allow backspacing beyond the point you entered insert mode:
         bindkey -v '^?' backward-delete-char
         bindkey "^W" backward-kill-word
+
+        #cheat.sh is a wonderful tool, the less typing needed the better.
+        cheat(){
+          for i in $*; do;
+          curl cheat.sh/$i
+          done
+        }
       ''
       (lib.mkIf (!config.programs.starship.enable) ''
         autoload -U promptinit
