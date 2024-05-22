@@ -64,5 +64,7 @@
       "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
     };
+
+    templates=import ./templates {inherit inputs outputs;};
   };
 }

@@ -1,0 +1,21 @@
+baseURL = "https://example.com"
+title = "Title"
+enableRobotsTXT = true
+
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+strikethrough = true
+table = true
+taskList = true
+[markup.goldmark.extensions.extras.insert]
+enable = true
+[markup.goldmark.extensions.extras.mark]
+enable = true
+[markup.goldmark.extensions.extras.subscript]
+enable = true
+[markup.goldmark.extensions.extras.superscript]
+enable = true
+
+[security]
+enableInlineShortcodes = true
