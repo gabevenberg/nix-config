@@ -19,10 +19,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nixos/printing.nix
     ../../modules/both/sound.nix
     ../../modules/nixos/networking.nix
+    ../../modules/nixos/nfsv2.nix
     ../../modules/both/i3
     ({
       config,
       pkgs,
+      lib,
       ...
     }: {
       host = {
@@ -84,6 +86,11 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       # Enable the OpenSSH daemon.
       services.openssh.enable = true;
+
+      services.nfs.server = {
+        enable = true;
+        exports = "/srv/nfs *(rw,sync,no_root_squash,no_subtree_check)";
+      };
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
