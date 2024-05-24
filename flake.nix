@@ -8,6 +8,8 @@
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     home-manager = {
@@ -18,14 +20,30 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.home-manager.follows="home-manager";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+      inputs.flake-compat.follows = "flake-compat";
+    };
+
+# just for follows statements
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-compat.url="github:edolstra/flake-compat";
   };
 
   outputs = {
     self,
     nixpkgs,
-    home-manager,
-    nixvim,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -54,6 +72,7 @@
       archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs;};
       workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs outputs;};
+      gv-nfs-panda = import ./hosts/nfs-panda {inherit inputs outputs;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -65,6 +84,6 @@
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
     };
 
-    templates=import ./templates {inherit inputs outputs;};
+    templates = import ./templates {inherit inputs outputs;};
   };
 }

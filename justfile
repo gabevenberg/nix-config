@@ -11,7 +11,7 @@ home-manager target=(`whoami`+"@"+`hostname`):
 
 check:
     git add -AN
-    nix flake check
+    nix flake check --keep-going
 
 bootstrap-home-manager target=(`whoami`+"@"+`hostname`):
     nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake .#{{target}} switch
