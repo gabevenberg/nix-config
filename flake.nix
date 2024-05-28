@@ -21,7 +21,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
-      inputs.home-manager.follows="home-manager";
+      inputs.home-manager.follows = "home-manager";
     };
 
     disko = {
@@ -36,14 +36,21 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
-# just for follows statements
+    #https://unmovedcentre.com/technology/2024/03/22/secrets-management.html
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # just for follows statements
     flake-utils.url = "github:numtide/flake-utils";
-    flake-compat.url="github:edolstra/flake-compat";
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = {
     self,
     nixpkgs,
+    deploy-rs,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -61,6 +68,10 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             just
+            deploy-rs.packages.${system}.deploy-rs
+            age
+            ssh-to-age
+            sops
           ];
         };
       }
