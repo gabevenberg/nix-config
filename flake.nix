@@ -72,7 +72,6 @@
       archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs;};
       workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs outputs;};
-      gv-nfs-panda = import ./hosts/nfs-panda {inherit inputs outputs;};
     };
 
     # Standalone home-manager configuration entrypoint
