@@ -1,0 +1,22 @@
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports=[
+  ./nushell
+  ./zellij
+  ./btop.nix
+  ./direnv.nix
+  ./git.nix
+  ./gpg.nix
+  ./irssi.nix
+  ./pass.nix
+  ./ssh-agent.nix
+  ./starship.nix
+  ./tiny-irc.nix
+  ./voice.nix
+  ./zsh.nix
+  ];
+}

@@ -4,6 +4,8 @@
   lib,
   ...
 }: {
+  options.user.tiny.enable=lib.mkEnableOption "enable tiny irc client";
+  config=lib.mkIf config.user.tiny.enable {
   programs.tiny = {
     enable = true;
     settings = {
@@ -31,9 +33,6 @@
           ];
           sasl = {
             username = "toric";
-            # password = {
-            #   command = "pass show libera";
-            # };
             pem = "${config.home.homeDirectory}/keys/certs/irc.pem";
           };
         }
@@ -47,4 +46,4 @@
       };
     };
   };
-}
+};}

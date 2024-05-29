@@ -5,16 +5,18 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/terminal/zsh.nix
-    ../../modules/home-manager/terminal/git.nix
-    ../../modules/home-manager/terminal/zellij
-    ../../modules/home-manager/terminal/ssh-agent.nix
-    ../../modules/home-manager/terminal/direnv.nix
-    ../../modules/home-manager/terminal/btop.nix
+    ../../modules/home-manager/terminal
     ../../modules/home-manager/nvim
   ];
 
-  user.nvim.enable = true;
+  user = {
+    btop.enable = true;
+    direnv.enable = true;
+    git.enable = true;
+    ssh-agent.enable = true;
+    zsh.enable = true;
+    nvim.enable = true;
+  };
 
   home.packages = with pkgs; [
     sshfs
@@ -44,6 +46,7 @@
   programs = {
     yazi.enable = true;
     fzf.enable = true;
+    eza.enable = true;
     ripgrep.enable = true;
     bat.enable = true;
     man.enable = true;

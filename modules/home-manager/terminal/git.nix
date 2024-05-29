@@ -6,6 +6,7 @@
 }: {
   options = {
     user.git = {
+      enable= lib.mkEnableOption "enable git";
       workProfile = {
         enable = lib.mkEnableOption "git work profile";
         email = lib.mkOption {
@@ -26,7 +27,7 @@
     };
   };
 
-  config = {
+  config = lib.mkIf config.user.git.enable {
     programs.git = {
       enable = true;
       aliases = {

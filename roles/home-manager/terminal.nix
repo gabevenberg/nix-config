@@ -11,9 +11,14 @@
     ../../modules/home-manager/terminal/tiny-irc.nix
   ];
 
-  user.nvim = {
-    enable-lsp = true;
-    enable-treesitter = true;
+  user = {
+    nushell.enable = true;
+    starship.enable = true;
+    tiny.enable = true;
+    nvim = {
+      enable-lsp = true;
+      enable-treesitter = true;
+    };
   };
 
   home.packages = with pkgs; [
@@ -21,11 +26,6 @@
     diskonaut
     hyperfine
   ];
-
-  home.sessionVariables = {
-    PIPENV_VENV_IN_PROJECT = 1;
-    POETRY_VIRTUALENVS_IN_PROJECT = 1;
-  };
 
   programs = {
     zoxide.enable = true;
