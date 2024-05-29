@@ -4,15 +4,10 @@
   lib,
   ...
 }: {
-  options = {
-    home.nvim.enable-completions =
-      (lib.mkEnableOption "basic completion in nvim")
-      // {
-        default = false;
-      };
-  };
+  options.user.nvim.enable-completions = lib.mkEnableOption "basic completion in nvim";
+
   config =
-    lib.mkIf config.home.nvim.enable-completions
+    lib.mkIf (config.user.nvim.enable-completions && config.user.nvim.enable)
     {
       programs.nixvim = {
         plugins.luasnip.enable = true;

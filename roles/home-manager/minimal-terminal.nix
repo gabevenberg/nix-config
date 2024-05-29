@@ -11,7 +11,11 @@
     ../../modules/home-manager/terminal/ssh-agent.nix
     ../../modules/home-manager/terminal/direnv.nix
     ../../modules/home-manager/terminal/btop.nix
+    ../../modules/home-manager/nvim
   ];
+
+  user.nvim.enable = true;
+
   home.packages = with pkgs; [
     sshfs
     just

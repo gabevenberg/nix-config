@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    home.enable-speech = lib.mkEnableOption "espeak";
+    user.enable-speech = lib.mkEnableOption "espeak";
   };
 
   config =
-    lib.mkIf config.home.enable-speech
+    lib.mkIf config.user.enable-speech
     {
       home.shellAliases = {
         say = "espeak -p 10 -s 150 -a 200";

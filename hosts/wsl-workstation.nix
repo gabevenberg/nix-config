@@ -41,7 +41,7 @@ inputs.nixpkgs.lib.nixosSystem {
         ...
       }: {
         host = osConfig.host;
-        home = {
+        user = {
           nvim = {
             enable-lsp = true;
             enable-treesitter = true;

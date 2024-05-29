@@ -3,9 +3,9 @@
   outputs,
   ...
 }: {
-  default={
-    path=./default;
-    description="a basic blank devshell flake";
+  default = {
+    path = ./default;
+    description = "a basic blank devshell flake";
   };
   hugo = {
     path = ./hugo;

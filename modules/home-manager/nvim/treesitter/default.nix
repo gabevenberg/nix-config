@@ -4,19 +4,12 @@
   lib,
   ...
 }: {
-  options = {
-    home.nvim.enable-treesitter = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = ''
-        enable nvim treesitter
-      '';
-    };
-  };
+  options.user.nvim.enable-treesitter = lib.mkEnableOption "enable nvim treesitter";
+
   config =
-    lib.mkIf config.home.nvim.enable-treesitter
+    lib.mkIf (config.user.nvim.enable-treesitter && config.user.nvim.enable)
     {
-      home.nvim.enable-completions = true;
+      user.nvim.enable-completions = true;
       programs.nixvim = {
         plugins.treesitter = {
           enable = true;

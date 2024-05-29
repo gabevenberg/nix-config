@@ -4,14 +4,12 @@
   lib,
   ...
 }: {
-  options = {
-    home.nvim.enable-lsp = lib.mkEnableOption "nvim lsp";
-  };
+  options.user.nvim.enable-lsp = lib.mkEnableOption "nvim lsp";
 
   config =
-    lib.mkIf config.home.nvim.enable-lsp
+    lib.mkIf (config.user.nvim.enable-lsp && config.user.nvim.enable)
     {
-      home.nvim.enable-completions = true;
+      user.nvim.enable-completions = true;
       programs.nixvim = {
         plugins.lsp = {
           enable = true;

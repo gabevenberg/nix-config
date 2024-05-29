@@ -9,8 +9,13 @@
     ../../modules/home-manager/terminal/nushell
     ../../modules/home-manager/terminal/starship.nix
     ../../modules/home-manager/terminal/tiny-irc.nix
-    ../../modules/home-manager/nvim
   ];
+
+  user.nvim = {
+    enable-lsp = true;
+    enable-treesitter = true;
+  };
+
   home.packages = with pkgs; [
     tre-command
     diskonaut

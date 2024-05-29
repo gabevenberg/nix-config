@@ -60,7 +60,7 @@ inputs.nixpkgs.lib.nixosSystem {
         ...
       }: {
         host = osConfig.host;
-        home = {
+        user = {
           git = {
             profile = {
               name = "Gabe Venberg";

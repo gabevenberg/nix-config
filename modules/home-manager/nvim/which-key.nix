@@ -1,15 +1,18 @@
 {
-  configs,
+  config,
+  lib,
   pkgs,
   ...
 }: {
-  programs.nixvim = {
-    opts = {
-      timeout = true;
-      timeoutlen = 300;
-    };
-    plugins.which-key = {
-      enable = true;
+  config = lib.mkIf config.user.nvim.enable {
+    programs.nixvim = {
+      opts = {
+        timeout = true;
+        timeoutlen = 300;
+      };
+      plugins.which-key = {
+        enable = true;
+      };
     };
   };
 }

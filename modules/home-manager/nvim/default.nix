@@ -3,29 +3,33 @@
   pkgs,
   helpers,
   lib,
+  config,
   ...
 }: {
-  programs.nixvim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-
-    colorschemes.base16 = {
-      colorscheme = "gruvbox-dark-medium";
+  options.user.nvim.enable = lib.mkEnableOption "enable nvim";
+  config = lib.mkIf config.user.nvim.enable {
+    programs.nixvim = {
       enable = true;
+      viAlias = true;
+      vimAlias = true;
+
+      colorschemes.base16 = {
+        colorscheme = "gruvbox-dark-medium";
+        enable = true;
+      };
+
+      clipboard.providers.xsel.enable = true;
+    };
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
 
-    clipboard.providers.xsel.enable = true;
+    programs.nushell.extraEnv = ''
+      $env.EDITOR = nvim
+      $env.VISUAL = nvim
+    '';
   };
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
-
-  programs.nushell.extraEnv = ''
-    $env.EDITOR = nvim
-    $env.VISUAL = nvim
-  '';
 
   imports = [
     ./keybinds.nix

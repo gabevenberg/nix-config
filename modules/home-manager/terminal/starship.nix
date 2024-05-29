@@ -46,7 +46,7 @@
       hostname = {
         ssh_only = false;
         ssh_symbol = "🌐";
-        format = "[$hostname$ssh_symbol]($style)";
+        format = "[$hostname $ssh_symbol]($style)";
         style = "bg:color_orange";
       };
       shell = {

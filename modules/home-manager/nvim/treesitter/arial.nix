@@ -5,7 +5,7 @@
   ...
 }: {
   config =
-    lib.mkIf config.home.nvim.enable-treesitter
+    lib.mkIf (config.user.nvim.enable-treesitter && config.user.nvim.enable)
     {
       programs.nixvim = {
         keymaps = [

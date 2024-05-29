@@ -15,7 +15,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       ...
     }: {
       # machine specific options
-      home = {
+      user = {
         nvim = {
           enable-lsp = true;
           enable-treesitter = true;

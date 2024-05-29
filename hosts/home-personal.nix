@@ -14,12 +14,8 @@ inputs.home-manager.lib.homeManagerConfiguration {
       ...
     }: {
       # machine specific options
-      home = {
+      user = {
         enable-speech = true;
-        nvim = {
-          enable-lsp = true;
-          enable-treesitter = true;
-        };
         git = {
           profile = {
             name = "Gabe Venberg";

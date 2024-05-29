@@ -5,7 +5,7 @@
   ...
 }: {
   config =
-    lib.mkIf config.home.nvim.enable-lsp
+    lib.mkIf (config.user.nvim.enable-lsp && config.user.nvim.enable)
     {
       programs.nixvim = {
         plugins.rust-tools = {

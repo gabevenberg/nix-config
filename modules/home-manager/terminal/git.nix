@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    home.git = {
+    user.git = {
       workProfile = {
         enable = lib.mkEnableOption "git work profile";
         email = lib.mkOption {
@@ -45,8 +45,8 @@
       };
       # difftastic.enable=true;
       # difftastic.background="dark";
-      userEmail = config.home.git.profile.email;
-      userName = config.home.git.profile.name;
+      userEmail = config.user.git.profile.email;
+      userName = config.user.git.profile.name;
       extraConfig = {
         init = {
           defaultBranch = "main";
@@ -75,11 +75,11 @@
         };
       };
       includes =
-        if config.home.git.workProfile.enable
+        if config.user.git.workProfile.enable
         then [
           {
             condition = "gitdir:~/work/**";
-            contents.user.email = config.home.git.workProfile.email;
+            contents.user.email = config.user.git.workProfile.email;
           }
         ]
         else [];

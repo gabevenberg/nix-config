@@ -65,11 +65,7 @@ inputs.nixpkgs.lib.nixosSystem {
         ...
       }: {
         host = osConfig.host;
-        home = {
-          nvim = {
-            enable-lsp = true;
-            enable-treesitter = true;
-          };
+        user = {
           git = {
             profile = {
               name = "Gabe Venberg";
@@ -86,11 +82,6 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       # Enable the OpenSSH daemon.
       services.openssh.enable = true;
-
-      services.nfs.server = {
-        enable = true;
-        exports = "/srv/nfs *(rw,sync,no_root_squash,no_subtree_check)";
-      };
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
