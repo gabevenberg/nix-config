@@ -12,8 +12,8 @@
   ];
 
   user = {
-    git.enable = true;
-    nvim.enable = true;
+    git.enable = lib.mkDefault true;
+    nvim.enable = lib.mkDefault true;
   };
 
   home.packages = with pkgs; [

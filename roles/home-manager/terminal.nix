@@ -13,8 +13,8 @@
 
   user = {
     nvim = {
-      enable-lsp = true;
-      enable-treesitter = true;
+      enable-lsp = lib.mkDefault true;
+      enable-treesitter = lib.mkDefault true;
     };
   };
 
