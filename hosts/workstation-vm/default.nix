@@ -14,13 +14,12 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ../../roles/nixos/graphical-vm.nix
-    ../../modules/hostopts.nix
-    ../../modules/nixos/common.nix
-    ../../modules/nixos/printing.nix
-    ../../modules/both/sound.nix
-    ../../modules/nixos/networking.nix
-    ../../modules/nixos/nfsv2.nix
-    ../../modules/both/i3
+    ../../configs/nixos/printing.nix
+    ../../configs/nixos/sound.nix
+    ../../configs/nixos/networking.nix
+    ../../configs/nixos/nfsv2.nix
+    ../../configs/nixos/i3
+    ../../configs/nixos/common.nix
     ({
       config,
       pkgs,
@@ -76,7 +75,7 @@ inputs.nixpkgs.lib.nixosSystem {
         };
         imports = [
           ../../roles/home-manager/terminal.nix
-          ../../modules/home-manager/common.nix
+          ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };

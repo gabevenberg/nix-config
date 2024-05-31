@@ -4,8 +4,6 @@
   lib,
   ...
 }: {
-  options.user.tiny.enable=lib.mkEnableOption "enable tiny irc client";
-  config=lib.mkIf config.user.tiny.enable {
   programs.tiny = {
     enable = true;
     settings = {
@@ -46,4 +44,4 @@
       };
     };
   };
-};}
+}

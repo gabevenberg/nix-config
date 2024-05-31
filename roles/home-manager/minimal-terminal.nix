@@ -5,16 +5,14 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/terminal
-    ../../modules/home-manager/nvim
+    ../../configs/home-manager/btop.nix
+    ../../configs/home-manager/direnv.nix
+    ../../configs/home-manager/ssh-agent.nix
+    ../../configs/home-manager/zsh.nix
   ];
 
   user = {
-    btop.enable = true;
-    direnv.enable = true;
     git.enable = true;
-    ssh-agent.enable = true;
-    zsh.enable = true;
     nvim.enable = true;
   };
 

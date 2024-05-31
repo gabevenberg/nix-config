@@ -37,8 +37,8 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home.homeDirectory = /home/gabe;
       imports = [
         ../roles/home-manager/terminal.nix
-        ../modules/home-manager/common.nix
-        ../modules/home-manager/syncthing.nix
+        ../configs/home-manager/common.nix
+        ../configs/home-manager/syncthing.nix
       ];
     })
   ];

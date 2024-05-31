@@ -9,8 +9,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.nixos-wsl.nixosModules.default
-    ../modules/hostopts.nix
-    ../modules/nixos/common.nix
+    ../configs/nixos/common.nix
     ({
       config,
       pkgs,
@@ -56,7 +55,7 @@ inputs.nixpkgs.lib.nixosSystem {
         };
         imports = [
           ../roles/home-manager/terminal.nix
-          ../modules/home-manager/common.nix
+          ../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };

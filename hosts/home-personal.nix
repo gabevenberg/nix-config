@@ -32,10 +32,10 @@ inputs.home-manager.lib.homeManagerConfiguration {
       imports = [
         ../roles/home-manager/terminal.nix
         ../roles/home-manager/music.nix
-        ../modules/home-manager/common.nix
-        ../modules/home-manager/syncthing.nix
-        ../modules/home-manager/email.nix
-        ../modules/home-manager/terminal/voice.nix
+        ../configs/home-manager/common.nix
+        ../configs/home-manager/syncthing.nix
+        ../configs/home-manager/email.nix
+        ../configs/home-manager/terminal/voice.nix
       ];
     })
     inputs.nixvim.homeManagerModules.nixvim

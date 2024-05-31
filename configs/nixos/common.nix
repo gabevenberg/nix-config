@@ -29,6 +29,10 @@
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
+  imports = [
+    ../../modules/hostopts.nix
+  ];
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {inherit inputs outputs;};
