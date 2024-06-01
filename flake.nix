@@ -42,6 +42,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-secrets = {
+      url = "git+ssh://git@git.venberg.xyz:7920/Gabe/nix-secrets.git?shallow=1";
+      # url = "git+https://git.venberg.xyz/Gabe/nix-secrets.git?shallow=1";
+      flake = false;
+    };
+
     # just for follows statements
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
@@ -58,6 +64,8 @@
       "x86_64-linux"
       "aarch64-linux"
     ];
+    inherit (nixpkgs) lib;
+    configLib=import ./lib {inherit lib;};
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
@@ -69,9 +77,6 @@
           packages = with pkgs; [
             just
             deploy-rs.packages.${system}.deploy-rs
-            age
-            ssh-to-age
-            sops
           ];
         };
       }
@@ -82,18 +87,18 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs;};
-      workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs;};
-      gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs outputs;};
+      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs configLib;};
+      workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs configLib;};
+      gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs outputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs outputs;};
-      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs outputs;};
-      "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
-      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs;};
+      "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs outputs configLib;};
+      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs outputs configLib;};
+      "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
+      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
     };
 
     templates = import ./templates {inherit inputs outputs;};

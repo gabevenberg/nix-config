@@ -1,11 +1,12 @@
 {
   inputs,
   outputs,
+  configLib,
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs outputs;};
+  specialArgs = {inherit inputs outputs configLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -19,6 +20,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
+      configLib,
       ...
     }: {
       host = {
@@ -39,6 +41,9 @@ inputs.nixpkgs.lib.nixosSystem {
         xkb.variant = "";
       };
 
+      users.users.root.openssh.authorizedKeys.keys =
+      configLib.dirToStrings "${inputs.nix-secrets}/public-keys";
+
       programs.zsh.enable = true;
       environment.shells = with pkgs; [zsh];
       # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -51,6 +56,7 @@ inputs.nixpkgs.lib.nixosSystem {
           firefox
           #  thunderbird
         ];
+        openssh.authorizedKeys.keys=config.users.users.root.openssh.authorizedKeys.keys;
       };
 
       home-manager.users.${config.host.user} = {

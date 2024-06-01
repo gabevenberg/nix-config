@@ -1,10 +1,11 @@
 {
   inputs,
   outputs,
+  configLib,
 }:
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs outputs;};
+  specialArgs = {inherit inputs outputs configLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -13,6 +14,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
+      configLib,
       ...
     }: {
       wsl.enable = true;
