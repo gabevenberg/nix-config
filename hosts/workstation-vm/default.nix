@@ -17,7 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../roles/nixos/graphical-vm.nix
     ../../configs/nixos/printing.nix
     ../../configs/nixos/sound.nix
-    ../../configs/nixos/networking.nix
+    ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/nfsv2.nix
     ../../configs/nixos/i3
     ../../configs/nixos/common.nix

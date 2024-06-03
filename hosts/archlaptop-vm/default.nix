@@ -15,7 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/common.nix
     ../../configs/nixos/printing.nix
     ../../configs/nixos/sound.nix
-    ../../configs/nixos/networking.nix
+    ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/i3
     ({
       config,
@@ -46,8 +46,10 @@ inputs.nixpkgs.lib.nixosSystem {
 
       programs.zsh.enable = true;
       environment.shells = with pkgs; [zsh];
+      users.mutableUsers=false;
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
+        hashedPasswordFile=config.sops.secrets.gv-password.path;
         isNormalUser = true;
         description = "Gabe Venberg";
         shell = pkgs.zsh;
