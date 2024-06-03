@@ -17,6 +17,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/sound.nix
     ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/i3
+    ../../configs/nixos/sshd.nix
+    ./secrets.nix
     ({
       config,
       pkgs,
@@ -58,7 +60,6 @@ inputs.nixpkgs.lib.nixosSystem {
           firefox
           #  thunderbird
         ];
-        openssh.authorizedKeys.keys=config.users.users.root.openssh.authorizedKeys.keys;
       };
 
       home-manager.users.${config.host.user} = {

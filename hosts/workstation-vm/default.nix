@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/nfsv2.nix
     ../../configs/nixos/i3
     ../../configs/nixos/common.nix
+    ../../configs/nixos/sshd.nix
     ./secrets.nix
     ({
       config,
@@ -65,7 +66,6 @@ inputs.nixpkgs.lib.nixosSystem {
           firefox
           #  thunderbird
         ];
-        openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
       };
 
       home-manager.users.${config.host.user} = {

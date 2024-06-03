@@ -1,0 +1,20 @@
+{
+  config,
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: {
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "prohibit-password";
+    settings.PasswordAuthentication = false;
+  };
+  # so we dont have to set TERM everytime we ssh in.
+  environment.systemPackages = with pkgs; [
+    kitty.terminfo
+  ];
+  # if it can log into root, it should also be able to log in to the main user.
+  users.users.${config.host.user}.openssh.authorizedKeys.keys =
+    config.users.users.root.openssh.authorizedKeys.keys;
+}
