@@ -65,7 +65,7 @@
       "aarch64-linux"
     ];
     inherit (nixpkgs) lib;
-    configLib=import ./lib {inherit lib;};
+    configLib = import ./lib {inherit lib;};
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
@@ -81,6 +81,8 @@
         };
       }
     );
+
+    lib=configLib;
 
     homeManagerModules = import ./modules/home-manager;
 
