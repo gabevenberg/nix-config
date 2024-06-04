@@ -5,9 +5,8 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager/beets.nix
-    ../../modules/home-manager/mpd.nix
-    ../../modules/home-manager/beets.nix
+    ../../configs/home-manager/beets.nix
+    ../../configs/home-manager/mpd.nix
   ];
   home.packages = with pkgs; (lib.mkIf config.host.gui.enable [
     mpdevil
