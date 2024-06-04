@@ -82,7 +82,7 @@
       }
     );
 
-    lib=configLib;
+    lib = configLib;
 
     homeManagerModules = import ./modules/home-manager;
 

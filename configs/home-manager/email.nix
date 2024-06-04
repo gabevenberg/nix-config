@@ -28,7 +28,7 @@
     address = "gabevenberg@gmail.com";
     primary = true;
     flavor = "gmail.com";
-    passwordCommand = "cat ~/keys/plaintext/gmail";
+    passwordCommand = "cat ${config.sops.secrets.gmail-password.path}";
     realName = "Gabe Venberg";
 
     himalaya.enable = true;

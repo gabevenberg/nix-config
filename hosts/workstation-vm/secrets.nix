@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  imports=[
-  ../../configs/nixos/secrets.nix
+  imports = [
+    ../../configs/nixos/secrets.nix
   ];
   sops.secrets.gv-password = {
     neededForUsers = true;

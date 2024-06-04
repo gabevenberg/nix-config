@@ -41,7 +41,16 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../roles/home-manager/terminal.nix
         ../configs/home-manager/common.nix
         ../configs/home-manager/syncthing.nix
+        ../../configs/home-manager/tiny-irc.nix
+        ../configs/home-manager/secrets.nix
+        inputs.sops-nix.homeManagerModules.sops
       ];
+
+      sops = {
+        secrets = {
+          irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        };
+      };
     })
   ];
 }

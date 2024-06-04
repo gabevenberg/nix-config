@@ -44,14 +44,14 @@ inputs.nixpkgs.lib.nixosSystem {
       };
 
       users.users.root.openssh.authorizedKeys.keys =
-      configLib.dirToStrings "${inputs.nix-secrets}/public-keys";
+        configLib.dirToStrings "${inputs.nix-secrets}/public-keys";
 
       programs.zsh.enable = true;
       environment.shells = with pkgs; [zsh];
-      users.mutableUsers=false;
+      users.mutableUsers = false;
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
-        hashedPasswordFile=config.sops.secrets.gv-password.path;
+        hashedPasswordFile = config.sops.secrets.gv-password.path;
         isNormalUser = true;
         description = "Gabe Venberg";
         shell = pkgs.zsh;
@@ -62,6 +62,9 @@ inputs.nixpkgs.lib.nixosSystem {
         ];
       };
 
+      home-manager.sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+      ];
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
@@ -82,7 +85,15 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/email.nix
           inputs.nixvim.homeManagerModules.nixvim
+          ../../configs/home-manager/secrets.nix
         ];
+
+        sops = {
+          secrets = {
+            gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+            irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+          };
+        };
       };
       # Enable the OpenSSH daemon.
       services.openssh.enable = true;

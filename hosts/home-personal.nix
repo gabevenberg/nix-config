@@ -37,8 +37,18 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../configs/home-manager/common.nix
         ../configs/home-manager/syncthing.nix
         ../configs/home-manager/email.nix
+        ../../configs/home-manager/tiny-irc.nix
         ../configs/home-manager/terminal/voice.nix
+        ../configs/home-manager/secrets.nix
+        inputs.sops-nix.homeManagerModules.sops
       ];
+
+      sops = {
+        secrets = {
+          gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+          irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        };
+      };
     })
     inputs.nixvim.homeManagerModules.nixvim
   ];

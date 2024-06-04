@@ -31,7 +31,7 @@
           ];
           sasl = {
             username = "toric";
-            pem = "${config.home.homeDirectory}/keys/certs/irc.pem";
+            pem = config.sops.secrets.irc-cert.path;
           };
         }
       ];
