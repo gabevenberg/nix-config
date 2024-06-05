@@ -108,7 +108,10 @@
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
     };
 
-    packages.x86_64-linux.proxmox = import ./packages/proxmox.nix {inherit inputs outputs configLib;};
+    packages.x86_64-linux = {
+      proxmox = import ./packages/proxmox.nix {inherit inputs outputs configLib;};
+      vm = import ./packages/vm.nix {inherit inputs outputs configLib;};
+    };
 
     templates = import ./templates {inherit inputs outputs;};
   };

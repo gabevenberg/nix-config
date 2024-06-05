@@ -7,11 +7,12 @@
 inputs.nixos-generators.nixosGenerate {
   system = "x86_64-linux";
   specialArgs = {inherit inputs outputs configLib;};
-  format = "proxmox-lxc";
+  format = "qcow";
   modules = [
     inputs.home-manager.nixosModules.home-manager
     ../configs/nixos/sshd.nix
     ../configs/nixos/common.nix
+    ../roles/nixos/vm.nix
     ({
       config,
       pkgs,
@@ -19,8 +20,7 @@ inputs.nixos-generators.nixosGenerate {
       modulesPath,
       ...
     }: {
-      imports = [(modulesPath + "/virtualisation/proxmox-lxc.nix")];
-      proxmoxLXC.manageHostName = false;
+      imports = [(modulesPath + "/profiles/qemu-guest.nix")];
       host.user = "gabe";
 
       users.users.root.password="nixos";

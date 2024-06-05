@@ -71,7 +71,7 @@
           RPROMPT=""
 
           #on the top line, show a whole bunch of info. botton line should be as minimal as possilbe (just a single char to  input next to...)
-          PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f$${vcs_info_msg_0_} %F{white}[%D %T]%f\n»'
+          PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f$vcs_info_msg_0_ %F{white}[%D %T]%f\n»'
         '')
       ];
       autocd = true;
