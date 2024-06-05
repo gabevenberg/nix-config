@@ -33,38 +33,17 @@ inputs.nixpkgs.lib.nixosSystem {
     }: {
       host = {
         user = "gabe";
+        fullName = "Gabe Venberg";
         gui.enable = true;
         isVm = true;
       };
       networking.hostName = "workstation-vm"; # Define your hostname.
-      # Set your time zone.
-      time.timeZone = "America/Chicago";
 
-      # Select internationalisation properties.
-      i18n.defaultLocale = "en_US.UTF-8";
-
-      # Configure keymap in X11
-      services.xserver = {
-        xkb.layout = "us";
-        xkb.variant = "";
-      };
-
-      users.users.root.openssh.authorizedKeys.keys =
-        configLib.dirToStrings "${inputs.nix-secrets}/public-keys";
-
-      programs.zsh.enable = true;
-      environment.shells = with pkgs; [zsh];
-      # Define a user account. Don't forget to set a password with ‘passwd’.
       users.mutableUsers = false;
       users.users.${config.host.user} = {
         hashedPasswordFile = config.sops.secrets.gv-password.path;
-        isNormalUser = true;
-        description = "Gabe Venberg";
-        shell = pkgs.zsh;
-        extraGroups = ["wheel"];
         packages = with pkgs; [
           firefox
-          #  thunderbird
         ];
       };
 
@@ -89,8 +68,6 @@ inputs.nixpkgs.lib.nixosSystem {
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };
-      # Enable the OpenSSH daemon.
-      services.openssh.enable = true;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

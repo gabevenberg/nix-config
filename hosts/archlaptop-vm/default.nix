@@ -27,25 +27,17 @@ inputs.nixpkgs.lib.nixosSystem {
     }: {
       host = {
         user = "gabe";
+        fullName = "Gabe Venberg";
         gui.enable = true;
         isVm = true;
       };
       networking.hostName = "archlaptop-vm"; # Define your hostname.
 
-      programs.zsh.enable = true;
-      environment.shells = with pkgs; [zsh];
       users.mutableUsers = false;
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
         hashedPasswordFile = config.sops.secrets.gv-password.path;
-        isNormalUser = true;
-        description = "Gabe Venberg";
-        shell = pkgs.zsh;
-        extraGroups = ["wheel"];
-        packages = with pkgs; [
-          firefox
-          #  thunderbird
-        ];
+        packages = with pkgs; [firefox];
       };
 
       home-manager.sharedModules = [
@@ -60,7 +52,7 @@ inputs.nixpkgs.lib.nixosSystem {
         user = {
           git = {
             profile = {
-              name = "Gabe Venberg";
+              name = config.host.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;

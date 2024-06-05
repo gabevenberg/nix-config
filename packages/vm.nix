@@ -22,16 +22,11 @@ inputs.nixos-generators.nixosGenerate {
     }: {
       imports = [(modulesPath + "/profiles/qemu-guest.nix")];
       host.user = "gabe";
+      host.fullName = "Gabe Venberg";
 
-      users.users.root.password="nixos";
-      programs.zsh.enable = true;
-      environment.shells = with pkgs; [zsh];
+      users.users.root.password = "nixos";
       users.users.${config.host.user} = {
-        isNormalUser = true;
-        description = "Gabe Venberg";
-        shell = pkgs.zsh;
-        extraGroups = ["wheel"];
-        password="nixos";
+        password = "nixos";
       };
 
       home-manager.users.${config.host.user} = {
@@ -43,7 +38,7 @@ inputs.nixos-generators.nixosGenerate {
         user = {
           git = {
             profile = {
-              name = "Gabe Venberg";
+              name = config.host.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;

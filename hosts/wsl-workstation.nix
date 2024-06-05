@@ -22,20 +22,10 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.nameservers = ["1.1.1.1" "8.8.8.8"];
       host = {
         user = "nixos";
+        fullName = "Gabe Venberg";
       };
       networking.hostName = "gv-wsl"; # Define your hostname.
-      # Set your time zone.
-      time.timeZone = "America/Chicago";
 
-      programs.zsh.enable = true;
-      environment.shells = with pkgs; [zsh];
-      # Define a user account. Don't forget to set a password with ‘passwd’.
-      users.users.${config.host.user} = {
-        isNormalUser = true;
-        description = "Gabe Venberg";
-        shell = pkgs.zsh;
-        extraGroups = ["wheel"];
-      };
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
@@ -49,7 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
           git = {
             profile = {
-              name = "Gabe Venberg";
+              name = config.host.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;
@@ -62,8 +52,6 @@ inputs.nixpkgs.lib.nixosSystem {
         ];
       };
 
-      # Select internationalisation properties.
-      i18n.defaultLocale = "en_US.UTF-8";
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
       # on your system were taken. It‘s perfectly fine and recommended to leave

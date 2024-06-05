@@ -36,9 +36,16 @@
   };
 
   # packages that should be on every system.
-  environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  ];
+  environment.systemPackages = [pkgs.neovim];
+
+  programs.zsh.enable = lib.mkDefault true;
+  environment.shells = lib.mkDefault [pkgs.zsh];
+  users.users.${config.host.user} = {
+    isNormalUser = true;
+    description = config.host.fullName;
+    shell = pkgs.zsh;
+    extraGroups = ["wheel"];
+  };
 
   imports = [
     ../../modules/hostopts.nix
