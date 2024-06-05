@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   outputs,
+  lib,
   ...
 }: {
   nix = {
@@ -23,6 +24,16 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  time.timeZone = lib.mkDefault "America/Chicago";
+  # Select internationalisation properties.
+  i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
+
+  # Configure keymap in X11
+  services.xserver = {
+    xkb.layout = lib.mkDefault "us";
+    xkb.variant = lib.mkDefault "";
+  };
 
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [

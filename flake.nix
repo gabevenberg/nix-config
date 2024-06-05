@@ -36,6 +36,11 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #https://unmovedcentre.com/technology/2024/03/22/secrets-management.html
     sops-nix = {
       url = "github:mic92/sops-nix";
@@ -102,6 +107,8 @@
       "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
     };
+
+    packages.x86_64-linux.proxmox = import ./packages/proxmox.nix {inherit inputs outputs configLib;};
 
     templates = import ./templates {inherit inputs outputs;};
   };

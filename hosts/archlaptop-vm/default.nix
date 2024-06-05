@@ -31,20 +31,6 @@ inputs.nixpkgs.lib.nixosSystem {
         isVm = true;
       };
       networking.hostName = "archlaptop-vm"; # Define your hostname.
-      # Set your time zone.
-      time.timeZone = "America/Chicago";
-
-      # Select internationalisation properties.
-      i18n.defaultLocale = "en_US.UTF-8";
-
-      # Configure keymap in X11
-      services.xserver = {
-        xkb.layout = "us";
-        xkb.variant = "";
-      };
-
-      users.users.root.openssh.authorizedKeys.keys =
-        configLib.dirToStrings "${inputs.nix-secrets}/public-keys";
 
       programs.zsh.enable = true;
       environment.shells = with pkgs; [zsh];
@@ -95,8 +81,6 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
       };
-      # Enable the OpenSSH daemon.
-      services.openssh.enable = true;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
