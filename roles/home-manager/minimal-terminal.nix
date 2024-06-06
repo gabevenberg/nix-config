@@ -22,6 +22,7 @@
     fd
     sd
     curl
+    rsync
   ];
 
   home.sessionVariables = {

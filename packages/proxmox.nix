@@ -4,10 +4,9 @@
   configLib,
   ...
 }:
-inputs.nixos-generators.nixosGenerate {
+(inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = {inherit inputs outputs configLib;};
-  format = "proxmox-lxc";
   modules = [
     inputs.home-manager.nixosModules.home-manager
     ../configs/nixos/sshd.nix
@@ -17,10 +16,13 @@ inputs.nixos-generators.nixosGenerate {
       pkgs,
       configLib,
       modulesPath,
+      lib,
       ...
     }: {
-      imports = [(modulesPath + "/virtualisation/proxmox-lxc.nix")];
+      imports = ["${modulesPath}/virtualisation/proxmox-lxc.nix"];
       proxmoxLXC.manageHostName = false;
+      boot.loader.grub.enable = lib.mkForce false;
+      boot.loader.systemd-boot.enable = lib.mkForce false;
       host.user = "gabe";
       host.fullName = "Gabe Venberg";
 
@@ -49,4 +51,8 @@ inputs.nixos-generators.nixosGenerate {
       system.stateVersion = "24.05";
     })
   ];
-}
+})
+.config
+.system
+.build
+.tarball

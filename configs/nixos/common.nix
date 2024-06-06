@@ -14,6 +14,7 @@
     optimise.automatic = true;
     settings = {
       auto-optimise-store = true;
+      trusted-users = ["root" "gabe"];
     };
     gc = {
       automatic = true;

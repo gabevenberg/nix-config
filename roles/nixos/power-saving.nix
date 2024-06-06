@@ -6,5 +6,5 @@
 }: {
   powerManagement.powertop.enable = true;
   powerManagement.enable = true;
-  powerManaagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "ondemand";
 }

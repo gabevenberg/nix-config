@@ -22,7 +22,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/i3
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
-    ../../configs/nixos/secrets.nix
     ({
       config,
       pkgs,
