@@ -11,7 +11,6 @@ in {
     inputs.sops-nix.nixosModules.sops
   ];
   sops = {
-    defaultSopsFile = "${secretsDirectory}/common.yaml";
     validateSopsFiles = false;
     age = {
       sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];

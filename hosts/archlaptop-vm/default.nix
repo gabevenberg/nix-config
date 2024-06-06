@@ -18,7 +18,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/i3
     ../../configs/nixos/sshd.nix
-    ./secrets.nix
+    ../../configs/nixos/secrets.nix
     ({
       config,
       pkgs,
@@ -33,10 +33,8 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       networking.hostName = "archlaptop-vm"; # Define your hostname.
 
-      users.mutableUsers = false;
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.${config.host.user} = {
-        hashedPasswordFile = config.sops.secrets.gv-password.path;
         packages = with pkgs; [firefox];
       };
 

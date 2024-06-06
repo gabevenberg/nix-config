@@ -40,12 +40,15 @@
 
   programs.zsh.enable = lib.mkDefault true;
   environment.shells = lib.mkDefault [pkgs.zsh];
+  users.mutableUsers = false;
   users.users.${config.host.user} = {
     isNormalUser = true;
+    hashedPassword = lib.removeSuffix "\n" (builtins.readFile "${inputs.nix-secrets}/password-hash");
     description = config.host.fullName;
     shell = pkgs.zsh;
     extraGroups = ["wheel"];
   };
+  # users.users.root.password = lib.removeSuffix "\n" (builtins.readFile "${inputs.nix-secrets}/password-hash");
 
   imports = [
     ../../modules/hostopts.nix

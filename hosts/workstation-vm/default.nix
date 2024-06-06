@@ -22,7 +22,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/i3
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
-    ./secrets.nix
+    ../../configs/nixos/secrets.nix
     ({
       config,
       pkgs,
@@ -39,9 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       networking.hostName = "workstation-vm"; # Define your hostname.
 
-      users.mutableUsers = false;
       users.users.${config.host.user} = {
-        hashedPasswordFile = config.sops.secrets.gv-password.path;
         packages = with pkgs; [
           firefox
         ];

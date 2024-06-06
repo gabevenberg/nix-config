@@ -3,17 +3,14 @@ default:
 
 nixos target=`hostname`:
     git add -AN
-    nix flake update nix-secrets
     sudo nixos-rebuild --flake .#{{target}} switch
 
 home-manager target=(`whoami`+"@"+`hostname`):
     git add -AN
-    nix flake update nix-secrets
     home-manager --flake .#{{target}} switch
 
 check:
     git add -AN
-    nix flake update nix-secrets
     nix flake check --keep-going
 
 bootstrap-home-manager target=(`whoami`+"@"+`hostname`):
@@ -28,3 +25,6 @@ home-gc:
 
 nixos-gc:
     sudo nix-collect-garbage --delete-older-than 7d
+
+update-secrets:
+    nix flake update nix-secrets

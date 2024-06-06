@@ -24,11 +24,6 @@ inputs.nixos-generators.nixosGenerate {
       host.user = "gabe";
       host.fullName = "Gabe Venberg";
 
-      users.users.root.password = "nixos";
-      users.users.${config.host.user} = {
-        password = "nixos";
-      };
-
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
