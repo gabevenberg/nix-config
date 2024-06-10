@@ -1,12 +1,11 @@
 {
   inputs,
-  outputs,
   configLib,
   ...
 }:
 inputs.home-manager.lib.homeManagerConfiguration {
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-  extraSpecialArgs = {inherit inputs outputs configLib;};
+  extraSpecialArgs = {inherit inputs configLib;};
   modules = [
     inputs.nixvim.homeManagerModules.nixvim
     ({

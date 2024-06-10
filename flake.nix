@@ -59,7 +59,6 @@
     deploy-rs,
     ...
   } @ inputs: let
-    inherit (self) outputs;
     forAllSystems = nixpkgs.lib.genAttrs [
       "x86_64-linux"
       "aarch64-linux"
@@ -89,25 +88,25 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs outputs configLib;};
-      workstation-vm = import ./hosts/workstation-vm {inherit inputs outputs configLib;};
-      gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs outputs configLib;};
+      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs configLib;};
+      workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
+      gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs outputs configLib;};
-      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs outputs configLib;};
-      "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
-      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs outputs configLib;};
+      "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs configLib;};
+      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs configLib;};
+      "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
+      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
     };
 
     packages.x86_64-linux = {
-      proxmox = import ./packages/proxmox.nix {inherit inputs outputs configLib;};
-      iso = import ./packages/iso.nix {inherit inputs outputs configLib;};
+      proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
+      iso = import ./packages/iso.nix {inherit inputs configLib;};
     };
 
-    templates = import ./templates {inherit inputs outputs;};
+    templates = import ./templates;
   };
 }

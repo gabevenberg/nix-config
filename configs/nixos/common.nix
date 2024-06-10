@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  outputs,
   lib,
   ...
 }: {
@@ -57,5 +56,5 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = {inherit inputs outputs;};
+  home-manager.extraSpecialArgs = {inherit inputs;};
 }

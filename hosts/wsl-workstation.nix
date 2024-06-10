@@ -1,11 +1,10 @@
 {
   inputs,
-  outputs,
   configLib,
 }:
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs outputs configLib;};
+  specialArgs = {inherit inputs configLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager

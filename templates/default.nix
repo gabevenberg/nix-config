@@ -1,8 +1,4 @@
 {
-  inputs,
-  outputs,
-  ...
-}: {
   default = {
     path = ./default;
     description = "a basic blank devshell flake";
