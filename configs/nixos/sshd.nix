@@ -16,8 +16,11 @@
     kitty.terminfo
   ];
 
-  users.users.root.openssh.authorizedKeys.keys =
-    lib.mkDefault (configLib.dirToStrings "${inputs.nix-secrets}/public-keys");
+  users.users.root.openssh.authorizedKeys.keys = lib.mkDefault (
+    if inputs ? nix-secrets
+    then (configLib.dirToStrings "${inputs.nix-secrets}/public-keys")
+    else []
+  );
   # if it can log into root, it should also be able to log in to the main user.
   users.users.${config.host.user}.openssh.authorizedKeys.keys =
     config.users.users.root.openssh.authorizedKeys.keys;

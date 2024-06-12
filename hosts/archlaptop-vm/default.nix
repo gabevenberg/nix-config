@@ -43,6 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
+        lib,
         ...
       }: {
         host = osConfig.host;
@@ -59,11 +60,12 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/terminal.nix
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/email.nix
+          ../../configs/home-manager/tiny-irc.nix
           inputs.nixvim.homeManagerModules.nixvim
           ../../configs/home-manager/secrets.nix
         ];
 
-        sops = {
+        sops = lib.mkIf (inputs ? nix-secrets) {
           secrets = {
             gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
             irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";

@@ -24,7 +24,7 @@
 
   programs.himalaya.enable = true;
 
-  accounts.email.accounts.gmail = {
+  accounts.email.accounts.gmail = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "gmail-password"] config) {
     address = "gabevenberg@gmail.com";
     primary = true;
     flavor = "gmail.com";

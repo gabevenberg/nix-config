@@ -41,7 +41,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         inputs.sops-nix.homeManagerModules.sops
       ];
 
-      sops = {
+      sops = lib.mkIf (inputs ? nix-secrets) {
         secrets = {
           gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
           irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";

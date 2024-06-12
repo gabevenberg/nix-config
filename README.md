@@ -27,3 +27,7 @@ Each host *must* import `configs/nixos/common.nix` in the top level and `configs
 Each host *must also* define the variables declared in `modules/hostopts.nix`.
 * Modules are always imported by the respective common.nix. They each have an enable option, and only have effects if enabled.
 * Roles are larger bundles of software and options. They define packages to be installed and may import configurations or enable modules.
+
+## Secrets
+This repo uses nix-sops for secrets management, with the encrypted secrets being stored in a private repo imported as an input.
+if the `nix-secrets` input is commented out, the repo should still build, gracefully degrading to default, non-secret, values.

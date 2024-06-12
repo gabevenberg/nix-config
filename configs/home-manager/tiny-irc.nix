@@ -29,7 +29,7 @@
             "#gamingonlinux"
             "##chat"
           ];
-          sasl = {
+          sasl = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "irc-cert"] config) {
             username = "toric";
             pem = config.sops.secrets.irc-cert.path;
           };
