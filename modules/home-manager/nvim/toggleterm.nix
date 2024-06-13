@@ -5,7 +5,7 @@
   ...
 }: {
   config = lib.mkIf config.user.nvim.enable {
-    programs.nixvim = {
+    programs.nixvim = {helpers, ...}: {
       plugins.toggleterm = {
         enable = true;
         settings = {
@@ -17,9 +17,8 @@
       };
       keymaps = [
         {
-          action = "function() Floatingterm:toggle() end";
+          action = helpers.mkRaw "function() Floatingterm:toggle() end";
           key = "<leader>s";
-          lua = true;
           mode = "n";
           options = {
             silent = true;

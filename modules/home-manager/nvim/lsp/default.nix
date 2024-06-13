@@ -10,15 +10,15 @@
     lib.mkIf (config.user.nvim.enable-lsp && config.user.nvim.enable)
     {
       user.nvim.enable-completions = true;
-      programs.nixvim = {
+      programs.nixvim = {helpers, ...}: {
         plugins.lsp = {
           enable = true;
           servers = {
             bashls.enable = true;
             clangd.enable = true;
             lua-ls.enable = true;
-            nil_ls.enable = true;
-            nil_ls.settings.formatting.command = ["alejandra"];
+            nil-ls.enable = true;
+            nil-ls.settings.formatting.command = ["alejandra"];
             nushell.enable = true;
             pyright.enable = true;
             ruff-lsp.enable = true;
@@ -39,9 +39,8 @@
         };
         keymaps = [
           {
-            action = "vim.lsp.buf.declaration";
+            action = helpers.mkRaw "vim.lsp.buf.declaration";
             key = "<leader>lc";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -49,9 +48,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.definition";
+            action = helpers.mkRaw "vim.lsp.buf.definition";
             key = "<leader>ld";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -59,9 +57,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.hover";
+            action = helpers.mkRaw "vim.lsp.buf.hover";
             key = "<leader>lh";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -69,9 +66,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.implementation";
+            action = helpers.mkRaw "vim.lsp.buf.implementation";
             key = "<leader>li";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -79,9 +75,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.signature_help";
+            action = helpers.mkRaw "vim.lsp.buf.signature_help";
             key = "<leader>ls";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -89,9 +84,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.add_workspace_folder";
+            action = helpers.mkRaw "vim.lsp.buf.add_workspace_folder";
             key = "<leader>lwa";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -99,9 +93,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.remove_workspace_folder";
+            action = helpers.mkRaw "vim.lsp.buf.remove_workspace_folder";
             key = "<leader>lwr";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -109,9 +102,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.list_workspace_folders";
+            action = helpers.mkRaw "vim.lsp.buf.list_workspace_folders";
             key = "<leader>lw";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -119,9 +111,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.rename";
+            action = helpers.mkRaw "vim.lsp.buf.rename";
             key = "<leader>lr";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -129,9 +120,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.code_action";
+            action = helpers.mkRaw "vim.lsp.buf.code_action";
             key = "<leader>la";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -139,9 +129,8 @@
             };
           }
           {
-            action = "vim.lsp.buf.references";
+            action = helpers.mkRaw "vim.lsp.buf.references";
             key = "<leader>le";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -149,9 +138,8 @@
             };
           }
           {
-            action = "function() vim.lsp.buf.format{async=true} end";
+            action = helpers.mkRaw "function() vim.lsp.buf.format{async=true} end";
             key = "<leader>lm";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -159,9 +147,8 @@
             };
           }
           {
-            action = "vim.diagnostic.open_float";
+            action = helpers.mkRaw "vim.diagnostic.open_float";
             key = "<leader>lo";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -169,9 +156,8 @@
             };
           }
           {
-            action = "vim.diagnostic.goto_next";
+            action = helpers.mkRaw "vim.diagnostic.goto_next";
             key = "]d";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
@@ -179,9 +165,8 @@
             };
           }
           {
-            action = "vim.diagnostic.goto_prev";
+            action = helpers.mkRaw "vim.diagnostic.goto_prev";
             key = "[d";
-            lua = true;
             mode = "n";
             options = {
               silent = true;
