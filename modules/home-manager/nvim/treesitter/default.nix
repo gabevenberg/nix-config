@@ -29,6 +29,15 @@
         '';
         keymaps = [
           {
+            action = ":TSContextToggle<CR>";
+            key = "<leader>x";
+            mode = "n";
+            options = {
+              silent = true;
+              desc = "tree context toggle";
+            };
+          }
+          {
             action = ":TSJToggle<CR>";
             key = "<leader>j";
             mode = "n";
