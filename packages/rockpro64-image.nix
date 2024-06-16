@@ -26,7 +26,6 @@
       options,
       ...
     }: {
-      # nixpkgs.crossSystem.system="aarch64-linux";
       nixpkgs.buildPlatform.system = "x86_64-linux";
       nixpkgs.hostPlatform.system = "aarch64-linux";
       imports = [
@@ -43,7 +42,7 @@
       users.users.${config.host.user} = {
         packages = with pkgs; [
           gparted
-          firefox
+          neovim
         ];
       };
 
@@ -90,17 +89,6 @@
       # download-using-manifests.pl from forking even if there is
       # plenty of free memory.
       boot.kernel.sysctl."vm.overcommit_memory" = "1";
-
-      # To speed up installation a little bit, include the complete
-      # stdenv in the Nix store on the CD.
-      system.extraDependencies = with pkgs; [
-        stdenv
-        stdenvNoCC # for runCommand
-        busybox
-        jq # for closureInfo
-        # For boot.initrd.systemd
-        makeInitrdNGTool
-      ];
 
       # Show all debug messages from the kernel but don't log refused packets
       # because we have the firewall enabled. This makes installs from the
