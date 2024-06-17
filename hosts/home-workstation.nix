@@ -45,7 +45,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         inputs.sops-nix.homeManagerModules.sops
       ];
 
-      sops = lib.mkIf (inputs?nix-secrets) {
+      sops = lib.mkIf (inputs ? nix-secrets) {
         secrets = {
           irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
         };

@@ -105,7 +105,7 @@
     packages.x86_64-linux = {
       proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
       iso = import ./packages/iso.nix {inherit inputs configLib;};
-      rockpro64-image = import ./packages/rockpro64-image.nix {inherit inputs configLib;};
+      aarch-64-iso = import ./packages/aarch64-iso.nix {inherit inputs configLib;};
     };
 
     templates = import ./templates;

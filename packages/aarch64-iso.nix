@@ -1,6 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# this ISO works best with tow-boot or another way of UEFI booting.
 {
   inputs,
   configLib,
@@ -15,7 +13,6 @@
     ../configs/nixos/interactive-networking.nix
     ../configs/nixos/common.nix
     ../configs/nixos/sshd.nix
-    ../roles/nixos/power-saving.nix
     ({
       config,
       pkgs,
@@ -26,12 +23,19 @@
       options,
       ...
     }: {
-      # nixpkgs.crossSystem.system="aarch64-linux";
-      nixpkgs.buildPlatform.system = "x86_64-linux";
-      nixpkgs.hostPlatform.system = "aarch64-linux";
+      # do not cross compile, some packages are broken, and will take an age anywyay. instead, if you are on nixos, set `boot.binfmt.emulatedSystems=["aarch64-linux"];`.
+      # if your not on nixos, install quemu-user-static and quemu-user-static-binfmt, and add `extra-platforms = aarch64-linux` to /etc/nix/nix.conf. may have to modify extra-sandbox-paths.
+      # alternatively, set up a remote-builder for aarch64-linux.
+
+      # nixpkgs.buildPlatform.system = "x86_64-linux";
+      # nixpkgs.hostPlatform.system = "aarch64-linux";
       imports = [
-        # "${modulesPath}/installer/sd-card/sd-image.nix"
-        "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
+        "${modulesPath}/installer/cd-dvd/iso-image.nix"
+        "${modulesPath}/profiles/base.nix"
+        "${modulesPath}/profiles/clone-config.nix"
+        "${modulesPath}/profiles/all-hardware.nix"
+        "${modulesPath}/installer/scan/detected.nix"
+        "${modulesPath}/installer/scan/not-detected.nix"
       ];
       host = {
         user = "gabe";
@@ -70,14 +74,35 @@
         ];
       };
 
-      boot.loader.grub.enable = false;
-      boot.loader.generic-extlinux-compatible.enable = true;
-
-      boot.consoleLogLevel = lib.mkDefault 7;
-      boot.kernelParams = ["console=ttyS0,115200n8" "console=ttyAMA0,115200n8" "console=tty0"];
-
       # Adds terminus_font for people with HiDPI displays
       console.packages = options.console.packages.default ++ [pkgs.terminus_font];
+
+      # ISO naming.
+      isoImage.isoName = "${config.isoImage.isoBaseName}-${pkgs.stdenv.hostPlatform.system}.iso";
+
+      # EFI booting
+      isoImage.makeEfiBootable = true;
+
+      # USB booting
+      isoImage.makeUsbBootable = true;
+
+      # Add Memtest86+ to the CD.
+      boot.loader.grub.memtest86.enable = true;
+
+      # services.libinput.enable = true; # for touchpad support on many laptops
+
+      # An installation media cannot tolerate a host config defined file
+      # system layout on a fresh machine, before it has been formatted.
+      swapDevices = lib.mkForce [];
+      fileSystems = lib.mkForce config.lib.isoFileSystems;
+
+      system.nixos.variant_id = lib.mkDefault "installer";
+
+      # Enable in installer, even if the minimal profile disables it.
+      documentation.enable = lib.mkForce true;
+
+      # Show the manual.
+      documentation.nixos.enable = lib.mkForce true;
 
       # Tell the Nix evaluator to garbage collect more aggressively.
       # This is desirable in memory-constrained environments that don't
@@ -107,6 +132,17 @@
       # console less cumbersome if the machine has a public IP.
       networking.firewall.logRefusedConnections = lib.mkDefault false;
 
+      # Prevent installation media from evacuating persistent storage, as their
+      # var directory is not persistent and it would thus result in deletion of
+      # those entries.
+      environment.etc."systemd/pstore.conf".text = ''
+        [PStore]
+        Unlink=no
+      '';
+
+      # Much faster than xz
+      isoImage.squashfsCompression = lib.mkDefault "zstd";
+
       system.stateVersion = lib.mkDefault lib.trivial.release;
     })
   ];
@@ -114,4 +150,4 @@
 .config
 .system
 .build
-.sdImage
+.isoImage
