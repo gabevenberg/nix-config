@@ -41,6 +41,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../configs/home-manager/common.nix
         ../configs/home-manager/syncthing.nix
         ../configs/home-manager/tiny-irc.nix
+        ../roles/home-manager/music.nix
         ../configs/home-manager/secrets.nix
         inputs.sops-nix.homeManagerModules.sops
       ];

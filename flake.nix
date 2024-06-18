@@ -97,7 +97,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = import ./hosts/home-personal.nix {inherit inputs configLib;};
+      "gabe@archlaptop" = import ./hosts/home-laptop.nix {inherit inputs configLib;};
       "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs configLib;};
       "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
