@@ -46,8 +46,7 @@
 
       users.users.${config.host.user} = {
         packages = with pkgs; [
-          gparted
-          neovim
+          firefox
         ];
       };
 
@@ -58,7 +57,7 @@
       }: {
         host = osConfig.host;
         user = {
-          nvim.enable = false;
+          nvim.enable-lsp = false;
           git = {
             profile = {
               name = "Gabe Venberg";
@@ -68,7 +67,7 @@
           };
         };
         imports = [
-          ../roles/home-manager/minimal-terminal.nix
+          ../roles/home-manager/terminal.nix
           ../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];

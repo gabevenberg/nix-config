@@ -44,7 +44,6 @@
 
       users.users.${config.host.user} = {
         packages = with pkgs; [
-          gparted
           firefox
         ];
       };
@@ -56,6 +55,7 @@
       }: {
         host = osConfig.host;
         user = {
+          nvim.enable-lsp = false;
           git = {
             profile = {
               name = "Gabe Venberg";
