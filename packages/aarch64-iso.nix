@@ -46,8 +46,8 @@
 
       users.users.${config.host.user} = {
         packages = with pkgs; [
-          gparted
           neovim
+          gptfdisk
         ];
       };
 

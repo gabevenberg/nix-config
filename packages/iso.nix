@@ -44,8 +44,8 @@
 
       users.users.${config.host.user} = {
         packages = with pkgs; [
-          gparted
           firefox
+          gptfdisk
         ];
       };
 

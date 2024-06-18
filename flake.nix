@@ -91,6 +91,7 @@
       archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs configLib;};
       workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
+      rockpro = import ./hosts/rockpro64 {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -100,6 +101,17 @@
       "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs configLib;};
       "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
       "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
+    };
+
+    deploy = {
+      nodes = {
+        rockpro = {
+          hostname = "rockpro";
+          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockpro;
+          remoteBuild = true;
+        };
+      };
+      sshUser = "root";
     };
 
     packages.x86_64-linux = {
