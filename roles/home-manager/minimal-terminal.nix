@@ -9,6 +9,7 @@
     ../../configs/home-manager/direnv.nix
     ../../configs/home-manager/ssh-agent.nix
     ../../configs/home-manager/zsh.nix
+    ../../configs/home-manager/zellij
   ];
 
   user = {
