@@ -25,6 +25,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
           workProfile.enable = false;
         };
       };
+      host.isLaptop = true;
 
       targets.genericLinux.enable = true;
       home.username = "gabe";

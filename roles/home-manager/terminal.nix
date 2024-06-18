@@ -21,6 +21,7 @@
     tre-command
     diskonaut
     hyperfine
+    fclones
   ];
 
   programs = {
