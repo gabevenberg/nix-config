@@ -1,4 +1,6 @@
 {lib}: {
+  imports=[./net.nix];
+
   dirToStrings = dir: (map (v: builtins.readFile "${dir}/${v}")
     (builtins.filter (v:
       (builtins.readFileType "${dir}/${v}") == "regular") (

@@ -14,22 +14,10 @@
         type = lib.types.str;
         description = "Primary human users long name";
       };
-      gui.enable = lib.mkEnableOption {
-        description = "enable GUI";
-        default = false;
-      };
-      isLaptop = lib.mkEnableOption {
-        description = "machine is a laptop";
-        default = false;
-      };
-      isVm = lib.mkEnableOption {
-        description = "machine is a virtual machine";
-        default = false;
-      };
-      isSever = lib.mkEnableOption {
-        description = "machine is primarily a server";
-        default = false;
-      };
+      gui.enable = lib.mkEnableOption "enable GUI";
+      isLaptop = lib.mkEnableOption "machine is a laptop";
+      isVm = lib.mkEnableOption "machine is a virtual machine";
+      isSever = lib.mkEnableOption "machine is primarily a server";
     };
   };
 }
