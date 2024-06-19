@@ -46,7 +46,8 @@
 
       users.users.${config.host.user} = {
         packages = with pkgs; [
-          firefox
+          neovim
+          gptfdisk
         ];
       };
 

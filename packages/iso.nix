@@ -45,6 +45,7 @@
       users.users.${config.host.user} = {
         packages = with pkgs; [
           firefox
+          gptfdisk
         ];
       };
 
