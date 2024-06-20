@@ -1,5 +1,7 @@
-{lib}: {
-  imports=[./net.nix];
+{lib}:let 
+  net = import ./net.nix {inherit lib;};
+in
+{
 
   dirToStrings = dir: (map (v: builtins.readFile "${dir}/${v}")
     (builtins.filter (v:
@@ -11,4 +13,10 @@
         )
       else []
     )));
+
+
+  calcSystemdDhcpPoolOffset = {base, start, end}: {
+    offset = net.lib.net.ip.diff start base;
+    size = net.lib.net.ip.diff end start;
+  };
 }
