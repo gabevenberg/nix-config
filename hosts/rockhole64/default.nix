@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     ./disk-config.nix
     ./hardware-config.nix
+    ./adguard.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
@@ -38,7 +39,15 @@ inputs.nixpkgs.lib.nixosSystem {
         user = "gabe";
         fullName = "Gabe Venberg";
       };
-      networking.hostName = "rockpro"; # Define your hostname.
+      networking.hostName = "rockhole"; # Define your hostname.
+      systemd.network = {
+        enable = true;
+        networks."TODO" = {
+          address = ["10.10.0.2/16"];
+          gateway = ["10.10.0.1"];
+          dns = ["10.10.0.2"];
+        };
+      };
 
       # home-manager.sharedModules = [
       #   inputs.sops-nix.homeManagerModules.sops

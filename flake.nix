@@ -91,7 +91,7 @@
       archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs configLib;};
       workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
-      rockpro = import ./hosts/rockpro64 {inherit inputs configLib;};
+      rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
