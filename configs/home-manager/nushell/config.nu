@@ -20,7 +20,6 @@ $env.config = {
     }
 
     edit_mode: vi # emacs, vi
-    shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
     # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this. 
     # Zellij does not modify the term var, so we have to special-case it.
