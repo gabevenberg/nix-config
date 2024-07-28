@@ -4,55 +4,44 @@
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
-  system = "aarch64-linux";
+  system = "x86_64-linux";
   specialArgs = {inherit inputs configLib;};
+  # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    ./hardware-config.nix
-    ./adguard.nix
+    ./nginx.nix
+    ../../roles/nixos/vm.nix
     ../../configs/nixos/common.nix
+    ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
-    ../../configs/nixos/tailscale.nix
+    ../../configs/nixos/radicale.nix
     ({
       config,
       pkgs,
       configLib,
       ...
     }: {
-      boot.initrd.kernelModules = [
-        # PCIe/NVMe
-        "nvme"
-        "pcie_rockchip_host"
-        "rockchip_rga"
-        "rockchip_saradc"
-        "rockchip_thermal"
-        "rockchipdrm"
-        "phy_rockchip_pcie"
-      ];
-      hardware.enableRedistributableFirmware = true;
       host = {
         user = "gabe";
         fullName = "Gabe Venberg";
+        gui.enable = false;
+        isVm = true;
       };
-      networking.hostName = "rockhole"; # Define your hostname.
-      networking.hostId = "e0c31928";
+      networking.hostName = "hetzner-multi"; # Define your hostname.
+      networking.hostId = "908b80b6";
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
-        networks."TODO" = {
-          name = "TODO";
-          address = ["10.10.0.2/16"];
-          gateway = ["10.10.0.1"];
-          dns = ["10.10.0.2"];
+        networks."enp1s0" = {
+          networkConfig.DHCP = "ipv4";
+          gateway = ["fe80::1"];
+          address = ["2a01:4f8:1c1b:6c7c::1/64"];
         };
       };
 
-      # home-manager.sharedModules = [
-      #   inputs.sops-nix.homeManagerModules.sops
-      # ];
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
@@ -70,21 +59,15 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
-          # ../../configs/home-manager/secrets.nix
         ];
-
-        # sops = lib.mkIf (inputs ? nix-secrets) {
-        #   secrets = {
-        #   };
-        # };
       };
 
       # Bootloader.
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = false;
+      # boot.loader.systemd-boot.enable = true;
+      boot.initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod"];
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];

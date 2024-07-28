@@ -11,10 +11,11 @@
     {
       user.nvim.enable-completions = true;
       programs.nixvim = {
+        opts.foldmethod = "expr";
         plugins.treesitter = {
           enable = true;
           folding = true;
-          indent = true;
+          settings.indent.enable = true;
           nixvimInjections = true;
         };
         plugins.treesitter-context.enable = true;

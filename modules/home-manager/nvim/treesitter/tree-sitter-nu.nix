@@ -32,9 +32,9 @@
 
         # Add the nu injections
         extraFiles = {
-          "/queries/nu/highlights.scm" = builtins.readFile "${nu-grammar}/queries/nu/highlights.scm";
-          "/queries/nu/injections.scm" = builtins.readFile "${nu-grammar}/queries/nu/injections.scm";
-          "/queries/nu/indents.scm" = builtins.readFile "${nu-grammar}/queries/nu/indents.scm";
+          "/queries/nu/highlights.scm".source = "${nu-grammar}/queries/nu/highlights.scm";
+          "/queries/nu/injections.scm".source = "${nu-grammar}/queries/nu/injections.scm";
+          "/queries/nu/indents.scm".source = "${nu-grammar}/queries/nu/indents.scm";
         };
 
         plugins = {

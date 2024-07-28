@@ -94,6 +94,7 @@
       workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
+      hetzner-multi = import ./hosts/hetzner-multi {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -107,14 +108,20 @@
 
     deploy = {
       nodes = {
-        rockpro = {
+        rockhole = {
           hostname = "rockpro";
-          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockpro;
+          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockhole;
           remoteBuild = true;
+        };
+        hetzner-multi = {
+          hostname = "cal.venberg.xyz";
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.hetzner-multi;
         };
       };
       sshUser = "root";
     };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     packages.x86_64-linux = {
       proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
