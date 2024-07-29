@@ -3,6 +3,7 @@
   configLib,
   ...
 }:
+# Hetzner cloud multipurpouse server
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = {inherit inputs configLib;};
@@ -30,7 +31,7 @@ inputs.nixpkgs.lib.nixosSystem {
         gui.enable = false;
         isVm = true;
       };
-      networking.hostName = "hetzner-multi"; # Define your hostname.
+      networking.hostName = "cirrus"; # Define your hostname.
       networking.hostId = "908b80b6";
       networking.useNetworkd = true;
       systemd.network = {

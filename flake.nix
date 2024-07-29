@@ -94,7 +94,7 @@
       workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
-      hetzner-multi = import ./hosts/hetzner-multi {inherit inputs configLib;};
+      cirrus = import ./hosts/cirrus {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -113,9 +113,9 @@
           profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockhole;
           remoteBuild = true;
         };
-        hetzner-multi = {
+        cirrus = {
           hostname = "cal.venberg.xyz";
-          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.hetzner-multi;
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
         };
       };
       sshUser = "root";
