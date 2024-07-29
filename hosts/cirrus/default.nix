@@ -19,6 +19,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/radicale.nix
+    # ../../configs/nixos/forgejo.nix
     ({
       config,
       pkgs,

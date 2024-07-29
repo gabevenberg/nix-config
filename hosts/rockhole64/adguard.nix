@@ -6,9 +6,9 @@
   lib,
   ...
 }: {
-  services.adguardhome={
-    enable=true;
-    mutableSettings=true;
-    allowDHCP=true;
+  services.adguardhome = {
+    enable = true;
+    mutableSettings = true;
+    allowDHCP = true;
   };
 }
