@@ -43,7 +43,7 @@
     };
 
     nix-secrets = {
-      url = "git+ssh://git@git.venberg.xyz:7920/Gabe/nix-secrets.git?shallow=1";
+      url = "git+ssh://forgejo@git.venberg.xyz/Gabe/nix-secrets.git?shallow=1";
       # url = "git+https://git.venberg.xyz/Gabe/nix-secrets.git?shallow=1";
       flake = false;
     };

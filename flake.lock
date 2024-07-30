@@ -246,12 +246,12 @@
         "rev": "f61fd3244eab8d1406f89867b8025d5fe9385551",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@git.venberg.xyz:7920/Gabe/nix-secrets.git"
+        "url": "ssh://forgejo@git.venberg.xyz/Gabe/nix-secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@git.venberg.xyz:7920/Gabe/nix-secrets.git"
+        "url": "ssh://forgejo@git.venberg.xyz/Gabe/nix-secrets.git"
       }
     },
     "nixos-hardware": {

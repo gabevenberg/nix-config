@@ -14,7 +14,7 @@ in {
     lfs.enable = true;
     settings = {
       server = {
-        DOMAIN = "test.venberg.xyz";
+        DOMAIN = "git.venberg.xyz";
         ROOT_URL = "https://${srv.DOMAIN}";
         HTTP_PORT = 3000;
         ENABLE_GZIP = true;
