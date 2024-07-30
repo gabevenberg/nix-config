@@ -17,7 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
-    ../../configs/nixos/secrets.nix
+    # ../../configs/nixos/secrets.nix
     ../../configs/nixos/radicale.nix
     ../../configs/nixos/forgejo.nix
     ({

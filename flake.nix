@@ -95,6 +95,7 @@
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
       cirrus = import ./hosts/cirrus {inherit inputs configLib;};
+      remotepi-karp = import ./hosts/remotepi-karp {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -127,6 +128,7 @@
       proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
       iso = import ./packages/iso.nix {inherit inputs configLib;};
       aarch-64-iso = import ./packages/aarch64-iso.nix {inherit inputs configLib;};
+      rpi3-sd-image = import ./packages/rpi3-sd-image.nix {inherit inputs configLib;};
     };
 
     templates = import ./templates;

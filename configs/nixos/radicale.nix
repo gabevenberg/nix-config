@@ -24,4 +24,6 @@
       proxyPass = "http://localhost:5232";
     };
   };
+
+  imports = [./nginx.nix];
 }

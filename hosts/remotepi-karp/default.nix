@@ -9,9 +9,8 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
-    ./disk-config.nix
-    ./hardware-config.nix
-    ./adguard.nix
+    inputs.nixos-hardware.nixosModules.raspberry-pi-3
+
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     # ../../configs/nixos/secrets.nix
@@ -19,36 +18,37 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
+      lib,
       configLib,
+      modulesPath,
       ...
     }: {
-      boot.initrd.kernelModules = [
-        # PCIe/NVMe
-        "nvme"
-        "pcie_rockchip_host"
-        "rockchip_rga"
-        "rockchip_saradc"
-        "rockchip_thermal"
-        "rockchipdrm"
-        "phy_rockchip_pcie"
-      ];
       hardware.enableRedistributableFirmware = true;
       host = {
         user = "gabe";
         fullName = "Gabe Venberg";
       };
-      networking.hostName = "rockhole"; # Define your hostname.
-      networking.hostId = "e0c31928";
+      networking.hostName = "remotepi-karp"; # Define your hostname.
+      networking.hostId = "8efd3e13";
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
-        networks."TODO" = {
-          name = "TODO";
-          address = ["10.10.0.2/16"];
-          gateway = ["10.10.0.1"];
-          dns = ["10.10.0.2"];
+        networks."eth0" = {
+          name = "eth0";
+          address = ["TODO"];
+          gateway = ["TODO"];
+          dns = ["1.1.1.1"];
         };
       };
+      fileSystems = {
+        "/" = {
+          device = "/dev/disk/by-label/NIXOS_SD";
+          fsType = "ext4";
+          options = ["noatime"];
+        };
+      };
+
+      time.timeZone = "America/Chicago";
 
       # home-manager.sharedModules = [
       #   inputs.sops-nix.homeManagerModules.sops
@@ -70,7 +70,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
           # ../../configs/home-manager/secrets.nix
@@ -81,10 +81,6 @@ inputs.nixpkgs.lib.nixosSystem {
         #   };
         # };
       };
-
-      # Bootloader.
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = false;
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];

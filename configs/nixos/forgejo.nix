@@ -38,4 +38,6 @@ in {
       proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
     };
   };
+
+  imports = [./nginx.nix];
 }
