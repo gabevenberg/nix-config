@@ -34,9 +34,12 @@
         plugins.cmp.settings.sources = [
           {name = "nvim_lsp";}
         ];
-        plugins.which-key.registrations = {
-          "<leader>l" = "+lsp";
-        };
+        plugins.which-key.settings.spec = [
+          {
+            __unkeyed-1 = "<leader>l";
+            group = "+lsp";
+          }
+        ];
         keymaps = [
           {
             action = helpers.mkRaw "vim.lsp.buf.declaration";

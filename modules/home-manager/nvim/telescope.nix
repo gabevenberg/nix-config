@@ -9,10 +9,16 @@
       plugins.telescope = {
         enable = true;
       };
-      plugins.which-key.registrations = {
-        "<leader>f" = "+telescope";
-        "<leader>fg" = "+telescope git";
-      };
+      plugins.which-key.settings.spec = [
+        {
+          __unkeyed-1 = "<leader>f";
+          group = "+telescope";
+        }
+        {
+          __unkeyed-1 = "<leader>fg";
+          group = "+telescope git";
+        }
+      ];
       keymaps = [
         {
           action = ":Telescope find_files<CR>";

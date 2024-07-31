@@ -9,9 +9,12 @@
       globals = {
         mapleader = ";";
       };
-      plugins.which-key.registrations = {
-        "<leader>c" = "+check";
-      };
+      plugins.which-key.settings.spec = [
+        {
+          __unkeyed-1 = "<leader>c";
+          group = "+check";
+        }
+      ];
       keymaps = [
         {
           action = ":setlocal spell!<CR>";

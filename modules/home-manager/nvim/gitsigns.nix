@@ -9,9 +9,12 @@
       plugins.gitsigns = {
         enable = true;
       };
-      plugins.which-key.registrations = {
-        "<leader>g" = "+git";
-      };
+      plugins.which-key.settings.spec = [
+        {
+          __unkeyed-1 = "<leader>g";
+          group = "+git";
+        }
+      ];
       keymaps = [
         {
           action = ":Gitsigns toggle_current_line_blame<CR>";
