@@ -23,7 +23,8 @@
       modulesPath,
       ...
     }: {
-      imports = [ "${modulesPath}/installer/sd-card/sd-image-aarch64.nix" ];
+      imports = ["${modulesPath}/installer/sd-card/sd-image-aarch64.nix"];
+      boot.supportedFilesystems.zfs = lib.mkForce false;
       hardware.enableRedistributableFirmware = true;
       host = {
         user = "gabe";
