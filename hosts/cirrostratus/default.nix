@@ -3,56 +3,44 @@
   configLib,
   ...
 }:
+# Kapr site server.
 inputs.nixpkgs.lib.nixosSystem {
-  system = "aarch64-linux";
+  system = "x86_64-linux";
   specialArgs = {inherit inputs configLib;};
+  # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
-    inputs.nixos-hardware.nixosModules.raspberry-pi-3
-
+    ./disk-config.nix
+    ./nginx.nix
     ../../configs/nixos/common.nix
+    ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
     # ../../configs/nixos/secrets.nix
-    ../../configs/nixos/tailscale.nix
     ({
       config,
       pkgs,
-      lib,
       configLib,
-      modulesPath,
       ...
     }: {
-      hardware.enableRedistributableFirmware = true;
       host = {
         user = "gabe";
         fullName = "Gabe Venberg";
+        gui.enable = false;
       };
-      networking.hostName = "remotepi-karp"; # Define your hostname.
-      networking.hostId = "8efd3e13";
+      networking.hostName = "cirrostratus"; # Define your hostname.
+      networking.hostId = "1b9da0b9";
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
         networks."eth0" = {
           name = "eth0";
-          address = ["10.10.10.30/TODO"];
+          address = ["10.10.10.31/TODO"];
           gateway = ["TODO"];
           dns = ["1.1.1.1"];
         };
       };
-      fileSystems = {
-        "/" = {
-          device = "/dev/disk/by-label/NIXOS_SD";
-          fsType = "ext4";
-          options = ["noatime"];
-        };
-      };
 
-      time.timeZone = "America/Chicago";
-
-      # home-manager.sharedModules = [
-      #   inputs.sops-nix.homeManagerModules.sops
-      # ];
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
@@ -73,14 +61,11 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
-          # ../../configs/home-manager/secrets.nix
         ];
-
-        # sops = lib.mkIf (inputs ? nix-secrets) {
-        #   secrets = {
-        #   };
-        # };
       };
+
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
