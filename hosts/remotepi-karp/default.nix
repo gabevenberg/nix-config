@@ -35,8 +35,8 @@ inputs.nixpkgs.lib.nixosSystem {
         enable = true;
         networks."eth0" = {
           name = "eth0";
-          address = ["10.10.10.30/TODO"];
-          gateway = ["TODO"];
+          address = ["10.10.10.30/24"];
+          gateway = ["10.10.10.1"];
           dns = ["1.1.1.1"];
         };
       };
