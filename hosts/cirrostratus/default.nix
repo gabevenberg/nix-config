@@ -35,9 +35,10 @@ inputs.nixpkgs.lib.nixosSystem {
         enable = true;
         networks."eth0" = {
           name = "eth0";
-          address = ["10.10.10.31/24"];
-          gateway = ["10.10.10.1"];
-          dns = ["1.1.1.1"];
+          DHCP = "yes";
+          # address = ["10.10.10.31/24"];
+          # gateway = ["10.10.10.1"];
+          # dns = ["1.1.1.1"];
         };
       };
 
@@ -58,14 +59,14 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/minimal-terminal.nix
+          ../../roles/home-manager/terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };
 
       # Bootloader.
-      boot.loader.systemd-boot.enable = true;
+      boot.loader.grub.enable = true;
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
