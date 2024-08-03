@@ -3,12 +3,12 @@
     disk = {
       ssd = {
         type = "disk";
-        device = "/dev/TODO";
+        device = "/dev/disk/by-id/wwn-0x500a0751e138c24b";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              size = "64M";
+              size = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -29,7 +29,7 @@
       };
       zfsa = {
         type = "disk";
-        device = "/dev/TODO";
+        device = "/dev/disk/by-id/wwn-0x5000cca27ed9174d";
         content = {
           type = "gpt";
           partitions = {
@@ -45,7 +45,7 @@
       };
       zfsb = {
         type = "disk";
-        device = "/dev/TODO";
+        device = "/dev/disk/by-id/wwn-0x5000cca27ed8106c";
         content = {
           type = "gpt";
           partitions = {
@@ -64,12 +64,15 @@
       storage = {
         type = "zpool";
         mode = "mirror";
-        mountpoint = "/storage";
+        options.mountpoint = "/storage";
+        rootFsOptions = {
+          compression = "zstd";
+        };
 
         datasets = {
           dataset = {
             type = "zfs_fs";
-            mountpoint = "/storage/dataset";
+            options.mountpoint = "/storage/dataset";
           };
         };
       };

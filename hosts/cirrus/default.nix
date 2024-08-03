@@ -67,8 +67,6 @@ inputs.nixpkgs.lib.nixosSystem {
         ];
       };
 
-      # Bootloader.
-      # boot.loader.systemd-boot.enable = true;
       boot.initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod"];
 
       # Open ports in the firewall.

@@ -95,6 +95,7 @@
       gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
       cirrus = import ./hosts/cirrus {inherit inputs configLib;};
+      cirrostratus = import ./hosts/cirrostratus {inherit inputs configLib;};
       remotepi-karp = import ./hosts/remotepi-karp {inherit inputs configLib;};
     };
 
@@ -117,6 +118,10 @@
         cirrus = {
           hostname = "cal.venberg.xyz";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
+        };
+        cirrostratus = {
+          hostname = "cirrostratus";
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
         };
       };
       sshUser = "root";

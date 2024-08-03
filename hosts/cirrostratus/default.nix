@@ -12,7 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    ./nginx.nix
+    ./hardware-configuration.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
@@ -33,10 +33,10 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
-        networks."eth0" = {
-          name = "eth0";
+        networks."eno1" = {
+          name = "eno1";
           DHCP = "yes";
-          # address = ["10.10.10.31/24"];
+          # address = ["10.10.10.30/24"];
           # gateway = ["10.10.10.1"];
           # dns = ["1.1.1.1"];
         };
@@ -59,14 +59,20 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
       };
-
-      # Bootloader.
-      boot.loader.grub.enable = true;
+      boot = {
+        # Bootloader.
+        # loader.grub.enable = true;
+        loader.systemd-boot.enable = true;
+        loader.efi.canTouchEfiVariables = true;
+        kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+        supportedFilesystems.zfs = true;
+        initrd.supportedFilesystems.zfs = true;
+      };
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
