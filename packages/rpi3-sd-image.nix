@@ -24,7 +24,6 @@
       ...
     }: {
       imports = ["${modulesPath}/installer/sd-card/sd-image-aarch64.nix"];
-      boot.supportedFilesystems.zfs = lib.mkForce false;
       hardware.enableRedistributableFirmware = true;
       host = {
         user = "gabe";
@@ -89,6 +88,13 @@
       # networking.firewall.allowedUDPPorts = [ ... ];
       # Or disable the firewall altogether.
       # networking.firewall.enable = false;
+
+      boot.supportedFilesystems.zfs = lib.mkForce false;
+      boot.kernelParams = [
+        "console=ttyS1,115200n8"
+      ];
+      boot.loader.grub.enable = false;
+      boot.loader.generic-extlinux-compatible.enable = true;
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions

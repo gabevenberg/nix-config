@@ -89,6 +89,13 @@ inputs.nixpkgs.lib.nixosSystem {
       # Or disable the firewall altogether.
       # networking.firewall.enable = false;
 
+      boot.supportedFilesystems.zfs = lib.mkForce false;
+      boot.kernelParams = [
+        "console=ttyS1,115200n8"
+      ];
+      boot.loader.grub.enable = false;
+      boot.loader.generic-extlinux-compatible.enable = true;
+
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
       # on your system were taken. It‘s perfectly fine and recommended to leave
