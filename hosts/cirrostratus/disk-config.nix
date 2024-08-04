@@ -3,7 +3,7 @@
     disk = {
       ssd = {
         type = "disk";
-        device = "/dev/disk/by-id/wwn-0x500a0751e138c24b";
+        device = "/dev/disk/by-id/nvme-PC711_NVMe_SK_hynix_256GB____FNAAN64121210AP27";
         content = {
           type = "gpt";
           partitions = {
@@ -64,7 +64,6 @@
       storage = {
         type = "zpool";
         mode = "mirror";
-        options.mountpoint = "/storage";
         rootFsOptions = {
           compression = "zstd";
         };

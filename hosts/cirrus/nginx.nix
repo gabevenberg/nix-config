@@ -13,5 +13,4 @@
     forceSSL = true;
     root = "/var/www/gabevenberg.com";
   };
-  networking.firewall.allowedTCPPorts = [443 80];
 }
