@@ -16,11 +16,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
-    # ../../configs/nixos/secrets.nix
+    ../../configs/nixos/secrets.nix
     ({
       config,
       pkgs,
       configLib,
+      lib,
       ...
     }: {
       host = {
@@ -42,6 +43,18 @@ inputs.nixpkgs.lib.nixosSystem {
         };
       };
 
+      services.duckdns = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "duckdns-token"] config) {
+        enable = true;
+        domains = ["venberg"];
+        tokenFile = config.sops.secrets.duckdns-token.path;
+      };
+
+      sops = lib.mkIf (inputs ? nix-secrets) {
+        secrets = {
+          duckdns-token.sopsFile = "${inputs.nix-secrets}/duckdns.yaml";
+        };
+      };
+
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
@@ -50,9 +63,7 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host = osConfig.host;
         user = {
-          nvim = {
-            enable-lsp = false;
-          };
+          nvim.enable-lsp = false;
           git = {
             profile = {
               name = config.host.fullName;

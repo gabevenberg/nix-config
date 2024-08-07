@@ -39,13 +39,13 @@ in {
       };
     };
   };
-  assertions = [
-    {
-      assertion = cfg.domains != null || cfg.domainsFile != null;
-      message = "services.duckdns.domains or services.duckdns.domainsFile has to be defined";
-    }
-  ];
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.domains != null || cfg.domainsFile != null;
+        message = "services.duckdns.domains or services.duckdns.domainsFile has to be defined";
+      }
+    ];
     systemd.services.duckdns = {
       description = "DuckDNS Dynamic DNS Client";
       after = ["network.target"];
@@ -64,7 +64,11 @@ in {
         ${pkgs.replace-secret}/bin/replace-secret @token_placeholder@ ${cfg.tokenFile} $RUNTIME_DIRECTORY/curlurl
 
         # initalise the replacement file for the domains from the domains file if it exists, otherwise make it empty.
-        install --mode 600 ${if (cfg.domainsFile != null) then cfg.domainsFile else "/dev/null"} $RUNTIME_DIRECTORY/domains
+        install --mode 600 ${
+          if (cfg.domainsFile != null)
+          then cfg.domainsFile
+          else "/dev/null"
+        } $RUNTIME_DIRECTORY/domains
         # these are already in the nix store, so doesnt matter if they leak via cmdline.
         echo '${lib.strings.concatStringsSep "\n" cfg.domains}' >>  $RUNTIME_DIRECTORY/domains
         ${pkgs.gnused}/bin/sed -zi 's/\n/,/g' $RUNTIME_DIRECTORY/domains
