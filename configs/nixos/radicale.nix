@@ -11,7 +11,7 @@
       auth = {
         type = "htpasswd";
         htpasswd_encryption = "md5";
-        htpasswd_filename = "${inputs.nix-secrets}/radicale-users";
+        htpasswd_filename = config.sops.secrets.radicale-users.path;
       };
     };
   };

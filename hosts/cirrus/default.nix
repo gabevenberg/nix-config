@@ -12,18 +12,18 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-    ./nginx.nix
     ../../roles/nixos/vm.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
-    # ../../configs/nixos/secrets.nix
+    ../../configs/nixos/secrets.nix
     ../../configs/nixos/radicale.nix
     ../../configs/nixos/forgejo.nix
     ({
       config,
       pkgs,
       configLib,
+      lib,
       ...
     }: {
       host = {
@@ -44,6 +44,15 @@ inputs.nixpkgs.lib.nixosSystem {
         };
       };
 
+      sops = lib.mkIf (inputs ? nix-secrets) {
+        secrets = {
+          radicale-users = {
+            sopsFile = "${inputs.nix-secrets}/radicale-users";
+            format = "binary";
+            owner = "radicale";
+          };
+        };
+      };
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,

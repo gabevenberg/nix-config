@@ -66,13 +66,7 @@
         mode = "mirror";
         rootFsOptions = {
           compression = "zstd";
-        };
-
-        datasets = {
-          dataset = {
-            type = "zfs_fs";
-            options.mountpoint = "/storage/dataset";
-          };
+          mountpoint = "/storage";
         };
       };
     };

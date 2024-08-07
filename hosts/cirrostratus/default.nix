@@ -13,6 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     ./disk-config.nix
     ./hardware-configuration.nix
+    ./nginx.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
@@ -29,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
         fullName = "Gabe Venberg";
         gui.enable = false;
       };
+      boot.zfs.extraPools = ["storage"];
       networking.hostName = "cirrostratus"; # Define your hostname.
       networking.hostId = "1b9da0b9";
       networking.useNetworkd = true;
@@ -52,6 +54,11 @@ inputs.nixpkgs.lib.nixosSystem {
       sops = lib.mkIf (inputs ? nix-secrets) {
         secrets = {
           duckdns-token.sopsFile = "${inputs.nix-secrets}/duckdns.yaml";
+          gabevenberg-draft-credentials = {
+            sopsFile = "${inputs.nix-secrets}/draft.gabevenberg.com";
+            format = "binary";
+            owner = config.services.nginx.user;
+          };
         };
       };
 

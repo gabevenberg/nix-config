@@ -13,4 +13,10 @@
     forceSSL = true;
     root = "/var/www/gabevenberg.com";
   };
+  services.nginx.virtualHosts."draft.gabevenberg.com" = {
+    enableACME = true;
+    forceSSL = true;
+    root = "/var/www/draft.gabevenberg.com";
+    basicAuthFile = config.sops.secrets.gabevenberg-draft-credentials.path;
+  };
 }

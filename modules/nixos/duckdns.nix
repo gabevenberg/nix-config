@@ -57,16 +57,21 @@ in {
         DynamicUser = true;
         RuntimeDirectory = "duckdns-update";
         RuntimeDirectoryMode = "700";
+        LoadCredential =
+          [
+            "tokenFile:${cfg.tokenFile}"
+          ]
+          ++ lib.optionals (cfg.domainsFile != null) ["domainsFile:${cfg.domainsFile}"];
       };
       script = ''
         install --mode 600 ${urlFile} $RUNTIME_DIRECTORY/curlurl
         # replace the token
-        ${pkgs.replace-secret}/bin/replace-secret @token_placeholder@ ${cfg.tokenFile} $RUNTIME_DIRECTORY/curlurl
+        ${pkgs.replace-secret}/bin/replace-secret @token_placeholder@ $CREDENTIALS_DIRECTORY/tokenFile $RUNTIME_DIRECTORY/curlurl
 
         # initalise the replacement file for the domains from the domains file if it exists, otherwise make it empty.
         install --mode 600 ${
           if (cfg.domainsFile != null)
-          then cfg.domainsFile
+          then "$CREDENTIALS_DIRECTORY/domainsFile"
           else "/dev/null"
         } $RUNTIME_DIRECTORY/domains
         # these are already in the nix store, so doesnt matter if they leak via cmdline.
