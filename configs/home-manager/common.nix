@@ -25,7 +25,7 @@
       };
     };
   imports = [
-    ../../modules/hostopts.nix
+    ../../modules/nixos/hostopts.nix
     ../../modules/home-manager
   ];
 }

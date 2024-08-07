@@ -96,7 +96,6 @@
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
       cirrus = import ./hosts/cirrus {inherit inputs configLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs configLib;};
-      remotepi-karp = import ./hosts/remotepi-karp {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint

@@ -61,7 +61,7 @@ in {
     else defaultPasswordHash;
 
   imports = [
-    ../../modules/hostopts.nix
+    ../../modules/nixos
   ];
 
   home-manager.useGlobalPkgs = true;

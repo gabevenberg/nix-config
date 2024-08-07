@@ -50,6 +50,9 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host = osConfig.host;
         user = {
+          nvim = {
+            enable-lsp = false;
+          };
           git = {
             profile = {
               name = config.host.fullName;
@@ -59,7 +62,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/minimal-terminal.nix
+          ../../roles/home-manager/terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
         ];
