@@ -95,6 +95,8 @@ inputs.nixpkgs.lib.nixosSystem {
         initrd.supportedFilesystems.zfs = true;
       };
 
+      hardware.amdgpu.initrd.enable = true;
+
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
       # networking.firewall.allowedUDPPorts = [ ... ];
