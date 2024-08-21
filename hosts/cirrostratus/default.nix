@@ -62,6 +62,8 @@ inputs.nixpkgs.lib.nixosSystem {
         };
       };
 
+      services.tailscale.useRoutingFeatures = "server";
+
       home-manager.users.${config.host.user} = {
         inputs,
         osConfig,
