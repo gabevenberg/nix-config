@@ -18,6 +18,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
+    ../../configs/nixos/jellyfin.nix
     ({
       config,
       pkgs,
@@ -98,6 +99,7 @@ inputs.nixpkgs.lib.nixosSystem {
       };
 
       hardware.amdgpu.initrd.enable = true;
+      hardware.graphics.enable = true;
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
