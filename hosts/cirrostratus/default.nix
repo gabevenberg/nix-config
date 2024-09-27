@@ -93,7 +93,6 @@ inputs.nixpkgs.lib.nixosSystem {
         # loader.grub.enable = true;
         loader.systemd-boot.enable = true;
         loader.efi.canTouchEfiVariables = true;
-        kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
         supportedFilesystems.zfs = true;
         initrd.supportedFilesystems.zfs = true;
       };

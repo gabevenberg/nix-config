@@ -6,6 +6,7 @@
 }: {
   config = lib.mkIf config.user.nvim.enable {
     programs.nixvim = {
+      plugins.web-devicons.enable = true;
       plugins.nvim-tree = {
         enable = true;
         disableNetrw = true;
