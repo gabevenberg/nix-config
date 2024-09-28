@@ -3,38 +3,44 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  visualizer = false;
+in {
   services.mpd = {
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Music";
     network.startWhenNeeded = true;
     playlistDirectory = "${config.services.mpd.musicDirectory}/.mpd/playlists";
-    extraConfig = ''
-      restore_paused "yes"
-      auto_update "yes"
-      replaygain "auto"
-      follow_outside_symlinks "yes"
+    extraConfig =
+      (''
+        restore_paused "yes"
+        auto_update "yes"
+        replaygain "auto"
+        follow_outside_symlinks "yes"
 
-      #for ncmpcpp visualizer
-      audio_output {
-          type "fifo"
-          name "Visualizer feed"
-          path "/tmp/mpd.fifo"
-          format "44100:16:2"
-      }
-      audio_output {
-        type "pipewire"
-        name "PipeWire Sound Server"
-      }
-    '';
+        audio_output {
+          type "pipewire"
+          name "PipeWire Sound Server"
+        }
+      ''
+       + lib.optionalString visualizer
+      ''
+        #for ncmpcpp visualizer
+        audio_output {
+            type "fifo"
+            name "Visualizer feed"
+            path "/tmp/mpd.fifo"
+            format "44100:16:2"
+        }
+      ''); 
   };
 
   services.mpd-mpris.enable = true;
 
   programs.ncmpcpp = {
     enable = true;
-    package = pkgs.ncmpcpp.override {visualizerSupport = true;};
-    settings = {
+    package = lib.mkIf visualizer (pkgs.ncmpcpp.override {visualizerSupport = true;});
+    settings = lib.mkIf visualizer {
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "Visualizer feed";
       visualizer_in_stereo = "yes";

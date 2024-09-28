@@ -60,6 +60,10 @@ inputs.nixpkgs.lib.nixosSystem {
             format = "binary";
             owner = config.services.nginx.user;
           };
+          restic-server-credentials = {
+            sopsFile = "${inputs.nix-secrets}/restic-server";
+            format = "binary";
+          };
         };
       };
 

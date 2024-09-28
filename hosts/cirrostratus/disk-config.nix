@@ -68,6 +68,16 @@
           compression = "zstd";
           mountpoint = "/storage";
         };
+        datasets = {
+          backup = {
+            type="zfs_fs";
+            options={
+              mountpoint="/backup";
+              compression="zstd";
+              quota="6T";
+            };
+          };
+        };
       };
     };
   };
