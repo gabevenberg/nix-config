@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  services.radicale = {
+  services.radicale = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "radicale-users"] config) {
     enable = true;
     settings = {
       auth = {

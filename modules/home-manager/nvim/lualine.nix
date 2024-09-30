@@ -63,7 +63,7 @@
             lualine_y = [];
             lualine_z = [
               {
-                __unkeyed="tabs";
+                __unkeyed = "tabs";
                 mode = 2;
               }
             ];

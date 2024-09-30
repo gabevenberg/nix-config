@@ -39,7 +39,10 @@ in {
   };
 
   # packages that should be on every system.
-  environment.systemPackages = [pkgs.neovim];
+  environment.systemPackages = with pkgs; [
+    neovim
+    rsync
+  ];
 
   programs.zsh.enable = lib.mkDefault true;
   environment.shells = lib.mkDefault [pkgs.zsh];

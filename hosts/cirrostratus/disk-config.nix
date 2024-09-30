@@ -70,11 +70,10 @@
         };
         datasets = {
           backup = {
-            type="zfs_fs";
-            options={
-              mountpoint="/backup";
-              compression="zstd";
-              quota="6T";
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/backup";
+              quota = "6T";
             };
           };
         };

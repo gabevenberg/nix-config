@@ -12,7 +12,7 @@ in {
     network.startWhenNeeded = true;
     playlistDirectory = "${config.services.mpd.musicDirectory}/.mpd/playlists";
     extraConfig =
-      (''
+      ''
         restore_paused "yes"
         auto_update "yes"
         replaygain "auto"
@@ -23,7 +23,7 @@ in {
           name "PipeWire Sound Server"
         }
       ''
-       + lib.optionalString visualizer
+      + lib.optionalString visualizer
       ''
         #for ncmpcpp visualizer
         audio_output {
@@ -32,7 +32,7 @@ in {
             path "/tmp/mpd.fifo"
             format "44100:16:2"
         }
-      ''); 
+      '';
   };
 
   services.mpd-mpris.enable = true;

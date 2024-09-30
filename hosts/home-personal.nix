@@ -33,7 +33,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../roles/home-manager/terminal.nix
         ../roles/home-manager/music.nix
         ../configs/home-manager/common.nix
-        ../configs/home-manager/syncthing.nix
         ../configs/home-manager/email.nix
         ../configs/home-manager/tiny-irc.nix
         ../configs/home-manager/secrets.nix

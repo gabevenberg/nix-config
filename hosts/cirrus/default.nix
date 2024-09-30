@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+    ./restic.nix
     ../../roles/nixos/vm.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix

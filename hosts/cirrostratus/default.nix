@@ -14,11 +14,13 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disk-config.nix
     ./hardware-configuration.nix
     ./nginx.nix
+    ./restic.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/jellyfin.nix
+    ../../configs/nixos/syncthing.nix
     ({
       config,
       pkgs,
@@ -59,10 +61,6 @@ inputs.nixpkgs.lib.nixosSystem {
             sopsFile = "${inputs.nix-secrets}/draft.gabevenberg.com";
             format = "binary";
             owner = config.services.nginx.user;
-          };
-          restic-server-credentials = {
-            sopsFile = "${inputs.nix-secrets}/restic-server";
-            format = "binary";
           };
         };
       };
