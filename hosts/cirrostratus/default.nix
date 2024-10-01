@@ -47,6 +47,7 @@ inputs.nixpkgs.lib.nixosSystem {
           # dns = ["1.1.1.1"];
         };
       };
+    time.timeZone = "America/Chicago";
 
       services.duckdns = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "duckdns-token"] config) {
         enable = true;
