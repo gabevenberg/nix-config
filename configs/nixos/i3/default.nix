@@ -27,6 +27,7 @@
       brightnessctl
       arandr
       dex
+      firefox
     ];
     services.playerctld.enable = true;
     xsession.enable = true;

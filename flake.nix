@@ -90,12 +90,10 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      archlaptop-vm = import ./hosts/archlaptop-vm {inherit inputs configLib;};
-      workstation-vm = import ./hosts/workstation-vm {inherit inputs configLib;};
-      gv-wsl = import ./hosts/wsl-workstation.nix {inherit inputs configLib;};
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
       cirrus = import ./hosts/cirrus {inherit inputs configLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs configLib;};
+      worklaptop = import ./hosts/worklaptop {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint

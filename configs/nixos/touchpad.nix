@@ -3,13 +3,15 @@
   pkgs,
   ...
 }: {
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput = {
+  services.libinput = {
+    # Enable touchpad support (enabled default in most desktopManager).
     enable = true;
-    disableWhileTyping = true;
-    naturalScrolling = true;
-    additionalOptions = ''
-      Option "PalmDetection" "True"
-    '';
+    touchpad = {
+      disableWhileTyping = true;
+      naturalScrolling = true;
+      additionalOptions = ''
+        Option "PalmDetection" "True"
+      '';
+    };
   };
 }
