@@ -13,6 +13,7 @@
 
     ../configs/nixos/common.nix
     ../configs/nixos/sshd.nix
+    ../configs/nixos/tailscale.nix
     # ../configs/nixos/secrets.nix
     ../configs/nixos/tailscale.nix
     ({

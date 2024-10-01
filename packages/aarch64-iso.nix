@@ -11,6 +11,7 @@
   modules = [
     inputs.home-manager.nixosModules.home-manager
     ../configs/nixos/interactive-networking.nix
+    ../configs/nixos/tailscale.nix
     ../configs/nixos/common.nix
     ../configs/nixos/sshd.nix
     ({

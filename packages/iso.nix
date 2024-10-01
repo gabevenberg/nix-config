@@ -15,6 +15,7 @@
     ../configs/nixos/i3
     ../configs/nixos/common.nix
     ../configs/nixos/sshd.nix
+    ../configs/nixos/tailscale.nix
     ../roles/nixos/power-saving.nix
     ({
       config,
