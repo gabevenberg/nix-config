@@ -93,7 +93,6 @@
       rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
       cirrus = import ./hosts/cirrus {inherit inputs configLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs configLib;};
-      worklaptop = import ./hosts/worklaptop {inherit inputs configLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -101,8 +100,7 @@
     homeConfigurations = {
       "gabe@archlaptop" = import ./hosts/home-laptop.nix {inherit inputs configLib;};
       "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs configLib;};
-      "gabe@gv-workstation" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
-      "gabe@gv-ubuntu" = import ./hosts/home-workstation.nix {inherit inputs configLib;};
+      "gabe@gvworklaptop" = import ./hosts/work-laptop.nix {inherit inputs configLib;};
     };
 
     deploy = {
