@@ -29,23 +29,6 @@
         BreakBeforeBinaryOperators: NonAssignment
         ...
       '';
-      "work/.clang-format" = lib.mkIf config.user.git.workProfile.enable {
-        text = ''
-          ---
-          #this syncronizes with settings used by neovims treesitters so that the lsp formatting and treesitter formatting do not fight eatch other.
-          PointerAlignment: Left
-          ColumnLimit: 80
-          IndentWidth: 4
-          TabWidth: 4
-          UseCRLF: false
-          UseTab: Never
-          AlignAfterOpenBracket: BlockIndent
-          AlwaysBreakBeforeMultilineStrings: true
-          BreakBeforeBraces: Allman
-          BreakBeforeBinaryOperators: None
-          ...
-        '';
-      };
     };
   };
 }
