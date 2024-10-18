@@ -27,8 +27,33 @@ in {
       path = "/backup/restic/.htpasswd";
       owner="restic";
     };
+    secrets.restic-url = {
+      sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
+      owner = config.host.user;
+    };
+    secrets.restic-password = {
+      sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
+      owner = config.host.user;
+    };
   };
+
   environment.systemPackages = with pkgs; [
     restic
   ];
+
+  services.restic.backups = lib.mkIf (inputs ? nix-secrets) {
+    remote = {
+      repositoryFile = config.sops.secrets.restic-url.path;
+      passwordFile = config.sops.secrets.restic-password.path;
+      initialize = true;
+      paths = [
+        "/storage/syncthing"
+      ];
+      timerConfig = {
+        OnCalendar = "daily";
+        Persistent = true;
+        RandomizedDelaySec = "4h";
+      };
+    };
+  };
 }

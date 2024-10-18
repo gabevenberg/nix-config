@@ -123,8 +123,6 @@
       sshUser = "root";
     };
 
-    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
-
     packages.x86_64-linux = {
       proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
       iso = import ./packages/iso.nix {inherit inputs configLib;};
