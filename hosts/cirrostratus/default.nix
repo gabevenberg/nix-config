@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/jellyfin.nix
     ../../configs/nixos/syncthing.nix
+    ../../configs/nixos/grocy.nix
     ({
       config,
       pkgs,
