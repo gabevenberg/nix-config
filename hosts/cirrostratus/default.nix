@@ -22,6 +22,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/jellyfin.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/grocy.nix
+    ../../configs/nixos/factorio-docker.nix
     ({
       config,
       pkgs,
@@ -48,7 +49,7 @@ inputs.nixpkgs.lib.nixosSystem {
           # dns = ["1.1.1.1"];
         };
       };
-    time.timeZone = "America/Chicago";
+      time.timeZone = "America/Chicago";
 
       services.duckdns = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "duckdns-token"] config) {
         enable = true;
@@ -68,6 +69,8 @@ inputs.nixpkgs.lib.nixosSystem {
       };
 
       services.tailscale.useRoutingFeatures = "server";
+
+      # virtualisation.docker.daemon.settings.data-root="/storage/docker";
 
       home-manager.users.${config.host.user} = {
         inputs,

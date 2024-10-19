@@ -48,6 +48,7 @@ in {
       initialize = true;
       paths = [
         "/storage/syncthing"
+        "/storage/factorio"
       ];
       timerConfig = {
         OnCalendar = "daily";
