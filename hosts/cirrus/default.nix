@@ -20,6 +20,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/radicale.nix
     ../../configs/nixos/forgejo.nix
+    ../../configs/nixos/homepage.nix
     ({
       config,
       pkgs,

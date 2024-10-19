@@ -111,7 +111,7 @@
           remoteBuild = true;
         };
         cirrus = {
-          hostname = "cal.venberg.xyz";
+          hostname = "cirrus";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
         };
         cirrostratus = {
