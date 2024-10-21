@@ -14,7 +14,7 @@
     overrideFolders = false;
     openDefaultPorts = true;
     systemService = true;
-    dataDir="/home/${config.host.user}/Sync";
-    configDir="/home/${config.host.user}/.local/state/syncthing";
+    dataDir = "/home/${config.host.user}/Sync";
+    configDir = "/home/${config.host.user}/.local/state/syncthing";
   };
 }

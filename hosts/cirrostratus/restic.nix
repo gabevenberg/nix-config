@@ -25,7 +25,7 @@ in {
       sopsFile = "${inputs.nix-secrets}/restic-server";
       format = "binary";
       path = "/backup/restic/.htpasswd";
-      owner="restic";
+      owner = "restic";
     };
     secrets.restic-url = {
       sopsFile = "${inputs.nix-secrets}/restic-client.yaml";

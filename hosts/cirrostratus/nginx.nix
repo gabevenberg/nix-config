@@ -8,7 +8,7 @@
   imports = [
     ../../configs/nixos/nginx.nix
   ];
-  services.nginx.clientMaxBodySize="100m";
+  services.nginx.clientMaxBodySize = "100m";
   services.nginx.virtualHosts = {
     "gabevenberg.com" = {
       enableACME = true;

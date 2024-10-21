@@ -15,8 +15,8 @@
         "34197:34197"
         "27015:27015"
       ];
-      environment={
-        UPDATE_MODS_ON_START="true";
+      environment = {
+        UPDATE_MODS_ON_START = "true";
       };
     };
   };

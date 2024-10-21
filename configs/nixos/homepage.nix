@@ -16,13 +16,13 @@ in {
       headerStyle = "boxed";
       base = "https://${baseurl}";
       language = "en";
-      hideVersion=true;
+      hideVersion = true;
       statusStyle = "dot";
       quicklaunch = {
         searchDescriptions = true;
         hideInternetSearch = false;
         hideVisitUrl = false;
-        provider="duckduckgo";
+        provider = "duckduckgo";
       };
     };
 
@@ -88,19 +88,18 @@ in {
             };
           }
           {
-            Radicale={
-              icon="sh-radicale.svg";
-              href="https://cal.venberg.xyz";
-              siteMonitor="https://cal.venberg.xyz";
-              description="Calander administration";
+            Radicale = {
+              icon = "sh-radicale.svg";
+              href = "https://cal.venberg.xyz";
+              siteMonitor = "https://cal.venberg.xyz";
+              description = "Calander administration";
             };
           }
           {
-            Syncthing={
-              icon="sh-syncthing.svg";
-              href="http://localhost:8384/";
-              siteMonitor="http://localhost:8384/";
-              description="Local Syncthing dashboard";
+            Syncthing = {
+              icon = "sh-syncthing.svg";
+              href = "http://localhost:8384";
+              description = "Local Syncthing dashboard";
             };
           }
         ];
@@ -116,11 +115,11 @@ in {
             };
           }
           {
-            Github={
-              icon="si-github-#181717";
-              href="https://github.com";
-              siteMonitor="https://git.venberg.xyz";
-              description="Non self hosted Git forge :(";
+            Github = {
+              icon = "si-github-#181717";
+              href = "https://github.com";
+              siteMonitor = "https://git.venberg.xyz";
+              description = "Non self hosted Git forge :(";
             };
           }
         ];
