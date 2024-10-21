@@ -95,6 +95,14 @@ in {
               description="Calander administration";
             };
           }
+          {
+            Syncthing={
+              icon="sh-syncthing.svg";
+              href="http://localhost:8384/";
+              siteMonitor="http://localhost:8384/";
+              description="Local Syncthing dashboard";
+            };
+          }
         ];
       }
       {
