@@ -68,5 +68,6 @@ in {
   home.packages = with pkgs; [
     mpc-cli
     playerctl
+    rmpc
   ];
 }

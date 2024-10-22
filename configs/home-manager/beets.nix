@@ -6,6 +6,7 @@
 }: {
   programs.beets = {
     enable = true;
+    mpdIntegration.enableUpdate = true;
     settings = {
       directory = "~/Music";
       library = "~/Music/library.db";
@@ -14,20 +15,32 @@
         write = true;
       };
       plugins = [
-        "edit"
-        "fetchart"
-        "chroma"
-        "thumbnails"
-        "replaygain"
-        "mbsync"
-        "fuzzy"
-        "duplicates"
         "badfiles"
+        "chroma"
+        "deezer"
+        "discogs"
+        "duplicates"
+        "edit"
+        "embedart"
+        "fetchart"
         "fromfilename"
+        "fuzzy"
+        "info"
+        "lastgenre"
+        "lyrics"
+        "mbsync"
+        "missing"
+        "replaygain"
+        "scrub"
+        "spotify"
+        "thumbnails"
       ];
       replaygain = {
         auto = false;
         backend = "ffmpeg";
+      };
+      duplicates = {
+        tiebreak.items = ["bitrate"];
       };
       asciify_paths = true;
     };
