@@ -16,19 +16,20 @@
           servers = {
             bashls.enable = true;
             clangd.enable = true;
-            lua-ls.enable = true;
-            nil-ls.enable = true;
-            nil-ls.settings.formatting.command = ["alejandra"];
+            lua_ls.enable = true;
+            nil_ls.enable = true;
+            nil_ls.settings.formatting.command = ["alejandra"];
             nushell.enable = true;
             pyright.enable = true;
-            ruff-lsp.enable = true;
+            ruff_lsp.enable = true;
             texlab.enable = true;
-            typst-lsp.enable = true;
+            typst_lsp.enable = true;
             taplo.enable = true;
             yamlls.enable = true;
             marksman.enable = true;
             jsonls.enable = true;
             hls.enable = true;
+            hls.installGhc = true;
           };
         };
         plugins.cmp.settings.sources = [
