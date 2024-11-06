@@ -26,8 +26,8 @@
     };
 
     programs.nushell.extraEnv = ''
-      $env.EDITOR = nvim
-      $env.VISUAL = nvim
+      $env.EDITOR = 'nvim'
+      $env.VISUAL = 'nvim'
     '';
   };
 

@@ -184,7 +184,7 @@
       ];
     };
   imports = [
-    ./rust-tools.nix
+    ./rustaceanvim.nix
     ./clangd.nix
   ];
 }
