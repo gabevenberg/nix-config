@@ -122,6 +122,14 @@ in {
               description = "Non self hosted Git forge :(";
             };
           }
+          {
+            Cyberchef = {
+              icon="sh-cyberchef.svg";
+              href="https://cyberchef.venberg.xyz";
+              siteMonitor= "https://cyberchef.venberg.xyz";
+              description= "a data toolbox";
+            };
+          }
         ];
       }
     ];

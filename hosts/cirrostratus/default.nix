@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/grocy.nix
     ../../configs/nixos/factorio-docker.nix
+    ../../configs/nixos/cyberchef.nix
     ({
       config,
       pkgs,
