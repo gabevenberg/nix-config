@@ -34,13 +34,24 @@
             pem = config.sops.secrets.irc-cert.path;
           };
         }
+        {
+          addr = "mbrserver.com";
+          port = 6667;
+          tls = false;
+          nicks = ["toric"];
+          realname = "Toric";
+          join = [
+            "#general"
+            "#spellware"
+          ];
+        }
       ];
       defaults = {
         # ignore join/leave messages
         ignore = true;
         nicks = ["toric"];
         realname = "Gabe Venberg";
-        tls = true;
+        # tls = true;
       };
     };
   };
