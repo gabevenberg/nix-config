@@ -22,6 +22,7 @@
     diskonaut
     hyperfine
     fclones
+    libqalculate
   ];
 
   programs = {
