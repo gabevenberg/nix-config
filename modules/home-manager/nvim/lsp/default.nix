@@ -14,22 +14,25 @@
         plugins.lsp = {
           enable = true;
           servers = {
+            basedpyright.enable = true;
             bashls.enable = true;
+            bitbake_language_server.enable = true;
             clangd.enable = true;
+            hls.enable = true;
+            hls.installGhc = true;
+            jsonls.enable = true;
             lua_ls.enable = true;
+            marksman.enable = true;
             nil_ls.enable = true;
             nil_ls.settings.formatting.command = ["alejandra"];
             nushell.enable = true;
-            pyright.enable = true;
-            ruff_lsp.enable = true;
+            ruff.enable = true;
+            taplo.enable = true;
             texlab.enable = true;
             typst_lsp.enable = true;
-            taplo.enable = true;
+            uiua.enable = true;
             yamlls.enable = true;
-            marksman.enable = true;
-            jsonls.enable = true;
-            hls.enable = true;
-            hls.installGhc = true;
+            zls.enable = true;
           };
         };
         plugins.cmp.settings.sources = [
