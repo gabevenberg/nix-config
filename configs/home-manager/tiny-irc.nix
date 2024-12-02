@@ -22,6 +22,7 @@
             "#neovim"
             "##programming"
             "##rust"
+            "#zig"
             "#git"
             "#kernel"
             "#hardware"
