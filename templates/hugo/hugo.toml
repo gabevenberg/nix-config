@@ -1,3 +1,4 @@
+languageCode = 'en-us'
 baseURL = "https://example.com"
 title = "Title"
 enableRobotsTXT = true
