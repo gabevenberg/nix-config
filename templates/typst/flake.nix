@@ -18,7 +18,6 @@
         devShells.default = mkShell {
           buildInputs = [
             typst
-            just
           ];
         };
       });

@@ -19,8 +19,8 @@
 
   home.packages = with pkgs; [
     tre-command
-    diskonaut
     hyperfine
+    dua
     fclones
     libqalculate
   ];

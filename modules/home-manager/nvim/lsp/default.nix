@@ -29,7 +29,7 @@
             ruff.enable = true;
             taplo.enable = true;
             texlab.enable = true;
-            typst_lsp.enable = true;
+            tinymist.enable = true;
             uiua.enable = true;
             yamlls.enable = true;
             zls.enable = true;

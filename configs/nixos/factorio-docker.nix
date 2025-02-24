@@ -12,12 +12,10 @@
       volumes = ["/storage/factorio:/factorio"];
       hostname = "factorio";
       ports = [
-        "34197:34197"
-        "27015:27015"
+        "34197:34197/udp"
+        "27015:27015/tcp"
       ];
-      environment = {
-        UPDATE_MODS_ON_START = "true";
-      };
+      environment = {UPDATE_MODS_ON_START = "true";};
     };
   };
   imports = [

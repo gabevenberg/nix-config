@@ -1,5 +1,0 @@
-preview:
-    typst watch main.typ
-
-compile:
-    typst compile main.typ

@@ -5,11 +5,6 @@
   lib,
   ...
 }: {
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-      userland-proxy = false;
-    };
-  };
+  virtualisation.docker.enable = true;
   users.users.${config.host.user}.extraGroups = ["docker"];
 }
