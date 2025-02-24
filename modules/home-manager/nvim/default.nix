@@ -41,6 +41,7 @@
     ./gitsigns.nix
     ./which-key.nix
     ./telescope.nix
+    ./zk.nix
     ./treesitter
     ./cmp
     ./lsp
