@@ -44,36 +44,37 @@
           line-numbers = true;
         };
       };
-      # difftastic.enable=true;
-      # difftastic.background="dark";
       userEmail = config.user.git.profile.email;
       userName = config.user.git.profile.name;
       extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
+        init.defaultBranch = "main";
         push = {
           autoSetupRemote = true;
-          default = "current";
+          default = "simple";
+          followTags = true;
         };
-        pull = {
-          ff = true;
+        fetch = {
+          prune = true;
+          pruneTags = true;
+          all = true;
         };
-        merge = {
-          conflictstyle = "zdiff3";
+        pull.ff = true;
+        merge.conflictstyle = "zdiff3";
+        diff = {
+          algorithm = "histogram";
+          colorMoved = "plain";
+          mnemonicPrefix = true;
+          renames = true;
         };
-        rebase = {
-          autosquash = true;
+        rerere = {
+          enabled = true;
+          autoupdate = true;
         };
-        help = {
-          autocorrect = "prompt";
-        };
-        branch = {
-          sort = "-committerdate";
-        };
-        status = {
-          submodulesummary = true;
-        };
+        rebase.autosquash = true;
+        help.autocorrect = "prompt";
+        branch.sort = "-committerdate";
+        tag.sort = "version:refname";
+        status.submodulesummary = true;
       };
       includes =
         if config.user.git.workProfile.enable
