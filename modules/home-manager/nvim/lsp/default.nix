@@ -22,7 +22,6 @@
             hls.installGhc = true;
             jsonls.enable = true;
             lua_ls.enable = true;
-            marksman.enable = true;
             nil_ls.enable = true;
             nil_ls.settings.formatting.command = ["alejandra"];
             nushell.enable = true;
