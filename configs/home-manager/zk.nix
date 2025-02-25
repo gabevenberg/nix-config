@@ -18,9 +18,9 @@
         id-case = "lower";
       };
 
-      format.markdown={
-        link-format="wiki";
-        hashtags=true;
+      format.markdown = {
+        link-format = "wiki";
+        hashtags = true;
       };
 
       alias = {

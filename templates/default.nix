@@ -8,7 +8,7 @@
     description = "A flake containing a basic latex environment";
   };
   typst = {
-    path= ./typst;
+    path = ./typst;
     description = "A flake containing a basic typst environment";
   };
 }

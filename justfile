@@ -17,7 +17,7 @@ bootstrap-home-manager target=(`whoami`+"@"+`hostname`):
     nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake .#{{target}} switch
 
 format:
-    nix fmt
+    nix fmt ./
 
 home-gc:
     home-manager expire-generations -7days

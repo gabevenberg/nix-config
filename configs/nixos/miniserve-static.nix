@@ -4,8 +4,8 @@
   pkgs,
   lib,
   ...
-}:let
-  port="8080";
+}: let
+  port = "8080";
 in {
   systemd.services.miniserve = {
     wantedBy = ["multi-user.target"];

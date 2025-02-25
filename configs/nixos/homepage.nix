@@ -124,10 +124,10 @@ in {
           }
           {
             Cyberchef = {
-              icon="sh-cyberchef.svg";
-              href="https://cyberchef.venberg.xyz";
-              siteMonitor= "https://cyberchef.venberg.xyz";
-              description= "a data toolbox";
+              icon = "sh-cyberchef.svg";
+              href = "https://cyberchef.venberg.xyz";
+              siteMonitor = "https://cyberchef.venberg.xyz";
+              description = "a data toolbox";
             };
           }
         ];
