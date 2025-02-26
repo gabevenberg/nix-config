@@ -10,6 +10,7 @@
     ../../configs/home-manager/ssh-agent.nix
     ../../configs/home-manager/zsh.nix
     ../../configs/home-manager/zellij
+    ../../configs/home-manager/yazi.nix
   ];
 
   user = {
@@ -44,7 +45,6 @@
   };
 
   programs = {
-    yazi.enable = true;
     fzf.enable = true;
     eza.enable = true;
     ripgrep.enable = true;
