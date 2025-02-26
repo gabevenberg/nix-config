@@ -19,7 +19,7 @@
       };
 
       format.markdown = {
-        link-format = "wiki";
+        link-format = "[[{{filename}}]]";
         hashtags = true;
       };
 
