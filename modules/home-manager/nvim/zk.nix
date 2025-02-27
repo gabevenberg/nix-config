@@ -15,18 +15,18 @@
       ];
       keymaps = [
         {
-          action = ":ZkNewFromTitleSelection";
+          action = ":ZkNewFromTitleSelection<CR>";
           key = "<leader>zn";
-          mode = "n";
+          mode = "v";
           options = {
             silent = true;
             desc = "New zk note with title from selection";
           };
         }
         {
-          action = ":ZkaMatch";
+          action = ":ZkaMatch<CR>";
           key = "<leader>zs";
-          mode = "n";
+          mode = "v";
           options = {
             silent = true;
             desc = "Search zk notes from selection";
