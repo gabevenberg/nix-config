@@ -16,7 +16,6 @@
           servers = {
             basedpyright.enable = true;
             bashls.enable = true;
-            bitbake_language_server.enable = true;
             clangd.enable = true;
             hls.enable = true;
             hls.installGhc = true;
