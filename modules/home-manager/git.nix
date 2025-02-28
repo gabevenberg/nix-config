@@ -36,6 +36,7 @@
         graph = "log-long-line --graph --topo-order --all";
         log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
         recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
+        track = "add -AN";
       };
       delta = {
         enable = true;
