@@ -76,6 +76,7 @@
         branch.sort = "-committerdate";
         tag.sort = "version:refname";
         status.submodulesummary = true;
+        submodule.recurse = true;
       };
       includes =
         if config.user.git.workProfile.enable
