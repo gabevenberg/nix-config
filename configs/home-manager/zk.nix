@@ -29,6 +29,7 @@
         unlinked-mentions = ''zk list --mentioned-by $1 --no-linked-by $1'';
         short = ''zk list --format '{{word-count}}\t{{title}}' --limit 20 --sort word-count $@'';
         nt = ''zk new --title "''${*:2}" $1'';
+        todo = ''zk list --tag=TODO'';
       };
 
       tool = {
