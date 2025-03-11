@@ -19,8 +19,6 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.home-manager.follows = "home-manager";
     };
 
     disko = {
