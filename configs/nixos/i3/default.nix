@@ -20,6 +20,7 @@
       greeters.gtk.enable = false;
       greeter.enable = false;
     };
+    xkb.options = "ctrl:nocaps,compose:rctrl";
   };
   home-manager.users.${config.host.user} = {config, ...}: {
     home.packages = with pkgs; [
