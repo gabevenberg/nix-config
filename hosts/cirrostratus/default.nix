@@ -13,7 +13,6 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     ./disk-config.nix
     ./hardware-configuration.nix
-    ./nginx.nix
     ./restic.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
@@ -62,11 +61,6 @@ inputs.nixpkgs.lib.nixosSystem {
       sops = lib.mkIf (inputs ? nix-secrets) {
         secrets = {
           duckdns-token.sopsFile = "${inputs.nix-secrets}/duckdns.yaml";
-          gabevenberg-draft-credentials = {
-            sopsFile = "${inputs.nix-secrets}/draft.gabevenberg.com";
-            format = "binary";
-            owner = config.services.nginx.user;
-          };
         };
       };
 

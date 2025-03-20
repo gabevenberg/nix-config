@@ -5,6 +5,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ./nginx.nix
+  ];
   services.jellyfin = {
     enable = true;
     openFirewall = true;

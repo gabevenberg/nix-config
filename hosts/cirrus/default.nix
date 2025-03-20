@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+    ./nginx.nix
     ./restic.nix
     ../../roles/nixos/vm.nix
     ../../configs/nixos/common.nix
@@ -52,6 +53,11 @@ inputs.nixpkgs.lib.nixosSystem {
             sopsFile = "${inputs.nix-secrets}/radicale-users";
             format = "binary";
             owner = "radicale";
+          };
+          gabevenberg-draft-credentials = {
+            sopsFile = "${inputs.nix-secrets}/draft.gabevenberg.com";
+            format = "binary";
+            owner = config.services.nginx.user;
           };
         };
       };
