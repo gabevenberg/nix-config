@@ -25,8 +25,17 @@
       repositoryFile = config.sops.secrets.restic-url.path;
       passwordFile = config.sops.secrets.restic-password.path;
       initialize = true;
+      backupPrepareCommand = ''
+        systemctl stop forgejo.service
+      '';
+      backupCleanupCommand = ''
+        systemctl start forgejo.service
+      '';
       paths = [
         "/var/lib/radicale"
+        "/var/lib/forgejo/custom"
+        "/var/lib/forgejo/data"
+        "/var/lib/forgejo/repositories"
       ];
       timerConfig = {
         OnCalendar = "daily";

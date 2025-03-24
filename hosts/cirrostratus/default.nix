@@ -14,6 +14,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disk-config.nix
     ./hardware-configuration.nix
     ./restic.nix
+    ./nginx.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
