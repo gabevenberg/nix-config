@@ -21,6 +21,7 @@
   home.packages = with pkgs; [
     sshfs
     just
+    dua
     fd
     sd
     curl

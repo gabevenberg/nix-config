@@ -21,7 +21,6 @@
   home.packages = with pkgs; [
     tre-command
     hyperfine
-    dua
     fclones
     libqalculate
   ];
