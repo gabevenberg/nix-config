@@ -42,13 +42,20 @@ in {
   ];
 
   services.restic.backups = lib.mkIf (inputs ? nix-secrets) {
-    remote = {
-      repositoryFile = config.sops.secrets.restic-url.path;
+    local = {
+      repositoryFile = "/backup/restic/";
       passwordFile = config.sops.secrets.restic-password.path;
       initialize = true;
       paths = [
         "/storage/syncthing"
         "/storage/factorio"
+      ];
+      pruneOpts=[
+        "--keep-within 14d"
+        "--keep-daily 14"
+        "--keep-weekly 8"
+        "--keep-monthly 12"
+        "--keep-yearly 10"
       ];
       timerConfig = {
         OnCalendar = "daily";
