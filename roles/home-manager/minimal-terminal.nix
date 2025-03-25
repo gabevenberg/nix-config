@@ -24,6 +24,8 @@
     dua
     fd
     sd
+    file
+    ripgrep
     curl
     rsync
   ];
