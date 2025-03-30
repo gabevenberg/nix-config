@@ -28,6 +28,7 @@
             taplo.enable = true;
             texlab.enable = true;
             tinymist.enable = true;
+            ts_ls.enable = true;
             uiua.enable = true;
             yamlls.enable = true;
             zls.enable = true;
