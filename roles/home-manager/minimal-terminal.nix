@@ -28,6 +28,7 @@
     ripgrep
     curl
     rsync
+    p7zip
   ];
 
   home.sessionVariables = {
