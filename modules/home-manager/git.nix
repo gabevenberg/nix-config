@@ -48,6 +48,7 @@
       userEmail = config.user.git.profile.email;
       userName = config.user.git.profile.name;
       extraConfig = {
+        core.hooksPath = ".githooks";
         init.defaultBranch = "main";
         push = {
           autoSetupRemote = true;
