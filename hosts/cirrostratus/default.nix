@@ -24,7 +24,9 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/grocy.nix
     ../../configs/nixos/factorio-docker.nix
     ../../configs/nixos/cyberchef.nix
-    ../../configs/nixos/miniserve-static.nix
+    ../../configs/nixos/miniserve-directory.nix
+    ../../configs/nixos/minecraft-docker.nix
+    ../../configs/nixos/nginx-static.nix
     ({
       config,
       pkgs,

@@ -25,7 +25,7 @@ in {
       ];
     };
   };
-  services.nginx.virtualHosts."static.venberg.xyz" = {
+  services.nginx.virtualHosts."directory.venberg.xyz" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {

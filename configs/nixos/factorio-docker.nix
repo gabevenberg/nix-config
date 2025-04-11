@@ -13,7 +13,6 @@
       hostname = "factorio";
       ports = [
         "34197:34197/udp"
-        "27015:27015/tcp"
       ];
       environment = {UPDATE_MODS_ON_START = "true";};
     };

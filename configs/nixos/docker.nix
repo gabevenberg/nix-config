@@ -5,6 +5,9 @@
   lib,
   ...
 }: {
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
   users.users.${config.host.user}.extraGroups = ["docker"];
 }

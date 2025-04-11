@@ -6,6 +6,23 @@
   ...
 }: let
   port = "8090";
+  # TODO: I should really make restic a custom module at this point, with an enable option, a option for being the host,
+  # and the ability to add paths and pre/post commands from multiple places.
+  preBackup = pkgs.writeShellScriptBin "mc-docker-pre-backup" ''
+    set -euxo pipefail
+
+    docker exec minecraft rcon-cli "say server backing up, expect minor lag"
+    sleep 10
+    docker exec minecraft rcon-cli "save-all flush"
+    docker exec minecraft rcon-cli "save-off"
+    sleep 10
+  '';
+  postBackup = pkgs.writeShellScriptBin "mc-docker-post-backup" ''
+    set -euxo pipefail
+
+    docker exec minecraft rcon-cli "save-on"
+    docker exec minecraft rcon-cli "say server backup succsessful!"
+  '';
 in {
   services.restic.server = lib.mkIf (inputs ? nix-secrets) {
     enable = true;
@@ -46,11 +63,14 @@ in {
       repositoryFile = "/backup/restic/";
       passwordFile = config.sops.secrets.restic-password.path;
       initialize = true;
+      backupPrepareCommand = "${preBackup}/bin/mc-docker-pre-backup";
+      backupCleanupCommand = "${postBackup}/bin/mc-docker-post-backup";
       paths = [
         "/storage/syncthing"
         "/storage/factorio"
+        "/storage/minecraft"
       ];
-      pruneOpts=[
+      pruneOpts = [
         "--keep-within 14d"
         "--keep-daily 14"
         "--keep-weekly 8"
