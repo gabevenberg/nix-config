@@ -24,7 +24,6 @@
     hyperfine
     fclones
     libqalculate
-    miniserve
   ];
 
   programs = {
