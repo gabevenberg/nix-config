@@ -11,6 +11,8 @@ in {
     secrets.restic-server-credentials = {
       sopsFile = "${inputs.nix-secrets}/restic-server";
       format = "binary";
+      # TODO: fix https://github.com/NixOS/nixpkgs/issues/398172 to remove this.
+      path = "/backup/restic/.htpasswd";
       owner = "restic";
     };
     secrets.restic-url = {

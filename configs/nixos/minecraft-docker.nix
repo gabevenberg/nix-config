@@ -34,9 +34,8 @@ in {
         EULA = "TRUE";
         TYPE = "FORGE";
         VERSION = "1.20.1";
-        # GENERIC_PACK="https://static.venberg.xyz/minecraft/create-post-production/modpack.zip";
         # REMOVE_OLD_MODS="TRUE";
-        PACKWIZ_URL = "https://static.venberg.xyz/minecraft/less-than-compact-2/pack.toml";
+        # PACKWIZ_URL = "https://static.venberg.xyz/minecraft/less-than-compact-2/pack.toml";
         MEMORY = "16G";
         USE_AIKAR_FLAGS = "true";
         UID = "1000";
