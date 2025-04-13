@@ -2,8 +2,8 @@
   config,
   pkgs,
   inputs,
-  configLib,
   lib,
+  myLib,
   ...
 }: {
   services.openssh = {
@@ -18,10 +18,10 @@
 
   users.users.root.openssh.authorizedKeys.keys = lib.mkDefault (
     if inputs ? nix-secrets
-    then (configLib.dirToStrings "${inputs.nix-secrets}/public-keys")
+    then (myLib.dirToStrings "${inputs.nix-secrets}/public-keys")
     else []
   );
   # if it can log into root, it should also be able to log in to the main user.
-  users.users.${config.host.user}.openssh.authorizedKeys.keys =
+  users.users.${config.host.details.user}.openssh.authorizedKeys.keys =
     config.users.users.root.openssh.authorizedKeys.keys;
 }

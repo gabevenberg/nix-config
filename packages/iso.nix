@@ -1,11 +1,11 @@
 {
   inputs,
-  configLib,
+  myLib,
   ...
 }:
 (inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs configLib;};
+  specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -22,7 +22,6 @@
       pkgs,
       lib,
       inputs,
-      configLib,
       modulesPath,
       options,
       ...
@@ -36,26 +35,26 @@
         "${modulesPath}/installer/scan/detected.nix"
         "${modulesPath}/installer/scan/not-detected.nix"
       ];
-      host = {
+      host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
         gui.enable = true;
       };
       networking.hostName = "nixos-installer"; # Define your hostname.
 
-      users.users.${config.host.user} = {
+      users.users.${config.host.details.user} = {
         packages = with pkgs; [
           firefox
           gptfdisk
         ];
       };
 
-      home-manager.users.${config.host.user} = {
+      home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
         ...
       }: {
-        host = osConfig.host;
+        host.details = osConfig.host.details;
         user = {
           nvim.enable-lsp = false;
           git = {

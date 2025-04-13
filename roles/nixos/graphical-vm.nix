@@ -10,5 +10,5 @@
   imports = [
     ./vm.nix
   ];
-  host.gui.enable = true;
+  host.details.gui.enable = true;
 }

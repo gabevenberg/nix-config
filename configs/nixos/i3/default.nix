@@ -8,7 +8,7 @@
   services.displayManager = {
     defaultSession = "none+i3";
     autoLogin = {
-      user = config.host.user;
+      user = config.host.details.user;
       enable = true;
     };
   };
@@ -22,7 +22,7 @@
     };
     xkb.options = "ctrl:nocaps,compose:rctrl";
   };
-  home-manager.users.${config.host.user} = {config, ...}: {
+  home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       maim
       brightnessctl

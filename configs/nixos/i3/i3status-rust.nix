@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home-manager.users.${config.host.user} = {
+  home-manager.users.${config.host.details.user} = {
     config,
     osConfig,
     lib,
@@ -46,14 +46,14 @@
             }
             (
               lib.mkIf
-              (!osConfig.host.isVm)
+              (!osConfig.host.details.isVm)
               {
                 block = "backlight";
                 missing_format = "";
               }
             )
             (
-              lib.mkIf (osConfig.host.isLaptop)
+              lib.mkIf (osConfig.host.details.isLaptop)
               {
                 block = "battery";
                 driver = "upower";

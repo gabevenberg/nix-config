@@ -1,11 +1,11 @@
 {
   inputs,
-  configLib,
+  myLib,
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs configLib;};
+  specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -21,7 +21,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
-      configLib,
       ...
     }: {
       host = {
@@ -33,14 +32,14 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "archlaptop-vm"; # Define your hostname.
 
       # Define a user account. Don't forget to set a password with ‘passwd’.
-      users.users.${config.host.user} = {
+      users.users.${config.host.details.user} = {
         packages = with pkgs; [firefox];
       };
 
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
       ];
-      home-manager.users.${config.host.user} = {
+      home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
         lib,
@@ -50,7 +49,7 @@ inputs.nixpkgs.lib.nixosSystem {
         user = {
           git = {
             profile = {
-              name = config.host.fullName;
+              name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;

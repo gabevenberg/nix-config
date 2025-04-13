@@ -9,5 +9,5 @@
     enable = true;
     autoPrune.enable = true;
   };
-  users.users.${config.host.user}.extraGroups = ["docker"];
+  users.users.${config.host.details.user}.extraGroups = ["docker"];
 }

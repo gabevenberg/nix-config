@@ -1,12 +1,12 @@
 {
   inputs,
-  configLib,
+  myLib,
   ...
 }:
 # Kapr site server.
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  specialArgs = {inherit inputs configLib;};
+  specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -31,11 +31,10 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
-      configLib,
       lib,
       ...
     }: {
-      host = {
+      host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
         gui.enable = false;
@@ -72,18 +71,18 @@ inputs.nixpkgs.lib.nixosSystem {
 
       # virtualisation.docker.daemon.settings.data-root="/storage/docker";
 
-      home-manager.users.${config.host.user} = {
+      home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
         lib,
         ...
       }: {
-        host = osConfig.host;
+        host.details = osConfig.host.details;
         user = {
           nvim.enable-lsp = false;
           git = {
             profile = {
-              name = config.host.fullName;
+              name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;

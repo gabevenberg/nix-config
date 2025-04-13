@@ -63,7 +63,7 @@
       "aarch64-linux"
     ];
     inherit (nixpkgs) lib;
-    configLib = import ./lib {inherit lib;};
+    myLib = import ./lib {inherit lib;};
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
@@ -80,24 +80,22 @@
       }
     );
 
-    lib = configLib;
-
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      rockhole = import ./hosts/rockhole64 {inherit inputs configLib;};
-      cirrus = import ./hosts/cirrus {inherit inputs configLib;};
-      cirrostratus = import ./hosts/cirrostratus {inherit inputs configLib;};
+      rockhole = import ./hosts/rockhole64 {inherit inputs myLib;};
+      cirrus = import ./hosts/cirrus {inherit inputs myLib;};
+      cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = import ./hosts/home-laptop.nix {inherit inputs configLib;};
-      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs configLib;};
-      "gabe@gvworklaptop" = import ./hosts/work-laptop.nix {inherit inputs configLib;};
+      "gabe@archlaptop" = import ./hosts/home-laptop.nix {inherit inputs myLib;};
+      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs myLib;};
+      "gabe@gvworklaptop" = import ./hosts/work-laptop.nix {inherit inputs myLib;};
     };
 
     deploy = {
@@ -121,10 +119,10 @@
     };
 
     packages.x86_64-linux = {
-      proxmox = import ./packages/proxmox.nix {inherit inputs configLib;};
-      iso = import ./packages/iso.nix {inherit inputs configLib;};
-      aarch-64-iso = import ./packages/aarch64-iso.nix {inherit inputs configLib;};
-      rpi3-sd-image = import ./packages/rpi3-sd-image.nix {inherit inputs configLib;};
+      proxmox = import ./packages/proxmox.nix {inherit inputs myLib;};
+      iso = import ./packages/iso.nix {inherit inputs myLib;};
+      aarch-64-iso = import ./packages/aarch64-iso.nix {inherit inputs myLib;};
+      rpi3-sd-image = import ./packages/rpi3-sd-image.nix {inherit inputs myLib;};
     };
 
     templates = import ./templates;

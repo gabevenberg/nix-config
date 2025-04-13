@@ -5,5 +5,5 @@
 }: {
   # Enable networking
   networking.networkmanager.enable = true;
-  users.users.${config.host.user}.extraGroups = ["networkmanager"];
+  users.users.${config.host.details.user}.extraGroups = ["networkmanager"];
 }

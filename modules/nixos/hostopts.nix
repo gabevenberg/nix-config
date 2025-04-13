@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    host = {
+    host.details = {
       user = lib.mkOption {
         type = lib.types.str;
         description = "Primary human user";

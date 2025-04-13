@@ -17,6 +17,11 @@
       environment = {UPDATE_MODS_ON_START = "true";};
     };
   };
+
+  host.restic.backups.factorio = {
+    paths = ["/storage/factorio"];
+  };
+
   imports = [
     ./docker.nix
   ];

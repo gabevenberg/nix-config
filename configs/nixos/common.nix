@@ -48,13 +48,13 @@ in {
   environment.shells = lib.mkDefault [pkgs.zsh];
   # if we arent setting our password from nix secrets, we need to allow changing it.
   users.mutableUsers = !inputs ? nix-secrets;
-  users.users.${config.host.user} = {
+  users.users.${config.host.details.user} = {
     isNormalUser = true;
     hashedPassword =
       if inputs ? nix-secrets
       then (lib.removeSuffix "\n" (builtins.readFile "${inputs.nix-secrets}/password-hash"))
       else defaultPasswordHash;
-    description = config.host.fullName;
+    description = config.host.details.fullName;
     shell = pkgs.zsh;
     extraGroups = ["wheel"];
   };

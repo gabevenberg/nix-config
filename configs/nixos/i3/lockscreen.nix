@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     betterlockscreen
   ];
-  home-manager.users.${config.host.user} = {
+  home-manager.users.${config.host.details.user} = {
     config,
     osConfig,
     lib,

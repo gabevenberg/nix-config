@@ -39,5 +39,15 @@ in {
     };
   };
 
+  host.restic.backups.forgejo = {
+    paths = [
+      "/var/lib/forgejo/custom"
+      "/var/lib/forgejo/data"
+      "/var/lib/forgejo/repositories"
+    ];
+    preBackupCommands = "systemctl stop forgejo.service";
+    postBackupCommands = "systemctl start forgejo.service";
+  };
+
   imports = [./nginx.nix];
 }

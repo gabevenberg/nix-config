@@ -1,17 +1,16 @@
 {
   inputs,
-  configLib,
+  myLib,
   ...
 }:
 inputs.home-manager.lib.homeManagerConfiguration {
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-  extraSpecialArgs = {inherit inputs configLib;};
+  extraSpecialArgs = {inherit inputs myLib;};
   modules = [
     ({
       config,
       pkgs,
       lib,
-      configLib,
       ...
     }: {
       # machine specific options
@@ -25,7 +24,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
           workProfile.enable = false;
         };
       };
-      host.isLaptop = true;
+      host.details.isLaptop = true;
 
       targets.genericLinux.enable = true;
       home.username = "gabe";

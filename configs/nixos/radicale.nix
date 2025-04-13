@@ -25,5 +25,11 @@
     };
   };
 
+  host.restic.backups.radicale = {
+    paths = [
+      "/var/lib/radicale"
+    ];
+  };
+
   imports = [./nginx.nix];
 }

@@ -13,7 +13,7 @@
     pulse.enable = true;
   };
 
-  home-manager.users.${config.host.user} = {config, ...}: {
+  home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       pwvucontrol
       helvum

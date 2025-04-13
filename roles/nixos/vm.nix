@@ -6,5 +6,5 @@
   ...
 }: {
   services.qemuGuest.enable = true;
-  host.isVm = true;
+  host.details.isVm = true;
 }

@@ -1,11 +1,11 @@
 {
   inputs,
-  configLib,
+  myLib,
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
   system = "aarch64-linux";
-  specialArgs = {inherit inputs configLib;};
+  specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
@@ -19,7 +19,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
-      configLib,
       ...
     }: {
       boot.initrd.kernelModules = [
@@ -33,7 +32,7 @@ inputs.nixpkgs.lib.nixosSystem {
         "phy_rockchip_pcie"
       ];
       hardware.enableRedistributableFirmware = true;
-      host = {
+      host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
       };
@@ -53,17 +52,17 @@ inputs.nixpkgs.lib.nixosSystem {
       # home-manager.sharedModules = [
       #   inputs.sops-nix.homeManagerModules.sops
       # ];
-      home-manager.users.${config.host.user} = {
+      home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
         lib,
         ...
       }: {
-        host = osConfig.host;
+        host.details = osConfig.host.details;
         user = {
           git = {
             profile = {
-              name = config.host.fullName;
+              name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
             workProfile.enable = false;
