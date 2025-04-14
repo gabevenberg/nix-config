@@ -22,6 +22,7 @@
     sshfs
     just
     dua
+    duf
     fd
     sd
     file
