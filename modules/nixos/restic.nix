@@ -92,7 +92,7 @@
       dataDir = cfg.server.repositoryPath;
       listenAddress = "127.0.0.1:${cfg.server.port}";
       # TODO: fix https://github.com/NixOS/nixpkgs/issues/398172 to enable this.
-      # extraFlags = ["--htpasswd-file='${cfg.server.htpasswdPath}'"];
+      htpasswd-file = cfg.server.htpasswdPath;
     };
 
     services.nginx.virtualHosts =
