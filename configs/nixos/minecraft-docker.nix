@@ -8,17 +8,17 @@
   preBackup = pkgs.writeShellScriptBin "mc-docker-pre-backup" ''
     set -euxo pipefail
 
-    docker exec minecraft rcon-cli "say server backing up, expect minor lag"
+    ${pkgs.docker}/bin/docker exec minecraft rcon-cli "say server backing up, expect minor lag"
     sleep 10
-    docker exec minecraft rcon-cli "save-all flush"
-    docker exec minecraft rcon-cli "save-off"
+    ${pkgs.docker}/bin/docker exec minecraft rcon-cli "save-all flush"
+    ${pkgs.docker}/bin/docker exec minecraft rcon-cli "save-off"
     sleep 10
   '';
   postBackup = pkgs.writeShellScriptBin "mc-docker-post-backup" ''
     set -euxo pipefail
 
-    docker exec minecraft rcon-cli "save-on"
-    docker exec minecraft rcon-cli "say server backup succsessful!"
+    ${pkgs.docker}/bin/docker exec minecraft rcon-cli "save-on"
+    ${pkgs.docker}/bin/docker exec minecraft rcon-cli "say server backup succsessful!"
   '';
 in {
   virtualisation.oci-containers = {
