@@ -31,7 +31,6 @@
             ts_ls.enable = true;
             uiua.enable = true;
             yamlls.enable = true;
-            zls.enable = true;
           };
         };
         plugins.cmp.settings.sources = [
@@ -188,5 +187,6 @@
   imports = [
     ./rustaceanvim.nix
     ./clangd.nix
+    ./zig.nix
   ];
 }

@@ -11,9 +11,9 @@ in {
   services.homepage-dashboard = {
     enable = true;
     environmentFile = ''${pkgs.writeTextFile {
-      name = "envFile";
-      text ="HOMEPAGE_ALLOWED_HOSTS=${baseurl}";
-    }}'';
+        name = "envFile";
+        text = "HOMEPAGE_ALLOWED_HOSTS=${baseurl}";
+      }}'';
     settings = {
       theme = "dark";
       color = "slate";
