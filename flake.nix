@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:gabevenberg/nixpkgs/restic-server-htpasswd-file";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";

@@ -225,16 +225,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1744967394,
-        "narHash": "sha256-/vM9SHdS+xAA5j5vHTrR6FHxHj6uw1OEt6O5CpW5uPc=",
-        "owner": "gabevenberg",
+        "lastModified": 1744932701,
+        "narHash": "sha256-fusHbZCyv126cyArUwwKrLdCkgVAIaa/fQJYFlCEqiU=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fc7742acf2f4beaf449944b078cf016a294f2c9e",
+        "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
         "type": "github"
       },
       "original": {
-        "owner": "gabevenberg",
-        "ref": "restic-server-htpasswd-file",
+        "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
