@@ -3,7 +3,7 @@
   myLib,
   ...
 }:
-# Kapr site server.
+# Karp site server.
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = {inherit inputs myLib;};
@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
+    inputs.copyparty.nixosModules.default
     ./disk-config.nix
     ./hardware-configuration.nix
     ./restic.nix
@@ -28,6 +29,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/miniserve-tmp-upload.nix
     ../../configs/nixos/minecraft-docker.nix
     ../../configs/nixos/nginx-static.nix
+    ../../configs/nixos/copyparty.nix
     ({
       config,
       pkgs,

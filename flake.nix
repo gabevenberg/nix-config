@@ -33,6 +33,12 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
+    copyparty = {
+      url = "github:9001/copyparty";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     #https://unmovedcentre.com/technology/2024/03/22/secrets-management.html
     sops-nix = {
       url = "github:mic92/sops-nix";

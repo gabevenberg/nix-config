@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "copyparty": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745176775,
+        "narHash": "sha256-7bWct47AKcQntlJaY8NMECZ1FXIaFlYb/yCMC0Bm30M=",
+        "owner": "9001",
+        "repo": "copyparty",
+        "rev": "68e7000275425f5dd1d2d80dc428fe2fcab6cc9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "9001",
+        "repo": "copyparty",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": [
@@ -286,6 +309,7 @@
     },
     "root": {
       "inputs": {
+        "copyparty": "copyparty",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "flake-compat": "flake-compat",
