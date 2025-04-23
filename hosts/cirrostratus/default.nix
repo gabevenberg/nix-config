@@ -16,6 +16,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ./restic.nix
     ./nginx.nix
+    ./copyparty.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
@@ -29,7 +30,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/miniserve-tmp-upload.nix
     ../../configs/nixos/minecraft-docker.nix
     ../../configs/nixos/nginx-static.nix
-    ../../configs/nixos/copyparty.nix
     ({
       config,
       pkgs,

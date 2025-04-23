@@ -130,7 +130,7 @@
       })
       (
         lib.mkIf cfg.enable (
-          lib.mapAttrs (
+          builtins.mapAttrs (
             name: backup: {
               repositoryFile = cfg.repositoryFile;
               repository = cfg.repository;

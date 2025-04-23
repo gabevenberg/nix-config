@@ -10,15 +10,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1745176775,
-        "narHash": "sha256-7bWct47AKcQntlJaY8NMECZ1FXIaFlYb/yCMC0Bm30M=",
-        "owner": "9001",
+        "lastModified": 1745400750,
+        "narHash": "sha256-sXLl6fuWPyZll4ok1b1pbxJLJ5ZnK/NUfL8+SK42P5Q=",
+        "owner": "gabevenberg",
         "repo": "copyparty",
-        "rev": "68e7000275425f5dd1d2d80dc428fe2fcab6cc9c",
+        "rev": "a54e950ecca45225d94c5e982e2dd3453c09ea22",
         "type": "github"
       },
       "original": {
-        "owner": "9001",
+        "owner": "gabevenberg",
+        "ref": "nixos-module",
         "repo": "copyparty",
         "type": "github"
       }
@@ -192,10 +193,10 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1742472608,
-        "narHash": "sha256-CelDYGqeNk4pGs9ObnV56rAK9C0ajN4Pz4n/5y8Ghtw=",
+        "lastModified": 1745397247,
+        "narHash": "sha256-R8RPX20EJFpaUSQpiUE0N5d31UDbB+3Qu8yapab5F2k=",
         "ref": "refs/heads/main",
-        "rev": "69bdba99f321bc9adbff9a147450e23d6e15c89b",
+        "rev": "01654a652e4b9b5ade200d85a1e3fd3e1b058053",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz/Gabe/nix-secrets.git"
