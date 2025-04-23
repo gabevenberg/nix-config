@@ -97,6 +97,14 @@ in {
             };
           }
           {
+            CopyParty = {
+              icon = "sh-copyparty.svg";
+              href = "https://files.venberg.xyz";
+              siteMonitor = "https://files.venberg.xyz";
+              description = "Online file browser";
+            };
+          }
+          {
             Syncthing = {
               icon = "sh-syncthing.svg";
               href = "http://localhost:8384";
