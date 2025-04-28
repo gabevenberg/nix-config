@@ -24,7 +24,6 @@
             "##rust"
             "#zig"
             "#git"
-            "#kernel"
             "#hardware"
             "#lobsters"
             "#gamingonlinux"

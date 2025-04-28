@@ -44,6 +44,7 @@ in {
       log-utc = true;
       ah-alg = "argon2";
       ah-salt = "ImSaltyAboutNonPersistentSalts";
+      hist="/var/lib/copyparty";
     };
     accounts = lib.mkIf (inputs ? nix-secrets) (
       builtins.mapAttrs (name: value: {passwordFile = "${inputs.nix-secrets}/copyparty/${name}";})
