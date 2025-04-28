@@ -60,7 +60,10 @@
           pruneTags = true;
           all = true;
         };
-        pull.ff = true;
+        pull = {
+          ff = true;
+          rebase = "merges";
+        };
         merge.conflictstyle = "zdiff3";
         diff = {
           algorithm = "histogram";
