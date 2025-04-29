@@ -49,6 +49,9 @@
           #the tre command has some shell integration.
           tre() { command tre "$@" --editor && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
           tred() { command tre "$@" --editor=z --directories && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
+          # Turn off terminal beep on autocomplete.
+          unsetopt BEEP
         ''
         (lib.mkIf (!config.programs.starship.enable) ''
           autoload -U promptinit
