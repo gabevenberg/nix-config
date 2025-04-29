@@ -34,8 +34,7 @@
     };
 
     copyparty = {
-      # url = "github:9001/copyparty";
-      url = "github:gabevenberg/copyparty/nixos-module";
+      url = "github:9001/copyparty";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };

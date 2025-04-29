@@ -10,16 +10,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1745921739,
-        "narHash": "sha256-Bc2Cjrkv+zextn1nkpWT9824JFjuICdAKIZQbtoZHlk=",
-        "owner": "gabevenberg",
+        "lastModified": 1745930897,
+        "narHash": "sha256-m5cSxqeFFkLvJyiZ/bM5AkzvENcD42DJMPB0v6ImlGk=",
+        "owner": "9001",
         "repo": "copyparty",
-        "rev": "caee3c3931f995d94f979c71a25f796c49f91375",
+        "rev": "d1bca1f52f8769a1a968d707a5d2d62009bb9aa1",
         "type": "github"
       },
       "original": {
-        "owner": "gabevenberg",
-        "ref": "nixos-module",
+        "owner": "9001",
         "repo": "copyparty",
         "type": "github"
       }
