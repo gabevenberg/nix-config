@@ -17,6 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./restic.nix
     ./nginx.nix
     ./copyparty.nix
+    ./deluge.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
@@ -49,10 +50,10 @@ inputs.nixpkgs.lib.nixosSystem {
         enable = true;
         networks."eno1" = {
           name = "eno1";
-          DHCP = "yes";
-          # address = ["10.10.10.30/24"];
-          # gateway = ["10.10.10.1"];
-          # dns = ["1.1.1.1"];
+          # DHCP = "yes";
+          address = ["10.10.10.30/24"];
+          gateway = ["10.10.10.1"];
+          dns = ["1.1.1.1"];
         };
       };
       time.timeZone = "America/Chicago";

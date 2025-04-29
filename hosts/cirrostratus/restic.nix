@@ -7,17 +7,17 @@
 }: let
   port = "8090";
 in {
-  sops = lib.mkIf (inputs ? nix-secrets) {
-    secrets.restic-server-credentials = {
+  sops.secrets = lib.mkIf (inputs ? nix-secrets) {
+    restic-server-credentials = {
       sopsFile = "${inputs.nix-secrets}/restic-server";
       format = "binary";
       owner = "restic";
     };
-    secrets.restic-url = {
+    restic-url = {
       sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
       owner = config.host.details.user;
     };
-    secrets.restic-password = {
+    restic-password = {
       sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
       owner = config.host.details.user;
     };
