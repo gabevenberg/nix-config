@@ -104,6 +104,18 @@ in {
               description = "Online file browser";
             };
           }
+        ];
+      }
+      {
+        Internal = [
+          {
+            Deluge = {
+              icon = "sh-deluge.svg";
+              href = "http:cirrostratus:8112";
+              siteMonitor = "http:cirrostratus:8112";
+              description = "Torrent webUI";
+            };
+          }
           {
             Syncthing = {
               icon = "sh-syncthing.svg";
