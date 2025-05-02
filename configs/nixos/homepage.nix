@@ -117,6 +117,14 @@ in {
             };
           }
           {
+            Transmission = {
+              icon = "sh-transmission.svg";
+              href = "http:cirrostratus:9090";
+              siteMonitor = "http:cirrostratus:9091";
+              description = "Torrent webUI";
+            };
+          }
+          {
             Syncthing = {
               icon = "sh-syncthing.svg";
               href = "http://localhost:8384";

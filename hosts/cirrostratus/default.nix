@@ -17,7 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./restic.nix
     ./nginx.nix
     ./copyparty.nix
-    ./deluge.nix
+    ./torrent.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/sshd.nix
