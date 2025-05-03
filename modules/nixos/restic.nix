@@ -50,6 +50,11 @@
               type = lib.types.listOf lib.types.path;
               description = "paths to back up.";
             };
+            user = lib.mkOption {
+              type = lib.types.str;
+              description = "what user to run the backup under.";
+              default = "root";
+            };
             preBackupCommands = lib.mkOption {
               type = lib.types.nullOr lib.types.lines;
               description = "commands to run before the start of the backup.";
@@ -139,6 +144,7 @@
               backupPrepareCommand = backup.preBackupCommands;
               backupCleanupCommand = backup.postBackupCommands;
               paths = backup.paths;
+              user = backup.user;
             }
           )
           cfg.backups

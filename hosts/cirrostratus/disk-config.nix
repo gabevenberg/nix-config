@@ -69,6 +69,14 @@
           mountpoint = "/storage";
         };
         datasets = {
+          database={
+            type = "zfs_fs";
+            options = {
+              mountpoint ="/postgres";
+              recordsize = "8K";
+              primarycache="metadata";
+            };
+          };
           backup = {
             type = "zfs_fs";
             options = {

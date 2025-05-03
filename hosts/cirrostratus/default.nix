@@ -31,6 +31,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/miniserve-tmp-upload.nix
     ../../configs/nixos/minecraft-docker.nix
     ../../configs/nixos/nginx-static.nix
+    ../../configs/nixos/immich.nix
     ({
       config,
       pkgs,

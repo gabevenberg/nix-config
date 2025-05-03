@@ -81,6 +81,14 @@ in {
             };
           }
           {
+            Immich = {
+              icon = "sh-immich.svg";
+              href = "https://pics.venberg.xyz";
+              siteMonitor = "https://pics.venberg.xyz";
+              description = "Pictures";
+            };
+          }
+          {
             Grocy = {
               icon = "sh-grocy.svg";
               href = "https://grocy.venberg.xyz";
