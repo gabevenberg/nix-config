@@ -9,5 +9,5 @@
     ../../configs/nixos/nginx.nix
   ];
   #Restic submits some huge requests sometimes.
-  services.nginx.clientMaxBodySize = "100m";
+  services.nginx.clientMaxBodySize = "1000m";
 }
