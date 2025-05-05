@@ -24,6 +24,7 @@
     hyperfine
     fclones
     libqalculate
+    f2
   ];
 
   programs = {
