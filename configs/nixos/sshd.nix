@@ -6,6 +6,9 @@
   myLib,
   ...
 }: {
+  imports = [
+    ./fail2ban.nix
+  ];
   services.openssh = {
     enable = true;
     settings.PermitRootLogin = "prohibit-password";
