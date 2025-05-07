@@ -19,5 +19,9 @@
     locations."/" = {
       proxyPass = "http://localhost:8096";
     };
+    locations."/socket" = {
+      proxyPass = "http://localhost:8096";
+      proxyWebsockets = true;
+    };
   };
 }
