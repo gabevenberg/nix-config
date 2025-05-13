@@ -25,6 +25,7 @@
             "#zig"
             "#git"
             "#hardware"
+            "#3dprinting"
             "#lobsters"
             "#gamingonlinux"
             "##chat"
