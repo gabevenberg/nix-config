@@ -39,19 +39,38 @@
           #allow backspacing beyond the point you entered insert mode:
           bindkey -v '^?' backward-delete-char
           bindkey "^W" backward-kill-word
+          # Turn off terminal beep on autocomplete.
+          unsetopt BEEP
 
           #cheat.sh is a wonderful tool, the less typing needed the better.
           cheat(){
-            for i in $*; do;
-            curl cheat.sh/$i
+            for i in "$@"; do
+              curl cheat.sh/"$i"
             done
           }
           #the tre command has some shell integration.
           tre() { command tre "$@" --editor && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
           tred() { command tre "$@" --editor=z --directories && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
-          # Turn off terminal beep on autocomplete.
-          unsetopt BEEP
+          #moves a file, leaving a symlink in its place.
+          mvln(){
+            set -eu
+
+            # Check for correct number of arguments
+            if [ "$#" -ne 2 ]; then
+              echo "Usage: $0 <source> <destination>"
+              exit 1
+            fi
+            source="$1" destination="$2"
+            Check if source exists
+            if [ ! -e "$source" ]; then
+              echo "$source does not exist."
+              exit 1
+            fi
+
+            mv -- "$source" "$destination"
+            ln -s -- "$(realpath "$destination/$(basename "$source")")" "$(realpath "$source")"
+          }
         ''
         (lib.mkIf (!config.programs.starship.enable) ''
           autoload -U promptinit
@@ -60,23 +79,21 @@
           colors
 
           #stuff to show git things.
-            autoload -Uz vcs_info
-            setopt prompt_subst
-            precmd_vcs() {vcs_info}
-            #when not in a repo, show full path to current directory. when in one, show path from base direcory of the repo.
-            zstyle ':vcs_info:*' nvcsformats '%~'
-            zstyle ':vcs_info:*' formats '%r/%S %F{green}[%b]%f'
-            zstyle ':vcs_info:*' actionformats '%r/%S %F{green}[%b] %F{red}<%a>%f'
+          autoload -Uz vcs_info
+          setopt prompt_subst
+          precmd_vcs() { vcs_info; }
+          #when not in a repo, show full path to current directory. when in one, show path from base direcory of the repo.
+          zstyle ':vcs_info:*' nvcsformats '%~'
+          zstyle ':vcs_info:*' formats '%r/%S %F{green}[%b]%f'
+          zstyle ':vcs_info:*' actionformats '%r/%S %F{green}[%b] %F{red}<%a>%f'
 
           #the precmd function, called just before printing the prompt.
-          function precmd() {
-            precmd_vcs
-          }
+          function precmd() { precmd_vcs; }
 
           #Make the right prompt blank, just to be sure.
           RPROMPT=""
 
-          #on the top line, show a whole bunch of info. botton line should be as minimal as possilbe (just a single char to  input next to...)
+          #on the top line, show a whole bunch of info. botton line should be as minimal as possible (just a single char to  input next to...)
           PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f$vcs_info_msg_0_ %F{white}[%D %T]%f\n»'
         '')
       ];
