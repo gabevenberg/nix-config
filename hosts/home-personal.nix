@@ -21,7 +21,10 @@ inputs.home-manager.lib.homeManagerConfiguration {
             name = "Gabe Venberg";
             email = "gabevenberg@gmail.com";
           };
-          workProfile.enable = false;
+          workProfile = {
+            enable = true;
+            email = "gabriel.venberg@assistme.io";
+          };
         };
       };
 
