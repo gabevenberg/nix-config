@@ -12,11 +12,42 @@
     nsort = true;
     fk = 8;
   };
+  betapackage = let
+    pyEnv = pkgs.python3.withPackages (
+      python-pkgs:
+        with python-pkgs; [
+          jinja2
+          pillow
+          pkgs.ffmpeg
+          mutagen
+          argon2-cffi
+        ]
+    );
+  in
+    pkgs.stdenv.mkDerivation {
+      pname = "copyparty";
+      version = "1.17.0";
+      src = pkgs.fetchurl {
+        url = "https://ocv.me/copyparty/beta/copyparty-sfx.py";
+        hash = "sha256-vXx+4Stax/HH+eIc1ktYM+zuoRxEB2mxfoY7haPAID4=";
+      };
+      buildInputs = [pkgs.makeWrapper];
+      dontUnpack = true;
+      dontBuild = true;
+      installPhase = ''
+        install -Dm755 $src $out/share/copyparty-sfx.py
+        makeWrapper ${pyEnv.interpreter} $out/bin/copyparty \
+          --set PATH '${lib.makeBinPath [pkgs.util-linux pkgs.ffmpeg]}:$PATH' \
+          --add-flags "$out/share/copyparty-sfx.py"
+      '';
+      meta.mainProgram = "copyparty";
+    };
 in {
   nixpkgs.overlays = [inputs.copyparty.overlays.default];
   environment.systemPackages = with pkgs; [copyparty];
   services.copyparty = {
     enable = true;
+    package = betapackage;
     user = config.host.details.user;
     group = "users";
     # directly maps to values in the [global] section of the copyparty config.
@@ -44,7 +75,7 @@ in {
       log-utc = true;
       ah-alg = "argon2";
       ah-salt = "ImSaltyAboutNonPersistentSalts";
-      hist="/var/lib/copyparty";
+      hist = "/var/lib/copyparty";
     };
     accounts = lib.mkIf (inputs ? nix-secrets) (
       builtins.mapAttrs (name: value: {passwordFile = "${inputs.nix-secrets}/copyparty/${name}";})
@@ -82,9 +113,9 @@ in {
 
   services.nginx.virtualHosts."files.venberg.xyz" = {
     enableACME = true;
-    forceSSL=true;
+    forceSSL = true;
     locations."/" = {
-      proxyPass= "http://localhost:${port}";
+      proxyPass = "http://localhost:${port}";
     };
   };
 }
