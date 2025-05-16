@@ -54,18 +54,16 @@
 
           #moves a file, leaving a symlink in its place.
           mvln(){
-            set -eu
-
             # Check for correct number of arguments
             if [ "$#" -ne 2 ]; then
               echo "Usage: $0 <source> <destination>"
-              exit 1
+              return 1
             fi
             source="$1" destination="$2"
-            Check if source exists
+            # Check if source exists
             if [ ! -e "$source" ]; then
               echo "$source does not exist."
-              exit 1
+              return 1
             fi
 
             mv -- "$source" "$destination"
