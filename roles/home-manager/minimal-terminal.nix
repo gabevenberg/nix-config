@@ -25,6 +25,7 @@
     duf
     fd
     sd
+    trippy
     file
     ripgrep
     curl
