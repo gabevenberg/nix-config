@@ -26,7 +26,9 @@
       alias = {
         bl = ''zk list --link-to $@'';
         i = ''zk edit --interactive'';
-        unlinked-mentions = ''zk list --mentioned-by $1 --no-linked-by $1'';
+        unlinked-mentions-by = ''zk list --mentioned-by "$@" --no-linked-by "$@"'';
+        unlinked-mentions-to = ''zk list --mention "$@" --no-link-to "$@"'';
+        mentions-tags = ''zk list --tag "NOT "$@"" --match "$@"'';
         short = ''zk list --format '{{word-count}}\t{{title}}' --limit 20 --sort word-count $@'';
         nt = ''zk new --title "''${*:2}" $1'';
         todo = ''zk list --tag=TODO'';
