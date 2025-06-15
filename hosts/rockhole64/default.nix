@@ -35,17 +35,18 @@ inputs.nixpkgs.lib.nixosSystem {
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
+        gui.enable = false;
       };
       networking.hostName = "rockhole"; # Define your hostname.
       networking.hostId = "e0c31928";
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
-        networks."TODO" = {
-          name = "TODO";
+        networks."0-end0" = {
+          name = "end0";
           address = ["10.10.0.2/16"];
           gateway = ["10.10.0.1"];
-          dns = ["10.10.0.2"];
+          dns = ["1.1.1.1"];
         };
       };
 
@@ -69,7 +70,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
           inputs.nixvim.homeManagerModules.nixvim
           # ../../configs/home-manager/secrets.nix

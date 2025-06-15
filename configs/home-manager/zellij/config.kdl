@@ -36,6 +36,7 @@ keybinds clear-defaults=true{
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
+        bind "i" { TogglePanePinned; SwitchToMode "Normal"; }
     }
     move {
         bind "Alt m" { SwitchToMode "Normal"; }
@@ -199,6 +200,15 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/"
     }
+    configuration location="zellij:configuration"
+    plugin-manager location="zellij:plugin-manager"
+    about location="zellij:about"
+}
+
+// Plugins to load in the background when a new session starts
+load_plugins {
+  // "file:/path/to/my-plugin.wasm"
+  // "https://example.com/my-plugin.wasm"
 }
 
 show_startup_tips false

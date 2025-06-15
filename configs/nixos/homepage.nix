@@ -59,7 +59,7 @@ in {
       }
       {
         openmeteo = {
-          label = "Mainz";
+          label = "Wiesbaden";
           timezone = "Europe/Berlin";
           units = "metric";
           cache = 5;
@@ -116,6 +116,20 @@ in {
       }
       {
         Internal = [
+          {
+            HomeAssistant = {
+              icon = "sh-home-assistant.svg";
+              href = "http://homeassistant.local:8123/";
+              description = "Home Automation";
+            };
+          }
+          {
+            AdGuardHome = {
+              icon = "sh-adguard-home.svg";
+              href = "http://10.10.0.2";
+              description = "Home Automation";
+            };
+          }
           {
             Deluge = {
               icon = "sh-deluge.svg";

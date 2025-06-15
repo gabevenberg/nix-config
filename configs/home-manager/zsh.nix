@@ -16,7 +16,7 @@
     zsh = {
       enable = true;
       enableCompletion = true;
-      initExtra = lib.mkMerge [
+      initContent = lib.mkMerge [
         ''
           #have the menu highlight while we cycle through options
           zstyle ':completion:*' menu select

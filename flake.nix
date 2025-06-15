@@ -107,7 +107,7 @@
     deploy = {
       nodes = {
         rockhole = {
-          hostname = "rockpro";
+          hostname = "rockhole";
           profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockhole;
           remoteBuild = true;
         };
