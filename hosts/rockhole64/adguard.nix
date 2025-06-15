@@ -12,4 +12,5 @@
     openFirewall=true;
     port=80;
   };
+  networking.firewall.allowedUDPPorts=[53 67 546 547];
 }
