@@ -124,6 +124,13 @@ in {
             };
           }
           {
+            FritzBox = {
+              icon = "sh-fritz.svg";
+              href = "http://10.10.0.1";
+              description = "Router";
+            };
+          }
+          {
             AdGuardHome = {
               icon = "sh-adguard-home.svg";
               href = "http://10.10.0.2";

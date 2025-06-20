@@ -14,11 +14,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ./adguard.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
-    # ../../configs/nixos/secrets.nix
+    ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
     ({
       config,
       pkgs,
+      lib,
       ...
     }: {
       boot.initrd.kernelModules = [
@@ -47,6 +48,18 @@ inputs.nixpkgs.lib.nixosSystem {
           address = ["10.10.0.2/16"];
           gateway = ["10.10.0.1"];
           dns = ["1.1.1.1"];
+        };
+      };
+
+      services.duckdns = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "duckdns-token"] config) {
+        enable = true;
+        domains = ["gabevenberg"];
+        tokenFile = config.sops.secrets.duckdns-token.path;
+      };
+
+      sops = lib.mkIf (inputs ? nix-secrets) {
+        secrets = {
+          duckdns-token.sopsFile = "${inputs.nix-secrets}/duckdns.yaml";
         };
       };
 
