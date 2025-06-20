@@ -89,6 +89,14 @@ in {
             };
           }
           {
+            HomeAssistant = {
+              icon = "sh-home-assistant.svg";
+              href = "https://home.venberg.xyz";
+              siteMonitor = "https://home.venberg.xyz";
+              description = "Home Automation";
+            };
+          }
+          {
             Grocy = {
               icon = "sh-grocy.svg";
               href = "https://grocy.venberg.xyz";
@@ -117,13 +125,6 @@ in {
       {
         Internal = [
           {
-            HomeAssistant = {
-              icon = "sh-home-assistant.svg";
-              href = "http://homeassistant.local:8123/";
-              description = "Home Automation";
-            };
-          }
-          {
             FritzBox = {
               icon = "sh-fritz.svg";
               href = "http://10.10.0.1";
@@ -133,7 +134,7 @@ in {
           {
             AdGuardHome = {
               icon = "sh-adguard-home.svg";
-              href = "http://10.10.0.2";
+              href = "http://10.10.0.2:8080";
               description = "Home Automation";
             };
           }

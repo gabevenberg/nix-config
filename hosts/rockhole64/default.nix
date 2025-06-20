@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disk-config.nix
     ./hardware-config.nix
     ./adguard.nix
+    ./nginx.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
