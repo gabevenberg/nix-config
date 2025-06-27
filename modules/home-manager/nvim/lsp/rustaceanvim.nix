@@ -8,9 +8,7 @@
     lib.mkIf (config.user.nvim.enable-lsp && config.user.nvim.enable)
     {
       programs.nixvim = {
-        plugins.rustaceanvim = {
-          enable = true;
-        };
+        plugins.rustaceanvim.enable = true;
       };
     };
 }
