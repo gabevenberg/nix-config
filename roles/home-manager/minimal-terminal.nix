@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -15,7 +16,6 @@
 
   user = {
     git.enable = lib.mkDefault true;
-    nvim.enable = lib.mkDefault true;
   };
 
   home.packages = with pkgs; [
@@ -31,12 +31,15 @@
     curl
     rsync
     p7zip
+    inputs.nvim-config.packages.${pkgs.system}.nvim-minimal
   ];
 
   home.sessionVariables = {
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;
   };
+
+  home.sessionVariables.EDITOR = lib.mkDefault "nvim-minimal";
 
   home.sessionPath = [
     "$HOME/.nix-profile/bin/"

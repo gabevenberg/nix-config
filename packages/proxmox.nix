@@ -44,7 +44,6 @@
         imports = [
           ../roles/home-manager/minimal-terminal.nix
           ../configs/home-manager/common.nix
-          inputs.nixvim.homeManagerModules.nixvim
         ];
       };
 

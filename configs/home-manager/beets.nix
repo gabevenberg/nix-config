@@ -27,7 +27,6 @@
         "fuzzy"
         "info"
         "lastgenre"
-        "lyrics"
         "mbsync"
         "missing"
         "replaygain"

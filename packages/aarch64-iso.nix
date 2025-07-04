@@ -58,7 +58,6 @@
       }: {
         host.details = osConfig.host.details;
         user = {
-          nvim.enable-lsp = false;
           git = {
             profile = {
               name = "Gabe Venberg";
@@ -70,7 +69,6 @@
         imports = [
           ../roles/home-manager/terminal.nix
           ../configs/home-manager/common.nix
-          inputs.nixvim.homeManagerModules.nixvim
         ];
       };
 

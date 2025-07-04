@@ -40,7 +40,7 @@ in {
 
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [
-    neovim
+    inputs.nvim-config.packages.${pkgs.system}.nvim-minimal
     rsync
   ];
 

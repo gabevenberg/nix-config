@@ -9,8 +9,8 @@
     enable = true;
     mutableSettings = true;
     allowDHCP = true;
-    openFirewall=true;
-    port=8080;
+    openFirewall = true;
+    port = 8080;
   };
-  networking.firewall.allowedUDPPorts=[53 67 546 547];
+  networking.firewall.allowedUDPPorts = [53 67 546 547];
 }

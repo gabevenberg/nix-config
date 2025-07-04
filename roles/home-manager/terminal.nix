@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -11,13 +12,6 @@
     ../../configs/home-manager/zk.nix
   ];
 
-  user = {
-    nvim = {
-      enable-lsp = lib.mkDefault true;
-      enable-treesitter = lib.mkDefault true;
-    };
-  };
-
   home.packages = with pkgs; [
     tre-command
     ripgrep-all
@@ -25,7 +19,10 @@
     fclones
     libqalculate
     f2
+    inputs.nvim-config.packages.${pkgs.system}.nvim
   ];
+
+  home.sessionVariables.EDITOR = "nvim";
 
   programs = {
     zoxide.enable = true;

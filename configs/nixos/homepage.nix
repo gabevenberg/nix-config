@@ -10,7 +10,7 @@
 in {
   services.homepage-dashboard = {
     enable = true;
-    allowedHosts=baseurl;
+    allowedHosts = baseurl;
     settings = {
       theme = "dark";
       color = "slate";

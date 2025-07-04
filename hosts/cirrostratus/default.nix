@@ -83,7 +83,6 @@ inputs.nixpkgs.lib.nixosSystem {
       }: {
         host.details = osConfig.host.details;
         user = {
-          nvim.enable-lsp = false;
           git = {
             profile = {
               name = config.host.details.fullName;
@@ -95,7 +94,6 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../roles/home-manager/terminal.nix
           ../../configs/home-manager/common.nix
-          inputs.nixvim.homeManagerModules.nixvim
         ];
       };
       boot = {

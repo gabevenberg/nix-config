@@ -28,3 +28,6 @@ nixos-gc:
 
 update-secrets:
     nix flake update nix-secrets
+
+update-nvim:
+    nix flake update nvim-config

@@ -49,6 +49,5 @@ inputs.home-manager.lib.homeManagerConfiguration {
         };
       };
     })
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 }

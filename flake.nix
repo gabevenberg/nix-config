@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +37,13 @@
     #https://unmovedcentre.com/technology/2024/03/22/secrets-management.html
     sops-nix = {
       url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #My nvim config.
+    nvim-config = {
+      url = "git+ssh://forgejo@git.venberg.xyz/Gabe/nvim-config.git?shallow=1";
+      # url = "git+file:///home/gabe/nvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
