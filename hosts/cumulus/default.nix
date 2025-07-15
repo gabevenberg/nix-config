@@ -39,7 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
         fullName = "Gabe Venberg";
         gui.enable = false;
       };
-      networking.hostName = "rockhole"; # Define your hostname.
+      networking.hostName = "cumulus"; # Define your hostname.
       networking.hostId = "e0c31928";
       networking.useNetworkd = true;
       systemd.network = {

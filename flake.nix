@@ -93,7 +93,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      rockhole = import ./hosts/rockhole64 {inherit inputs myLib;};
+      cumulus = import ./hosts/cumulus {inherit inputs myLib;};
       cirrus = import ./hosts/cirrus {inherit inputs myLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
     };
@@ -108,9 +108,9 @@
 
     deploy = {
       nodes = {
-        rockhole = {
-          hostname = "rockhole";
-          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.rockhole;
+        cumulus = {
+          hostname = "cumulus";
+          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.cumulus;
           remoteBuild = true;
         };
         cirrus = {
