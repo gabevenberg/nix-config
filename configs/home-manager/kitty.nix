@@ -4,12 +4,16 @@
   lib,
   ...
 }: {
+  home.packages = with pkgs; [
+    fira-code
+    # monocraft
+    # miracode
+    nerd-fonts.symbols-only
+  ];
+
   programs.kitty = {
     enable = true;
-    font = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
-    };
+    font.name = "FiraCode";
     themeFile = "gruvbox-dark";
     settings = {
       background_opacity = "0.8";
