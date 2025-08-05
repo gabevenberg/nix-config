@@ -76,7 +76,7 @@
       console.packages = options.console.packages.default ++ [pkgs.terminus_font];
 
       # ISO naming.
-      isoImage.isoName = "${config.isoImage.isoBaseName}-${pkgs.stdenv.hostPlatform.system}.iso";
+      image.fileName = "${config.isoImage.isoBaseName}-${pkgs.stdenv.hostPlatform.system}.iso";
 
       # EFI booting
       isoImage.makeEfiBootable = true;

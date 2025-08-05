@@ -92,7 +92,7 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
         imports = [
-          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
         ];
       };
