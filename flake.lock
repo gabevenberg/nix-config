@@ -218,10 +218,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1754380994,
-        "narHash": "sha256-Xp6GS4oqJ58dPw/cx8FT5ZExO/v5gu/tqrFjPTp1Iv8=",
+        "lastModified": 1754920225,
+        "narHash": "sha256-JKYitnojdIomNN/p2lfeV1ynTmRYrPB5hBGKbPj2ZO0=",
         "ref": "refs/heads/main",
-        "rev": "5782f851c84c4ee72b9e3c7d13fb15825f213fb5",
+        "rev": "e4247f017e60c339add3de9f92c753931fc9636e",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz/Gabe/nvim-config.git"
