@@ -20,6 +20,8 @@
     libqalculate
     f2
     inputs.nvim-config.packages.${pkgs.system}.nvim
+    #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
+    dragon-drop
   ];
 
   home.sessionVariables.EDITOR = "nvim";
