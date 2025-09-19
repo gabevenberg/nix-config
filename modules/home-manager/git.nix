@@ -32,7 +32,7 @@
       enable = true;
       aliases = {
         tree = "log-long-line --graph --topo-order --all --simplify-by-decoration";
-        hist = "log-long-line --graph --date-order --date=short ";
+        hist = "log-long-line --graph --date-order --date=short";
         graph = "log-long-line --graph --topo-order --all";
         log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
         recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
