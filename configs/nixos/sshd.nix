@@ -17,6 +17,9 @@
   # so we dont have to set TERM everytime we ssh in.
   environment.systemPackages = with pkgs; [
     kitty.terminfo
+    ghostty.terminfo
+    alacritty.terminfo
+    rio.terminfo
   ];
 
   users.users.root.openssh.authorizedKeys.keys = lib.mkDefault (
