@@ -15,7 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
-          ../../roles/nixos/embedded-dev.nix
+    ../../roles/nixos/embedded-dev.nix
     ({
       config,
       pkgs,
