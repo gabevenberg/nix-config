@@ -96,6 +96,7 @@
       cumulus = import ./hosts/cumulus {inherit inputs myLib;};
       cirrus = import ./hosts/cirrus {inherit inputs myLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
+      altostratus = import ./hosts/altostratus {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -121,6 +122,10 @@
           hostname = "cirrostratus";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
           remoteBuild = true;
+        };
+        altostratus = {
+          hostname = "altostratus";
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.altostratus;
         };
       };
       sshUser = "root";

@@ -21,7 +21,6 @@
       config,
       pkgs,
       lib,
-      inputs,
       modulesPath,
       options,
       ...
