@@ -69,10 +69,10 @@
           mountpoint = "/storage";
         };
         datasets = {
-          database = {
+          postgres = {
             type = "zfs_fs";
             options = {
-              mountpoint = "/postgres";
+              mountpoint = "/var/lib/postgresql";
               recordsize = "8K";
               primarycache = "metadata";
             };
