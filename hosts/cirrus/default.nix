@@ -22,6 +22,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/radicale.nix
     ../../configs/nixos/forgejo.nix
     ../../configs/nixos/homepage.nix
+    ../../configs/nixos/freshrss.nix
     ({
       config,
       pkgs,
@@ -57,6 +58,10 @@ inputs.nixpkgs.lib.nixosSystem {
             sopsFile = "${inputs.nix-secrets}/draft.gabevenberg.com";
             format = "binary";
             owner = config.services.nginx.user;
+          };
+          freshrss-password = {
+            sopsFile = "${inputs.nix-secrets}/freshrss.yaml";
+            owner = config.services.freshrss.user;
           };
         };
       };

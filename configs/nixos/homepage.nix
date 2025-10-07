@@ -120,6 +120,14 @@ in {
               description = "Online file browser";
             };
           }
+          {
+            FreshRSS = {
+              icon = "sh-freshrss.svg";
+              href = "https://rss.venberg.xyz";
+              siteMonitor = "https://rss.venberg.xyz";
+              description = "Feed reader";
+            };
+          }
         ];
       }
       {
