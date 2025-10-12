@@ -7,17 +7,17 @@
 }: let
   cfg = config.services.freshrss;
 in {
-  services.freshrss={
-    enable=true;
-    database.type="sqlite";
-    webserver="nginx";
-    baseUrl="https://rss.venberg.xyz";
+  services.freshrss = {
+    enable = true;
+    database.type = "sqlite";
+    webserver = "nginx";
+    baseUrl = "https://rss.venberg.xyz";
     virtualHost = "rss.venberg.xyz";
     passwordFile = config.sops.secrets.freshrss-password.path;
-    defaultUser="gabe";
+    defaultUser = "gabe";
   };
 
-  services.nginx.virtualHosts.${cfg.virtualHost}= {
+  services.nginx.virtualHosts.${cfg.virtualHost} = {
     enableACME = true;
     forceSSL = true;
   };

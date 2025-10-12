@@ -9,29 +9,34 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
+    inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402x-amdgpu
     ./disk-config.nix
     ./hardware-config.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
-    ../../configs/nixos/secrets.nix
+    # TODO
+    #../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
-    ../../configs/nixos/interactive-networking.nix
-    ../../roles/nixos/embedded-dev.nix
+    ../../configs/nixos/printing.nix
+    ../../configs/nixos/syncthing.nix
+    ../../configs/nixos/touchpad.nix
+    ../../configs/nixos/i3
     ({
       config,
       pkgs,
       lib,
       ...
     }: {
-      hardware.enableRedistributableFirmware = true;
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
-        gui.enable = false;
+        gui.enable = true;
+        isLaptop = true;
       };
-      networking.hostName = "altostratus"; # Define your hostname.
-      networking.hostId = "c62c7ef6";
+      networking.hostName = "harmatan";
+      networking.hostId = "7a42af26";
 
+      # TODO
       # home-manager.sharedModules = [
       #   inputs.sops-nix.homeManagerModules.sops
       # ];
@@ -48,20 +53,23 @@ inputs.nixpkgs.lib.nixosSystem {
               name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
-            workProfile = {
-              enable = true;
-              email = "gabriel.venberg@assistme.io";
-            };
           };
         };
         imports = [
-          ../../roles/home-manager/minimal-terminal.nix
+          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/music.nix
           ../../configs/home-manager/common.nix
+          # TODO
           # ../../configs/home-manager/secrets.nix
+          ../configs/home-manager/email.nix
+          ../configs/home-manager/tiny-irc.nix
         ];
 
+        # TODO
         # sops = lib.mkIf (inputs ? nix-secrets) {
         #   secrets = {
+        #     gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        #     irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
         #   };
         # };
       };
@@ -69,12 +77,6 @@ inputs.nixpkgs.lib.nixosSystem {
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = false;
-
-      # Open ports in the firewall.
-      # networking.firewall.allowedTCPPorts = [ ... ];
-      # networking.firewall.allowedUDPPorts = [ ... ];
-      # Or disable the firewall altogether.
-      # networking.firewall.enable = false;
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions

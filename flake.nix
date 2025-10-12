@@ -97,12 +97,12 @@
       cirrus = import ./hosts/cirrus {inherit inputs myLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
       altostratus = import ./hosts/altostratus {inherit inputs myLib;};
+      harmatan = import ./hosts/harmatan {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@archlaptop" = import ./hosts/home-laptop.nix {inherit inputs myLib;};
       "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs myLib;};
       "gabe@gvworklaptop" = import ./hosts/work-laptop.nix {inherit inputs myLib;};
     };
