@@ -14,13 +14,15 @@ inputs.nixpkgs.lib.nixosSystem {
     ./hardware-config.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
-    # TODO
-    #../../configs/nixos/secrets.nix
+    ../../configs/nixos/interactive-networking.nix
+    ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/printing.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/touchpad.nix
     ../../configs/nixos/i3
+    ../../roles/nixos/gaming.nix
+    ../../roles/nixos/power-saving.nix
     ({
       config,
       pkgs,
@@ -36,10 +38,9 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "harmatan";
       networking.hostId = "7a42af26";
 
-      # TODO
-      # home-manager.sharedModules = [
-      #   inputs.sops-nix.homeManagerModules.sops
-      # ];
+      home-manager.sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+      ];
       home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
@@ -59,19 +60,17 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/terminal.nix
           ../../roles/home-manager/music.nix
           ../../configs/home-manager/common.nix
-          # TODO
-          # ../../configs/home-manager/secrets.nix
-          ../configs/home-manager/email.nix
-          ../configs/home-manager/tiny-irc.nix
+          ../../configs/home-manager/secrets.nix
+          ../../configs/home-manager/email.nix
+          ../../configs/home-manager/tiny-irc.nix
         ];
 
-        # TODO
-        # sops = lib.mkIf (inputs ? nix-secrets) {
-        #   secrets = {
-        #     gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-        #     irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-        #   };
-        # };
+        sops = lib.mkIf (inputs ? nix-secrets) {
+          secrets = {
+            gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+            irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+          };
+        };
       };
 
       # Bootloader.

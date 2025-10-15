@@ -127,6 +127,10 @@
           hostname = "altostratus";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.altostratus;
         };
+        harmatan = {
+          hostname = "harmatan";
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.harmatan;
+        };
       };
       sshUser = "root";
     };

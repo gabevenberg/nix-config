@@ -1,5 +1,5 @@
 {config, ...}: {
-  config.hardware.enableRedistributableFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usbhid" "sdhci_pci"];
   boot.initrd.kernelModules = [];

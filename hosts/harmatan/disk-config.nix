@@ -22,7 +22,7 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                passwordFile = "/tmp/secret.key";
+                passwordFile = "/tmp/disk.key";
                 content = {
                   type = "btrfs";
                   extraArgs = ["-L" "nixos" "-f"];
@@ -51,7 +51,7 @@
                     "/swap" = {
                       mountpoint = "/.swapvol";
                       swap.swapfile.size = "16G";
-                      priority = 0;
+                      swap.swapfile.priority = 0;
                     };
                   };
                 };

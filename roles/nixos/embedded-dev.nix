@@ -14,6 +14,8 @@
     ];
   };
 
+  users.users.${config.host.details.user}.extraGroups = [ "dialout" ];
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
