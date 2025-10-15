@@ -38,6 +38,12 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "harmatan";
       networking.hostId = "7a42af26";
 
+      services.xserver.dpi = 180;
+      environment.variables = {
+        GDK_SCALE = "2";
+        GDK_DPI_SCALE = "0.5";
+      };
+
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
       ];

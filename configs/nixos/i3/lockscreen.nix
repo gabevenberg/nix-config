@@ -4,15 +4,16 @@
   lib,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    betterlockscreen
-  ];
   home-manager.users.${config.host.details.user} = {
     config,
     osConfig,
     lib,
     ...
   }: {
+    home.packages = with pkgs; [
+      betterlockscreen
+    ];
+
     xsession.windowManager.i3.config = {
       keybindings = let
         mod = config.xsession.windowManager.i3.config.modifier;

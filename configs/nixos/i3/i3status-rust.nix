@@ -4,6 +4,13 @@
   lib,
   ...
 }: {
+  fonts.packages = with pkgs; [
+    fira-code
+    monocraft
+    miracode
+    nerd-fonts.symbols-only
+  ];
+  services.upower.enable = config.host.details.isLaptop;
   home-manager.users.${config.host.details.user} = {
     config,
     osConfig,
@@ -13,8 +20,7 @@
     xsession.windowManager.i3.config.bars = [
       {
         fonts = {
-          names = ["FiraCode Nerd Font"];
-          style = "Mono";
+          names = ["Fira Code"];
           size = 10.0;
         };
         position = "bottom";

@@ -22,6 +22,8 @@
     };
     xkb.options = "ctrl:nocaps,compose:rctrl";
   };
+  fonts.fontDir.enable = true;
+  fonts.enableDefaultPackages = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       maim
@@ -49,7 +51,7 @@
       enable = true;
       config = {
         modifier = mod;
-        terminal = "kitty";
+        terminal = "ghostty";
         menu = "rofi -show drun";
         defaultWorkspace = "workspace ${ws1}";
         keybindings = {
@@ -234,7 +236,7 @@
       };
     };
     imports = [
-      ../../home-manager/kitty.nix
+      ../../home-manager/ghostty.nix
       ../../home-manager/rofi.nix
       ../../home-manager/dunst.nix
       ../../home-manager/feh.nix

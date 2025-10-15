@@ -9,7 +9,7 @@
     ./nginx.nix
   ];
 
-#allow us to manage jellyfins media.
+  #allow us to manage jellyfins media.
   users.users.${config.host.details.user}.extraGroups = ["jellyfin"];
 
   services.jellyfin = {

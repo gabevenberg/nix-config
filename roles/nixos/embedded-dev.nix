@@ -14,7 +14,7 @@
     ];
   };
 
-  users.users.${config.host.details.user}.extraGroups = [ "dialout" ];
+  users.users.${config.host.details.user}.extraGroups = ["dialout"];
 
   programs.nix-ld = {
     enable = true;
