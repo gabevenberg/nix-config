@@ -15,7 +15,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disk-config.nix
     ./hardware-configuration.nix
     ./restic.nix
-    ./nginx.nix
     ./copyparty.nix
     ./torrent.nix
     ../../configs/nixos/common.nix

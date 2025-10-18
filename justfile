@@ -9,6 +9,9 @@ home-manager target=(`whoami`+"@"+`hostname`):
     git add -AN
     home-manager --flake .#{{target}} switch
 
+deploy target:
+    nixos-rebuild --flake .#{{target}} switch --target-host root@{{target}}
+
 check:
     git add -AN
     nix flake check --keep-going

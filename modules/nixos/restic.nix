@@ -100,7 +100,8 @@
       htpasswd-file = cfg.server.htpasswdPath;
     };
 
-    services.nginx.virtualHosts =
+    #Restic submits some huge requests sometimes.
+    services.nginx =
       lib.mkIf (
         cfg.server.enable
         && (lib.asserts.assertMsg
@@ -108,7 +109,8 @@
           "NGINX must be enabled")
       )
       {
-        "${cfg.server.domain}" = {
+        clientMaxBodySize = "1000m";
+        virtualHosts."${cfg.server.domain}" = {
           enableACME = lib.asserts.assertMsg (
             config.security.acme.acceptTerms
             == true
@@ -131,6 +133,7 @@
           paths = null;
           timerConfig = timer;
           pruneOpts = pruneOpts;
+          user = "restic";
         };
       })
       (

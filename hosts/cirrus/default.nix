@@ -40,7 +40,8 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.useNetworkd = true;
       systemd.network = {
         enable = true;
-        networks."enp1s0" = {
+        networks."10-enp1s0" = {
+          name = "enp1s0";
           networkConfig.DHCP = "ipv4";
           gateway = ["fe80::1"];
           address = ["2a01:4f8:1c1b:6c7c::1/64"];
