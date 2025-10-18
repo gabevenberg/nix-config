@@ -15,15 +15,7 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      greeters.gtk.enable = false;
-      greeter.enable = false;
-    };
-    xkb.options = "ctrl:nocaps,compose:rctrl";
   };
-  fonts.fontDir.enable = true;
-  fonts.enableDefaultPackages = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       maim
@@ -247,5 +239,6 @@
     ../sound.nix
     ./i3status-rust.nix
     ./lockscreen.nix
+    ../graphical.nix
   ];
 }
