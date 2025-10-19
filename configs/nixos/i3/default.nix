@@ -9,7 +9,17 @@
     enable = true;
     windowManager.i3.enable = true;
   };
+  programs.dconf.enable=true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
+    gtk={
+      enable=true;
+      colorScheme="dark";
+
+    };
+    qt={
+      enable=true;
+      style.name="adwaita-dark";
+    };
     home.packages = with pkgs; [
       maim
       brightnessctl
