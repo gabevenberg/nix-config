@@ -19,6 +19,7 @@
       font-size = 12;
       background-opacity = 0.8;
       background-blur = true;
+      background-opacity-cells = true;
       window-decoration = "server";
     };
   };

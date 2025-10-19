@@ -5,13 +5,6 @@
   ...
 }: {
   services.accounts-daemon.enable = true;
-  services.displayManager = {
-    defaultSession = "none+i3";
-    autoLogin = {
-      user = config.host.details.user;
-      enable = true;
-    };
-  };
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -205,11 +198,6 @@
         };
         startup = [
           {
-            command = "betterlockscreen --lock blur";
-            notification = false;
-            always = false;
-          }
-          {
             command = "betterlockscreen --wall";
             notification = false;
             always = true;
@@ -219,11 +207,6 @@
             notification = false;
             always = false;
           }
-          # {
-          #   command = "~/.fehbg";
-          #   notification = false;
-          #   always = true;
-          # }
         ];
       };
     };
