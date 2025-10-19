@@ -9,6 +9,5 @@
     prusa-slicer
     freecad
     blender
-    dune3d
   ];
 }

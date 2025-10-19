@@ -16,6 +16,7 @@
       arandr
       dex
       firefox
+      thunderbird
     ];
     services.playerctld.enable = true;
     xsession.enable = true;

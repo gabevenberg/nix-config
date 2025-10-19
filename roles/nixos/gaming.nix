@@ -14,4 +14,9 @@
   programs.gamemode.enable = true;
 
   hardware.steam-hardware.enable = true;
+  home-manager.users.${config.host.details.user} = {config, ...}: {
+    home.packages = with pkgs; [
+      discord
+    ];
+  };
 }

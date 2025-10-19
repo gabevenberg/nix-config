@@ -39,7 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostId = "7a42af26";
 
       services.displayManager.defaultSession = "i3";
-      services.xserver.dpi = 180;
+      services.xserver.dpi = 210;
       environment.variables = {
         GDK_SCALE = "2";
         GDK_DPI_SCALE = "0.5";
@@ -63,9 +63,14 @@ inputs.nixpkgs.lib.nixosSystem {
             };
           };
         };
+        home.packages = with pkgs; [
+          signal-desktop
+        ];
         imports = [
           ../../roles/home-manager/terminal.nix
           ../../roles/home-manager/music.nix
+          ../../roles/home-manager/eda.nix
+          ../../roles/home-manager/3dprinting.nix
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/secrets.nix
           ../../configs/home-manager/email.nix
