@@ -16,6 +16,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/interactive-networking.nix
+    ../../configs/nixos/sound.nix
     ../../roles/nixos/embedded-dev.nix
     ({
       config,

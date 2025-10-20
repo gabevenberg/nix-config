@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Enable sound with pipewire.
@@ -13,10 +14,22 @@
     pulse.enable = true;
   };
 
-  home-manager.users.${config.host.details.user} = {config, ...}: {
-    home.packages = with pkgs; [
-      pwvucontrol
-      helvum
-    ];
+  home-manager.users.${config.host.details.user} = {
+    config,
+    osConfig,
+    lib,
+    ...
+  }: {
+    home.packages = with pkgs;
+      lib.mkMerge [
+        (
+          lib.mkIf (osConfig.host.details.gui.enable)
+          [
+            pwvucontrol
+            helvum
+          ]
+        )
+        [wiremix]
+      ];
   };
 }

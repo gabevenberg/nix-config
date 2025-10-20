@@ -82,6 +82,7 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             just
+            nixos-rebuild
             deploy-rs.packages.${system}.deploy-rs
           ];
         };

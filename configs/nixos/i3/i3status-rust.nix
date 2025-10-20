@@ -51,8 +51,7 @@
               interval = 1;
             }
             (
-              lib.mkIf
-              (!osConfig.host.details.isVm)
+              lib.mkIf (!osConfig.host.details.isVm)
               {
                 block = "backlight";
                 missing_format = "";
