@@ -45,6 +45,8 @@ in {
       ah-alg = "argon2";
       ah-salt = "ImSaltyAboutNonPersistentSalts";
       hist = "/var/lib/copyparty";
+      xff-hdr = "X-Forwarded-For";
+      rproxy = 1;
     };
     accounts = lib.mkIf (inputs ? nix-secrets) (
       builtins.mapAttrs (name: value: {passwordFile = "${inputs.nix-secrets}/copyparty/${name}";})
