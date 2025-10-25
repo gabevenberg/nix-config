@@ -45,17 +45,24 @@ inputs.nixpkgs.lib.nixosSystem {
         GDK_DPI_SCALE = "0.5";
       };
 
-      nixpkgs.overlays = [
-        (final: prev: {
-          discord = prev.discord.overrideAttrs (e: rec {
-            # Add arguments to the .desktop entry
-            desktopItem = e.desktopItem.override (d: {
-              exec = "${d.exec} --force-device-scale-factor=2";
-            });
-
-            # Update the install script to use the new .desktop entry
-            installPhase = builtins.replaceStrings ["${e.desktopItem}"] ["${desktopItem}"] e.installPhase;
+      nixpkgs.overlays = let
+        args = "--force-device-scale-factor=2";
+        desktopItemModifier = e: rec {
+          desktopItem = e.desktopItem.override (d: {
+            exec = "${d.exec} ${args}";
           });
+        };
+        desktopItemsModifier = e: rec {
+          desktopItems = [
+            ((builtins.head e.desktopItems).override (d: {
+              exec = "${d.exec} ${args}";
+            }))
+          ];
+        };
+      in [
+        (final: prev: {
+          discord = prev.discord.overrideAttrs desktopItemModifier;
+          signal-desktop = prev.signal-desktop.overrideAttrs desktopItemsModifier;
         })
       ];
 
@@ -80,6 +87,10 @@ inputs.nixpkgs.lib.nixosSystem {
         home.packages = with pkgs; [
           signal-desktop
         ];
+
+        home.file.".config/electron-flags.conf".text = ''
+          --force-device-scale-factor=2
+        '';
         imports = [
           ../../roles/home-manager/terminal.nix
           ../../roles/home-manager/music.nix
