@@ -21,6 +21,7 @@
       background-blur = true;
       background-opacity-cells = true;
       window-decoration = "server";
+      window-inherit-working-directory = false;
     };
   };
 }
