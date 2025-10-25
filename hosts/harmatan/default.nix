@@ -45,6 +45,20 @@ inputs.nixpkgs.lib.nixosSystem {
         GDK_DPI_SCALE = "0.5";
       };
 
+      nixpkgs.overlays = [
+        (final: prev: {
+          discord = prev.discord.overrideAttrs (e: rec {
+            # Add arguments to the .desktop entry
+            desktopItem = e.desktopItem.override (d: {
+              exec = "${d.exec} --force-device-scale-factor=2";
+            });
+
+            # Update the install script to use the new .desktop entry
+            installPhase = builtins.replaceStrings ["${e.desktopItem}"] ["${desktopItem}"] e.installPhase;
+          });
+        })
+      ];
+
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
       ];
