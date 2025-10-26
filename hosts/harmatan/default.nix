@@ -47,15 +47,15 @@ inputs.nixpkgs.lib.nixosSystem {
 
       nixpkgs.overlays = let
         args = "--force-device-scale-factor=2";
-        desktopItemModifier = e: rec {
-          desktopItem = e.desktopItem.override (d: {
-            exec = "${d.exec} ${args}";
+        desktopItemModifier = prevAttrs: {
+          desktopItem = prevAttrs.desktopItem.override (prev: {
+            exec = "${prev.exec} ${args}";
           });
         };
-        desktopItemsModifier = e: rec {
+        desktopItemsModifier = previousAttrs: {
           desktopItems = [
-            ((builtins.head e.desktopItems).override (d: {
-              exec = "${d.exec} ${args}";
+            ((builtins.head previousAttrs.desktopItems).override (prev: {
+              exec = "${prev.exec} ${args}";
             }))
           ];
         };

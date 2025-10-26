@@ -5,6 +5,8 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # nixpkgs-fork.url="github:gabevenberg/nixpkgs/nixos-unstable";
+
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";

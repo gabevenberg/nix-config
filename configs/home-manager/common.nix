@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -9,11 +10,17 @@
   # Let Home Manager install and manage itself on non-nixos systems.
   programs.home-manager.enable = config.targets.genericLinux.enable;
 
-  services.home-manager.autoExpire = {
+  nixpkgs.overlays = lib.mkIf (config.targets.genericLinux.enable && (inputs ? nixpkgs-fork)) [
+    (final: prev: {
+      fork = inputs.nixpkgs-fork.legacyPackages.${prev.system};
+    })
+  ];
+
+  services.home-manager.autoExpire = lib.mkIf config.targets.genericLinux.enable {
     enable = true;
     store = {
       cleanup = true;
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
   };
 

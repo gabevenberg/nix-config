@@ -25,6 +25,12 @@ in {
     };
   };
 
+  nixpkgs.overlays = lib.mkIf (inputs ? nixpkgs-fork) [
+    (final: prev: {
+      fork = inputs.nixpkgs-fork.legacyPackages.${prev.system};
+    })
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
