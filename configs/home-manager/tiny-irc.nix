@@ -10,6 +10,7 @@
       servers = [
         {
           addr = "irc.libera.chat";
+          alias = "libera";
           port = 6697;
           tls = true;
           realname = "Gabe Venberg";
@@ -37,6 +38,7 @@
         }
         {
           addr = "mbrserver.com";
+          alias = "MBR";
           port = 6667;
           tls = false;
           nicks = ["toric"];

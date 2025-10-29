@@ -15,7 +15,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
     }: {
       # machine specific options
       user = {
-        enable-speech = true;
         git = {
           profile = {
             name = "Gabe Venberg";

@@ -185,8 +185,16 @@ in {
             Github = {
               icon = "si-github-#181717";
               href = "https://github.com";
-              siteMonitor = "https://git.venberg.xyz";
+              siteMonitor = "https://github.com";
               description = "Non self hosted Git forge :(";
+            };
+          }
+          {
+            Codeberg = {
+              icon = "sh-codeberg";
+              href = "https://codeberg.org";
+              siteMonitor = "https://codeberg.org";
+              description = "Non self hosted Git forge, but at least open source!";
             };
           }
           {
