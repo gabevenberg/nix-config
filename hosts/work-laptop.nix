@@ -38,6 +38,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../configs/home-manager/email.nix
         ../configs/home-manager/tiny-irc.nix
         ../configs/home-manager/secrets.nix
+        ../../configs/home-manager/senpai-irc.nix
         inputs.sops-nix.homeManagerModules.sops
       ];
 
@@ -45,6 +46,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         secrets = {
           gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
           irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+          soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
         };
       };
     })

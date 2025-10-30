@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/forgejo.nix
     ../../configs/nixos/homepage.nix
     ../../configs/nixos/freshrss.nix
+    ../../configs/nixos/soju.nix
     ({
       config,
       pkgs,

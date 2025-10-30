@@ -26,6 +26,7 @@
       dex
       firefox
       thunderbird
+      mpv
     ];
     services.playerctld.enable = true;
     xsession.enable = true;

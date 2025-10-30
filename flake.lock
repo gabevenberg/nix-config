@@ -125,10 +125,10 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1759838094,
-        "narHash": "sha256-eLz+Xa+SEDBjevKYPIccrd8IoK8N/3ewJC0bNi4Pwx4=",
+        "lastModified": 1761828538,
+        "narHash": "sha256-q3nzaUAuBNefJQ5vSNtx4+0OsS4qKvAu7u2GkHXRBHI=",
         "ref": "refs/heads/main",
-        "rev": "8172f0d3fefccac5568ac115a37ba9785dae3915",
+        "rev": "4c080031ee47552b20f286edd7e9374283811bbd",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz/Gabe/nix-secrets.git"

@@ -109,7 +109,7 @@
           "NGINX must be enabled")
       )
       {
-        clientMaxBodySize = "1000m";
+        clientMaxBodySize = "0";
         virtualHosts."${cfg.server.domain}" = {
           enableACME = lib.asserts.assertMsg (
             config.security.acme.acceptTerms

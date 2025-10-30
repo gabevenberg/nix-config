@@ -100,12 +100,15 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/secrets.nix
           ../../configs/home-manager/email.nix
           ../../configs/home-manager/tiny-irc.nix
+          ../../configs/home-manager/senpai-irc.nix
+          ../../configs/home-manager/halloy-irc.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {
           secrets = {
             gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
             irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+            soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
           };
         };
       };
