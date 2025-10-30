@@ -17,9 +17,6 @@
       font-family = "Fira Code";
       theme = "Gruvbox Dark";
       font-size = 12;
-      background-opacity = 0.8;
-      background-blur = true;
-      background-opacity-cells = true;
       window-decoration = "server";
       window-inherit-working-directory = false;
     };

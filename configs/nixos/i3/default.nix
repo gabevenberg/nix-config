@@ -21,6 +21,8 @@
     };
     home.packages = with pkgs; [
       maim
+      xclip
+      xdotool
       brightnessctl
       arandr
       dex

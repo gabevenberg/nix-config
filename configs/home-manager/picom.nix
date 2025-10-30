@@ -7,7 +7,6 @@
   services.picom = {
     enable = true;
     backend = "glx";
-    extraArgs = ["--transparent-clipping"];
   };
   xsession.windowManager.i3.config.startup = [
     {
