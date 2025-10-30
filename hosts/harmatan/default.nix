@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/touchpad.nix
     ../../configs/nixos/i3
+    ../../configs/nixos/bluetooth.nix
     ../../roles/nixos/gaming.nix
     ../../roles/nixos/power-saving.nix
     ({
