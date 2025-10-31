@@ -38,7 +38,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
         ../configs/home-manager/email.nix
         ../configs/home-manager/tiny-irc.nix
         ../configs/home-manager/secrets.nix
-        ../../configs/home-manager/senpai-irc.nix
+        ../configs/home-manager/senpai-irc.nix
         inputs.sops-nix.homeManagerModules.sops
       ];
 
