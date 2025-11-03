@@ -10,6 +10,9 @@
       address = "irc.venberg.xyz";
       nickname = "toric";
       password-cmd = ["cat" config.sops.secrets.soju-password.path];
+      colors = {
+        nicks="extended";
+      };
     };
   };
 }
