@@ -56,11 +56,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763651264,
-        "narHash": "sha256-8vvwZbw0s7YvBMJeyPVpWke6lg6ROgtts5N2/SMCcv4=",
+        "lastModified": 1764017209,
+        "narHash": "sha256-RoJGCtKExXXkNCZUmmxezG3eOczEOTBw38DaZGSYJC0=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "e86a89079587497174ccab6d0d142a65811a4fd9",
+        "rev": "ec8eabe00c4ee9a2ddc50162c125f0ec2a7099e1",
         "type": "github"
       },
       "original": {
@@ -233,10 +233,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1758892154,
-        "narHash": "sha256-QGZe55vkmCSFHZh+TsWGgDBs0eM66IDwGsnZYqpKB/4=",
+        "lastModified": 1764020811,
+        "narHash": "sha256-o+DLaTUYgUI40Q7gHAdCauGTUwumUbHr/lcS8e1hvVA=",
         "ref": "refs/heads/main",
-        "rev": "793fd016c5c44fdb44f7bebceb03ebfcb96e4d65",
+        "rev": "fecca27e9229212a7b238383993c97dc8a52e0f0",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz/Gabe/nvim-config.git"
