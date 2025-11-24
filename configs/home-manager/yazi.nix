@@ -13,7 +13,7 @@
   };
   home.packages = with pkgs; [
     ffmpeg
-    poppler_utils
+    poppler-utils
     jq
     fd
     imagemagick

@@ -20,7 +20,7 @@ in {
 
   services.udev.packages = [udev-rules];
 
-  users.groups.plugdev={};
+  users.groups.plugdev = {};
   users.users.${config.host.details.user}.extraGroups = ["dialout" "plugdev"];
 
   home-manager.users.${config.host.details.user} = {config, ...}: {

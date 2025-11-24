@@ -28,26 +28,28 @@
   };
 
   config = lib.mkIf config.user.git.enable {
+    programs.delta = {
+      enable = true;
+      options = {
+        side-by-side = true;
+        line-numbers = true;
+      };
+    };
     programs.git = {
       enable = true;
-      aliases = {
-        tree = "log-long-line --graph --topo-order --all --simplify-by-decoration";
-        hist = "log-long-line --graph --date-order --date=short";
-        graph = "log-long-line --graph --topo-order --all";
-        log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
-        recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
-        track = "add -AN";
-      };
-      delta = {
-        enable = true;
-        options = {
-          side-by-side = true;
-          line-numbers = true;
+      settings = {
+        aliases = {
+          tree = "log-long-line --graph --topo-order --all --simplify-by-decoration";
+          hist = "log-long-line --graph --date-order --date=short";
+          graph = "log-long-line --graph --topo-order --all";
+          log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
+          recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
+          track = "add -AN";
         };
-      };
-      userEmail = config.user.git.profile.email;
-      userName = config.user.git.profile.name;
-      extraConfig = {
+        user = {
+          email = config.user.git.profile.email;
+          name = config.user.git.profile.name;
+        };
         core.hooksPath = ".githooks";
         init.defaultBranch = "main";
         push = {
