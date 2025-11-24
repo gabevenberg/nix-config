@@ -22,8 +22,10 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/touchpad.nix
     ../../configs/nixos/i3
     ../../configs/nixos/bluetooth.nix
+    ../../configs/nixos/kicad.nix
     ../../roles/nixos/gaming.nix
     ../../roles/nixos/power-saving.nix
+    ../../roles/nixos/embedded-dev
     ({
       config,
       pkgs,
@@ -95,7 +97,6 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../roles/home-manager/terminal.nix
           ../../roles/home-manager/music.nix
-          ../../roles/home-manager/eda.nix
           ../../roles/home-manager/3dprinting.nix
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/secrets.nix

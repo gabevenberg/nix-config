@@ -13,7 +13,6 @@
   ];
 
   home.packages = with pkgs; [
-    tre-command
     ripgrep-all
     hyperfine
     fclones
