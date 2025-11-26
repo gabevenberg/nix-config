@@ -30,6 +30,7 @@
   config = lib.mkIf config.user.git.enable {
     programs.delta = {
       enable = true;
+      enableGitIntegration=true;
       options = {
         side-by-side = true;
         line-numbers = true;
@@ -38,7 +39,7 @@
     programs.git = {
       enable = true;
       settings = {
-        aliases = {
+        alias = {
           tree = "log-long-line --graph --topo-order --all --simplify-by-decoration";
           hist = "log-long-line --graph --date-order --date=short";
           graph = "log-long-line --graph --topo-order --all";
