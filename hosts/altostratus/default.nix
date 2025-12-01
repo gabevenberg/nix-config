@@ -17,7 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/sound.nix
-    ../../roles/nixos/embedded-dev.nix
+    ../../roles/nixos/embedded-dev
     ({
       config,
       pkgs,
