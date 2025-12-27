@@ -5,7 +5,6 @@
   ...
 }:
 (inputs.nixpkgs.lib.nixosSystem {
-  system = "aarch64-linux";
   specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
@@ -37,6 +36,7 @@
         "${modulesPath}/installer/scan/detected.nix"
         "${modulesPath}/installer/scan/not-detected.nix"
       ];
+      nixpkgs.hostPlatform ="aarch64-linux";
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";

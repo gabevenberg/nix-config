@@ -31,7 +31,7 @@
     curl
     rsync
     p7zip
-    inputs.nvim-config.packages.${pkgs.system}.nvim-minimal
+    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
   ];
 
   home.sessionVariables = {

@@ -4,7 +4,6 @@
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
-  system = "aarch64-linux";
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -33,6 +32,7 @@ inputs.nixpkgs.lib.nixosSystem {
         "rockchipdrm"
         "phy_rockchip_pcie"
       ];
+      nixpkgs.hostPlatform ="x86_64-linux";
       hardware.enableRedistributableFirmware = true;
       host.details = {
         user = "gabe";

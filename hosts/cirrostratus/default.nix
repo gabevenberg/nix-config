@@ -5,7 +5,6 @@
 }:
 # Karp site server.
 inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
   specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
@@ -42,6 +41,7 @@ inputs.nixpkgs.lib.nixosSystem {
         fullName = "Gabe Venberg";
         gui.enable = false;
       };
+      nixpkgs.hostPlatform ="x86_64-linux";
       boot.zfs.extraPools = ["storage"];
       networking.hostName = "cirrostratus"; # Define your hostname.
       networking.hostId = "1b9da0b9";

@@ -4,7 +4,6 @@
   ...
 }:
 (inputs.nixpkgs.lib.nixosSystem {
-  system = "aarch64-linux";
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -24,6 +23,7 @@
       ...
     }: {
       imports = ["${modulesPath}/installer/sd-card/sd-image-aarch64.nix"];
+      nixpkgs.hostPlatform ="aarch64-linux";
       hardware.enableRedistributableFirmware = true;
       host.details = {
         user = "gabe";

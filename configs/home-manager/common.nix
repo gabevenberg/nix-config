@@ -12,7 +12,7 @@
 
   nixpkgs.overlays = lib.mkIf (config.targets.genericLinux.enable && (inputs ? nixpkgs-fork)) [
     (final: prev: {
-      fork = inputs.nixpkgs-fork.legacyPackages.${prev.system};
+      fork = inputs.nixpkgs-fork.legacyPackages.${prev.stdenv.hostPlatform.system};
     })
   ];
 

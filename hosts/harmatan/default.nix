@@ -4,7 +4,6 @@
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -22,7 +21,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/touchpad.nix
     ../../configs/nixos/i3
     ../../configs/nixos/bluetooth.nix
-    ../../configs/nixos/kicad.nix
     ../../roles/nixos/gaming.nix
     ../../roles/nixos/power-saving.nix
     ../../roles/nixos/embedded-dev
@@ -32,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
       lib,
       ...
     }: {
+      nixpkgs.hostPlatform ="x86_64-linux";
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";
@@ -104,6 +103,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/tiny-irc.nix
           ../../configs/home-manager/senpai-irc.nix
           ../../configs/home-manager/halloy-irc.nix
+          ../../configs/home-manager/kicad.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {

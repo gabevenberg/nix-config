@@ -27,7 +27,7 @@ in {
 
   nixpkgs.overlays = lib.mkIf (inputs ? nixpkgs-fork) [
     (final: prev: {
-      fork = inputs.nixpkgs-fork.legacyPackages.${prev.system};
+      fork = inputs.nixpkgs-fork.legacyPackages.${prev.stdenv.hostPlatform.system};
     })
   ];
 
@@ -46,7 +46,7 @@ in {
 
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [
-    inputs.nvim-config.packages.${pkgs.system}.nvim-minimal
+    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
     rsync
   ];
 

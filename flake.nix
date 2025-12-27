@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs-fork.url="github:gabevenberg/nixpkgs/kicad-step-fix";
+    # nixpkgs-fork.url="github:gabevenberg/nixpkgs/nixos-unstable";
     # nixpkgs-fork.url = "git+file:///home/gabe/dev/nixpkgs";
 
     nixos-wsl = {

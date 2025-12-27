@@ -5,7 +5,6 @@
 }:
 # Hetzner cloud multipurpouse server
 inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
   specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <
   modules = [
@@ -36,6 +35,7 @@ inputs.nixpkgs.lib.nixosSystem {
         gui.enable = false;
         isVm = true;
       };
+      nixpkgs.hostPlatform ="x86_64-linux";
       networking.hostName = "cirrus"; # Define your hostname.
       networking.hostId = "908b80b6";
       networking.useNetworkd = true;

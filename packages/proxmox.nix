@@ -4,7 +4,6 @@
   ...
 }:
 (inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
@@ -18,6 +17,7 @@
       ...
     }: {
       imports = ["${modulesPath}/virtualisation/proxmox-lxc.nix"];
+      nixpkgs.hostPlatform ="x86_64-linux";
       proxmoxLXC.manageHostName = false;
       boot.loader.grub.enable = lib.mkForce false;
       boot.loader.systemd-boot.enable = lib.mkForce false;
