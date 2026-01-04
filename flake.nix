@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    deploy-rs = {
+    deploy-rs-flake = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
@@ -66,7 +66,7 @@
   outputs = {
     self,
     nixpkgs,
-    deploy-rs,
+    deploy-rs-flake,
     ...
   } @ inputs: let
     forAllSystems = nixpkgs.lib.genAttrs [
@@ -86,7 +86,7 @@
           packages = with pkgs; [
             just
             nixos-rebuild
-            deploy-rs.packages.${system}.deploy-rs
+            deploy-rs
           ];
         };
       }
@@ -115,25 +115,25 @@
       nodes = {
         cumulus = {
           hostname = "cumulus";
-          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.cumulus;
+          profiles.system.path = deploy-rs-flake.lib.aarch64-linux.activate.nixos self.nixosConfigurations.cumulus;
           remoteBuild = true;
         };
         cirrus = {
           hostname = "cirrus";
-          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
+          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
         };
         cirrostratus = {
           hostname = "cirrostratus";
-          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
+          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
           remoteBuild = true;
         };
         altostratus = {
           hostname = "altostratus";
-          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.altostratus;
+          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.altostratus;
         };
         harmatan = {
           hostname = "harmatan";
-          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.harmatan;
+          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.harmatan;
         };
       };
       sshUser = "root";

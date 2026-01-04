@@ -23,11 +23,9 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/jellyfin.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/grocy.nix
-    ../../configs/nixos/factorio-docker.nix
     ../../configs/nixos/cyberchef.nix
     ../../configs/nixos/miniserve-directory.nix
     ../../configs/nixos/miniserve-tmp-upload.nix
-    ../../configs/nixos/minecraft-docker.nix
     ../../configs/nixos/nginx-static.nix
     ../../configs/nixos/immich.nix
     ({

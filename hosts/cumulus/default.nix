@@ -32,7 +32,7 @@ inputs.nixpkgs.lib.nixosSystem {
         "rockchipdrm"
         "phy_rockchip_pcie"
       ];
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform ="aarch64-linux";
       hardware.enableRedistributableFirmware = true;
       host.details = {
         user = "gabe";
