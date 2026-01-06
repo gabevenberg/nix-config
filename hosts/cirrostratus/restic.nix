@@ -25,7 +25,7 @@ in {
 
   host.restic = {
     enable = true;
-    repository = config.sops.secrets.restic-url.path;
+    repositoryFile = config.sops.secrets.restic-url.path;
     passwordFile = config.sops.secrets.restic-password.path;
     server = {
       enable = true;
