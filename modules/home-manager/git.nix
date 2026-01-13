@@ -46,6 +46,7 @@
           log-long-line = "log --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'";
           recent = "branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'";
           track = "add -AN";
+          hash = "git show -s --format=%H";
         };
         user = {
           email = config.user.git.profile.email;
