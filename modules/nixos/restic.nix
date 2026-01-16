@@ -133,7 +133,7 @@
           paths = null;
           timerConfig = timer;
           pruneOpts = pruneOpts;
-          user = "restic";
+          user = "root";
         };
       })
       (
