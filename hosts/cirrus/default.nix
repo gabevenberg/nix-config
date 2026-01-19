@@ -35,7 +35,7 @@ inputs.nixpkgs.lib.nixosSystem {
         gui.enable = false;
         isVm = true;
       };
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
       networking.hostName = "cirrus"; # Define your hostname.
       networking.hostId = "908b80b6";
       networking.useNetworkd = true;

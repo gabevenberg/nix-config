@@ -36,7 +36,7 @@
         "${modulesPath}/installer/scan/detected.nix"
         "${modulesPath}/installer/scan/not-detected.nix"
       ];
-      nixpkgs.hostPlatform ="aarch64-linux";
+      nixpkgs.hostPlatform = "aarch64-linux";
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";

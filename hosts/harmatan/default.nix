@@ -30,7 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
       lib,
       ...
     }: {
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";

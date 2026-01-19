@@ -39,7 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
         fullName = "Gabe Venberg";
         gui.enable = false;
       };
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
       boot.zfs.extraPools = ["storage"];
       networking.hostName = "cirrostratus"; # Define your hostname.
       networking.hostId = "1b9da0b9";

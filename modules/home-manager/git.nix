@@ -30,7 +30,7 @@
   config = lib.mkIf config.user.git.enable {
     programs.delta = {
       enable = true;
-      enableGitIntegration=true;
+      enableGitIntegration = true;
       options = {
         side-by-side = true;
         line-numbers = true;

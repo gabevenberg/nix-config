@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./minimal-terminal.nix
+    ../../configs/home-manager/zellij
     ../../configs/home-manager/nushell
     ../../configs/home-manager/starship.nix
     ../../configs/home-manager/zk.nix

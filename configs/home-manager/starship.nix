@@ -10,6 +10,7 @@
       format = lib.concatStrings [
         "[](color_orange)"
         "$shell"
+        "\${env_var.SHPOOL_SESSION_NAME}"
         "$username"
         "[@](bg:color_orange)"
         "$hostname"
@@ -42,6 +43,13 @@
         color_purple = "#b16286";
         color_red = "#cc241d";
         color_yellow = "#d79921";
+      };
+      env_var.SHPOOL_SESSION_NAME = {
+        disabled = false;
+        symbol = "🌊";
+        variable = "SHPOOL_SESSION_NAME";
+        format = "[$symbol$env_value ]($style)";
+        style = "bg:color_orange";
       };
       hostname = {
         ssh_only = false;

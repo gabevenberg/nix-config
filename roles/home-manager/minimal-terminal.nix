@@ -10,8 +10,8 @@
     ../../configs/home-manager/direnv.nix
     ../../configs/home-manager/ssh-agent.nix
     ../../configs/home-manager/zsh.nix
-    ../../configs/home-manager/zellij
     ../../configs/home-manager/yazi.nix
+    ../../configs/home-manager/shpool.nix
   ];
 
   user = {

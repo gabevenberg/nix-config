@@ -17,7 +17,7 @@
       ...
     }: {
       imports = ["${modulesPath}/virtualisation/proxmox-lxc.nix"];
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
       proxmoxLXC.manageHostName = false;
       boot.loader.grub.enable = lib.mkForce false;
       boot.loader.systemd-boot.enable = lib.mkForce false;

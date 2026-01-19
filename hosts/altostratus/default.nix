@@ -24,7 +24,7 @@ inputs.nixpkgs.lib.nixosSystem {
       ...
     }: {
       hardware.enableRedistributableFirmware = true;
-      nixpkgs.hostPlatform ="x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
       host.details = {
         user = "gabe";
         fullName = "Gabe Venberg";

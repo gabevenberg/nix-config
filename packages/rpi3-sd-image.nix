@@ -23,7 +23,7 @@
       ...
     }: {
       imports = ["${modulesPath}/installer/sd-card/sd-image-aarch64.nix"];
-      nixpkgs.hostPlatform ="aarch64-linux";
+      nixpkgs.hostPlatform = "aarch64-linux";
       hardware.enableRedistributableFirmware = true;
       host.details = {
         user = "gabe";
