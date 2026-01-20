@@ -8,13 +8,14 @@
     enable = true;
     settings = {
       format = lib.concatStrings [
-        "[](color_orange)"
+        "[](color_red)"
         "$shell"
-        "\${env_var.SHPOOL_SESSION_NAME}"
         "$username"
-        "[@](bg:color_orange)"
+        "[@](bg:color_red)"
         "$hostname"
-        "[ ](bg:color_orange)"
+        "[](bg:color_orange fg:color_red)"
+        "\${env_var.SHPOOL_SESSION_NAME}"
+        "$container"
         "[](bg:color_yellow fg:color_orange)"
         "$directory"
         "[](fg:color_yellow bg:color_aqua)"
@@ -44,18 +45,11 @@
         color_red = "#cc241d";
         color_yellow = "#d79921";
       };
-      env_var.SHPOOL_SESSION_NAME = {
-        disabled = false;
-        symbol = "🌊";
-        variable = "SHPOOL_SESSION_NAME";
-        format = "[$symbol$env_value ]($style)";
-        style = "bg:color_orange";
-      };
       hostname = {
         ssh_only = false;
         ssh_symbol = "🌐";
         format = "[$hostname $ssh_symbol]($style)";
-        style = "bg:color_orange";
+        style = "bg:color_red";
       };
       shell = {
         disabled = false;
@@ -64,7 +58,7 @@
         zsh_indicator = "%";
         nu_indicator = ">";
         format = "[$indicator ]($style)";
-        style = "bg:color_orange";
+        style = "bg:color_red";
       };
       fill = {
         symbol = " ";
@@ -72,9 +66,21 @@
       };
       username = {
         show_always = true;
-        style_user = "bg:color_orange fg:color_fg0";
-        style_root = "bg:color_orange fg:color_fg0";
+        style_user = "bg:color_red fg:color_fg0";
+        style_root = "bg:color_red fg:color_fg0";
         format = "[$user]($style)";
+      };
+      env_var.SHPOOL_SESSION_NAME = {
+        disabled = false;
+        symbol = "🌊";
+        format = "[$symbol$env_value ]($style)";
+        style = "bg:color_orange";
+      };
+      container = {
+        disabled = false;
+        symbol = "📦";
+        format = "[$symbol$name ]($style)";
+        style = "bg:color_orange";
       };
       directory = {
         style = "fg:color_fg0 bg:color_yellow";

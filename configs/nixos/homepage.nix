@@ -97,14 +97,6 @@ in {
             };
           }
           {
-            Grocy = {
-              icon = "sh-grocy.svg";
-              href = "https://grocy.venberg.xyz";
-              siteMonitor = "https://grocy.venberg.xyz";
-              description = "Family ERP";
-            };
-          }
-          {
             Radicale = {
               icon = "sh-radicale.svg";
               href = "https://cal.venberg.xyz";
