@@ -3,6 +3,7 @@
   myLib,
   ...
 }:
+# rockpro64 home arm64 server, serves as adblocker among other things.
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs myLib;};
   modules = [

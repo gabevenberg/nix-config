@@ -42,15 +42,16 @@
           # Turn off terminal beep on autocomplete.
           unsetopt BEEP
 
+          #edit command line in editor with v
+          autoload edit-command-line; zle -N edit-command-line
+          bindkey -M vicmd v edit-command-line
+
           #cheat.sh is a wonderful tool, the less typing needed the better.
           cheat(){
             for i in "$@"; do
               curl cheat.sh/"$i"
             done
           }
-          #the tre command has some shell integration.
-          tre() { command tre "$@" --editor && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
-          tred() { command tre "$@" --editor=z --directories && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
           #moves a file, leaving a symlink in its place.
           mvln(){
