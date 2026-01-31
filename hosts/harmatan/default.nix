@@ -101,9 +101,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/secrets.nix
           ../../configs/home-manager/email.nix
-          ../../configs/home-manager/tiny-irc.nix
           ../../configs/home-manager/senpai-irc.nix
-          ../../configs/home-manager/halloy-irc.nix
           ../../configs/home-manager/kicad.nix
         ];
 
