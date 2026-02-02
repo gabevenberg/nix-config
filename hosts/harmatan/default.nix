@@ -97,7 +97,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/terminal.nix
           ../../roles/home-manager/music.nix
           ../../roles/home-manager/3dprinting.nix
-          ../../roles/home-manager/music-prod.nix
+          # ../../roles/home-manager/music-prod.nix
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/secrets.nix
           ../../configs/home-manager/email.nix
