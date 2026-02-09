@@ -6,8 +6,8 @@
 }: {
   home.packages = with pkgs; [
     fira-code
-    # monocraft
-    # miracode
+    monocraft
+    miracode
     nerd-fonts.symbols-only
   ];
 

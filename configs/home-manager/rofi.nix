@@ -7,7 +7,7 @@
   programs.rofi = {
     enable = true;
     location = "top";
-    terminal = "ghostty";
+    terminal = "kitty";
     theme = "gruvbox-dark-soft";
   };
 }

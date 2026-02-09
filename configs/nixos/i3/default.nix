@@ -49,7 +49,7 @@
       enable = true;
       config = {
         modifier = mod;
-        terminal = "ghostty";
+        terminal = "kitty";
         menu = "rofi -show drun";
         defaultWorkspace = "workspace ${ws1}";
         keybindings = {
@@ -224,7 +224,7 @@
       };
     };
     imports = [
-      ../../home-manager/ghostty.nix
+      ../../home-manager/kitty.nix
       ../../home-manager/rofi.nix
       ../../home-manager/dunst.nix
       ../../home-manager/feh.nix

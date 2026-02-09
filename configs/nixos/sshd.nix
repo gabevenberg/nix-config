@@ -15,12 +15,7 @@
     settings.PasswordAuthentication = false;
   };
   # so we dont have to set TERM everytime we ssh in.
-  environment.systemPackages = with pkgs; [
-    kitty.terminfo
-    ghostty.terminfo
-    alacritty.terminfo
-    rio.terminfo
-  ];
+  environment.systemPackages = [ pkgs.kitty.terminfo ];
 
   users.users.root.openssh.authorizedKeys.keys = lib.mkDefault (
     if inputs ? nix-secrets
