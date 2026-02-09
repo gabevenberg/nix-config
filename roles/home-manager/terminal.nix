@@ -19,6 +19,7 @@
     fclones
     libqalculate
     f2
+    clock-rs
     inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim
     #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
     dragon-drop
