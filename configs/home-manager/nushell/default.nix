@@ -27,13 +27,5 @@
   };
   services = {
     gpg-agent.enableNushellIntegration = true;
-    pueue = {
-      enable = true;
-      settings = {
-        daemon = {
-          default_parallel_tasks = 5;
-        };
-      };
-    };
   };
 }
