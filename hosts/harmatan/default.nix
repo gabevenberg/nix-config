@@ -86,6 +86,9 @@ inputs.nixpkgs.lib.nixosSystem {
             };
           };
         };
+
+        xresources.extraConfig = "Xft.dpi: 210";
+
         home.packages = with pkgs; [
           signal-desktop
         ];

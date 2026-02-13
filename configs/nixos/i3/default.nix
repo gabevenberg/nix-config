@@ -8,6 +8,9 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
+    excludePackages = with pkgs; [
+      xterm
+    ];
   };
   programs.dconf.enable = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {

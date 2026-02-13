@@ -16,7 +16,7 @@
     font.name = "Fira Code";
     themeFile = "gruvbox-dark";
     settings = {
-      background_opacity = "0.8";
+      # background_opacity = "0.8";
       enable_audio_bell = "no";
       visual_bell_duration = "0.5";
       window_alert_on_bell = "yes";
