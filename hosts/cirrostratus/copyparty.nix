@@ -62,7 +62,7 @@ in {
         flags = defaultvolflags;
       };
       "/gabe" = {
-        path = "/storage/syncthing/gabe";
+        path = "/storage/syncthing/users/gabe";
         access = {
           rwmd = "gabe";
           A = ["gabe"];
@@ -70,7 +70,7 @@ in {
         flags = defaultvolflags;
       };
       "/erica" = {
-        path = "/storage/syncthing/erica";
+        path = "/storage/syncthing/users/erica";
         access = {
           rwmd = "erica";
           A = ["erica"];
