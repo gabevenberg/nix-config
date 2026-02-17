@@ -13,6 +13,7 @@
       add_header X-Clacks-Overhead "GNU Terry Pratchett";
       add_header X-Clacks-Overhead "GNU Bram Moolenaar";
       add_header X-Clacks-Overhead "GNU Ken Bartz";
+      add_header X-Clacks-Overhead "GNU Dean Hansen";
     '';
     # other Nginx options
   };
