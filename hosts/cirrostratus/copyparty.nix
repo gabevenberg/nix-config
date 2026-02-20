@@ -9,8 +9,9 @@
   defaultvolflags = {
     scan = 60;
     grid = true;
-    nsort = true;
-    fk = 8;
+    fka = 8;
+    nospawn = true;
+    assert_root = true;
   };
 in {
   nixpkgs.overlays = [inputs.copyparty.overlays.default];
@@ -30,6 +31,7 @@ in {
       e2ts = true;
       shr = "/share";
       shr-adm = "gabe";
+      site = "https://files.venberg.xyz";
       u2abort = 3;
       magic = true;
       df = 5;
@@ -41,11 +43,13 @@ in {
       no-robots = true;
       md-hist = "v";
       nsort = true;
+      reflink = true;
       log-utc = true;
       ah-alg = "argon2";
       ah-salt = "ImSaltyAboutNonPersistentSalts";
       hist = "/var/lib/copyparty";
       xff-hdr = "X-Forwarded-For";
+      usernames = true;
       rproxy = 1;
     };
     accounts = lib.mkIf (inputs ? nix-secrets) (
