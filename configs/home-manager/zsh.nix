@@ -123,8 +123,5 @@
     };
   };
   services.gpg-agent.enableZshIntegration = true;
-  home.packages = with pkgs; [
-    curl
-    tre-command
-  ];
+  home.packages = with pkgs; [ curl ];
 }
