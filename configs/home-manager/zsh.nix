@@ -123,5 +123,5 @@
     };
   };
   services.gpg-agent.enableZshIntegration = true;
-  home.packages = with pkgs; [ curl ];
+  home.packages = with pkgs; [curl];
 }

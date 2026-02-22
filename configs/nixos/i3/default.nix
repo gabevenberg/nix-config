@@ -32,7 +32,9 @@
       firefox
       thunderbird
       mpv
+      zathura
     ];
+    nixpkgs.config.zathura.useMupdf = true;
     services.playerctld.enable = true;
     xsession.enable = true;
     xsession.windowManager.i3 = let
