@@ -97,6 +97,14 @@ in {
             };
           }
           {
+            HomeBox = {
+              icon = "sh-homebox.svg";
+              href = "https://inventory.venberg.xyz";
+              siteMonitor = "https://inventory.venberg.xyz";
+              description = "Home inventory tracker";
+            };
+          }
+          {
             Radicale = {
               icon = "sh-radicale.svg";
               href = "https://cal.venberg.xyz";

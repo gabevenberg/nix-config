@@ -27,6 +27,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/miniserve-tmp-upload.nix
     ../../configs/nixos/nginx-static.nix
     ../../configs/nixos/immich.nix
+    ../../configs/nixos/homebox.nix
     ({
       config,
       pkgs,

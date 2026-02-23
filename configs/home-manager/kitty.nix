@@ -13,8 +13,8 @@
 
   programs.kitty = {
     enable = true;
-    # font.name = "Fira Code";
-    font.name = "Monocraft";
+    font.name = "Fira Code";
+    # font.name = "Monocraft";
     # font.name = "Miracode";
     themeFile = "gruvbox-dark";
     settings = {
