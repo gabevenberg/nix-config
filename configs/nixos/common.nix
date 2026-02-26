@@ -31,6 +31,8 @@ in {
     })
   ];
 
+  services.localtimed.enable= config.host.details.isLaptop;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
