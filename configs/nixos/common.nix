@@ -32,6 +32,7 @@ in {
   ];
 
   services.localtimed.enable= config.host.details.isLaptop;
+  services.geoclue2.enable=true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -4,18 +4,20 @@
   lib,
   ...
 }: {
+#TODO: use xss-lock
   systemd.services.betterlockscreen = {
     enable = true;
     description = "Locks screen when going to sleep/suspend";
-    environment = {DISPLAY = "0";};
+    environment = {DISPLAY = ":0";};
     serviceConfig = {
       User = config.host.details.user;
-      alias = ["betterlockscreen@${config.host.details.user}.service"];
       Type = "simple";
-      ExecStart = ''${pkgs.betterlockscreen}/bin/betterlockscreen --lock dim'';
+      ExecStart = ''${lib.getExe pkgs.betterlockscreen} --lock dim'';
+      ExecStartPost = ''${pkgs.coreutils}/bin/sleep 1'';
       TimeoutSec = "infinity";
     };
-    wantedBy = ["sleep.target" "suspend.target"];
+    wantedBy = ["sleep.target"];
+    before = ["sleep.target"];
   };
 
   home-manager.users.${config.host.details.user} = {
