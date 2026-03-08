@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-#TODO: use xss-lock
+  #TODO: use xss-lock
   systemd.services.betterlockscreen = {
     enable = true;
     description = "Locks screen when going to sleep/suspend";
