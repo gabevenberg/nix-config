@@ -31,15 +31,16 @@
     curl
     rsync
     p7zip
-    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
   ];
+
+  wrappers.neovim.settings.minimal = lib.mkDefault true;
 
   home.sessionVariables = {
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;
   };
 
-  home.sessionVariables.EDITOR = lib.mkDefault "nvim-minimal";
+  home.sessionVariables.EDITOR = lib.mkDefault "nvim";
 
   home.sessionPath = [
     "$HOME/.nix-profile/bin/"

@@ -49,7 +49,6 @@ in {
 
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [
-    inputs.nvim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
     rsync
   ];
 

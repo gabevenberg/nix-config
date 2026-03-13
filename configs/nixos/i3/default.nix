@@ -12,6 +12,7 @@
       xterm
     ];
   };
+    nixpkgs.config.zathura.useMupdf = true;
   programs.dconf.enable = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
     gtk = {
@@ -34,7 +35,6 @@
       mpv
       zathura
     ];
-    nixpkgs.config.zathura.useMupdf = true;
     services.playerctld.enable = true;
     xsession.enable = true;
     xsession.windowManager.i3 = let
@@ -211,7 +211,7 @@
           # you can find window class names with xprop.
           criteria = [
             {class = "pwvucontrol";}
-            {class = "helvum";}
+            {class = "crosspipe";}
           ];
         };
         startup = [

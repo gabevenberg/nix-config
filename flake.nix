@@ -92,8 +92,6 @@
       }
     );
 
-    homeManagerModules = import ./modules/home-manager;
-
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {

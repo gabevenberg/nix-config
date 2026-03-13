@@ -26,7 +26,7 @@
           lib.mkIf (osConfig.host.details.gui.enable)
           [
             pwvucontrol
-            helvum
+            crosspipe
           ]
         )
         [wiremix]
