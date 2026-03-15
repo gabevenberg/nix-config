@@ -33,6 +33,7 @@
     p7zip
   ];
 
+  wrappers.neovim.enable=true;
   wrappers.neovim.settings.minimal = lib.mkDefault true;
 
   home.sessionVariables = {
