@@ -31,6 +31,7 @@
     curl
     rsync
     p7zip
+    jaq
   ];
 
   wrappers.neovim.enable=true;

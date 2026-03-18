@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  secretsDirectory = builtins.toString (inputs.nix-secrets or "");
+  secretsDirectory = toString (inputs.nix-secrets or "");
 in {
   config = lib.mkIf (inputs ? nix-secrets) {
     sops = {

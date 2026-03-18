@@ -16,7 +16,11 @@
     poppler-utils
     jq
     fd
+    ripgrep
+    fzf
+    zoxide
     imagemagick
     p7zip
+    resvg
   ];
 }
