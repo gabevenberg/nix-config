@@ -11,8 +11,12 @@
   ];
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "prohibit-password";
-    settings.PasswordAuthentication = false;
+    ports = [22];
+    openFirewall = true;
+    settings = {
+      PermitRootLogin = "prohibit-password";
+      PasswordAuthentication = false;
+    };
   };
   # so we dont have to set TERM everytime we ssh in.
   environment.systemPackages = [pkgs.kitty.terminfo];

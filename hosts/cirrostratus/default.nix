@@ -28,6 +28,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/nginx-static.nix
     ../../configs/nixos/immich.nix
     ../../configs/nixos/homebox.nix
+    ../../configs/nixos/forgejo.nix
     ({
       config,
       pkgs,

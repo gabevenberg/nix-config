@@ -17,6 +17,7 @@ in {
         DOMAIN = "git.venberg.xyz";
         ROOT_URL = "https://${srv.DOMAIN}";
         HTTP_PORT = 3000;
+        SSH_PORT = 2222;
         ENABLE_GZIP = true;
       };
       service.DISABLE_REGISTRATION = true;
@@ -31,6 +32,8 @@ in {
     };
   };
 
+  services.openssh.ports = [srv.SSH_PORT];
+
   services.nginx.virtualHosts.${srv.DOMAIN} = {
     enableACME = true;
     forceSSL = true;
@@ -44,6 +47,7 @@ in {
       "/var/lib/forgejo/custom"
       "/var/lib/forgejo/data"
       "/var/lib/forgejo/repositories"
+      "/var/lib/forgejo/.ssh"
     ];
     preBackupCommands = "systemctl stop forgejo.service";
     postBackupCommands = "systemctl start forgejo.service";

@@ -69,6 +69,16 @@
           mountpoint = "/storage";
         };
         datasets = {
+          # This does not reflect reality,
+          # I was stupid and didnt put /var/lib on zfs,
+          # so now I just have datasets for a few folders in it.
+          lib = {
+            type = "zfs_fs";
+            options = {
+              compression = "zstd";
+              mountpoint = "/var/lib";
+            };
+          };
           postgres = {
             type = "zfs_fs";
             options = {
