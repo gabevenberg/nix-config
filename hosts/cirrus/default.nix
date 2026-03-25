@@ -48,6 +48,8 @@ inputs.nixpkgs.lib.nixosSystem {
         };
       };
 
+      services.tailscale.useRoutingFeatures = "server";
+
       sops = lib.mkIf (inputs ? nix-secrets) {
         secrets = {
           radicale-users = {
