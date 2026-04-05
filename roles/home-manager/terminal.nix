@@ -20,6 +20,7 @@
     libqalculate
     f2
     clock-rs
+    jnv
     #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
     dragon-drop
   ];
