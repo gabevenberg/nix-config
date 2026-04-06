@@ -20,6 +20,7 @@
 
   host.restic.backups.factorio = {
     paths = ["/storage/factorio"];
+    tags = ["factorio" "games"];
   };
 
   imports = [

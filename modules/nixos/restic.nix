@@ -47,8 +47,24 @@
         type = lib.types.attrsOf (lib.types.submodule ({name, ...}: {
           options = {
             paths = lib.mkOption {
+              default = [];
               type = lib.types.listOf lib.types.path;
               description = "paths to back up.";
+            };
+            command = lib.mkOption {
+              default = [];
+              type = lib.types.listOf lib.types.str;
+              description = "command to run to pass to --stdin-from-command";
+            };
+            stdin-filename = lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
+              description = "string to name file created from command. Passed as --stdin-filename";
+              default = null;
+            };
+            tags = lib.mkOption {
+              type = lib.types.listOf lib.types.str;
+              description = "list of tags for the backup.";
+              default = [];
             };
             user = lib.mkOption {
               type = lib.types.str;
@@ -147,6 +163,24 @@
               backupPrepareCommand = backup.preBackupCommands;
               backupCleanupCommand = backup.postBackupCommands;
               paths = backup.paths;
+              command = backup.command;
+              extraBackupArgs =
+                builtins.concatLists
+                [
+                  (
+                    if
+                      (
+                        (backup.stdin-filename != null)
+                        && (
+                          lib.asserts.assertMsg (backup.command != [])
+                          "stdin-filename can only be used for a command backup task"
+                        )
+                      )
+                    then ["--stdin-filename=${backup.stdin-filename}"]
+                    else []
+                  )
+                  (map (t: "--tag ${t}") backup.tags)
+                ];
               user = backup.user;
             }
           )

@@ -34,7 +34,7 @@
     jaq
   ];
 
-  wrappers.neovim.enable=true;
+  wrappers.neovim.enable = true;
   wrappers.neovim.settings.minimal = lib.mkDefault true;
 
   home.sessionVariables = {

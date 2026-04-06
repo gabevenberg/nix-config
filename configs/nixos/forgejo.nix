@@ -49,6 +49,7 @@ in {
       "/var/lib/forgejo/repositories"
       "/var/lib/forgejo/.ssh"
     ];
+    tags = ["forgejo"];
     preBackupCommands = "systemctl stop forgejo.service";
     postBackupCommands = "systemctl start forgejo.service";
   };

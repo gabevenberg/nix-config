@@ -25,7 +25,7 @@
     dragon-drop
   ];
 
-  wrappers.neovim.enable=true;
+  wrappers.neovim.enable = true;
   wrappers.neovim.settings.minimal = false;
 
   home.sessionVariables.EDITOR = "nvim";

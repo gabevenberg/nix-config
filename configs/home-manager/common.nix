@@ -40,7 +40,7 @@
       };
     };
   imports = [
-  inputs.nvim-config.homeModules.neovim
+    inputs.nvim-config.homeModules.neovim
     ../../modules/nixos/hostopts.nix
     ../../modules/home-manager
   ];

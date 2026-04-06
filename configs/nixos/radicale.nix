@@ -29,6 +29,7 @@
     paths = [
       "/var/lib/radicale"
     ];
+    tags = ["radicale"];
   };
 
   imports = [./nginx.nix];

@@ -15,11 +15,11 @@ in {
     };
     restic-url = {
       sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
-      owner = config.host.details.user;
+      owner = "restic";
     };
     restic-password = {
       sopsFile = "${inputs.nix-secrets}/restic-client.yaml";
-      owner = config.host.details.user;
+      owner = "restic";
     };
   };
 
@@ -38,5 +38,6 @@ in {
 
   host.restic.backups.syncthing = {
     paths = ["/storage/syncthing"];
+    tags = ["syncthing"];
   };
 }

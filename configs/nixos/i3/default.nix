@@ -12,7 +12,7 @@
       xterm
     ];
   };
-    nixpkgs.config.zathura.useMupdf = true;
+  nixpkgs.config.zathura.useMupdf = true;
   programs.dconf.enable = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
     gtk = {

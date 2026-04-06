@@ -62,6 +62,7 @@ in {
     preBackupCommands = "${preBackup}/bin/mc-docker-pre-backup";
     postBackupCommands = "${postBackup}/bin/mc-docker-post-backup";
     paths = ["/storage/minecraft"];
+    tags = ["minecraft" "games"];
   };
 
   imports = [
