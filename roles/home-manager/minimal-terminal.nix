@@ -30,8 +30,8 @@
     ripgrep
     curl
     rsync
-    p7zip
     jaq
+    atool
   ];
 
   wrappers.neovim.enable = true;
