@@ -32,6 +32,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home.homeDirectory = /home/gabe;
       imports = [
         ../roles/home-manager/terminal.nix
+        ../roles/home-manager/all_the_langs.nix
         ../roles/home-manager/music.nix
         ../configs/home-manager/common.nix
         ../configs/home-manager/email.nix
