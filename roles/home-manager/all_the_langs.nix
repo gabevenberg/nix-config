@@ -15,8 +15,10 @@
     go-jsonnet
     typst
     go
-    luajit
-    luajitPackages.fennel
+    (luajit.withPackages (ps: with ps; [
+      luajitPackages.fennel
+      luajitPackages.readline
+    ]))
     # steel
     rustup
     ruff
