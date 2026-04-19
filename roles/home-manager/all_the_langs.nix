@@ -15,14 +15,17 @@
     go-jsonnet
     typst
     go
-    (luajit.withPackages (ps: with ps; [
-      luajitPackages.fennel
-      luajitPackages.readline
-    ]))
+    (luajit.withPackages (ps:
+      with ps; [
+        luajitPackages.fennel
+        luajitPackages.readline
+      ]))
     # steel
     rustup
     ruff
+    uv
     python3
+    python3Packages.ipython
     libclang
     shellcheck
     # dhall
