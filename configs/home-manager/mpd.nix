@@ -139,6 +139,8 @@
                   "N":          PreviousResult,
                   "a":          Add,
                   "A":          AddAll,
+                  "<C-a>":      AddOptions(kind: Action(all: false, autoplay: First, position: Replace)),
+                  "<C-A>":      AddOptions(kind: Action(all: true, autoplay: First, position: Replace)),
                   "D":          Delete,
                   "<C-r>":      Rename,
                   "i":          FocusInput,

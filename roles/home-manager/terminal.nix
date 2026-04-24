@@ -21,6 +21,10 @@
     f2
     clock-rs
     jnv
+    hexyl
+    caligula
+    hurl
+    rgx
     #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
     dragon-drop
   ];
