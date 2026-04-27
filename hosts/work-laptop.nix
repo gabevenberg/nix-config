@@ -33,10 +33,10 @@ inputs.home-manager.lib.homeManagerConfiguration {
       home.homeDirectory = /home/gabe;
       imports = [
         ../roles/home-manager/terminal.nix
+        ../roles/home-manager/all_the_langs.nix
         ../roles/home-manager/music.nix
         ../configs/home-manager/common.nix
         ../configs/home-manager/email.nix
-        ../configs/home-manager/tiny-irc.nix
         ../configs/home-manager/secrets.nix
         ../configs/home-manager/senpai-irc.nix
         inputs.sops-nix.homeManagerModules.sops
