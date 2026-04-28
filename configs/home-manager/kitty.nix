@@ -8,6 +8,7 @@
     fira-code
     monocraft
     miracode
+    ocr-a
     nerd-fonts.symbols-only
   ];
 
