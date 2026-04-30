@@ -11,4 +11,8 @@
     path = ./typst;
     description = "A flake containing a basic typst environment";
   };
+  rust = {
+    path = ./rust;
+    description = "A flake containing a basic rust environment";
+  };
 }

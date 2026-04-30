@@ -69,19 +69,22 @@
     deploy-rs-flake,
     ...
   } @ inputs: let
-    forAllSystems = nixpkgs.lib.genAttrs [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+      ] (system:
+        function {
+          pkgs = import nixpkgs {inherit system;};
+          inherit system;
+        });
     inherit (nixpkgs) lib;
     myLib = import ./lib {inherit lib;};
   in {
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter = forAllSystems ({pkgs, ...}: pkgs.alejandra);
 
     devShells = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      {pkgs, ...}: {
         default = pkgs.mkShell {
           packages = with pkgs; [
             just
