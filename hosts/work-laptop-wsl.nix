@@ -30,8 +30,13 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       networking.hostName = "worklaptop";
 
-      wsl.enable = true;
-      wsl.defaultUser = config.host.details.user;
+      wsl = {
+        enable = true;
+        defaultUser = config.host.details.user;
+        startMenuLaunchers=true;
+        usbip.enable=true;
+        useWindowsDriver=true;
+      };
 
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
