@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ./fail2ban.nix
+    # ./fail2ban.nix
   ];
   services.openssh = {
     enable = true;

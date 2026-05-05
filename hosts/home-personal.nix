@@ -22,7 +22,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
           };
           workProfile = {
             enable = true;
-            email = "gabriel.venberg@assistme.io";
+            email = "gabriel.venberg@maibornwolff.de";
           };
         };
       };
