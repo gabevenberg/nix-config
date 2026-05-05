@@ -7,11 +7,8 @@ inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.disko.nixosModules.disko
-    inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402x-amdgpu
     inputs.nixos-wsl.nixosModules.default
     ../configs/nixos/common.nix
-    ../configs/nixos/sshd.nix
     ../configs/nixos/secrets.nix
     ../configs/nixos/syncthing.nix
     ../roles/nixos/embedded-dev
