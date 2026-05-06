@@ -20,7 +20,6 @@
     libqalculate
     f2
     clock-rs
-    jnv
     hexyl
     caligula
     hurl
