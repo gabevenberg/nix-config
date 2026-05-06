@@ -32,6 +32,12 @@
         short = ''zk list --format '{{word-count}}\t{{title}}' --limit 20 --sort word-count $@'';
         nt = ''zk new --title "''${*:2}" $1'';
         todo = ''zk list --tag=TODO'';
+        missing = ''
+        zk graph --format json 2>/dev/null | jaq '.notes | (map(.body|capture("\\[\\[(?<file>.*?)(?<title>\\|.*?)?]]")|.file)|unique) as $allLinks| map(.filenameStem) as $allFiles| $allLinks - $allFiles'
+        '';
+        broken = ''
+        zk graph --format json 2>/dev/null | jaq '.notes|map({link: .body|capture("\\[\\[(?<file>.*?)(?<title>\\|.*?)?]]")|.file, file: .path}) as $allLinks| map(.filenameStem) as $allFiles | $allLinks[]|select([.link]|inside($allFiles)|not)'
+        '';
       };
 
       tool = {
@@ -51,4 +57,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    jaq
+  ];
 }
