@@ -128,14 +128,6 @@
           profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
           remoteBuild = true;
         };
-        altostratus = {
-          hostname = "altostratus";
-          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.altostratus;
-        };
-        harmatan = {
-          hostname = "harmatan";
-          profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.harmatan;
-        };
       };
       sshUser = "root";
     };
