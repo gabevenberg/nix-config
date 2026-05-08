@@ -30,9 +30,9 @@ inputs.nixpkgs.lib.nixosSystem {
       wsl = {
         enable = true;
         defaultUser = config.host.details.user;
-        startMenuLaunchers=true;
-        usbip.enable=true;
-        useWindowsDriver=true;
+        startMenuLaunchers = true;
+        usbip.enable = true;
+        useWindowsDriver = true;
       };
 
       home-manager.sharedModules = [
@@ -59,6 +59,7 @@ inputs.nixpkgs.lib.nixosSystem {
         };
 
         home.packages = with pkgs; [
+          xdg-utils
         ];
 
         imports = [
