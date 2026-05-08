@@ -68,6 +68,8 @@ inputs.nixpkgs.lib.nixosSystem {
           ../configs/home-manager/secrets.nix
           ../configs/home-manager/email.nix
           ../configs/home-manager/senpai-irc.nix
+          # ../configs/home-manager/mpd.nix
+          ../configs/home-manager/kicad.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {
