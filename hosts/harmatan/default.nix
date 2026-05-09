@@ -1,3 +1,4 @@
+# personal laptop
 {
   inputs,
   myLib,
@@ -16,7 +17,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/interactive-networking.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
-    ../../configs/nixos/printing.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/touchpad.nix
     ../../configs/nixos/i3

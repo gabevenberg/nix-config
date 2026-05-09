@@ -1,3 +1,4 @@
+# home desktop
 {
   inputs,
   myLib,
@@ -7,11 +8,25 @@ inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs myLib;};
   modules = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.nixos-wsl.nixosModules.default
-    ../configs/nixos/common.nix
-    ../configs/nixos/secrets.nix
-    ../configs/nixos/syncthing.nix
-    ../roles/nixos/embedded-dev
+    inputs.disko.nixosModules.disko
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    ./disk-config.nix
+    ./hardware-config.nix
+    ../../configs/nixos/common.nix
+    ../../configs/nixos/sshd.nix
+    ../../configs/nixos/interactive-networking.nix
+    ../../configs/nixos/secrets.nix
+    ../../configs/nixos/tailscale.nix
+    ../../configs/nixos/syncthing.nix
+    ../../configs/nixos/i3
+    ../../configs/nixos/bluetooth.nix
+    ../../roles/nixos/gaming.nix
+    ../../roles/nixos/power-saving.nix
+    ../../roles/nixos/embedded-dev
     ({
       config,
       pkgs,
@@ -23,17 +38,11 @@ inputs.nixpkgs.lib.nixosSystem {
         user = "gabe";
         fullName = "Gabe Venberg";
         gui.enable = true;
-        isLaptop = true;
       };
-      networking.hostName = "worklaptop";
+      networking.hostName = "tempest";
+      networking.hostId = "d46bca4f";
 
-      wsl = {
-        enable = true;
-        defaultUser = config.host.details.user;
-        startMenuLaunchers = true;
-        usbip.enable = true;
-        useWindowsDriver = true;
-      };
+      services.displayManager.defaultSession = "i3";
 
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
@@ -51,26 +60,24 @@ inputs.nixpkgs.lib.nixosSystem {
               name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
-            workProfile = {
-              enable = true;
-              email = "gabriel.venberg@maibornwolff.de";
-            };
           };
         };
 
         home.packages = with pkgs; [
-          xdg-utils
+          signal-desktop
         ];
 
         imports = [
-          ../roles/home-manager/terminal.nix
-          ../roles/home-manager/all_the_langs.nix
-          ../configs/home-manager/common.nix
-          ../configs/home-manager/secrets.nix
-          ../configs/home-manager/email.nix
-          ../configs/home-manager/senpai-irc.nix
-          # ../configs/home-manager/mpd.nix
-          ../configs/home-manager/kicad.nix
+          ../../roles/home-manager/terminal.nix
+          ../../roles/home-manager/music.nix
+          ../../roles/home-manager/3dprinting.nix
+          ../../roles/home-manager/all_the_langs.nix
+          ../../roles/home-manager/music-prod.nix
+          ../../configs/home-manager/common.nix
+          ../../configs/home-manager/secrets.nix
+          ../../configs/home-manager/email.nix
+          ../../configs/home-manager/senpai-irc.nix
+          ../../configs/home-manager/kicad.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {
@@ -81,6 +88,12 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
       };
+
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+      # boot.loader.efi.canTouchEfiVariables = false;
+      # without this, WOL causes the machine to boot right after shutdown.
+      boot.kernelParams = ["xhci_hcd.quirks=270336"];
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions

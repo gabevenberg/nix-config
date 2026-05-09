@@ -68,7 +68,7 @@
             fi
 
             mv -- "$source" "$destination"
-            ln -s -- "$(realpath "$destination/$(basename "$source")")" "$(realpath "$source")"
+            ln -s -- "$(realpath "$destination")" "$(realpath "$source")"
           }
         ''
         (lib.mkIf (!config.programs.starship.enable) ''

@@ -1,9 +1,9 @@
+# Hetzner cloud multipurpouse server
 {
   inputs,
   myLib,
   ...
 }:
-# Hetzner cloud multipurpouse server
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <

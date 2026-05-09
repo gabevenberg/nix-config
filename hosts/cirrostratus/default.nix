@@ -1,9 +1,9 @@
+# Karp site server.
 {
   inputs,
   myLib,
   ...
 }:
-# Karp site server.
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs myLib;};
   # > Our main nixos configuration file <

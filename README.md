@@ -35,7 +35,7 @@ if the `nix-secrets` input is commented out, the repo should still build, gracef
 ## Spinning up a new machine:
 run `nix build ./#iso` or `nix build aarch64-iso.nix` (depending on architecture), and boot it while on the same network.
 (you can also use a regular nixos iso, but this has my tools and pub ssh keys already on it.)
-SSH into the machine (hostname will be nixos-installer), and run `nixos-generate --show-hardware-config`, and copy the kernel modules section into your config.
+SSH into the machine (hostname will be nixos-installer), and run `nixos-generate-config --show-hardware-config --no-filesystems`.
 run `ls /dev/disk/by-id`, and note the disk IDs.
 
 Now your ready to write a config.
