@@ -65,6 +65,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
         home.packages = with pkgs; [
           signal-desktop
+          uhk-agent
         ];
 
         imports = [

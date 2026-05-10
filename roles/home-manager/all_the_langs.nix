@@ -15,8 +15,8 @@
     go-jsonnet
     typst
     go
-    (luajit.withPackages (ps:
-      with ps; [
+    (luajit.withPackages (pkgs:
+      with pkgs; [
         luajitPackages.fennel
         luajitPackages.readline
       ]))

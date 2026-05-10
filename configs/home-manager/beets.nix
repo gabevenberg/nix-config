@@ -29,10 +29,12 @@
         "lastgenre"
         "mbsync"
         "missing"
+        "musicbrainz"
         "replaygain"
         "scrub"
         "spotify"
         "thumbnails"
+        "zero"
       ];
       replaygain = {
         auto = false;
@@ -40,6 +42,29 @@
       };
       duplicates = {
         tiebreak.items = ["bitrate"];
+      };
+      zero = {
+        keep_feilds = [
+          "album"
+          "albumarist"
+          "albumartists"
+          "artist"
+          "artists"
+          "bitdepth"
+          "bitrate"
+          "bpm"
+          "disc"
+          "disctotal"
+          "id"
+          "lyrics"
+          "month"
+          "day"
+          "year"
+          "track"
+          "images"
+        ];
+        update_database = true;
+        omit_single_disc = true;
       };
       asciify_paths = true;
     };

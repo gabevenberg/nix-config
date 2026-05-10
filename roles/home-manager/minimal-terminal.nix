@@ -52,7 +52,6 @@
   ];
 
   home.shellAliases = {
-    # doc2pdf = "loffice --convert-to-pdf --headless *.docx";
     sshmnt = "sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15";
   };
 

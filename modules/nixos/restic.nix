@@ -168,14 +168,7 @@
                 builtins.concatLists
                 [
                   (
-                    if
-                      (
-                        (backup.stdin-filename != null)
-                        && (
-                          lib.asserts.assertMsg (backup.command != [])
-                          "stdin-filename can only be used for a command backup task"
-                        )
-                      )
+                    if ((backup.stdin-filename != null) && (lib.asserts.assertMsg (backup.command != []) "stdin-filename can only be used for a command backup task"))
                     then ["--stdin-filename=${backup.stdin-filename}"]
                     else []
                   )
