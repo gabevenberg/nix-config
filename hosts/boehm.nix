@@ -26,7 +26,7 @@ inputs.nixpkgs.lib.nixosSystem {
         gui.enable = true;
         isLaptop = true;
       };
-      networking.hostName = "bohm";
+      networking.hostName = "boehm";
 
       wsl = {
         enable = true;

@@ -57,7 +57,12 @@
 
   programs = {
     fzf.enable = true;
-    eza.enable = true;
+    eza = {
+      enable = true;
+      colors = "auto";
+      git = true;
+      icons = "auto";
+    };
     ripgrep.enable = true;
     bat.enable = true;
     man.enable = true;

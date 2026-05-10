@@ -103,7 +103,7 @@
       cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
       altostratus = import ./hosts/altostratus {inherit inputs myLib;};
       harmatan = import ./hosts/harmatan {inherit inputs myLib;};
-      bohm = import ./hosts/bohm.nix {inherit inputs myLib;};
+      boehm = import ./hosts/boehm.nix {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint
