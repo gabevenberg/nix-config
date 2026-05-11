@@ -27,11 +27,15 @@
     treefmtEval = forAllSystems ({pkgs, ...}: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
     formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
-    devShells.default = forAllSystems ({pkgs, ...}:
-      pkgs.mkShell {
-        buildInputs = with pkgs; [
-          typst
-        ];
+
+    devShells =
+      forAllSystems
+      ({pkgs, ...}: {
+        default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            typst
+          ];
+        };
       });
   };
 }
