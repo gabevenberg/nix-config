@@ -34,6 +34,7 @@ inputs.nixpkgs.lib.nixosSystem {
         startMenuLaunchers = true;
         usbip.enable = true;
         useWindowsDriver = true;
+        interop.register = true;
       };
 
       home-manager.sharedModules = [
