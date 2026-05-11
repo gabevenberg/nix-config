@@ -234,6 +234,7 @@
       ../../home-manager/dunst.nix
       ../../home-manager/feh.nix
       ../../home-manager/picom.nix
+      ../../home-manager/xcompose
     ];
   };
   imports = [
