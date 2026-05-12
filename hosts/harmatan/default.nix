@@ -24,6 +24,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../roles/nixos/gaming.nix
     ../../roles/nixos/power-saving.nix
     ../../roles/nixos/embedded-dev
+    ../../configs/nixos/ntfy.nix
     ({
       config,
       pkgs,
@@ -107,6 +108,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/email.nix
           ../../configs/home-manager/senpai-irc.nix
           ../../configs/home-manager/kicad.nix
+          ../../configs/home-manager/ntfy.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {

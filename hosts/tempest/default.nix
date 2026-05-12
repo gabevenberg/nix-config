@@ -10,7 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
     inputs.nixos-hardware.nixosModules.common-cpu-amd
-    inputs.nixos-hardware.nixosModules.common-cpu-pstate
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
@@ -19,7 +19,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/interactive-networking.nix
-    ../../configs/nixos/secrets.nix
+    # ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/i3
@@ -75,19 +75,19 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/all_the_langs.nix
           ../../roles/home-manager/music-prod.nix
           ../../configs/home-manager/common.nix
-          ../../configs/home-manager/secrets.nix
-          ../../configs/home-manager/email.nix
-          ../../configs/home-manager/senpai-irc.nix
+          # ../../configs/home-manager/secrets.nix
+          # ../../configs/home-manager/email.nix
+          # ../../configs/home-manager/senpai-irc.nix
           ../../configs/home-manager/kicad.nix
         ];
 
-        sops = lib.mkIf (inputs ? nix-secrets) {
-          secrets = {
-            gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-            irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-            soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-          };
-        };
+        # sops = lib.mkIf (inputs ? nix-secrets) {
+        #   secrets = {
+        #     gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        #     irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        #     soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+        #   };
+        # };
       };
 
       # Bootloader.

@@ -17,6 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
+    ../../configs/nixos/ntfy.nix
     ({
       config,
       pkgs,
@@ -87,7 +88,7 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
-          # ../../configs/home-manager/secrets.nix
+          ../../configs/home-manager/ntfy.nix
         ];
 
         # sops = lib.mkIf (inputs ? nix-secrets) {

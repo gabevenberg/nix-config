@@ -101,9 +101,9 @@
       cumulus = import ./hosts/cumulus {inherit inputs myLib;};
       cirrus = import ./hosts/cirrus {inherit inputs myLib;};
       cirrostratus = import ./hosts/cirrostratus {inherit inputs myLib;};
-      altostratus = import ./hosts/altostratus {inherit inputs myLib;};
       harmatan = import ./hosts/harmatan {inherit inputs myLib;};
       boehm = import ./hosts/boehm.nix {inherit inputs myLib;};
+      tempest = import ./hosts/tempest {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint

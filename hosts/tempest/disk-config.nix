@@ -18,29 +18,32 @@
               };
             };
             btrfs = {
-              type = "btrfs";
-              extraArgs = ["-L" "nixos" "-f"];
-              subvolumes = {
-                "ssdgames" = {
-                  mountpoint = "/ssdgames";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = ["-L" "nixos" "-f"];
+                subvolumes = {
+                  "ssdgames" = {
+                    mountpoint = "/ssdgames";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "root" = {
+                    mountpoint = "/";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
                 };
               };
             };
@@ -54,20 +57,23 @@
           type = "gpt";
           partitions = {
             btrfs = {
-              type = "btrfs";
-              extraArgs = ["-L" "home" "-f"];
-              subvolumes = {
-                "home" = {
-                  mountpoint = "/home";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "swap" = {
-                  mountpoint = "/.swapvol";
-                  swap.swapfile.size = "32G";
-                  swap.swapfile.priority = 0;
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = ["-L" "home" "-f"];
+                subvolumes = {
+                  "home" = {
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "swap" = {
+                    mountpoint = "/.swapvol";
+                    swap.swapfile.size = "32G";
+                    swap.swapfile.priority = 0;
+                  };
                 };
               };
             };

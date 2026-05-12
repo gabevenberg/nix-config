@@ -29,6 +29,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/immich.nix
     ../../configs/nixos/homebox.nix
     ../../configs/nixos/forgejo.nix
+    ../../configs/nixos/ntfy.nix
     ({
       config,
       pkgs,
@@ -89,9 +90,14 @@ inputs.nixpkgs.lib.nixosSystem {
             workProfile.enable = false;
           };
         };
+        # sops = lib.mkIf (inputs ? nix-secrets) {
+        #   secrets = {
+        #   };
+        # };
         imports = [
           ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
+          ../../configs/home-manager/ntfy.nix
         ];
       };
       boot = {

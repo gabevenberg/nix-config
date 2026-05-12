@@ -109,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778444552,
-        "narHash": "sha256-f18pIiR9q/p1vHY93gmAum7aHhQOG49oGvAB9+lptRo=",
+        "lastModified": 1778535464,
+        "narHash": "sha256-kkUQYSv70wynJ/DfnGals6r98I6bK3CVNVTN1zbAd7Y=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "dcebe66f958673729896eec2de4abfd86ef22d21",
+        "rev": "b659c7ffd40fc9e3bb60d420c79c67e769b9f4ab",
         "type": "github"
       },
       "original": {
@@ -125,10 +125,10 @@
     "nix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1777976163,
-        "narHash": "sha256-QlOQh9PnklJ7ffZZx8b91ms3e2MbOfZsiMaDKyutor0=",
+        "lastModified": 1778599142,
+        "narHash": "sha256-NsXnbXrb49wkwM078ztthGGZMT3p3p9ym/ebHdGj56g=",
         "ref": "refs/heads/main",
-        "rev": "e184bbad17796c36ed021cf27d758b4c0dbea002",
+        "rev": "2e66e871d5c9ff3339a622dc171a25075425b886",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz:2222/Gabe/nix-secrets.git"
@@ -206,10 +206,10 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1778496366,
-        "narHash": "sha256-XqgN2w/f4jfnM6IiRSTLTwFMa2eU1Bvc65TKFWVB0Vc=",
+        "lastModified": 1778580432,
+        "narHash": "sha256-dYdfmkCS4PIul5Cbp8Wecptc59O1SyWIXXOowDC9Etk=",
         "ref": "refs/heads/main",
-        "rev": "1f33e1bd28c3dbc6874c0f79f196eb56615ba37c",
+        "rev": "bedddc64435015c5ffcca3c8bdf5483e840b2b0f",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz:2222/Gabe/nvim-config.git"

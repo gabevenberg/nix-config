@@ -22,6 +22,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/homepage.nix
     ../../configs/nixos/freshrss.nix
     ../../configs/nixos/soju.nix
+    ../../configs/nixos/ntfy.nix
     ({
       config,
       pkgs,
@@ -87,7 +88,12 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
+          ../../configs/home-manager/ntfy.nix
         ];
+        # sops = lib.mkIf (inputs ? nix-secrets) {
+        #   secrets = {
+        #   };
+        # };
       };
 
       boot.initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod"];
