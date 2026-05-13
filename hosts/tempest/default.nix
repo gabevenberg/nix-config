@@ -26,7 +26,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/bluetooth.nix
     ../../configs/nixos/ntfy.nix
     ../../roles/nixos/gaming.nix
-    ../../roles/nixos/power-saving.nix
     ../../roles/nixos/embedded-dev
     ({
       config,
