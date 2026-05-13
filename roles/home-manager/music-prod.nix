@@ -9,7 +9,7 @@
     cardinal
     vmpk
     bespokesynth
-    surge
+    surge-xt
     helio-workstation
   ];
 }

@@ -19,11 +19,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/interactive-networking.nix
-    # ../../configs/nixos/secrets.nix
+    ../../configs/nixos/secrets.nix
     ../../configs/nixos/tailscale.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/i3
     ../../configs/nixos/bluetooth.nix
+    ../../configs/nixos/ntfy.nix
     ../../roles/nixos/gaming.nix
     ../../roles/nixos/power-saving.nix
     ../../roles/nixos/embedded-dev
@@ -75,9 +76,10 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/all_the_langs.nix
           ../../roles/home-manager/music-prod.nix
           ../../configs/home-manager/common.nix
-          # ../../configs/home-manager/secrets.nix
-          # ../../configs/home-manager/email.nix
-          # ../../configs/home-manager/senpai-irc.nix
+          ../../configs/home-manager/secrets.nix
+          ../../configs/home-manager/email.nix
+          ../../configs/home-manager/senpai-irc.nix
+          ../../configs/home-manager/ntfy.nix
           ../../configs/home-manager/kicad.nix
         ];
 
