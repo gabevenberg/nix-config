@@ -69,6 +69,8 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         };
       };
+
+      home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
       home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,

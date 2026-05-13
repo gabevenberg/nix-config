@@ -44,9 +44,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
       services.displayManager.defaultSession = "i3";
 
-      home-manager.sharedModules = [
-        inputs.sops-nix.homeManagerModules.sops
-      ];
+      home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
       home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,

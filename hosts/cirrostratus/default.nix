@@ -74,6 +74,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
       # virtualisation.docker.daemon.settings.data-root="/storage/docker";
 
+      home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
       home-manager.users.${config.host.details.user} = {
         inputs,
         osConfig,
