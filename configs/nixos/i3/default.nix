@@ -215,6 +215,13 @@
           ];
         };
         startup = [
+          (let
+            default-layout-path = "~/.screenlayout/default.sh";
+          in {
+            command = "[ -x ${default-layout-path} ] && ${default-layout-path}";
+            notification = false;
+            always = true;
+          })
           {
             command = "betterlockscreen --wall";
             notification = false;
