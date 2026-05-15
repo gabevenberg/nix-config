@@ -72,6 +72,11 @@
           "${mod}+Shift+k" = "move up";
           "${mod}+Shift+l" = "move right";
 
+          "${mod}Control+Shift+h" = "move workspace to output left";
+          "${mod}Control+Shift+j" = "move workspace to output down";
+          "${mod}Control+Shift+k" = "move workspace to output up";
+          "${mod}Control+Shift+l" = "move workspace to output right";
+
           "${mod}+Left" = "focus left";
           "${mod}+Down" = "focus down";
           "${mod}+Up" = "focus up";
@@ -81,6 +86,11 @@
           "${mod}+Shift+Down" = "move down";
           "${mod}+Shift+Up" = "move up";
           "${mod}+Shift+Right" = "move right";
+
+          "${mod}Control+Shift+Left" = "move workspace to output left";
+          "${mod}Control+Shift+Down" = "move workspace to output down";
+          "${mod}Control+Shift+Up" = "move workspace to output up";
+          "${mod}Control+Shift+Right" = "move workspace to output right";
 
           "${mod}+Shift+semicolon" = "split v";
           "${mod}+Shift+backslash" = "split h";
@@ -120,8 +130,8 @@
           "${mod}+Shift+9" = "move container to workspace ${ws9}";
           "${mod}+Shift+0" = "move container to workspace ${ws10}";
 
-          "${mod}+Shift+n" = "reload";
-          "${mod}+Shift+r" = "restart";
+          "${mod}+Shift+r" = "reload";
+          "${mod}+Shift+n" = "restart";
           "${mod}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
           "${mod}+ctrl+r" = "mode resize";
