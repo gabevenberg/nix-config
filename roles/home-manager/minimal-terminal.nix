@@ -12,6 +12,7 @@
     ../../configs/home-manager/zsh.nix
     ../../configs/home-manager/yazi.nix
     ../../configs/home-manager/shpool.nix
+    ./archive.nix
   ];
 
   user = {
@@ -31,7 +32,6 @@
     curl
     rsync
     jaq
-    atool
   ];
 
   wrappers.neovim.enable = true;
