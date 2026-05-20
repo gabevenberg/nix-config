@@ -62,6 +62,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
         home.packages = with pkgs; [
           xdg-utils
+          wsl-open
         ];
 
         imports = [

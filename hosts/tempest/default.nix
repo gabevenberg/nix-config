@@ -82,13 +82,13 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/kicad.nix
         ];
 
-        # sops = lib.mkIf (inputs ? nix-secrets) {
-        #   secrets = {
-        #     gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-        #     irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-        #     soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
-        #   };
-        # };
+        sops = lib.mkIf (inputs ? nix-secrets) {
+          secrets = {
+            gmail-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+            irc-cert.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+            soju-password.sopsFile = "${inputs.nix-secrets}/workstations.yaml";
+          };
+        };
       };
 
       # Bootloader.
