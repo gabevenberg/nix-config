@@ -133,8 +133,8 @@ in {
       {
         Internal = [
           {
-            Mikrotik = {
-              icon = "sh-mikrotik.svg";
+            Fritzbox = {
+              icon = "sh-fritzbox.svg";
               href = "http://10.10.0.1";
               description = "Router";
             };
@@ -154,14 +154,6 @@ in {
               description = "Torrent webUI";
             };
           }
-          # {
-          #   Transmission = {
-          #     icon = "sh-transmission.svg";
-          #     href = "http:cirrostratus:9091";
-          #     siteMonitor = "http:cirrostratus:9091";
-          #     description = "Torrent webUI";
-          #   };
-          # }
           {
             Syncthing = {
               icon = "sh-syncthing.svg";
