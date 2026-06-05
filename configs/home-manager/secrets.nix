@@ -2,7 +2,6 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }: let
   secretsDirectory = toString (inputs.nix-secrets or "");

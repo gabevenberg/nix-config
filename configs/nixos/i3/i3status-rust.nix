@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   fonts.packages = with pkgs; [
@@ -12,7 +11,6 @@
   ];
   services.upower.enable = config.host.details.isLaptop;
   home-manager.users.${config.host.details.user} = {
-    config,
     osConfig,
     lib,
     ...

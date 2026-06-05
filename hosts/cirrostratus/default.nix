@@ -32,7 +32,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/ntfy.nix
     ({
       config,
-      pkgs,
       lib,
       ...
     }: {
@@ -75,12 +74,7 @@ inputs.nixpkgs.lib.nixosSystem {
       # virtualisation.docker.daemon.settings.data-root="/storage/docker";
 
       home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
-      home-manager.users.${config.host.details.user} = {
-        inputs,
-        osConfig,
-        lib,
-        ...
-      }: {
+      home-manager.users.${config.host.details.user} = {osConfig, ...}: {
         host.details = osConfig.host.details;
         user = {
           git = {

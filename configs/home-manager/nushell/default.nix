@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   home.file = {
     ".config/nushell/completions".source = ./completions;
   };

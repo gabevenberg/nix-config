@@ -30,7 +30,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
-      lib,
       ...
     }: {
       nixpkgs.hostPlatform = "x86_64-linux";

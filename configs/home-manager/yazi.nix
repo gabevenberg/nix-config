@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.yazi.enable = true;
   # optional dependencies for yazi.
   programs = {

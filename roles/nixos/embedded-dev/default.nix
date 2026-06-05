@@ -1,8 +1,6 @@
 {
-  inputs,
   config,
   pkgs,
-  lib,
   ...
 }: let
   udev-rules = pkgs.stdenv.mkDerivation {
@@ -23,7 +21,7 @@ in {
   users.groups.plugdev = {};
   users.users.${config.host.details.user}.extraGroups = ["dialout" "plugdev"];
 
-  home-manager.users.${config.host.details.user} = {config, ...}: {
+  home-manager.users.${config.host.details.user} = {...}: {
     home.packages = with pkgs; [
       tio
     ];

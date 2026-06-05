@@ -17,7 +17,6 @@
     ../configs/nixos/tailscale.nix
     ({
       config,
-      pkgs,
       lib,
       modulesPath,
       ...
@@ -54,12 +53,7 @@
       # home-manager.sharedModules = [
       #   inputs.sops-nix.homeManagerModules.sops
       # ];
-      home-manager.users.${config.host.details.user} = {
-        inputs,
-        osConfig,
-        lib,
-        ...
-      }: {
+      home-manager.users.${config.host.details.user} = {osConfig, ...}: {
         host.details = osConfig.host.details;
         user = {
           git = {

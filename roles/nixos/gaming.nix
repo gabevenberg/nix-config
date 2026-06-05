@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   programs.steam = {
@@ -14,7 +13,7 @@
   programs.gamemode.enable = true;
 
   hardware.steam-hardware.enable = true;
-  home-manager.users.${config.host.details.user} = {config, ...}: {
+  home-manager.users.${config.host.details.user} = {...}: {
     home.packages = with pkgs; [
       discord
     ];

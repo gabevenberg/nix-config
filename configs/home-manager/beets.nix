@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.beets = {
     enable = true;
     mpdIntegration.enableUpdate = true;

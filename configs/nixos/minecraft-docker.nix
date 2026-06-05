@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   preBackup = pkgs.writeShellScriptBin "mc-docker-pre-backup" ''
     set -euxo pipefail
 

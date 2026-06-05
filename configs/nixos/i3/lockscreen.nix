@@ -20,12 +20,7 @@
     before = ["sleep.target"];
   };
 
-  home-manager.users.${config.host.details.user} = {
-    config,
-    osConfig,
-    lib,
-    ...
-  }: {
+  home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       betterlockscreen
     ];

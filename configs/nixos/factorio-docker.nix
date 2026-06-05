@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   virtualisation.oci-containers = {
     backend = "docker";
     containers.factorio = {

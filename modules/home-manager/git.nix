@@ -1,6 +1,5 @@
 {
   config,
-  pgks,
   lib,
   ...
 }: {

@@ -1,11 +1,9 @@
 {
   inputs,
-  config,
   lib,
-  pkgs,
   ...
 }: let
-  secretsDirectory = builtins.toString (inputs.nix-secrets or "");
+  secretsDirectory = toString (inputs.nix-secrets or "");
 in {
   imports = [
     inputs.sops-nix.nixosModules.sops

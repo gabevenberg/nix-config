@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;

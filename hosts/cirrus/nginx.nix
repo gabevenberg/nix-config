@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ../../configs/nixos/nginx.nix
   ];

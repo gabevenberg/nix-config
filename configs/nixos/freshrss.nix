@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{config, ...}: let
   cfg = config.services.freshrss;
 in {
   services.freshrss = {

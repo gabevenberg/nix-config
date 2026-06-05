@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   port = "5050";
 in {
   # this is so you can start miniserve in a directory to temporarily allow people to upload:

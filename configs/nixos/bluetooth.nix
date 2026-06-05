@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   hardware.bluetooth = {
@@ -27,7 +26,6 @@
   };
   # services.blueman.enable = true;
   home-manager.users.${config.host.details.user} = {
-    config,
     osConfig,
     lib,
     ...

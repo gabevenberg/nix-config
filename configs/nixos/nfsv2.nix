@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   # will force you to compile kernel locally.
   services.nfs = {
     settings = {

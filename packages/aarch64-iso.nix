@@ -17,7 +17,6 @@
       config,
       pkgs,
       lib,
-      inputs,
       modulesPath,
       options,
       ...
@@ -51,11 +50,7 @@
         ];
       };
 
-      home-manager.users.${config.host.details.user} = {
-        inputs,
-        osConfig,
-        ...
-      }: {
+      home-manager.users.${config.host.details.user} = {osConfig, ...}: {
         host.details = osConfig.host.details;
         user = {
           git = {

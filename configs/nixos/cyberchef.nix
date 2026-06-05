@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services.nginx.virtualHosts."cyberchef.venberg.xyz" = {
     enableACME = true;
     forceSSL = true;

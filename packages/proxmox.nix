@@ -11,7 +11,6 @@
     ../configs/nixos/common.nix
     ({
       config,
-      pkgs,
       modulesPath,
       lib,
       ...
@@ -26,11 +25,7 @@
         fullName = "Gabe Venberg";
       };
 
-      home-manager.users.${config.host.details.user} = {
-        inputs,
-        osConfig,
-        ...
-      }: {
+      home-manager.users.${config.host.details.user} = {osConfig, ...}: {
         host.details = osConfig.host.details;
         user = {
           git = {

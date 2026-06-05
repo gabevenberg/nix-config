@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   virtualisation.podman = {
@@ -9,7 +8,7 @@
     dockerCompat = true;
   };
 
-  home-manager.users.${config.host.details.user} = {config, ...}: {
+  home-manager.users.${config.host.details.user} = {...}: {
     home.file.distroboxConf = {
       target = ".config/distrobox/distrobox.conf";
       text = ''

@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{config, ...}: let
   domain = "irc.venberg.xyz";
   port = 6697;
   certDir = config.security.acme.certs.${domain}.directory;
@@ -23,7 +17,7 @@ in {
   services.soju = {
     enable = true;
     hostName = domain;
-    listen = [":${builtins.toString port}"];
+    listen = [":${toString port}"];
     tlsCertificate = "/run/credentials/soju.service/cert.pem";
     tlsCertificateKey = "/run/credentials/soju.service/key.pem";
     enableMessageLogging = true;

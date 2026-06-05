@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   services.libinput = {
     # Enable touchpad support (enabled default in most desktopManager).
     enable = true;

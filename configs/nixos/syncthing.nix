@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: {
+{config, ...}: {
   services.syncthing = {
     enable = true;
     user = config.host.details.user;

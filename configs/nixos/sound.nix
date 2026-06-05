@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   # Enable sound with pipewire.
@@ -15,7 +14,6 @@
   };
 
   home-manager.users.${config.host.details.user} = {
-    config,
     osConfig,
     lib,
     ...

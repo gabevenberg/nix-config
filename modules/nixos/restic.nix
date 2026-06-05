@@ -44,7 +44,7 @@
       backups = lib.mkOption {
         description = "backups to create";
         default = {};
-        type = lib.types.attrsOf (lib.types.submodule ({name, ...}: {
+        type = lib.types.attrsOf (lib.types.submodule ({...}: {
           options = {
             paths = lib.mkOption {
               default = [];
