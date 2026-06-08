@@ -128,7 +128,7 @@ in {
         Internal = [
           {
             Fritzbox = {
-              icon = "sh-fritzbox.svg";
+              icon = "sh-fritz.svg";
               href = "http://10.10.0.1";
               description = "Router";
             };
