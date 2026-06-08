@@ -20,7 +20,7 @@
     uv
     python3
     python3Packages.ipython
-    libclang
+    clang
     shellcheck
     # dhall
     # scbl
