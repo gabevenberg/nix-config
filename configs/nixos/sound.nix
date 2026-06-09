@@ -11,6 +11,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   home-manager.users.${config.host.details.user} = {
@@ -25,9 +26,14 @@
           [
             pwvucontrol
             crosspipe
+            easyeffects
           ]
         )
-        [wiremix]
+        [
+          wiremix
+          alsa-utils
+          pipewire
+        ]
       ];
   };
 }

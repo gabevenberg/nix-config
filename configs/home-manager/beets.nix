@@ -39,7 +39,7 @@
         tiebreak.items = ["bitrate"];
       };
       zero = {
-        keep_feilds = [
+        keep_fields = [
           "album"
           "albumarist"
           "albumartists"
