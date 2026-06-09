@@ -52,6 +52,8 @@ in {
     rsync
   ];
 
+  boot.kernel.sysctl = {"fs.inotify.max_user_watches" = 1048576;};
+
   programs.zsh.enable = lib.mkDefault true;
   environment.shells = lib.mkDefault [pkgs.zsh];
   # if we arent setting our password from nix secrets, we need to allow changing it.
