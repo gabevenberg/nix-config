@@ -108,6 +108,7 @@
         la = "ls -lha";
         please = "sudo $(fc -ln -1)";
         pyactivate = "source ./.venv/bin/activate";
+        bell = ''echo -e "\07"'';
       };
       syntaxHighlighting = {
         enable = true;
