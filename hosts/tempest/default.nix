@@ -92,7 +92,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
       systemd.services.disable-alsa-auto-mute = {
         description = "Disables the soundcards auto-mute so that the main speaker can still be used even when headphones are plugged in.";
-        script = "${pkgs.alsa-utils}/bin/amixer -c 1 sset \"Auto-Mute Mode\" Disabled";
+        script = "${pkgs.alsa-utils}/bin/amixer -c \"Generic\" sset \"Auto-Mute Mode\" Disabled";
         wantedBy = ["multi-user.target"];
       };
 
