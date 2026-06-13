@@ -40,7 +40,7 @@ inputs.nixpkgs.lib.nixosSystem {
       networking.hostName = "harmatan";
       networking.hostId = "7a42af26";
 
-      services.displayManager.defaultSession = "i3";
+      services.displayManager.defaultSession = "none+i3";
       services.xserver.dpi = 210;
       environment.variables = {
         GDK_SCALE = "2";
