@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779822991,
-        "narHash": "sha256-r6e4eHEyQJEDhT6gkW3B9+OgB0pZebw2+du4bvN3vww=",
+        "lastModified": 1781385969,
+        "narHash": "sha256-dn8GKHXb0MQWNaqBXIZIyryA6YgNZsHULHTevRfwvd4=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "6e75faa62349a59f4df328a4939ba8626d89ee1a",
+        "rev": "efa43f891b18f9e0b354ce676d3050b7690f985e",
         "type": "github"
       },
       "original": {
@@ -109,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781189114,
-        "narHash": "sha256-5inaamLgUMWy+MOBE9ChF9QAF1o/74LFuHkI0W/9rqc=",
+        "lastModified": 1781497404,
+        "narHash": "sha256-9GAF8sSsnkyCVCWkomXR0T+zdSxyUlfPt6neQidimdg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "486595d2cf49cfcd649b58a284fa11ac0e34da22",
+        "rev": "1285cd3d6882a9847f2d56ed5541b3350c8a6162",
         "type": "github"
       },
       "original": {
@@ -211,10 +211,10 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1781256282,
-        "narHash": "sha256-ciX2EU8LQImWoB6cK/RF3YXVzovYf3B1RQlbmLFdXb4=",
+        "lastModified": 1781533267,
+        "narHash": "sha256-Dpom7nZyHaxzzkXZMiHX4LudoJLqvkporxEDccyJnSM=",
         "ref": "refs/heads/main",
-        "rev": "11092c49a5303159f8f4617c14c52147a6aa5d34",
+        "rev": "a99ea0b7a55d97b610d21b2eb3b0517273023054",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz:2222/Gabe/nvim-config.git"
