@@ -40,8 +40,9 @@
       };
       zero = {
         keep_fields = [
+          "title"
           "album"
-          "albumarist"
+          "albumartist"
           "albumartists"
           "artist"
           "artists"
