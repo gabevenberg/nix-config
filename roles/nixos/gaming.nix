@@ -16,6 +16,7 @@
   home-manager.users.${config.host.details.user} = {...}: {
     home.packages = with pkgs; [
       discord
+      prismlauncher
     ];
   };
 }

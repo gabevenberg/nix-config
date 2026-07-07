@@ -30,8 +30,40 @@ inputs.nixpkgs.lib.nixosSystem {
     ({
       config,
       pkgs,
+      lib,
       ...
-    }: {
+    }: let
+      switchAudioOutput = pkgs.writeShellScriptBin "switch-audio-out" ''
+        set -euo pipefail
+
+        # to find this, run:
+        # pw-dump | jq -r '.[] | select(.info.props["media.class"] == "Audio/Sink") | .info.props["alsa.card_name"]'
+        SINK="HD-Audio Generic"   # device.nick from discovery step 1
+        # to find these, run:
+        # pw-dump | jq '.[] | select(.info.props["device.name"] == "alsa_card.pci-0000_00_1f.3") | .info.params.EnumRoute[] | select(.direction == "Output") | {index, name, description, available}'
+        ROUTE_A=3
+        ROUTE_B=4
+
+        dump="$(${pkgs.pipewire}/bin/pw-dump)"
+
+        # set-route needs the sink *node* id (it reads card.profile.device off the node).
+        sink_id="$(${lib.getExe pkgs.jaq} -r --arg n "$SINK" \
+          'first(.[] | select(.info.props["media.class"] == "Audio/Sink"
+          and .info.props["alsa.card_name"] == $n) | .id) // empty' <<<"$dump")"
+
+        # Its parent device carries the active-route info.
+        dev_id="$(${lib.getExe pkgs.jaq} -r --argjson s "$sink_id" \
+          'first(.[] | select(.id == $s) | .info.props["device.id"]) // empty' <<<"$dump")"
+
+        # Current active output route index.
+        cur="$(${lib.getExe pkgs.jaq} -r --argjson d "$dev_id" \
+          'first(.[] | select(.id == $d) | .info.params.Route[]?
+           | select(.direction == "Output") | .index) // empty' <<<"$dump")"
+
+        if [ "$cur" = "$ROUTE_A" ]; then target="$ROUTE_B"; else target="$ROUTE_A"; fi
+        ${pkgs.wireplumber}/bin/wpctl set-route "$sink_id" "$target"
+      '';
+    in {
       nixpkgs.hostPlatform = "x86_64-linux";
       host.details = {
         user = "gabe";
@@ -58,6 +90,10 @@ inputs.nixpkgs.lib.nixosSystem {
               email = "gabevenberg@gmail.com";
             };
           };
+        };
+
+        xsession.windowManager.i3.config.keybindings ={
+          "Mod4+ctrl+p" = "exec --no-startup-id ${lib.getExe switchAudioOutput}";
         };
 
         home.packages = with pkgs; [
