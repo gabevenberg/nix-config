@@ -80,7 +80,7 @@ inputs.nixpkgs.lib.nixosSystem {
         imports = [
           ../../roles/home-manager/minimal-terminal.nix
           ../../configs/home-manager/common.nix
-          ../../configs/home-manager/ntfy.nix
+          # ../../configs/home-manager/ntfy.nix
         ];
 
         # sops = lib.mkIf (inputs ? nix-secrets) {
