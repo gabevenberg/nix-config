@@ -99,13 +99,13 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../roles/home-manager/music.nix
           ../../roles/home-manager/3dprinting.nix
           ../../roles/home-manager/all_the_langs.nix
-          # ../../roles/home-manager/music-prod.nix
           ../../configs/home-manager/common.nix
           ../../configs/home-manager/secrets.nix
           ../../configs/home-manager/email.nix
           ../../configs/home-manager/senpai-irc.nix
           ../../configs/home-manager/kicad.nix
           ../../configs/home-manager/ntfy.nix
+          ../../configs/home-manager/anki.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {

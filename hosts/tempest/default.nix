@@ -133,6 +133,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ../../configs/home-manager/senpai-irc.nix
           ../../configs/home-manager/ntfy.nix
           ../../configs/home-manager/kicad.nix
+          ../../configs/home-manager/anki.nix
         ];
 
         sops = lib.mkIf (inputs ? nix-secrets) {
