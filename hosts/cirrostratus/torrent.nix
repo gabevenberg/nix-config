@@ -9,7 +9,7 @@
   interface-name = "pvpn0";
   dnsIP = "DNS = 10.2.0.1";
   privateIP = "10.2.0.2/32";
-  delugeWebPort = 8112;
+  transmissionWebPort = 9091;
   user = config.host.details.user;
   group = "users";
 in {
@@ -63,42 +63,53 @@ in {
         '';
     };
   };
-  # now we get to the deluge stuff.
-  services.deluge = {
+
+  # transmission, another torrent client.
+  services.transmission = {
     enable = true;
+    package = pkgs.transmission_4;
     user = user;
     group = group;
-    web = {
-      enable = true;
-      port = delugeWebPort;
+    openPeerPorts = true;
+    openRPCPort = true;
+    webHome = pkgs.flood-for-transmission;
+    settings = {
+      utp-enabled = true;
+      watch-dir = "/storage/torrent/watch";
+      watch-dir-enabled = true;
+      incomplete-dir = "/storage/torrent/incomplete";
+      incomplete-dir-enabled = true;
+      download-dir = "/storage/torrent/complete";
+      rpc-bind-address = "100.0.0.0/8";
+      rpc-port = transmissionWebPort;
+      rpc-whitelist-enabled = false;
+      rpc-host-whitelist-enabled = false;
     };
   };
-  systemd.services.deluged = {
-    # binding deluged to network namespace
+  systemd.services.transmission = {
+    # binding transmission to network namespace
     bindsTo = ["netns@${namespace}.service"];
     requires = ["network-online.target" "${namespace}.service"];
     serviceConfig.NetworkNamespacePath = ["/var/run/netns/${namespace}"];
   };
-
-  # allowing delugeweb to access deluged in network namespace, a socket is necesarry
-  systemd.sockets."proxy-to-deluged" = {
+  # allowing transmissionweb to access transmission in network namespace, a socket is necesarry
+  systemd.sockets."proxy-to-transmission" = {
     enable = true;
-    description = "Socket for Proxy to Deluge Daemon";
-    listenStreams = ["58846"];
+    description = "Socket for Proxy to Transmission Daemon";
+    listenStreams = ["${toString transmissionWebPort}"];
     wantedBy = ["sockets.target"];
   };
-
   # creating proxy service on socket, which forwards the same port from the root namespace to the isolated namespace
-  systemd.services."proxy-to-deluged" = {
+  systemd.services."proxy-to-transmission" = {
     enable = true;
-    description = "Proxy to Deluge Daemon in Network Namespace";
-    requires = ["deluged.service" "proxy-to-deluged.socket"];
-    after = ["deluged.service" "proxy-to-deluged.socket"];
-    unitConfig = {JoinsNamespaceOf = "deluged.service";};
+    description = "Proxy to Transmission Web UI in Network Namespace";
+    requires = ["transmission.service" "proxy-to-transmission.socket"];
+    after = ["transmission.service" "proxy-to-transmission.socket"];
+    unitConfig = {JoinsNamespaceOf = "transmission.service";};
     serviceConfig = {
       User = user;
       Group = group;
-      ExecStart = "${pkgs.systemd}/lib/systemd/systemd-socket-proxyd --exit-idle-time=5min 127.0.0.1:58846";
+      ExecStart = "${pkgs.systemd}/lib/systemd/systemd-socket-proxyd --exit-idle-time=5min 0.0.0.0:${toString transmissionWebPort}";
       PrivateNetwork = "yes";
     };
   };

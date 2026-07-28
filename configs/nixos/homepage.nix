@@ -141,10 +141,10 @@ in {
             };
           }
           {
-            Deluge = {
-              icon = "sh-deluge.svg";
-              href = "http:cirrostratus:8112";
-              siteMonitor = "http:cirrostratus:8112";
+            Transmission = {
+              icon = "sh-transmission.svg";
+              href = "http:cirrostratus:9091";
+              siteMonitor = "http:cirrostratus:9091";
               description = "Torrent webUI";
             };
           }
