@@ -75,6 +75,14 @@ in {
             };
           }
           {
+            Seerr = {
+              icon = "sh-seerr.svg";
+              href = "https://mediarequests.venberg.xyz";
+              siteMonitor = "https://mediarequests.venberg.xyz";
+              description = "Request media for Jellyfin";
+            };
+          }
+          {
             Immich = {
               icon = "sh-immich.svg";
               href = "https://pics.venberg.xyz";
@@ -127,6 +135,13 @@ in {
       {
         Internal = [
           {
+            Syncthing = {
+              icon = "sh-syncthing.svg";
+              href = "http://localhost:8384";
+              description = "Local Syncthing dashboard";
+            };
+          }
+          {
             Fritzbox = {
               icon = "sh-fritz.svg";
               href = "http://10.10.0.1";
@@ -149,10 +164,38 @@ in {
             };
           }
           {
-            Syncthing = {
-              icon = "sh-syncthing.svg";
-              href = "http://localhost:8384";
-              description = "Local Syncthing dashboard";
+            Prowlarr = {
+              icon = "sh-prowlarr.svg";
+              href = "http:cirrostratus:9696";
+              siteMonitor = "http:cirrostratus:9696";
+            };
+          }
+          {
+            Sonarr = {
+              icon = "sh-sonarr.svg";
+              href = "http:cirrostratus:8989";
+              siteMonitor = "http:cirrostratus:8989";
+            };
+          }
+          {
+            Radarr = {
+              icon = "sh-radarr.svg";
+              href = "http:cirrostratus:7878";
+              siteMonitor = "http:cirrostratus:7878";
+            };
+          }
+          {
+            Lidarr = {
+              icon = "sh-lidarr.svg";
+              href = "http:cirrostratus:8686";
+              siteMonitor = "http:cirrostratus:8686";
+            };
+          }
+          {
+            Bazzarr = {
+              icon = "sh-bazarr.svg";
+              href = "http:cirrostratus:6767";
+              siteMonitor = "http:cirrostratus:6767";
             };
           }
         ];

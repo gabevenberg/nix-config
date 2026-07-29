@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
     ../../configs/nixos/jellyfin.nix
+    ../../configs/nixos/arr.nix
     ../../configs/nixos/syncthing.nix
     ../../configs/nixos/cyberchef.nix
     ../../configs/nixos/miniserve-directory.nix

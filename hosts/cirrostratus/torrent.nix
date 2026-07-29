@@ -10,8 +10,8 @@
   dnsIP = "DNS = 10.2.0.1";
   privateIP = "10.2.0.2/32";
   transmissionWebPort = 9091;
-  user = config.host.details.user;
-  group = "users";
+  user = "jellyfin";
+  group = "jellyfin";
 in {
   sops.secrets = lib.mkIf (inputs ? nix-secrets) {
     wg-config = {
