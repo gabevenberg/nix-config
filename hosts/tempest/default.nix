@@ -78,7 +78,7 @@ inputs.nixpkgs.lib.nixosSystem {
         ${pkgs.wireplumber}/bin/wpctl set-route "$sink_id" "$target" \
           || die "wpctl set-route $sink_id $target failed"
 
-        notify -t 500 -i "$icon" \
+        notify -t 1000 -i "$icon" \
           "Audio Output" "Switched to $name"
       '';
     in {
@@ -119,6 +119,8 @@ inputs.nixpkgs.lib.nixosSystem {
           uhk-agent
           cameractrls
           v4l-utils
+          gimp
+          obs-studio
         ];
 
         imports = [
