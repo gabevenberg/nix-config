@@ -159,7 +159,6 @@ in {
             Transmission = {
               icon = "sh-transmission.svg";
               href = "http:cirrostratus:9091";
-              siteMonitor = "http:cirrostratus:9091";
               description = "Torrent webUI";
             };
           }
@@ -167,35 +166,30 @@ in {
             Prowlarr = {
               icon = "sh-prowlarr.svg";
               href = "http:cirrostratus:9696";
-              siteMonitor = "http:cirrostratus:9696";
             };
           }
           {
             Sonarr = {
               icon = "sh-sonarr.svg";
               href = "http:cirrostratus:8989";
-              siteMonitor = "http:cirrostratus:8989";
             };
           }
           {
             Radarr = {
               icon = "sh-radarr.svg";
               href = "http:cirrostratus:7878";
-              siteMonitor = "http:cirrostratus:7878";
             };
           }
           {
             Lidarr = {
               icon = "sh-lidarr.svg";
               href = "http:cirrostratus:8686";
-              siteMonitor = "http:cirrostratus:8686";
             };
           }
           {
             Bazzarr = {
               icon = "sh-bazarr.svg";
               href = "http:cirrostratus:6767";
-              siteMonitor = "http:cirrostratus:6767";
             };
           }
         ];
