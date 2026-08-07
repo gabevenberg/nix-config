@@ -121,6 +121,7 @@ inputs.nixpkgs.lib.nixosSystem {
           v4l-utils
           gimp
           obs-studio
+          yt-dlp
         ];
 
         imports = [
