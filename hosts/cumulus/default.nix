@@ -13,6 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./hardware-config.nix
     ./adguard.nix
     ./nginx.nix
+    ../../configs/nixos/mdns.nix
     ../../configs/nixos/common.nix
     ../../configs/nixos/sshd.nix
     ../../configs/nixos/secrets.nix
@@ -50,7 +51,12 @@ inputs.nixpkgs.lib.nixosSystem {
           address = ["10.10.0.2/16"];
           gateway = ["10.10.0.1"];
           dns = ["1.1.1.1"];
+          networkConfig.MulticastDNS = true;
         };
+      };
+      services.resolved = {
+        enable = true;
+        settings.Resolve.MulticastDNS = true;
       };
 
       services.duckdns = lib.mkIf (lib.hasAttrByPath ["sops" "secrets" "duckdns-token"] config) {
