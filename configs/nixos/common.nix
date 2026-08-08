@@ -52,6 +52,8 @@ in {
     rsync
   ];
 
+  programs.fuse.enable=true;
+
   boot.kernel.sysctl = {"fs.inotify.max_user_watches" = 1048576;};
 
   programs.zsh.enable = lib.mkDefault true;
