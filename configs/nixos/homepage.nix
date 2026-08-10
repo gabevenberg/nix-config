@@ -142,6 +142,13 @@ in {
             };
           }
           {
+            Trident = {
+              icon = "sh-voron.svg";
+              href = "http://voron-trident";
+              description = "3d printer web interface";
+            };
+          }
+          {
             Fritzbox = {
               icon = "sh-fritz.svg";
               href = "http://10.10.0.1";
