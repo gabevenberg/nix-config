@@ -20,7 +20,7 @@
     rgx
     tokei
     #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
-    dragon-drop
+    ripdrag
   ];
 
   wrappers.neovim.enable = true;
