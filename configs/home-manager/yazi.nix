@@ -1,10 +1,5 @@
 {pkgs, ...}: {
-  programs.yazi.enable = true;
-  # optional dependencies for yazi.
-  programs = {
-    fzf.enable = true;
-    ripgrep.enable = true;
-    zoxide.enable = true;
+  programs.yazi = {
     extraPackages = with pkgs; [
       ffmpeg
       poppler-utils
@@ -18,5 +13,12 @@
       p7zip
       resvg
     ];
+    enable = true;
+  };
+  # optional dependencies for yazi.
+  programs = {
+    fzf.enable = true;
+    ripgrep.enable = true;
+    zoxide.enable = true;
   };
 }
