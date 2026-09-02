@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../configs/nixos/common.nix
     ../configs/nixos/secrets.nix
     ../configs/nixos/syncthing.nix
+    ../configs/nixos/docker.nix
     ../roles/nixos/embedded-dev
     ({
       config,
@@ -62,6 +63,13 @@ inputs.nixpkgs.lib.nixosSystem {
         home.packages = with pkgs; [
           xdg-utils
           wsl-open
+          deno
+          claude-code
+          bubblewrap
+        ];
+
+        home.sessionPath = [
+          "$HOME/.deno/bin/"
         ];
 
         imports = [
