@@ -1,8 +1,5 @@
 {...}: {
   projectRootFile = "flake.nix";
-  programs.typstyle = {
-    enable = true;
-    lineWidth = 120;
-  };
+  programs.latexindent.enable = true;
   programs.typos.enable = true;
 }

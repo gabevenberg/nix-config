@@ -21,7 +21,7 @@ My configs for both nixos and home manager only machines
 ```
 * Configs set options and specify programs to be installed.
 They do not specify their own options, and take effect as soon as they are imported.
-Generally, a config will be specific to a single program, and possibly optional dependecies of the main program.
+Generally, a config will be specific to a single program, and possibly optional dependencies of the main program.
 * Hosts define specific hosts. They are the entry point into the system.
 Each host *must* import `configs/nixos/common.nix` in the top level and `configs/home-manager/common.nix` in the home-manager block.
 Each host *must also* define the variables declared in `modules/hostopts.nix`.
