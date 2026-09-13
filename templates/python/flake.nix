@@ -1,0 +1,51 @@
+{
+  description = "python development flake.";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = {
+    nixpkgs,
+    treefmt-nix,
+    ...
+  }: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+      ] (system:
+        function {
+          pkgs = import nixpkgs {inherit system;};
+          inherit system;
+        });
+
+    treefmtEval = forAllSystems ({pkgs, ...}: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+  in {
+    formatter = forAllSystems ({system, ...}: treefmtEval.${system}.config.build.wrapper);
+
+    devShells = forAllSystems ({pkgs, ...}: {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          python3
+          uv
+          ruff
+          ty
+          just
+        ];
+
+        # make uv use the nix python instead of downloading its own
+        UV_PYTHON = "${pkgs.python3}/bin/python";
+        UV_PYTHON_DOWNLOADS = "never";
+
+        shellHook = ''
+          unset PYTHONPATH
+        '';
+      };
+    });
+  };
+}

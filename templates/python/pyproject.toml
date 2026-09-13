@@ -1,0 +1,29 @@
+[project]
+name = "TODO"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = []
+
+[tool.ruff.lint]
+select = [
+  "A",    # flake8-builtins: shadowing builtins like id, list or type
+  "ANN",  # flake8-annotations: require type hints on function arguments and returns
+  "B",    # flake8-bugbear: likely bugs, like mutable default arguments
+  "BLE",  # flake8-blind-except: catching bare Exception
+  "C4",   # flake8-comprehensions: roundabout list, dict and set construction
+  "E",    # pycodestyle errors: PEP 8 style violations
+  "F",    # Pyflakes: unused imports and variables, undefined names
+  "I",    # isort: import sorting and grouping
+  "N",    # pep8-naming: snake_case and CamelCase conventions
+  "PERF", # perflint: loops that should be comprehensions, needless copies
+  "PIE",  # flake8-pie: unnecessary pass, duplicate class fields
+  "PTH",  # flake8-use-pathlib: os.path and open() where pathlib would do
+  "RET",  # flake8-return: needless else after return, inconsistent returns
+  "RUF",  # ruff-specific: mutable class defaults, ambiguous unicode, unused noqa
+  "SIM",  # flake8-simplify: collapsible ifs, needless bool returns
+  "UP",   # pyupgrade: rewrite old syntax for the targeted python version
+  "W",    # pycodestyle warnings: trailing whitespace, blank line issues
+]

@@ -63,13 +63,8 @@ inputs.nixpkgs.lib.nixosSystem {
         home.packages = with pkgs; [
           xdg-utils
           wsl-open
-          deno
           claude-code
           bubblewrap
-        ];
-
-        home.sessionPath = [
-          "$HOME/.deno/bin/"
         ];
 
         imports = [

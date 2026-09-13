@@ -14,3 +14,17 @@ incremental = false
 lto = 'fat'
 opt-level = 3
 overflow-checks = false
+
+[lints.clippy]
+cargo = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+# Nothing we can do about it, just noise.
+multiple_crate_versions = { level = "allow", priority = 10 }
+# A fresh project has no description, repository or readme yet.
+# Remove this before publishing.
+cargo_common_metadata = { level = "allow", priority = 10 }
+# Every #[allow] has to say why it is there.
+allow_attributes_without_reason = "deny"
+# Every unsafe block needs a // SAFETY: comment.
+undocumented_unsafe_blocks = "deny"
+dbg_macro = "warn"

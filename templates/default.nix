@@ -15,4 +15,8 @@
     path = ./rust;
     description = "A flake containing a basic rust environment";
   };
+  python = {
+    path = ./python;
+    description = "A flake containing a basic python environment";
+  };
 }

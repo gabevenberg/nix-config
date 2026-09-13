@@ -1,0 +1,9 @@
+# direnv
+.direnv
+
+# python
+__pycache__
+*.py[cod]
+.venv
+.ruff_cache
+dist
