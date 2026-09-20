@@ -1,8 +1,10 @@
 {...}: {
   programs.rofi = {
     enable = true;
-    location = "top";
-    terminal = "kitty";
+    settings = {
+      location = 2;
+      terminal = "kitty";
+    };
     theme = "gruvbox-dark-soft";
   };
 }

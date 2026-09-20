@@ -1,8 +1,8 @@
-# nix-config
+# Nix-Config
 
-My configs for both nixos and home manager only machines
+My configurations for both NixOS and home manager only machines
 
-## structure
+## Structure
 
 ```
 .
@@ -30,16 +30,16 @@ Each host *must also* define the variables declared in `modules/hostopts.nix`.
 
 ## Secrets
 This repo uses nix-sops for secrets management, with the encrypted secrets being stored in a private repo imported as an input.
-if the `nix-secrets` input is commented out, the repo should still build, gracefully degrading to default, non-secret, values.
+If the `nix-secrets` input is commented out, the repo should still build, gracefully degrading to default, non-secret, values.
 
-## Spinning up a new machine:
-run `nix build ./#iso` or `nix build aarch64-iso.nix` (depending on architecture), and boot it while on the same network.
-(you can also use a regular nixos iso, but this has my tools and pub ssh keys already on it.)
+## Spinning up a New Machine:
+Run `nix build ./#iso` or `nix build aarch64-iso.nix` (depending on architecture), and boot it while on the same network.
+(you can also use a regular NixOS ISO, but this has my tools and pub ssh keys already on it.)
 SSH into the machine (hostname will be nixos-installer), and run `nixos-generate-config --show-hardware-config --no-filesystems`.
-run `ls /dev/disk/by-id`, and note the disk IDs.
+Run `ls /dev/disk/by-id`, and note the disk IDs.
 
-Now your ready to write a config.
+Now you're ready to write a config.
 You should probably base it off of one of the other configs in `hosts`.
 Just modify it to your needs (adding roles, importing other configs, setting up networking, etc) and write a `disk-config.nix` for it.
-now, run `nix run github:nix-community/nixos-anywhere -- --flake .\#$CONFIG_NAME root@nixos-installer`, and nixos anywhere will do the rest.
+Now, run `nix run github:nix-community/nixos-anywhere -- --flake .\#$CONFIG_NAME root@nixos-installer`, and NixOS anywhere will do the rest.
 If the machine is headless, you probably also want to add an entry to the deploy config, to update it remotely.

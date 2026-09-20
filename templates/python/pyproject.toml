@@ -5,7 +5,11 @@ requires-python = ">=3.13"
 dependencies = []
 
 [dependency-groups]
-dev = []
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
 
 [tool.ruff.lint]
 select = [

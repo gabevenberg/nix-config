@@ -49,11 +49,6 @@ inputs.nixpkgs.lib.nixosSystem {
 
       nixpkgs.overlays = let
         args = "--force-device-scale-factor=2";
-        desktopItemModifier = prevAttrs: {
-          desktopItem = prevAttrs.desktopItem.override (prev: {
-            exec = "${prev.exec} ${args}";
-          });
-        };
         desktopItemsModifier = previousAttrs: {
           desktopItems = [
             ((builtins.head previousAttrs.desktopItems).override (prev: {
@@ -63,7 +58,7 @@ inputs.nixpkgs.lib.nixosSystem {
         };
       in [
         (final: prev: {
-          discord = prev.discord.overrideAttrs desktopItemModifier;
+          discord = prev.discord.override {commandLineArgs = args;};
           signal-desktop = prev.signal-desktop.overrideAttrs desktopItemsModifier;
         })
       ];
