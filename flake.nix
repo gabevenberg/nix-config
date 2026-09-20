@@ -121,15 +121,18 @@
           hostname = "cumulus";
           profiles.system.path = deploy-rs-flake.lib.aarch64-linux.activate.nixos self.nixosConfigurations.cumulus;
           remoteBuild = true;
+          groups = ["aarch64" "server"];
         };
         cirrus = {
           hostname = "cirrus";
           profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrus;
+          groups = ["x86" "server"];
         };
         cirrostratus = {
           hostname = "cirrostratus";
           profiles.system.path = deploy-rs-flake.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cirrostratus;
           remoteBuild = true;
+          groups = ["x86" "server"];
         };
       };
       sshUser = "root";
