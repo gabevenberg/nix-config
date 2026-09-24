@@ -14,7 +14,7 @@
       };
 
       format.markdown = {
-        link-format = "[[{{filename}}]]";
+        link-format = "[[{{filename}}{{#if alias}}|{{alias}}{{/if}}]]";
         hashtags = true;
       };
 
