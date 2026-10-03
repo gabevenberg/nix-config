@@ -38,6 +38,7 @@
   home.sessionVariables = {
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;
+    UV_PYTHON_PREFERENCE="managed";
   };
 
   home.sessionVariables.EDITOR = lib.mkDefault "nvim";

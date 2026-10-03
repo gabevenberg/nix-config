@@ -35,6 +35,7 @@ in {
       libzip
       openssl
       zstd
+      stdenv.cc.cc.lib
     ];
   };
 }
