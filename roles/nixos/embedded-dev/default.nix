@@ -23,7 +23,7 @@ in {
 
   home-manager.users.${config.host.details.user} = {...}: {
     home.packages = with pkgs; [
-      tio
+      picocom
     ];
   };
 
