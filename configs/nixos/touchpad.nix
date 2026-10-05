@@ -5,6 +5,7 @@
     touchpad = {
       disableWhileTyping = true;
       naturalScrolling = true;
+      accelSpeed = "0.5";
       additionalOptions = ''
         Option "PalmDetection" "True"
       '';
