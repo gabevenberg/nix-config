@@ -50,6 +50,7 @@ in {
   # packages that should be on every system.
   environment.systemPackages = with pkgs; [
     rsync
+    exfatprogs
   ];
 
   programs.fuse.enable = true;
