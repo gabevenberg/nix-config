@@ -26,7 +26,7 @@
 
     treefmtEval = forAllSystems ({pkgs, ...}: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
-    formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
+    formatter = forAllSystems ({system, ...}: treefmtEval.${system}.config.build.wrapper);
 
     devShells =
       forAllSystems
