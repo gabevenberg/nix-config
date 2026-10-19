@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services.shpool = {
     enable = true;
     settings = {
@@ -11,6 +11,6 @@
         }
       ];
     };
-    systemd = true;
+    systemd = pkgs.stdenv.hostPlatform.isLinux;
   };
 }

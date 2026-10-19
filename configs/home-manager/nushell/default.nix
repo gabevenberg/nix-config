@@ -1,6 +1,6 @@
-{...}: {
+{config, ...}: {
   home.file = {
-    ".config/nushell/completions".source = ./completions;
+    "${config.programs.nushell.configDir}/completions".source = ./completions;
   };
 
   programs = {

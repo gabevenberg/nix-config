@@ -9,12 +9,19 @@ home-manager target=(`whoami`+"@"+`hostname`):
     git add -AN
     home-manager --flake .#{{target}} switch
 
+darwin target=`hostname -s`:
+    git add -AN
+    sudo darwin-rebuild --flake .#{{target}} switch
+
 deploy target:
     nixos-rebuild --flake .#{{target}} switch --target-host root@{{target}}
 
 check:
     git add -AN
     nix flake check --keep-going
+
+bootstrap-darwin target=`hostname -s`:
+    sudo nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-darwin/nix-darwin/master#darwin-rebuild -- --flake .#{{target}} switch
 
 bootstrap-home-manager target=(`whoami`+"@"+`hostname`):
     nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake .#{{target}} switch

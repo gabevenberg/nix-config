@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,6 +81,7 @@
       nixpkgs.lib.genAttrs [
         "x86_64-linux"
         "aarch64-linux"
+        "aarch64-darwin"
       ] (system:
         function {
           pkgs = import nixpkgs {inherit system;};
@@ -109,10 +115,14 @@
       tempest = import ./hosts/tempest {inherit inputs myLib;};
     };
 
+    # nix-darwin configuration entrypoint
+    # Available through 'darwin-rebuild --flake .#your-hostname'
+    darwinConfigurations = {
+    };
+
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "gabe@linuxgamingrig" = import ./hosts/home-personal.nix {inherit inputs myLib;};
     };
 
     deploy = {
