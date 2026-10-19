@@ -12,12 +12,12 @@
     enable = true;
     extraConfig = {
       general.unsafe-accounts-conf = true;
-      viwer = {
+      viewer = {
         pager = "less";
       };
       filters = {
         "text/plain" = "colorize";
-        "text/html" = "html | colorize";
+        "text/html" = "w3m -T text/html | colorize";
       };
     };
   };
@@ -31,7 +31,8 @@
     passwordCommand = "cat ${config.sops.secrets.gmail-password.path}";
     realName = "Gabe Venberg";
 
-    himalaya.enable = true;
+    # TODO: Himalaya has grown a bunch, integrate their ecosystem.
+    # himalaya.enable = true;
     aerc.enable = true;
   };
 }
