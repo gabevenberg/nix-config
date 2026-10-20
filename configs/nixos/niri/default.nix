@@ -40,6 +40,8 @@
       brightnessctl
       swaybg
       swayidle
+      wdisplays
+      kanshi
     ];
     user.wallpaper = {
       enable = true;
