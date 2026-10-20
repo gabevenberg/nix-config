@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  services.accounts-daemon.enable = true;
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -11,30 +10,14 @@
       xterm
     ];
   };
-  nixpkgs.config.zathura.useMupdf = true;
-  programs.dconf.enable = true;
   home-manager.users.${config.host.details.user} = {config, ...}: {
-    gtk = {
-      enable = true;
-      colorScheme = "dark";
-    };
-    qt = {
-      enable = true;
-      style.name = "adwaita-dark";
-    };
     home.packages = with pkgs; [
       maim
       xclip
       xdotool
-      brightnessctl
       arandr
       dex
-      firefox
-      thunderbird
-      mpv
-      zathura
     ];
-    services.playerctld.enable = true;
     xsession.enable = true;
     xsession.windowManager.i3 = let
       mod = "Mod4";
@@ -245,16 +228,10 @@
       };
     };
     imports = [
-      ../../home-manager/kitty.nix
-      ../../home-manager/rofi.nix
-      ../../home-manager/dunst.nix
-      ../../home-manager/feh.nix
       ../../home-manager/picom.nix
-      ../../home-manager/xcompose
     ];
   };
   imports = [
-    ../sound.nix
     ./i3status-rust.nix
     ./lockscreen.nix
     ../graphical.nix

@@ -23,6 +23,7 @@
   home-manager.users.${config.host.details.user} = {config, ...}: {
     home.packages = with pkgs; [
       betterlockscreen
+      feh
     ];
 
     xsession.windowManager.i3.config = {
@@ -34,9 +35,5 @@
         '';
       };
     };
-    # Define systemd service for betterlockscreen to run on suspend
-    imports = [
-      ../../home-manager/feh.nix
-    ];
   };
 }

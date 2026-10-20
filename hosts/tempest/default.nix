@@ -24,6 +24,7 @@ inputs.nixpkgs.lib.nixosSystem {
       ../../configs/nixos/tailscale.nix
       ../../configs/nixos/syncthing.nix
       ../../configs/nixos/i3
+      ../../configs/nixos/niri
       ../../configs/nixos/bluetooth.nix
       ../../configs/nixos/ntfy.nix
       ../../roles/nixos/gaming.nix
