@@ -52,6 +52,12 @@
     ];
   };
 
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    # makes touch id work inside tmux/zellij/screen sessions too
+    reattach = true;
+  };
+
   system.primaryUser = config.host.details.user;
   # the account is made by macOS, this only tells nix-darwin and home-manager where it is
   users.users.${config.host.details.user} = {
