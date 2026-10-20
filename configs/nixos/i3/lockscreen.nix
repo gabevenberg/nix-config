@@ -12,6 +12,8 @@
     serviceConfig = {
       User = config.host.details.user;
       Type = "simple";
+      # niri locks with swayidle
+      ExecCondition = "${pkgs.procps}/bin/pgrep -x i3";
       ExecStart = ''${lib.getExe pkgs.betterlockscreen} --lock dim'';
       ExecStartPost = ''${pkgs.coreutils}/bin/sleep 1'';
       TimeoutSec = "infinity";

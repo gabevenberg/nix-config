@@ -115,6 +115,10 @@ inputs.nixpkgs.lib.nixosSystem {
           xsession.windowManager.i3.config.keybindings = {
             "Mod4+ctrl+p" = "exec --no-startup-id ${lib.getExe switchAudioOutput}";
           };
+          wayland.windowManager.niri.settings.binds."Mod+Ctrl+P" = {
+            _props.hotkey-overlay-title = "Switch Audio Output";
+            spawn = [(lib.getExe switchAudioOutput)];
+          };
 
           home.packages = with pkgs; [
             signal-desktop

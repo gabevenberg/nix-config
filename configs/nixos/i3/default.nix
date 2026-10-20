@@ -19,7 +19,18 @@
       arandr
       dex
     ];
+    user.wallpaper = {
+      enable = true;
+      updateCommands = ''
+        betterlockscreen -u ${config.user.wallpaper.path}
+        if pgrep -x i3 >/dev/null; then
+          betterlockscreen --wall
+        fi
+      '';
+    };
     xsession.enable = true;
+    # none+i3 is the session's DesktopNames, see graphical.nix
+    xdg.configFile."none+i3-mimeapps.list".source = config.xdg.configFile."mimeapps.list".source;
     xsession.windowManager.i3 = let
       mod = "Mod4";
 
@@ -230,6 +241,7 @@
     };
     imports = [
       ../../home-manager/picom.nix
+      ../../home-manager/rofi.nix
     ];
   };
   imports = [
