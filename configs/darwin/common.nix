@@ -34,6 +34,24 @@
 
   programs.zsh.enable = lib.mkDefault true;
 
+  # swap caps lock and left control on every keyboard.
+  # nix has no hex literals, so these are HID usage IDs (0x7000000xx) in decimal.
+  system.keyboard = {
+    enableKeyMapping = true;
+    userKeyMapping = [
+      {
+        # caps lock (0x700000039) -> left control (0x7000000E0)
+        HIDKeyboardModifierMappingSrc = 30064771129;
+        HIDKeyboardModifierMappingDst = 30064771296;
+      }
+      {
+        # left control -> caps lock
+        HIDKeyboardModifierMappingSrc = 30064771296;
+        HIDKeyboardModifierMappingDst = 30064771129;
+      }
+    ];
+  };
+
   system.primaryUser = config.host.details.user;
   # the account is made by macOS, this only tells nix-darwin and home-manager where it is
   users.users.${config.host.details.user} = {
