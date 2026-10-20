@@ -126,5 +126,5 @@ inputs.nixpkgs.lib.nixosSystem {
         system.stateVersion = "25.05"; # Did you read the comment?
       })
     ]
-    ++ (inputs.nixpkgs.lib.optional (inputs ? nix-secrets) "${toString inputs.nix-secrets}/nix/hosts/boehm.nix");
+    ++ (inputs.nixpkgs.lib.optional (inputs ? nix-secrets) "${toString inputs.nix-secrets}/nix/hosts/harmatan.nix");
 }
