@@ -17,20 +17,22 @@
     git.enable = lib.mkDefault true;
   };
 
-  home.packages = with pkgs; [
-    sshfs
-    just
-    dua
-    duf
-    fd
-    sd
-    trippy
-    file
-    ripgrep
-    curl
-    rsync
-    jaq
-  ];
+  home.packages = with pkgs;
+    [
+      just
+      dua
+      duf
+      fd
+      sd
+      trippy
+      file
+      ripgrep
+      curl
+      rsync
+      jaq
+    ]
+    # needs macFUSE on darwin, which nix cant install.
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [sshfs];
 
   wrappers.neovim.enable = true;
   wrappers.neovim.settings.minimal = lib.mkDefault true;
@@ -50,7 +52,7 @@
     "/opt/"
   ];
 
-  home.shellAliases = {
+  home.shellAliases = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     sshmnt = "sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15";
   };
 

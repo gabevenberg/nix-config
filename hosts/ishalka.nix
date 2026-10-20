@@ -56,6 +56,8 @@ inputs.nix-darwin.lib.darwinSystem {
             ../configs/home-manager/secrets.nix
             ../configs/home-manager/senpai-irc.nix
             ../configs/home-manager/kitty.nix
+            ../configs/home-manager/syncthing.nix
+            ../configs/home-manager/aerospace.nix
           ];
 
           sops = lib.mkIf (inputs ? nix-secrets) {

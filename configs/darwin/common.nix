@@ -35,7 +35,7 @@
   programs.zsh.enable = lib.mkDefault true;
 
   system.primaryUser = config.host.details.user;
-  # the account itself is made by macOS, this only tells nix-darwin and home-manager where it lives.
+  # the account is made by macOS, this only tells nix-darwin and home-manager where it is
   users.users.${config.host.details.user} = {
     home = "/Users/${config.host.details.user}";
     description = config.host.details.fullName;
