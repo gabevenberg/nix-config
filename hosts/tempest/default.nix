@@ -23,7 +23,6 @@ inputs.nixpkgs.lib.nixosSystem {
       ../../configs/nixos/secrets.nix
       ../../configs/nixos/tailscale.nix
       ../../configs/nixos/syncthing.nix
-      ../../configs/nixos/i3
       ../../configs/nixos/niri
       ../../configs/nixos/bluetooth.nix
       ../../configs/nixos/ntfy.nix
@@ -92,8 +91,6 @@ inputs.nixpkgs.lib.nixosSystem {
         };
         networking.hostName = "tempest";
         networking.hostId = "d46bca4f";
-
-        services.displayManager.defaultSession = "none+i3";
 
         home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
         home-manager.users.${config.host.details.user} = {

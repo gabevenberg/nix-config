@@ -28,7 +28,7 @@ in {
       (pkgs.writeShellScriptBin "set-wallpaper" ''
         set -euo pipefail
         mkdir -p "$(dirname ${cfg.path})"
-        cp -- "$1" ${cfg.path}
+        cp --reflink=auto -- "$1" ${cfg.path}
         ${cfg.updateCommands}
       '')
     ];

@@ -53,6 +53,6 @@
   };
   imports = [
     ./sound.nix
-    ./greetd/tuigreet.nix
+    ./greetd/regreet.nix
   ];
 }

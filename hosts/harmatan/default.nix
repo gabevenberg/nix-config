@@ -20,7 +20,6 @@ inputs.nixpkgs.lib.nixosSystem {
       ../../configs/nixos/tailscale.nix
       ../../configs/nixos/syncthing.nix
       ../../configs/nixos/touchpad.nix
-      ../../configs/nixos/i3
       ../../configs/nixos/niri
       ../../configs/nixos/bluetooth.nix
       ../../roles/nixos/gaming.nix
@@ -42,7 +41,6 @@ inputs.nixpkgs.lib.nixosSystem {
         networking.hostName = "harmatan";
         networking.hostId = "7a42af26";
 
-        services.displayManager.defaultSession = "none+i3";
         services.xserver.dpi = 210;
         environment.variables = {
           GDK_SCALE = "2";
