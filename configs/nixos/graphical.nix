@@ -11,13 +11,6 @@
     mouse.middleEmulation = false;
     touchpad.middleEmulation = false;
   };
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      animation = "matrix";
-      bigclock = "en";
-    };
-  };
   services.accounts-daemon.enable = true;
   nixpkgs.config.zathura.useMupdf = true;
   programs.dconf.enable = true;
@@ -48,5 +41,6 @@
   };
   imports = [
     ./sound.nix
+    ./greetd/tuigreet.nix
   ];
 }
