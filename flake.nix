@@ -118,6 +118,7 @@
     # nix-darwin configuration entrypoint
     # Available through 'darwin-rebuild --flake .#your-hostname'
     darwinConfigurations = {
+      ishalka = import ./hosts/ishalka.nix {inherit inputs myLib;};
     };
 
     # Standalone home-manager configuration entrypoint
