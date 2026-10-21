@@ -1,4 +1,12 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  noctaliaConfig = "${config.home.homeDirectory}/.cache/noctalia/starship.toml";
+  colour = token: "{{colors.${token}.default.hex}}";
+in {
   programs.starship = {
     enable = true;
     settings = {
@@ -115,4 +123,31 @@
       character.disabled = false;
     };
   };
+
+  user.theme.targets.starship = {
+    template = (pkgs.formats.toml {}).generate "starship-noctalia.toml" (config.programs.starship.settings
+      // {
+        palette = "noctalia";
+        palettes.noctalia = {
+          color_fg0 = colour "on_surface";
+          color_bg1 = colour "surface_variant";
+          color_bg3 = colour "terminal_selection_bg";
+          color_blue = colour "terminal_normal_blue";
+          color_aqua = colour "terminal_normal_cyan";
+          color_green = colour "terminal_normal_green";
+          color_orange = "{{colors.terminal_normal_red.default.hex | rotate_hue 21}}";
+          color_purple = colour "terminal_normal_magenta";
+          color_red = colour "terminal_normal_red";
+          color_yellow = colour "terminal_normal_yellow";
+        };
+      });
+    path = ".cache/noctalia/starship.toml";
+  };
+
+  programs.zsh.initContent = lib.mkIf config.user.theme.noctalia ''
+    [[ -f ${noctaliaConfig} ]] && export STARSHIP_CONFIG=${noctaliaConfig}
+  '';
+  programs.nushell.extraEnv = lib.mkIf config.user.theme.noctalia ''
+    if ("${noctaliaConfig}" | path exists) { $env.STARSHIP_CONFIG = "${noctaliaConfig}" }
+  '';
 }

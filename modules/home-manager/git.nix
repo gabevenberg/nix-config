@@ -96,5 +96,9 @@
         else [];
     };
     programs.lazygit.enable = true;
+    user.theme.targets.lazygit = {
+      template = ./theme/templates/lazygit.yml;
+      path = ".config/lazygit/config.yml";
+    };
   };
 }

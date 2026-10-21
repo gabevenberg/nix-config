@@ -230,7 +230,4 @@ themes {
   }
 }
 
-// Choose the theme that is specified in the themes section.
-// Default: default
-//
-theme "gruvbox-dark"
+// theme is set in default.nix

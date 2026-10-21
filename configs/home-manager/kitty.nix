@@ -12,7 +12,10 @@
     font.name = "Fira Code";
     # font.name = "Monocraft";
     # font.name = "Miracode";
+    # fallback under noctalia's
     themeFile = "gruvbox-dark";
+    # glob, so a missing file is fine
+    extraConfig = "globinclude themes/noctalia.conf";
     settings = {
       # background_opacity = "0.8";
       enable_audio_bell = "no";
@@ -20,5 +23,11 @@
       window_alert_on_bell = "yes";
       bell_on_tab = "🔔";
     };
+  };
+
+  user.theme.targets.kitty = {
+    template = "${pkgs.noctalia}/share/noctalia/assets/templates/kitty/kitty.conf";
+    # auto_reload_config picks it up
+    path = ".config/kitty/themes/noctalia.conf";
   };
 }

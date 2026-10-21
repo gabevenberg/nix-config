@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.yazi = {
     extraPackages = with pkgs; [
       ffmpeg
@@ -14,6 +19,20 @@
       resvg
     ];
     enable = true;
+    theme.flavor = lib.mkIf config.user.theme.noctalia {
+      dark = "noctalia";
+      light = "noctalia";
+    };
+  };
+  user.theme.targets = {
+    yazi = {
+      template = ../../modules/home-manager/theme/templates/yazi.toml;
+      path = ".config/yazi/flavors/noctalia.yazi/flavor.toml";
+    };
+    yazi-syntax = {
+      template = ../../modules/home-manager/theme/templates/syntax.tmTheme;
+      path = ".config/yazi/flavors/noctalia.yazi/tmtheme.xml";
+    };
   };
   # optional dependencies for yazi.
   programs = {

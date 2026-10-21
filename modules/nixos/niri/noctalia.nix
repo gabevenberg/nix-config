@@ -1,9 +1,12 @@
 {
   config,
+  inputs,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.host.niri;
+  steam = config.programs.steam.enable;
 in {
   config = lib.mkIf (cfg.enable && cfg.shell == "noctalia") {
     # noctalia has its own OSD and locks before suspend
@@ -21,11 +24,31 @@ in {
       stopCommand = lib.mkDefault "noctalia msg media stop";
     };
 
+    # firefox needs the pywalfox add-on for noctalia's colours.
+    programs.firefox.nativeMessagingHosts.packages = [
+      (pkgs.writeTextDir "lib/mozilla/native-messaging-hosts/pywalfox.json" (builtins.toJSON {
+        name = "pywalfox";
+        # noctalia checks this
+        description = "Noctalia Firefox theme native messaging host";
+        path = lib.getExe' pkgs.noctalia "noctalia";
+        type = "stdio";
+        allowed_extensions = ["pywalfox@frewacom.org"];
+      }))
+    ];
+
+    # loads steam themes; Material-Theme reads noctalia's colours
+    nixpkgs.overlays = lib.mkIf steam [inputs.millennium.overlays.default];
+    programs.steam.package = lib.mkIf steam pkgs.millennium-steam;
+
     # what the nixos programs.noctalia module sets
     xdg.sounds.enable = true;
     services.upower.enable = true;
 
-    home-manager.users.${config.host.details.user} = {config, ...}: {
+    home-manager.users.${config.host.details.user} = {
+      config,
+      pkgs,
+      ...
+    }: {
       # a unit would start under i3 too
       programs.noctalia = {
         enable = true;
@@ -82,8 +105,19 @@ in {
             source = "builtin";
             builtin = "Gruvbox";
             mode = "dark";
-            # writes the palette to niri/noctalia.kdl
-            templates.builtin_ids = ["niri"];
+            # their setup scripts edit home-manager's files
+            templates = {
+              enable_builtin_templates = false;
+              enable_community_templates = false;
+              user = lib.mapAttrs (_: target:
+                {
+                  input_path = "${target.template}";
+                  output_path = "~/${target.path}";
+                }
+                // lib.optionalAttrs (target.reload != null) {post_hook = target.reload;}
+                // lib.optionalAttrs (target.postAction != null) {post_action = target.postAction;})
+              config.user.theme.targets;
+            };
           };
           wallpaper = {
             directory = "${config.home.homeDirectory}/Pictures/wallpapers";
@@ -93,11 +127,31 @@ in {
       };
       # noctalia is the notification daemon
       services.dunst.enable = false;
+      user.theme = {
+        noctalia = true;
+        targets = {
+          niri = {
+            template = "${pkgs.noctalia}/share/noctalia/assets/templates/niri/niri.kdl";
+            path = ".config/niri/noctalia.kdl";
+          };
+          pywalfox = {
+            template = ../../home-manager/theme/templates/pywalfox.json;
+            path = ".cache/wal/colors.json";
+            postAction = "firefox-theme";
+          };
+          # millennium can delete this on a theme update
+          steam = lib.mkIf steam {
+            template = ../../home-manager/theme/templates/steam.css;
+            path = ".steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css";
+          };
+        };
+      };
       user.wallpaper = {
         enable = true;
         updateCommands = ''
           if [ -n "''${NIRI_SOCKET:-}" ]; then
-            noctalia msg wallpaper-set ${config.user.wallpaper.path}
+            # the original, since noctalia ignores a path it already has
+            noctalia msg wallpaper-set "$(realpath -- "$1")"
             noctalia msg greeter-sync
           fi
         '';

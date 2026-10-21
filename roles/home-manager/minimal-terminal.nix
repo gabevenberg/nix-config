@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -31,7 +32,6 @@
       rsync
       jaq
     ]
-    # needs macFUSE on darwin, which nix cant install.
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [sshfs];
 
   wrappers.neovim.enable = true;
@@ -41,6 +41,12 @@
     PIPENV_VENV_IN_PROJECT = 1;
     POETRY_VIRTUALENVS_IN_PROJECT = 1;
     UV_PYTHON_PREFERENCE = "managed";
+  };
+
+  user.theme.targets.bat = {
+    template = ../../modules/home-manager/theme/templates/syntax.tmTheme;
+    path = ".config/bat/themes/noctalia.tmTheme";
+    reload = "bat cache --build";
   };
 
   home.sessionVariables.EDITOR = lib.mkDefault "nvim";
@@ -65,7 +71,13 @@
       icons = "auto";
     };
     ripgrep.enable = true;
-    bat.enable = true;
+    bat = {
+      enable = true;
+      config.theme =
+        if config.user.theme.noctalia
+        then "noctalia"
+        else "gruvbox-dark";
+    };
     man.enable = true;
   };
 }
