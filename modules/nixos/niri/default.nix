@@ -289,29 +289,6 @@ in {
               "Mod+Shift+U".move-workspace-down = {};
               "Mod+Shift+I".move-workspace-up = {};
 
-              # ctrl+c in the selection ui skips saving to disk
-              "Mod+S" = {
-                _props.hotkey-overlay-title = "Screenshot Screen to Clipboard";
-                screenshot-screen._props.write-to-disk = false;
-              };
-              "Mod+Shift+S" = {
-                _props.hotkey-overlay-title = "Screenshot Window to Clipboard";
-                screenshot-window._props.write-to-disk = false;
-              };
-              "Mod+Ctrl+S" = {
-                _props.hotkey-overlay-title = "Screenshot Selection (Ctrl+C in it skips disk)";
-                screenshot = {};
-              };
-              "Mod+Alt+S" = {
-                _props.hotkey-overlay-title = "Screenshot Screen to Clipboard and Disk";
-                screenshot-screen = {};
-              };
-              "Mod+Alt+Shift+S" = {
-                _props.hotkey-overlay-title = "Screenshot Window to Clipboard and Disk";
-                screenshot-window = {};
-              };
-              "Mod+Alt+Ctrl+S".screenshot = {};
-
               "Mod+Ctrl+Equal" = {
                 _props = {
                   allow-when-locked = true;

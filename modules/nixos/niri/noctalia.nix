@@ -30,11 +30,65 @@ in {
       programs.noctalia = {
         enable = true;
         # the gui overrides these in settings.toml
-        settings.theme = {
-          source = "builtin";
-          builtin = "Gruvbox";
-          # writes the palette to niri/noctalia.kdl
-          templates.builtin_ids = ["niri"];
+        settings = {
+          bar.default.end = [
+            "media"
+            "tray"
+            "notifications"
+            "clipboard"
+            "network"
+            "bluetooth"
+            "volume"
+            "brightness"
+            "battery"
+            "caffeine"
+            "control-center"
+            "session"
+          ];
+          control_center.shortcuts = map (type: {inherit type;}) [
+            "wifi"
+            "bluetooth"
+            "caffeine"
+            "notification"
+            "power_profile"
+            "mic_mute"
+          ];
+          location.auto_locate = true;
+          notification.history_retention_hours = 1;
+          shell = {
+            font_family = "Fira Code";
+            niri_overview_type_to_launch_enabled = true;
+            greeter_sync.auto_sync = true;
+            launcher = {
+              app_grid = true;
+              categories = false;
+              compact = true;
+              layout = "simple";
+              show_app_actions = true;
+              providers.emoji.global = false;
+            };
+            panel.launcher_placement = "attached";
+            screenshot = {
+              directory = "${config.home.homeDirectory}/Pictures/Screenshots";
+              confirm_region = true;
+            };
+            window_switcher = {
+              style = "compact";
+              # mru = most recently used
+              mru = true;
+            };
+          };
+          theme = {
+            source = "builtin";
+            builtin = "Gruvbox";
+            mode = "dark";
+            # writes the palette to niri/noctalia.kdl
+            templates.builtin_ids = ["niri"];
+          };
+          wallpaper = {
+            directory = "${config.home.homeDirectory}/Pictures/wallpapers";
+            transition_on_startup = true;
+          };
         };
       };
       # noctalia is the notification daemon
@@ -61,6 +115,22 @@ in {
         "Mod+Shift+X" = {
           _props.hotkey-overlay-title = "Open the Session Menu";
           spawn = ["noctalia" "msg" "panel-toggle" "session"];
+        };
+        "Alt+Tab" = {
+          _props.hotkey-overlay-title = "Switch Windows";
+          spawn = ["noctalia" "msg" "window-switcher" "hold"];
+        };
+        "Mod+S" = {
+          _props.hotkey-overlay-title = "Screenshot Screen";
+          spawn = ["noctalia" "msg" "screenshot-fullscreen"];
+        };
+        "Mod+Ctrl+S" = {
+          _props.hotkey-overlay-title = "Screenshot Selection";
+          spawn = ["noctalia" "msg" "screenshot-region"];
+        };
+        "Mod+Shift+S" = {
+          _props.hotkey-overlay-title = "Annotate the Screen";
+          spawn = ["noctalia" "msg" "screenshot-annotate"];
         };
       };
     };
