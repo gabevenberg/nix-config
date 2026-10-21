@@ -90,6 +90,7 @@ inputs.nixpkgs.lib.nixosSystem {
           gui.enable = true;
         };
         host.niri.enable = true;
+        host.niri.shell = "noctalia";
         networking.hostName = "tempest";
         networking.hostId = "d46bca4f";
 

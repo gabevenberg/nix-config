@@ -76,6 +76,16 @@ in {
           name = "phinger-cursors-dark";
         };
       };
+      # so it finds the sessions, the nixpkgs module doesn't
+      services.greetd.settings.default_session.command = let
+        greeter = config.services.displayManager.noctalia-greeter;
+      in
+        lib.escapeShellArgs ([
+            (lib.getExe' pkgs.coreutils "env")
+            "XDG_DATA_DIRS=${config.services.displayManager.sessionData.desktops}/share"
+            (lib.getExe' greeter.package "noctalia-greeter-session")
+          ]
+          ++ greeter.extraArgs);
     })
     (lib.mkIf (cfg == "ly") {
       services.displayManager.ly = {

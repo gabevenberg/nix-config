@@ -40,7 +40,7 @@ in {
     user = "jellyfin";
     group = "jellyfin";
     openFirewall = false;
-    listenPort = 6767;
+    settings.general.port = 6767;
   };
   services.seerr = {
     enable = true;

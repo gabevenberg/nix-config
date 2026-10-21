@@ -29,7 +29,7 @@
       style.name = "adwaita-dark";
     };
     home.pointerCursor = {
-      enable=true;
+      enable = true;
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-dark";
       size = 24;

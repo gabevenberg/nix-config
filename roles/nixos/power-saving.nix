@@ -1,5 +1,11 @@
-{...}: {
-  powerManagement.powertop.enable = true;
+{
+  config,
+  lib,
+  ...
+}: let
+  enable = !config.services.power-profiles-daemon.enable;
+in {
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.powertop.enable = enable;
+  powerManagement.cpuFreqGovernor = lib.mkIf enable "ondemand";
 }

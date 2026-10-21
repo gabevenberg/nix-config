@@ -31,6 +31,18 @@ in {
       type = lib.types.listOf lib.types.str;
       description = "screen locker, as an argv list";
     };
+    focusRing = {
+      activeColor = lib.mkOption {
+        type = lib.types.str;
+        default = "#458588";
+        description = "focus ring colour of the focused window";
+      };
+      inactiveColor = lib.mkOption {
+        type = lib.types.str;
+        default = "#504945";
+        description = "focus ring colour of unfocused windows";
+      };
+    };
     notifyCommand = lib.mkOption {
       type = lib.types.str;
       default = "${pkgs.libnotify}/bin/notify-send";
@@ -58,6 +70,8 @@ in {
       enable = true;
       useNautilus = false;
     };
+    # noctalia's power widget uses it, and so does powerprofilesctl
+    services.power-profiles-daemon.enable = lib.mkDefault config.host.details.isLaptop;
 
     xdg.portal = {
       extraPortals = [pkgs.xdg-desktop-portal-termfilechooser];
@@ -106,11 +120,10 @@ in {
               {proportion = 0.66667;}
             ];
             default-column-width.proportion = 0.5;
-            # gruvbox, to match the vanilla shell's waybar
             focus-ring = {
               width = 2;
-              active-color = "#458588";
-              inactive-color = "#504945";
+              active-color = cfg.focusRing.activeColor;
+              inactive-color = cfg.focusRing.inactiveColor;
             };
           };
           cursor = {
@@ -425,6 +438,7 @@ in {
   };
 
   imports = [
+    ./noctalia.nix
     ./vanilla.nix
   ];
 }
