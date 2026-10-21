@@ -23,7 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
       ../../configs/nixos/secrets.nix
       ../../configs/nixos/tailscale.nix
       ../../configs/nixos/syncthing.nix
-      ../../configs/nixos/niri
+      ../../configs/nixos/graphical.nix
       ../../configs/nixos/bluetooth.nix
       ../../configs/nixos/ntfy.nix
       ../../roles/nixos/gaming.nix
@@ -50,7 +50,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
           jaq="${lib.getExe pkgs.jaq}"
 
-          notify() { ${pkgs.dunst}/bin/dunstify --app-name "switch-audio-out" --stack-tag audio-route "$@" || true; }
+          notify() { ${pkgs.libnotify}/bin/notify-send -a "switch-audio-out" -h string:x-canonical-private-synchronous:audio-route "$@" || true; }
           die() { notify -u critical -i dialog-error "Audio switch failed" "$1"; echo "$1" >&2; exit 1; }
 
           dump="$(${pkgs.pipewire}/bin/pw-dump)"
@@ -89,6 +89,7 @@ inputs.nixpkgs.lib.nixosSystem {
           fullName = "Gabe Venberg";
           gui.enable = true;
         };
+        host.niri.enable = true;
         networking.hostName = "tempest";
         networking.hostId = "d46bca4f";
 

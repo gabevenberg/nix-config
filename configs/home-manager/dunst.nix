@@ -1,6 +1,6 @@
-{...}: {
+{lib, ...}: {
   services = {
-    dunst.enable = true;
+    dunst.enable = lib.mkDefault true;
     dunst.settings = {
       global = {
         font = "Fira Code";

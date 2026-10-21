@@ -20,7 +20,7 @@ inputs.nixpkgs.lib.nixosSystem {
       ../../configs/nixos/tailscale.nix
       ../../configs/nixos/syncthing.nix
       ../../configs/nixos/touchpad.nix
-      ../../configs/nixos/niri
+      ../../configs/nixos/graphical.nix
       ../../configs/nixos/bluetooth.nix
       ../../roles/nixos/gaming.nix
       ../../roles/nixos/power-saving.nix
@@ -38,6 +38,7 @@ inputs.nixpkgs.lib.nixosSystem {
           gui.enable = true;
           isLaptop = true;
         };
+        host.niri.enable = true;
         networking.hostName = "harmatan";
         networking.hostId = "7a42af26";
 

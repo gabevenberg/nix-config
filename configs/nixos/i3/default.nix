@@ -1,8 +1,10 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
+  host.greeter = lib.mkDefault "ly";
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
@@ -33,6 +35,7 @@
     xdg.configFile."none+i3-mimeapps.list".source = config.xdg.configFile."mimeapps.list".source;
     xsession.windowManager.i3 = let
       mod = "Mod4";
+      notify = "${pkgs.libnotify}/bin/notify-send";
 
       ws1 = "1";
       ws2 = "2";
@@ -132,49 +135,49 @@
 
           # disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+b
           "${mod}+b" = ''
-            exec --no-startup-id "xset s off -dpms; dunstify --expire-time=500 'screen blanking off'"
+            exec --no-startup-id "xset s off -dpms; ${notify} -t 500 'screen blanking off'"
           '';
           "${mod}+shift+b" = ''
-            exec --no-startup-id "xset +dpms; dunstify --expire-time=500 'screen blanking on'"
+            exec --no-startup-id "xset +dpms; ${notify} -t 500 'screen blanking on'"
           '';
           # change brightness
           "${mod}+control+plus" = ''
-            exec --no-startup-id "brightnessctl s +1%; dunstify --stack-tag brightness --expire-time=500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
+            exec --no-startup-id "brightnessctl s +1%; ${notify} -h string:x-canonical-private-synchronous:brightness -t 500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
           '';
           "${mod}+control+minus" = ''
-            exec --no-startup-id "brightnessctl s 1%-; dunstify --stack-tag brightness --expire-time=500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
+            exec --no-startup-id "brightnessctl s 1%-; ${notify} -h string:x-canonical-private-synchronous:brightness -t 500 Brightness\ $(brightnessctl -m | cut --delimiter=, -f 4)"
           '';
 
           #screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
           "${mod}+s" = ''
-            exec --no-startup-id "maim ~/Pictures/$(date +%s).png; dunstify --expire-time=1000 'Whole-desktop screenshot taken'"
+            exec --no-startup-id "maim ~/Pictures/$(date +%s).png; ${notify} -t 1000 'Whole-desktop screenshot taken'"
           '';
           "${mod}+shift+s" = ''
-            exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; dunstify --expire-time=1000 'Window screenshot taken'"
+            exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; ${notify} -t 1000 'Window screenshot taken'"
           '';
           "${mod}+ctrl+s" = ''
-            exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; dunstify --expire-time=1000 'Selection screenshot taken'"
+            exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; ${notify} -t 1000 'Selection screenshot taken'"
           '';
 
           #screenshot everything with mod+c, current window with mod+shift+c, selection with mod+ctrl+c (to clipboard)
           "${mod}+c" = ''
-            exec --no-startup-id "maim | xclip -selection clipboard -t image/png; dunstify --expire-time=1000 'Whole-desktop screenshot taken to clipboard'"
+            exec --no-startup-id "maim | xclip -selection clipboard -t image/png; ${notify} -t 1000 'Whole-desktop screenshot taken to clipboard'"
           '';
           "${mod}+shift+c" = ''
-            exec --no-startup-id "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png; dunstify --expire-time=1000 'Window screenshot taken to clipboard'"
+            exec --no-startup-id "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png; ${notify} -t 1000 'Window screenshot taken to clipboard'"
           '';
           "${mod}+ctrl+c" = ''
-            exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; dunstify --expire-time=1000 'Selection screenshot taken to clipboard'"
+            exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; ${notify} -t 1000 'Selection screenshot taken to clipboard'"
           '';
 
           "${mod}+mod1+p" = ''
-            exec --no-startup-id "playerctl play-pause; dunstify --stack-tag playerstatus --expire-time=500 Player $(playerctl status)"
+            exec --no-startup-id "playerctl play-pause; ${notify} -h string:x-canonical-private-synchronous:playerstatus -t 500 Player $(playerctl status)"
           '';
           "${mod}+mod1+plus" = ''
-            exec --no-startup-id "playerctl volume 0.01+; dunstify --stack-tag volume --expire-time=500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
+            exec --no-startup-id "playerctl volume 0.01+; ${notify} -h string:x-canonical-private-synchronous:volume -t 500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
           '';
           "${mod}+mod1+minus" = ''
-            exec --no-startup-id "playerctl volume 0.01-; dunstify --stack-tag volume --expire-time=500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
+            exec --no-startup-id "playerctl volume 0.01-; ${notify} -h string:x-canonical-private-synchronous:volume -t 500 -h int:value:$(playerctl volume | cut -d' ' -f2 | awk '{print $1*100}' ) Player"
           '';
 
           #open volume control
@@ -182,10 +185,10 @@
 
           #volume control
           "${mod}+plus" = ''
-            exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; dunstify --expire-time=1000 --stack-tag volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2 | awk '{print $1*100}' ) Volume"
+            exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; ${notify} -t 1000 -h string:x-canonical-private-synchronous:volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2 | awk '{print $1*100}' ) Volume"
           '';
           "${mod}+minus" = ''
-            exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; dunstify --expire-time=1000 --stack-tag volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2 | awk '{print $1*100}' ) Volume"
+            exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; ${notify} -t 1000 -h string:x-canonical-private-synchronous:volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2 | awk '{print $1*100}' ) Volume"
           '';
 
           #open firefox
