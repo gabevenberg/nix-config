@@ -141,6 +141,7 @@ in {
               tap = {};
               natural-scroll = {};
             };
+            focus-follows-mouse._props.max-scroll-amount = "0%";
           };
           layout = {
             gaps = 16;
