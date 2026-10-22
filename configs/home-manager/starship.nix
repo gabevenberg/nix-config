@@ -135,7 +135,7 @@ in {
           color_blue = colour "terminal_normal_blue";
           color_aqua = colour "terminal_normal_cyan";
           color_green = colour "terminal_normal_green";
-          color_orange = "{{colors.terminal_normal_red.default.hex | rotate_hue 21}}";
+          color_orange = "{{colors.terminal_normal_red.default.hex | rotate_hue 20}}";
           color_purple = colour "terminal_normal_magenta";
           color_red = colour "terminal_normal_red";
           color_yellow = colour "terminal_normal_yellow";

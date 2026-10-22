@@ -1,0 +1,18 @@
+return {
+  base00 = "{{colors.surface.default.hex}}",
+  base01 = "{{colors.surface_container.default.hex}}",
+  base02 = "{{colors.surface_container_high.default.hex}}",
+  base03 = "{{colors.outline.default.hex}}",
+  base04 = "{{colors.on_surface_variant.default.hex}}",
+  base05 = "{{colors.on_surface.default.hex}}",
+  base06 = "{{colors.on_surface.default.hex}}",
+  base07 = "{{colors.on_background.default.hex}}",
+  base08 = "{{colors.terminal_bright_red.default.hex}}",
+  base09 = "{{colors.terminal_bright_red.default.hex | rotate_hue 20}}",
+  base0A = "{{colors.terminal_bright_yellow.default.hex}}",
+  base0B = "{{colors.terminal_bright_green.default.hex}}",
+  base0C = "{{colors.terminal_bright_cyan.default.hex}}",
+  base0D = "{{colors.terminal_bright_blue.default.hex}}",
+  base0E = "{{colors.terminal_bright_magenta.default.hex}}",
+  base0F = "{{colors.error_container.default.hex}}",
+}

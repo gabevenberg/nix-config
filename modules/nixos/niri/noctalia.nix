@@ -127,12 +127,18 @@ in {
       };
       # noctalia is the notification daemon
       services.dunst.enable = false;
+      wrappers.neovim.settings.colorscheme = "noctalia";
       user.theme = {
         noctalia = true;
         targets = {
           niri = {
             template = "${pkgs.noctalia}/share/noctalia/assets/templates/niri/niri.kdl";
             path = ".config/niri/noctalia.kdl";
+          };
+          nvim = {
+            template = ../../home-manager/theme/templates/nvim.lua;
+            path = ".cache/noctalia/nvim.lua";
+            reload = "pkill -USR1 -x nvim || true";
           };
           pywalfox = {
             template = ../../home-manager/theme/templates/pywalfox.json;
