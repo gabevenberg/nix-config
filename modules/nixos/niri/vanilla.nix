@@ -9,6 +9,7 @@
   notifyVolume = "${cfg.notifyCommand} -t 1000 -h string:x-canonical-private-synchronous:volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') Volume";
   notifyBrightness = "${cfg.notifyCommand} -h string:x-canonical-private-synchronous:brightness -t 500 Brightness\\ $(brightnessctl -m | cut -d, -f4)";
   notifyPlayer = "${cfg.notifyCommand} -h string:x-canonical-private-synchronous:playerstatus -t 500 Player $(playerctl status)";
+  notifyPlayerVolume = "${cfg.notifyCommand} -h string:x-canonical-private-synchronous:volume -t 500 -h int:value:$(playerctl volume | awk '{print $1*100}') Player";
 in {
   config = lib.mkIf (cfg.enable && cfg.shell == "vanilla") {
     host.niri = {
@@ -27,6 +28,8 @@ in {
       brightnessDownCommand = lib.mkDefault "brightnessctl s 1%-; ${notifyBrightness}";
       playPauseCommand = lib.mkDefault "playerctl play-pause; ${notifyPlayer}";
       stopCommand = lib.mkDefault "playerctl stop; ${notifyPlayer}";
+      playerVolumeUpCommand = lib.mkDefault "playerctl volume 0.01+; ${notifyPlayerVolume}";
+      playerVolumeDownCommand = lib.mkDefault "playerctl volume 0.01-; ${notifyPlayerVolume}";
     };
 
     # only the sway module sets this up

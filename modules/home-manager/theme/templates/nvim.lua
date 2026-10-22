@@ -14,5 +14,5 @@ return {
   base0C = "{{colors.terminal_bright_cyan.default.hex}}",
   base0D = "{{colors.terminal_bright_blue.default.hex}}",
   base0E = "{{colors.terminal_bright_magenta.default.hex}}",
-  base0F = "{{colors.error_container.default.hex}}",
+  base0F = "{{colors.terminal_normal_red.default.hex | rotate_hue 20}}",
 }

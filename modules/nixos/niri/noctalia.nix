@@ -22,6 +22,8 @@ in {
       brightnessDownCommand = lib.mkDefault "noctalia msg brightness-down";
       playPauseCommand = lib.mkDefault "noctalia msg media toggle";
       stopCommand = lib.mkDefault "noctalia msg media stop";
+      playerVolumeUpCommand = lib.mkDefault "playerctl volume 0.01+";
+      playerVolumeDownCommand = lib.mkDefault "playerctl volume 0.01-";
     };
 
     # firefox needs the pywalfox add-on for noctalia's colours.

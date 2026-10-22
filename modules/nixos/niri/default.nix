@@ -10,6 +10,37 @@
       type = lib.types.str;
       inherit description;
     };
+
+  directionKeys = {
+    left = {
+      letter = "H";
+      arrow = "Left";
+    };
+    down = {
+      letter = "J";
+      arrow = "Down";
+    };
+    up = {
+      letter = "K";
+      arrow = "Up";
+    };
+    right = {
+      letter = "L";
+      arrow = "Right";
+    };
+  };
+  # a title keeps it in the overlay even when niri does not count it as important
+  titled = action: title: {
+    _props.hotkey-overlay-title = title;
+    ${action} = {};
+  };
+  # binds each direction to both its letter and its arrow, listing only the letter
+  directional = mods: binds:
+    lib.concatMapAttrs (direction: bind: {
+      "${mods}+${directionKeys.${direction}.letter}" = bind;
+      "${mods}+${directionKeys.${direction}.arrow}" = bind // {_props.hotkey-overlay-title = null;};
+    })
+    binds;
 in {
   options.host.niri = {
     enable = lib.mkEnableOption "niri";
@@ -58,6 +89,8 @@ in {
     brightnessDownCommand = command "lower the screen brightness";
     playPauseCommand = command "toggle media playback";
     stopCommand = command "stop media playback";
+    playerVolumeUpCommand = command "raise the media player volume";
+    playerVolumeDownCommand = command "lower the media player volume";
   };
 
   config = lib.mkIf cfg.enable {
@@ -82,9 +115,7 @@ in {
       config,
       osConfig,
       ...
-    }: let
-      playerVolume = "${cfg.notifyCommand} -h string:x-canonical-private-synchronous:volume -t 500 -h int:value:$(playerctl volume | awk '{print $1*100}') Player";
-    in {
+    }: {
       home.packages = with pkgs; [
         wl-clipboard
         wireplumber
@@ -130,6 +161,8 @@ in {
             xcursor-theme = config.home.pointerCursor.name;
             xcursor-size = config.home.pointerCursor.size;
           };
+          # only list binds that exist
+          hotkey-overlay.hide-not-bound = {};
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
           _children =
             map (argv: {spawn-at-startup = argv;}) cfg.startup
@@ -159,7 +192,7 @@ in {
                 _props.hotkey-overlay-title = "Run an Application: ${lib.head cfg.launcherCommand}";
                 spawn = cfg.launcherCommand;
               };
-              "Super+Alt+L" = {
+              "Mod+Alt+L" = {
                 _props.hotkey-overlay-title = null;
                 spawn = cfg.lockCommand;
               };
@@ -194,10 +227,7 @@ in {
                 _props.hotkey-overlay-title = "Open Firefox";
                 spawn = ["firefox"];
               };
-              "Mod+Shift+W" = {
-                _props.hotkey-overlay-title = "Toggle Tabbed Column";
-                toggle-column-tabbed-display = {};
-              };
+              "Mod+Shift+W" = titled "toggle-column-tabbed-display" "Toggle Tabbed Column";
               "Mod+X" = {
                 _props.hotkey-overlay-title = "Lock the Screen: ${lib.head cfg.lockCommand}";
                 spawn = cfg.lockCommand;
@@ -207,61 +237,15 @@ in {
                 spawn = ["pwvucontrol"];
               };
 
-              "Mod+A" = {
-                _props.hotkey-overlay-title = "Focus First Column";
-                focus-column-first = {};
-              };
-              "Mod+E" = {
-                _props.hotkey-overlay-title = "Focus Last Column";
-                focus-column-last = {};
-              };
-              "Mod+Ctrl+A" = {
-                _props.hotkey-overlay-title = "Move Column to First";
-                move-column-to-first = {};
-              };
-              "Mod+Ctrl+E" = {
-                _props.hotkey-overlay-title = "Move Column to Last";
-                move-column-to-last = {};
-              };
-              # step past the edge of the column or workspace instead of stopping
-              "Mod+H".focus-column-or-monitor-left = {};
-              "Mod+J".focus-window-or-workspace-down = {};
-              "Mod+K".focus-window-or-workspace-up = {};
-              "Mod+L".focus-column-or-monitor-right = {};
-              "Mod+Ctrl+H".move-column-left-or-to-monitor-left = {};
-              "Mod+Ctrl+J".move-window-down-or-to-workspace-down = {};
-              "Mod+Ctrl+K".move-window-up-or-to-workspace-up = {};
-              "Mod+Ctrl+L".move-column-right-or-to-monitor-right = {};
-              "Mod+Left".focus-column-or-monitor-left = {};
-              "Mod+Down".focus-window-or-workspace-down = {};
-              "Mod+Up".focus-window-or-workspace-up = {};
-              "Mod+Right".focus-column-or-monitor-right = {};
-              "Mod+Ctrl+Left".move-column-left-or-to-monitor-left = {};
-              "Mod+Ctrl+Down".move-window-down-or-to-workspace-down = {};
-              "Mod+Ctrl+Up".move-window-up-or-to-workspace-up = {};
-              "Mod+Ctrl+Right".move-column-right-or-to-monitor-right = {};
+              "Mod+A" = titled "focus-column-first" "Focus First Column";
+              "Mod+E" = titled "focus-column-last" "Focus Last Column";
+              "Mod+Ctrl+A" = titled "move-column-to-first" "Move Column to First";
+              "Mod+Ctrl+E" = titled "move-column-to-last" "Move Column to Last";
 
-              "Mod+Shift+Left".focus-monitor-left = {};
-              "Mod+Shift+Down".focus-monitor-down = {};
-              "Mod+Shift+Up".focus-monitor-up = {};
-              "Mod+Shift+Right".focus-monitor-right = {};
-              "Mod+Shift+H".focus-monitor-left = {};
-              "Mod+Shift+J".focus-monitor-down = {};
-              "Mod+Shift+K".focus-monitor-up = {};
-              "Mod+Shift+L".focus-monitor-right = {};
-              "Mod+Shift+Ctrl+Left".move-column-to-monitor-left = {};
-              "Mod+Shift+Ctrl+Down".move-column-to-monitor-down = {};
-              "Mod+Shift+Ctrl+Up".move-column-to-monitor-up = {};
-              "Mod+Shift+Ctrl+Right".move-column-to-monitor-right = {};
-              "Mod+Shift+Ctrl+H".move-column-to-monitor-left = {};
-              "Mod+Shift+Ctrl+J".move-column-to-monitor-down = {};
-              "Mod+Shift+Ctrl+K".move-column-to-monitor-up = {};
-              "Mod+Shift+Ctrl+L".move-column-to-monitor-right = {};
-
-              "Mod+BracketLeft".consume-or-expel-window-left = {};
-              "Mod+BracketRight".consume-or-expel-window-right = {};
-              "Mod+Comma".consume-window-into-column = {};
-              "Mod+Period".expel-window-from-column = {};
+              "Mod+BracketLeft" = titled "consume-or-expel-window-left" "Consume or Expel Window Left";
+              "Mod+BracketRight" = titled "consume-or-expel-window-right" "Consume or Expel Window Right";
+              "Mod+Comma" = titled "consume-window-into-column" "Consume Window into Column";
+              "Mod+Period" = titled "expel-window-from-column" "Expel Window from Column";
 
               "Mod+R".switch-preset-column-width = {};
               "Mod+Shift+R".switch-preset-column-width-back = {};
@@ -282,12 +266,10 @@ in {
               "Mod+V".toggle-window-floating = {};
               "Mod+Shift+V".switch-focus-between-floating-and-tiling = {};
 
-              "Mod+U".focus-workspace-down = {};
-              "Mod+I".focus-workspace-up = {};
-              "Mod+Ctrl+U".move-column-to-workspace-down = {};
-              "Mod+Ctrl+I".move-column-to-workspace-up = {};
-              "Mod+Shift+U".move-workspace-down = {};
-              "Mod+Shift+I".move-workspace-up = {};
+              "Mod+U" = titled "focus-workspace-down" "Focus Workspace Down";
+              "Mod+I" = titled "focus-workspace-up" "Focus Workspace Up";
+              "Mod+Ctrl+U" = titled "move-column-to-workspace-down" "Move Column to Workspace Down";
+              "Mod+Ctrl+I" = titled "move-column-to-workspace-up" "Move Column to Workspace Up";
 
               "Mod+Ctrl+Equal" = {
                 _props = {
@@ -317,11 +299,11 @@ in {
               };
               "Mod+Alt+Equal" = {
                 _props.hotkey-overlay-title = "Player Volume Up";
-                spawn-sh = "playerctl volume 0.01+; ${playerVolume}";
+                spawn-sh = cfg.playerVolumeUpCommand;
               };
               "Mod+Alt+Minus" = {
                 _props.hotkey-overlay-title = "Player Volume Down";
-                spawn-sh = "playerctl volume 0.01-; ${playerVolume}";
+                spawn-sh = cfg.playerVolumeDownCommand;
               };
 
               # the Mod binds above already list these in the overlay
@@ -395,6 +377,38 @@ in {
                 };
                 spawn-sh = cfg.brightnessDownCommand;
               };
+            }
+            # step past the edge of the column or workspace instead of stopping
+            // directional "Mod" {
+              left = titled "focus-column-or-monitor-left" "Focus Column or Monitor Left";
+              down = titled "focus-window-or-workspace-down" "Focus Window or Workspace Down";
+              up = titled "focus-window-or-workspace-up" "Focus Window or Workspace Up";
+              right = titled "focus-column-or-monitor-right" "Focus Column or Monitor Right";
+            }
+            // directional "Mod+Ctrl" {
+              left = titled "move-column-left-or-to-monitor-left" "Move Column Left or to Monitor Left";
+              down = titled "move-window-down-or-to-workspace-down" "Move Window Down or to Workspace Down";
+              up = titled "move-window-up-or-to-workspace-up" "Move Window Up or to Workspace Up";
+              right = titled "move-column-right-or-to-monitor-right" "Move Column Right or to Monitor Right";
+            }
+            // directional "Mod+Shift" {
+              left = titled "focus-monitor-left" "Focus Monitor Left";
+              down = titled "focus-monitor-down" "Focus Monitor Down";
+              up = titled "focus-monitor-up" "Focus Monitor Up";
+              right = titled "focus-monitor-right" "Focus Monitor Right";
+            }
+            // directional "Mod+Shift+Ctrl" {
+              left = titled "move-column-to-monitor-left" "Move Column to Monitor Left";
+              down = titled "move-column-to-monitor-down" "Move Column to Monitor Down";
+              up = titled "move-column-to-monitor-up" "Move Column to Monitor Up";
+              right = titled "move-column-to-monitor-right" "Move Column to Monitor Right";
+            }
+            # monitors only ever sit side by side, so up and down are free to reorder workspaces
+            // directional "Mod+Shift+Alt" {
+              left = titled "move-workspace-to-monitor-left" "Move Workspace to Monitor Left";
+              down = titled "move-workspace-down" "Move Workspace Down";
+              up = titled "move-workspace-up" "Move Workspace Up";
+              right = titled "move-workspace-to-monitor-right" "Move Workspace to Monitor Right";
             }
             // lib.mergeAttrsList (map (n: {
               "Mod+${toString n}".focus-workspace = n;
