@@ -37,8 +37,6 @@ in {
       df = 5;
       u2j = 16;
       ls = "**,*,ln,p,r";
-      xvol = true;
-      xdev = true;
       no-logues = true;
       no-robots = true;
       md-hist = "v";
