@@ -176,9 +176,10 @@ in {
           };
           # only list binds that exist
           hotkey-overlay.hide-not-bound = {};
+          gestures.hot-corners.off = {};
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
           _children =
-            map (argv: {spawn-at-startup = argv;}) cfg.startup
+            map (argv: {spawn-at-startup = argv;}) (cfg.startup ++ [["kanshi"]])
             ++ [
               {
                 window-rule._children = [
@@ -313,15 +314,24 @@ in {
                 spawn-sh = cfg.brightnessDownCommand;
               };
               "Mod+Alt+P" = {
-                _props.hotkey-overlay-title = "Play/Pause";
+                _props = {
+                  allow-when-locked = true;
+                  hotkey-overlay-title = "Play/Pause";
+                };
                 spawn-sh = cfg.playPauseCommand;
               };
               "Mod+Alt+Equal" = {
-                _props.hotkey-overlay-title = "Player Volume Up";
+                _props = {
+                  allow-when-locked = true;
+                  hotkey-overlay-title = "Player Volume Up";
+                };
                 spawn-sh = cfg.playerVolumeUpCommand;
               };
               "Mod+Alt+Minus" = {
-                _props.hotkey-overlay-title = "Player Volume Down";
+                _props = {
+                  allow-when-locked = true;
+                  hotkey-overlay-title = "Player Volume Down";
+                };
                 spawn-sh = cfg.playerVolumeDownCommand;
               };
 
