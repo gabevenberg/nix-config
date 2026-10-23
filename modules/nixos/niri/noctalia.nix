@@ -56,20 +56,29 @@ in {
         enable = true;
         # the gui overrides these in settings.toml
         settings = {
-          bar.default.end = [
-            "media"
-            "tray"
-            "notifications"
-            "clipboard"
-            "network"
-            "bluetooth"
-            "volume"
-            "brightness"
-            "battery"
-            "caffeine"
-            "control-center"
-            "session"
-          ];
+          bar.default = {
+            start = [
+              "launcher"
+              "wallpaper"
+              "control-center"
+              "workspaces"
+            ];
+            center = ["date" "clock"];
+            end = [
+              "media"
+              "tray"
+              "notifications"
+              "clipboard"
+              "network"
+              "bluetooth"
+              "volume"
+              "brightness"
+              "battery"
+              "caffeine"
+              "session"
+            ];
+          };
+          widget.date.format = "{:%a %Y-%m-%d}";
           control_center.shortcuts = map (type: {inherit type;}) [
             "wifi"
             "bluetooth"
@@ -96,6 +105,7 @@ in {
             screenshot = {
               directory = "${config.home.homeDirectory}/Pictures/Screenshots";
               confirm_region = true;
+              save_to_file = false;
             };
             window_switcher = {
               style = "compact";

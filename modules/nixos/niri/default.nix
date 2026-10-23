@@ -111,6 +111,8 @@ in {
       config.niri."org.freedesktop.impl.portal.FileChooser" = lib.mkForce "termfilechooser";
     };
 
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     home-manager.users.${config.host.details.user} = {
       config,
       osConfig,
@@ -132,6 +134,7 @@ in {
         # its binds crowd the hotkey overlay, so the parts worth keeping are ported below
         enableDefaultConfig = false;
         settings = {
+          prefer-no-csd = {};
           input = {
             keyboard = {
               xkb.options = osConfig.services.xserver.xkb.options;
@@ -144,6 +147,15 @@ in {
             focus-follows-mouse._props.max-scroll-amount = "0%";
           };
           layout = {
+            tab-indicator = {
+              hide-when-single-tab = {};
+              place-within-column = {};
+              position = "left";
+              width = 4;
+              gap = 4;
+              gaps-between-tabs = 4;
+              corner-radius = 2;
+            };
             gaps = 16;
             center-focused-column = "never";
             preset-column-widths._children = [
@@ -184,6 +196,12 @@ in {
                   geometry-corner-radius = 6;
                   clip-to-geometry = true;
                 };
+              }
+              {
+                window-rule._children = [
+                  {match._props.app-id = "^kitty$";}
+                  {background-effect.blur = true;}
+                ];
               }
             ];
           binds =
