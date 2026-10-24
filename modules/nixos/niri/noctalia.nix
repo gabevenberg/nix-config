@@ -78,7 +78,14 @@ in {
               "session"
             ];
           };
-          widget.date.format = "{:%a %Y-%m-%d}";
+          widget = {
+            media = {
+              art_size = 32;
+              show_progress = true;
+              title_scroll = "always";
+            };
+            date.format = "{:%a %Y-%m-%d}";
+          };
           control_center.shortcuts = map (type: {inherit type;}) [
             "wifi"
             "bluetooth"
