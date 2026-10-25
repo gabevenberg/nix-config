@@ -39,6 +39,7 @@ inputs.nixpkgs.lib.nixosSystem {
           isLaptop = true;
         };
         host.niri.enable = true;
+        host.niri.shell = "noctalia";
         networking.hostName = "harmatan";
         networking.hostId = "7a42af26";
 
