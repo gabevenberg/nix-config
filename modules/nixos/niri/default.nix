@@ -124,7 +124,6 @@ in {
         playerctl
         brightnessctl
         wdisplays
-        kanshi
       ];
       wayland.windowManager.niri = {
         enable = true;
@@ -179,7 +178,7 @@ in {
           gestures.hot-corners.off = {};
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
           _children =
-            map (argv: {spawn-at-startup = argv;}) (cfg.startup ++ [["kanshi"]])
+            map (argv: {spawn-at-startup = argv;}) cfg.startup
             ++ [
               {
                 window-rule._children = [
