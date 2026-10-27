@@ -52,6 +52,12 @@
     ];
   };
 
+  # tap to click, for the trackpad and the login window
+  system.defaults = {
+    trackpad.Clicking = true;
+    NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+  };
+
   security.pam.services.sudo_local = {
     touchIdAuth = true;
     # makes touch id work inside tmux/zellij/screen sessions too

@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     fira-code
     monocraft
@@ -17,7 +22,8 @@
     # glob, so a missing file is fine
     extraConfig = "globinclude themes/noctalia.conf";
     settings = {
-      background_opacity = "0.8";
+      # only noctalia's niri blurs whats behind the window
+      background_opacity = lib.mkIf config.user.theme.noctalia "0.8";
       enable_audio_bell = "no";
       visual_bell_duration = "0.5";
       window_alert_on_bell = "yes";
