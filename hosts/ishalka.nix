@@ -49,6 +49,8 @@ inputs.nix-darwin.lib.darwinSystem {
             };
           };
 
+          programs.firefox.enable=true;
+
           imports = [
             ../roles/home-manager/terminal.nix
             ../roles/home-manager/all_the_langs.nix
