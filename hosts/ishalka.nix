@@ -10,6 +10,7 @@ inputs.nix-darwin.lib.darwinSystem {
     [
       inputs.home-manager.darwinModules.home-manager
       ../configs/darwin/common.nix
+      ../configs/darwin/tailscale.nix
       ({
         config,
         pkgs,
