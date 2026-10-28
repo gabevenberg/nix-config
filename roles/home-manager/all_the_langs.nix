@@ -35,9 +35,9 @@
       # racket
       # ghc
       uiua
-    ]
+    ];
     # broken on aarch64-darwin.
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [gforth];
+    # ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [gforth];
 
   wrappers.neovim.enable = true;
   wrappers.neovim.settings.minimal = false;

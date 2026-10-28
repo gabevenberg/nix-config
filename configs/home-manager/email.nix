@@ -31,8 +31,8 @@
     passwordCommand = "cat ${config.sops.secrets.gmail-password.path}";
     realName = "Gabe Venberg";
 
-    # TODO: Himalaya has grown a bunch, integrate their ecosystem.
-    # himalaya.enable = true;
+    # TODO: Himalaya has grown a bunch, integrate their ecosystem one day.
+    # Also watch meli.
     aerc.enable = true;
   };
 }
