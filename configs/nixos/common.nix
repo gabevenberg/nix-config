@@ -51,7 +51,16 @@ in {
   environment.systemPackages = with pkgs; [
     rsync
     exfatprogs
+    pkg-config
+    nix-index
   ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      glib
+    ];
+  };
 
   programs.fuse.enable = true;
 
