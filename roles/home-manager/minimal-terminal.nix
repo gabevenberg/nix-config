@@ -73,10 +73,7 @@
     ripgrep.enable = true;
     bat = {
       enable = true;
-      config.theme =
-        if config.user.theme.noctalia
-        then "noctalia"
-        else "gruvbox-dark";
+      config.theme = lib.mkDefault "gruvbox-dark";
     };
     man.enable = true;
   };

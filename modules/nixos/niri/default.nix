@@ -118,6 +118,8 @@ in {
       osConfig,
       ...
     }: {
+      # see through to the blur rule below
+      programs.kitty.settings.background_opacity = "0.8";
       home.packages = with pkgs; [
         wl-clipboard
         wireplumber

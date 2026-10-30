@@ -50,7 +50,16 @@ in {
       config,
       pkgs,
       ...
-    }: {
+    }: let
+      starshipConfig = "${config.home.homeDirectory}/.cache/noctalia/starship.toml";
+      qtctSettings = qtct: {
+        Appearance = {
+          style = "Fusion";
+          custom_palette = true;
+          color_scheme_path = "${config.xdg.configHome}/${qtct}/colors/noctalia.conf";
+        };
+      };
+    in {
       # a unit would start under i3 too
       programs.noctalia = {
         enable = true;
@@ -146,9 +155,43 @@ in {
       };
       # noctalia is the notification daemon
       services.dunst.enable = false;
+
+      # point each app at the colours noctalia renders, over its gruvbox default
       wrappers.neovim.settings.colorscheme = "noctalia";
+      programs.bat.config.theme = "noctalia";
+      programs.btop.settings.color_theme = "noctalia";
+      programs.zellij.settings.theme = "noctalia";
+      programs.yazi.theme.flavor = {
+        dark = "noctalia";
+        light = "noctalia";
+      };
+      # glob allows for a missing file.
+      programs.kitty.extraConfig = "globinclude themes/noctalia.conf";
+      programs.zathura.extraConfig = "include noctaliarc";
+      programs.zsh.initContent = ''
+        [[ -f ${starshipConfig} ]] && export STARSHIP_CONFIG=${starshipConfig}
+      '';
+      programs.nushell.extraEnv = ''
+        if ("${starshipConfig}" | path exists) { $env.STARSHIP_CONFIG = "${starshipConfig}" }
+      '';
+      gtk = {
+        # gtk3 needs adw-gtk3 for noctalia's colours
+        theme = {
+          name = "adw-gtk3-dark";
+          package = pkgs.adw-gtk3;
+        };
+        gtk3.extraCss = ''@import url("noctalia.css");'';
+        gtk4.extraCss = ''@import url("noctalia.css");'';
+      };
+      qt = {
+        platformTheme.name = "qtct";
+        # qtct sets the style
+        style.name = null;
+        qt5ctSettings = qtctSettings "qt5ct";
+        qt6ctSettings = qtctSettings "qt6ct";
+      };
+
       user.theme = {
-        noctalia = true;
         targets = {
           niri = {
             template = "${pkgs.noctalia}/share/noctalia/assets/templates/niri/niri.kdl";
@@ -175,7 +218,6 @@ in {
         enable = true;
         updateCommands = ''
           if [ -n "''${NIRI_SOCKET:-}" ]; then
-            # the original, since noctalia ignores a path it already has
             noctalia msg wallpaper-set "$(realpath -- "$1")"
             noctalia msg greeter-sync
           fi

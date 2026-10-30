@@ -58,7 +58,6 @@
               name = "Gabe Venberg";
               email = "gabevenberg@gmail.com";
             };
-            workProfile.enable = false;
           };
         };
         imports = [

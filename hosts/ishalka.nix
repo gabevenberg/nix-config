@@ -13,7 +13,6 @@ inputs.nix-darwin.lib.darwinSystem {
       ../configs/darwin/tailscale.nix
       ({
         config,
-        pkgs,
         ...
       }: {
         nixpkgs.hostPlatform = "aarch64-darwin";
@@ -43,10 +42,7 @@ inputs.nix-darwin.lib.darwinSystem {
                 name = config.host.details.fullName;
                 email = "gabevenberg@gmail.com";
               };
-              workProfile = {
-                enable = true;
-                email = "gabriel.venberg-ext@man.eu";
-              };
+              includeDirs = ["~/work"];
             };
           };
 

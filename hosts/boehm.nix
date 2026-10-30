@@ -54,10 +54,7 @@ inputs.nixpkgs.lib.nixosSystem {
                 name = config.host.details.fullName;
                 email = "gabevenberg@gmail.com";
               };
-              workProfile = {
-                enable = true;
-                email = "gabriel.venberg@maibornwolff.de";
-              };
+              includeDirs = ["~/work"];
             };
           };
 

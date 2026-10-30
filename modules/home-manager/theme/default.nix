@@ -1,7 +1,6 @@
 {lib, ...}: {
   options = {
     user.theme = {
-      noctalia = lib.mkEnableOption "read app colours from noctalia instead of the default";
       targets = lib.mkOption {
         default = {};
         description = "files noctalia renders an app's colours into";

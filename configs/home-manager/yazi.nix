@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.yazi = {
     extraPackages = with pkgs; [
       ffmpeg
@@ -19,10 +14,6 @@
       resvg
     ];
     enable = true;
-    theme.flavor = lib.mkIf config.user.theme.noctalia {
-      dark = "noctalia";
-      light = "noctalia";
-    };
   };
   user.theme.targets = {
     yazi = {

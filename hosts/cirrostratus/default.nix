@@ -83,7 +83,6 @@ inputs.nixpkgs.lib.nixosSystem {
               name = config.host.details.fullName;
               email = "gabevenberg@gmail.com";
             };
-            workProfile.enable = false;
           };
         };
         # sops = lib.mkIf (inputs ? nix-secrets) {

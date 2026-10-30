@@ -1,5 +1,5 @@
 {
-  config,
+  lib,
   pkgs,
   ...
 }: {
@@ -7,10 +7,7 @@
     enable = true;
     settings = {
       vim_keys = true;
-      color_theme =
-        if config.user.theme.noctalia
-        then "noctalia"
-        else "gruvbox_dark";
+      color_theme = lib.mkDefault "gruvbox_dark";
     };
   };
 

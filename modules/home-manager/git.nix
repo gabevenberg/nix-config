@@ -6,12 +6,11 @@
   options = {
     user.git = {
       enable = lib.mkEnableOption "enable git";
-      workProfile = {
-        enable = lib.mkEnableOption "git work profile";
-        email = lib.mkOption {
-          type = lib.types.str;
-          description = "email for work profile.";
-        };
+      includeDirs = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [];
+        example = ["~/work"];
+        description = "directories whose .gitconfig is included for repos under them.";
       };
       profile = {
         email = lib.mkOption {
@@ -86,15 +85,29 @@
         submodule.recurse = true;
       };
       includes =
-        if config.user.git.workProfile.enable
-        then [
+        lib.concatMap (dir: [
           {
-            condition = "gitdir:~/work/**";
-            contents.user.email = config.user.git.workProfile.email;
+            condition = "gitdir:${dir}/**";
+            path = "${dir}/.gitconfig";
           }
-        ]
-        else [];
+        ])
+        config.user.git.includeDirs;
     };
+    # Warn if a .gitincludes is missing.
+    home.activation.checkGitIncludes = lib.hm.dag.entryAfter ["writeBoundary"] (
+      lib.concatMapStrings (dir: let
+        file = "${dir}/.gitconfig";
+        expanded =
+          if lib.hasPrefix "~/" file
+          then "$HOME/${lib.removePrefix "~/" file}"
+          else file;
+      in ''
+        if [[ ! -f "${expanded}" ]]; then
+          warnEcho "git: ${file} is missing, repos under ${dir} will use the main profile."
+        fi
+      '')
+      config.user.git.includeDirs
+    );
     programs.lazygit.enable = true;
     user.theme.targets.lazygit = {
       template = ./theme/templates/lazygit.yml;

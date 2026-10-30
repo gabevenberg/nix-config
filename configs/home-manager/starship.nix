@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: let
-  noctaliaConfig = "${config.home.homeDirectory}/.cache/noctalia/starship.toml";
   colour = token: "{{colors.${token}.default.hex}}";
 in {
   programs.starship = {
@@ -149,13 +148,7 @@ in {
           color_yellow_fg = colour "on_primary";
         };
       });
+    # noctalia.nix points STARSHIP_CONFIG here
     path = ".cache/noctalia/starship.toml";
   };
-
-  programs.zsh.initContent = lib.mkIf config.user.theme.noctalia ''
-    [[ -f ${noctaliaConfig} ]] && export STARSHIP_CONFIG=${noctaliaConfig}
-  '';
-  programs.nushell.extraEnv = lib.mkIf config.user.theme.noctalia ''
-    if ("${noctaliaConfig}" | path exists) { $env.STARSHIP_CONFIG = "${noctaliaConfig}" }
-  '';
 }
