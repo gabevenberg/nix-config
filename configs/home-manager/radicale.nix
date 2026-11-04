@@ -47,6 +47,13 @@ in {
     };
 
     programs.khard.enable = true;
+    programs.todoman = {
+      enable = true;
+      glob = "*/*";
+      extraConfig = ''
+        date_format = "%Y-%m-%d"
+      '';
+    };
     programs.pimsync.enable = true;
     services.pimsync.enable = true;
 
