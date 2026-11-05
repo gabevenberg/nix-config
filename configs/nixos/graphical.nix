@@ -71,6 +71,7 @@
       ../home-manager/dunst.nix
       ../home-manager/xcompose
       ../home-manager/imv.nix
+      ../home-manager/mediashow
     ];
   };
   imports = [
