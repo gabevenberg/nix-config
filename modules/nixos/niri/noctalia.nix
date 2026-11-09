@@ -105,6 +105,16 @@ in {
           ];
           location.auto_locate = true;
           notification.history_retention_hours = 1;
+          idle.behavior = {
+            lock = {
+              action = "lock";
+              timeout = 600;
+            };
+            screen-off = {
+              action = "screen_off";
+              timeout = 660;
+            };
+          };
           shell = {
             font_family = "Fira Code";
             niri_overview_type_to_launch_enabled = true;

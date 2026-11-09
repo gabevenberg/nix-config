@@ -1,6 +1,6 @@
 {...}: {
   programs.anki = {
-    enable = true;
+    # enable = true;
     theme = "dark";
   };
 }
