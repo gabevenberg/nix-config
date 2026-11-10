@@ -19,12 +19,27 @@
       visual_bell_duration = "0.5";
       window_alert_on_bell = "yes";
       bell_on_tab = "🔔";
+      custom_shaders = "retro";
     };
     keybindings = {
-      # the default, kitty_mod+f3, is a stretch
+      # the default, kitty_mod+f3, is hard to remember
       "kitty_mod+space" = "command_palette";
+      # toggle shaders
+      "kitty_mod+alt+c" = "shader_event crt";
+      "kitty_mod+alt+l" = "shader_event tft";
     };
   };
+
+  xdg.configFile."kitty/shaders/retro.pipeline".text = ''
+    startgroup
+        animation_toggle user:crt
+        shaders crt
+    endgroup
+    startgroup
+        animation_toggle user:tft
+        shaders tft
+    endgroup
+  '';
 
   user.theme.targets.kitty = {
     template = "${pkgs.noctalia}/share/noctalia/assets/templates/kitty/kitty.conf";
