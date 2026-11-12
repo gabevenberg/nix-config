@@ -23,6 +23,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1793836618,
+        "narHash": "sha256-TREenflwEjxOSq292FYwbc3kEm7TDRtXCZRNWEdjBmg=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "79fd63528501446749c09f08cad486a58c7d173e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "deploy-rs-flake": {
       "inputs": {
         "flake-compat": [
@@ -122,6 +137,29 @@
         "type": "github"
       }
     },
+    "maki": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": [
+          "nix-secrets",
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1794475866,
+        "narHash": "sha256-XdQG+1L56zBCtqsTd70eMW9H0uRn0VY5NPEQFjKzMrg=",
+        "owner": "tontinton",
+        "repo": "maki",
+        "rev": "029de5cbf124bc66939ea8d76f9a34610ed98141",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tontinton",
+        "repo": "maki",
+        "type": "github"
+      }
+    },
     "millennium": {
       "inputs": {
         "millennium-src": "millennium-src",
@@ -185,12 +223,17 @@
       }
     },
     "nix-secrets": {
-      "flake": false,
+      "inputs": {
+        "maki": "maki",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1793804526,
-        "narHash": "sha256-jq7S+NseJ7m6YVYNl26OvY/8UKRbq1hbUZO9Am3tDoM=",
+        "lastModified": 1794512618,
+        "narHash": "sha256-PzpwtwX/6aYBMUpadJ+dOHeYTvWgrT12SSXgl7i9L1w=",
         "ref": "refs/heads/main",
-        "rev": "c9770f323e9cfc7b5c712625bbebbd35966144b7",
+        "rev": "ba1af5421c54aa0ead9a4ab4f4843495e99963f4",
         "shallow": true,
         "type": "git",
         "url": "ssh://forgejo@git.venberg.xyz:2222/Gabe/nix-secrets.git"
@@ -351,6 +394,28 @@
         "nixpkgs": "nixpkgs",
         "nvim-config": "nvim-config",
         "sops-nix": "sops-nix"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-secrets",
+          "maki",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793610678,
+        "narHash": "sha256-5V08BokWHSUU962Kcr/uSTWyy+1NqB7pjuyqjqXTqQU=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "6b29b8e8d3cc8ebda9342fbbcc7ac06eff58e2fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "sops-nix": {

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -113,5 +114,7 @@
       template = ./theme/templates/lazygit.yml;
       path = ".config/lazygit/config.yml";
     };
+
+    home.packages = with pkgs; [worktrunk];
   };
 }

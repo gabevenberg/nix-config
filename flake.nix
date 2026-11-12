@@ -58,7 +58,7 @@
     nix-secrets = {
       url = "git+ssh://forgejo@git.venberg.xyz:2222/Gabe/nix-secrets.git?shallow=1";
       # url = "git+https://git.venberg.xyz/Gabe/nix-secrets.git?shallow=1";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware = {
