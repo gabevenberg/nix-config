@@ -28,7 +28,7 @@
   nix =
     lib.mkIf config.targets.genericLinux.enable
     {
-      package = pkgs.nix;
+      package = pkgs.lixPackageSets.stable.lix;
       settings = {
         experimental-features = ["nix-command" "flakes"];
         max-jobs = "auto";

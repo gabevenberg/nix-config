@@ -9,7 +9,7 @@
   defaultPasswordHash = "$y$j9T$u0O3PELyRv3GOemCReQhA0$Qb4Sl6dXnafYwZeDYrJGwS4xp3v6vGriWFMYomHH2w3";
 in {
   nix = {
-    package = pkgs.nixVersions.stable;
+    package = pkgs.lixPackageSets.stable.lix;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';

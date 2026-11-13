@@ -1,12 +1,10 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }: let
   cfg = config.host.niri;
-  steam = config.programs.steam.enable;
 in {
   config = lib.mkIf (cfg.enable && cfg.shell == "noctalia") {
     # noctalia has its own OSD and locks before suspend
@@ -37,10 +35,6 @@ in {
         allowed_extensions = ["pywalfox@frewacom.org"];
       }))
     ];
-
-    # loads steam themes; Material-Theme reads noctalia's colours
-    nixpkgs.overlays = lib.mkIf steam [inputs.millennium.overlays.default];
-    programs.steam.package = lib.mkIf steam pkgs.millennium-steam;
 
     # what the nixos programs.noctalia module sets
     xdg.sounds.enable = true;
@@ -216,11 +210,6 @@ in {
             template = ../../home-manager/theme/templates/pywalfox.json;
             path = ".cache/wal/colors.json";
             postAction = "firefox-theme";
-          };
-          # millennium can delete this on a theme update
-          steam = lib.mkIf steam {
-            template = ../../home-manager/theme/templates/steam.css;
-            path = ".steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css";
           };
         };
       };

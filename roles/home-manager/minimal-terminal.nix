@@ -31,6 +31,7 @@
       curl
       rsync
       jaq
+      tailcat
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [sshfs];
 

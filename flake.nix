@@ -66,12 +66,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # steam themes
-    millennium = {
-      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # just for follows statements
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";

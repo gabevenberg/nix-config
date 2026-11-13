@@ -6,7 +6,7 @@
   ...
 }: {
   nix = {
-    package = pkgs.nixVersions.stable;
+    package = pkgs.lixPackageSets.stable.lix;
     optimise.automatic = true;
     settings = {
       experimental-features = ["nix-command" "flakes"];
