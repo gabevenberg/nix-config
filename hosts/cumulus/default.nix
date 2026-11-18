@@ -40,6 +40,7 @@ inputs.nixpkgs.lib.nixosSystem {
         user = "gabe";
         fullName = "Gabe Venberg";
         gui.enable = false;
+        # lockdown.enable = true;
       };
       networking.hostName = "cumulus"; # Define your hostname.
       networking.hostId = "e0c31928";

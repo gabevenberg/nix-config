@@ -20,7 +20,7 @@ in {
     listen = [":${toString port}"];
     tlsCertificate = "/run/credentials/soju.service/cert.pem";
     tlsCertificateKey = "/run/credentials/soju.service/key.pem";
-    enableMessageLogging = true;
+    messageStoreDriver = "db";
   };
   systemd.services.soju.serviceConfig.LoadCredential = [
     "cert.pem:${certDir}/cert.pem"

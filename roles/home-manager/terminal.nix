@@ -19,6 +19,7 @@
     hurl
     rgx
     tokei
+    doggo
     #TODO! move this to graphics module? This provides a drag and drop interface from the CLI.
     ripdrag
   ];

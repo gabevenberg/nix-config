@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../configs/nixos/freshrss.nix
     ../../configs/nixos/soju.nix
     ../../configs/nixos/ntfy.nix
+    ../../configs/nixos/tailnet-dns.nix
     ({
       config,
       lib,
@@ -33,6 +34,7 @@ inputs.nixpkgs.lib.nixosSystem {
         fullName = "Gabe Venberg";
         gui.enable = false;
         isVm = true;
+        # lockdown.enable = true;
       };
       nixpkgs.hostPlatform = "x86_64-linux";
       networking.hostName = "cirrus"; # Define your hostname.

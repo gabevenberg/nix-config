@@ -40,6 +40,7 @@ inputs.nixpkgs.lib.nixosSystem {
         user = "gabe";
         fullName = "Gabe Venberg";
         gui.enable = false;
+        # lockdown.enable = true;
       };
       nixpkgs.hostPlatform = "x86_64-linux";
       boot.zfs.extraPools = ["storage"];
