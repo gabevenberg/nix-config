@@ -34,8 +34,14 @@
 
   programs.zsh.enable = lib.mkDefault true;
 
-  # swap caps lock and left control on every keyboard.
-  # nix has no hex literals, so these are HID usage IDs (0x7000000xx) in decimal.
+  # Does not install homebrew, just manages it.
+  homebrew = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # swap caps lock and left control
+  # nix has no hex literals, these are HID usage IDs (0x7000000xx) in decimal.
   system.keyboard = {
     enableKeyMapping = true;
     userKeyMapping = [
