@@ -43,28 +43,6 @@ inputs.nixpkgs.lib.nixosSystem {
         networking.hostName = "harmatan";
         networking.hostId = "7a42af26";
 
-        services.xserver.dpi = 210;
-        environment.variables = {
-          GDK_SCALE = "2";
-          GDK_DPI_SCALE = "0.5";
-        };
-
-        nixpkgs.overlays = let
-          args = "--force-device-scale-factor=2";
-          desktopItemsModifier = previousAttrs: {
-            desktopItems = [
-              ((builtins.head previousAttrs.desktopItems).override (prev: {
-                exec = "${prev.exec} ${args}";
-              }))
-            ];
-          };
-        in [
-          (final: prev: {
-            discord = prev.discord.override {commandLineArgs = args;};
-            signal-desktop = prev.signal-desktop.overrideAttrs desktopItemsModifier;
-          })
-        ];
-
         home-manager.sharedModules = [inputs.sops-nix.homeManagerModules.sops];
         home-manager.users.${config.host.details.user} = {
           inputs,
@@ -82,15 +60,10 @@ inputs.nixpkgs.lib.nixosSystem {
             };
           };
 
-          xresources.extraConfig = "Xft.dpi: 210";
-
           home.packages = with pkgs; [
             signal-desktop
           ];
 
-          home.file.".config/electron-flags.conf".text = ''
-            --force-device-scale-factor=2
-          '';
           imports = [
             ../../roles/home-manager/terminal.nix
             ../../roles/home-manager/music.nix
